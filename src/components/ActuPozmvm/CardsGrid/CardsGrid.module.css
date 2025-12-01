@@ -1,0 +1,75 @@
+.section {
+  padding: clamp(28px, 4vw, 56px) clamp(16px, 4vw, 5rem);
+  border-bottom: 1px solid var(--brd);
+}
+
+.titule {
+  font-size: clamp(1rem, 2.4vw, 2.3rem);
+  margin: 0 0 16px;
+  color: var(--vinoOsc);
+  font-weight: 600;
+}
+
+.cards {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width:780px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--brd);
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .08);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  will-change: transform;
+  transition: background-color .25s ease, box-shadow .25s ease, transform .2s ease;
+}
+
+.card:hover {
+  background: color-mix(in oklab, var(--vinoOsc) 6%, var(--card));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .10);
+}
+
+.card:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--vinoOsc) 55%, white);
+  outline-offset: 4px;
+  background: color-mix(in oklab, var(--vinoOsc) 10%, var(--card));
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .12);
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg,
+      color-mix(in oklab, var(--vinoOsc) 25%, #f1e8eb),
+      #f1e8eb);
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: var(--vinoOsc);
+  user-select: none;
+}
+
+.text {
+  font-size: .98rem;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

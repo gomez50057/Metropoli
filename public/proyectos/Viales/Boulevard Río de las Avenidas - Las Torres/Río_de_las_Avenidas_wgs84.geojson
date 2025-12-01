@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Río_de_las_Avenidas_wgs84",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Proyecto": "Boulevard Río de las Avenidas - Las Torres", "Descripción": "El proyecto se centra en el mejoramiento integral del Boulevard del Río de las Avenidas, contando con la construcción de tres puentes vehiculares importantes: Columbia, Tuzos y Las Torres, dichos puentes están diseñados para mejorar la fluidez del tráfico y reducir la congestión, permitiendo un tránsito más eficiente y seguro.", "Tipo": "Viales" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -98.755757285072207, 20.036009333710865, 0.0 ], [ -98.755677420395614, 20.036768510841966, 0.0 ], [ -98.755334139433501, 20.038749501062341, 0.0 ], [ -98.755138769777034, 20.040006657677168, 0.0 ], [ -98.753680586742917, 20.048524987840551, 0.0 ], [ -98.751806536318327, 20.059393377369588, 0.0 ], [ -98.75111436709426, 20.062636284339135, 0.0 ], [ -98.751352865744593, 20.07294989922741, 0.0 ], [ -98.75151965480967, 20.079634502061765, 0.0 ], [ -98.751161291245296, 20.082325881858026, 0.0 ] ] ] } }
+]
+}

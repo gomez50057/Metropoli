@@ -1,0 +1,175 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.content {
+  position: relative;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: scaleAndExpand 0.5s ease-out;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--vinoOsc);
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: var(--vinoOsc);
+}
+
+.description {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.category {
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+}
+
+.actions {
+  margin-bottom: 2rem;
+}
+
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 13px 22px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 28px;
+  background: var(--doradoClr);
+  width: 46px;
+  height: 46px;
+  transition: width 0.8s ease;
+}
+
+.cta span {
+  position: relative;
+  font-size: 16px;
+  line-height: 18px;
+  color: #111;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #111;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: transform 0.3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+@keyframes variableWidth {
+  0% {
+    width: 46px;
+  }
+
+  50% {
+    width: 70%;
+  }
+
+  100% {
+    width: 46px;
+  }
+}
+
+@keyframes scaleAndExpand {
+  0% {
+    transform: scaleY(0.1) scaleX(0.20);
+    height: 2px;
+    opacity: 0.10;
+    background-color: var(--doradoClr);
+  }
+
+  25% {
+    transform: scaleY(0.25) scaleX(0.40);
+    opacity: 0.30;
+  }
+
+  50% {
+    transform: scaleY(0.5) scaleX(0.45);
+    opacity: 0.50;
+  }
+
+  75% {
+    transform: scaleY(0.75) scaleX(0.55);
+    opacity: 0.70;
+  }
+
+  100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes variableWidth {
+  0% {
+    width: 46px;
+  }
+
+  50% {
+    width: 70%;
+  }
+
+  100% {
+    width: 46px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cta:before {
+    display: inline-block;
+    animation: variableWidth 3s infinite;
+  }
+
+}

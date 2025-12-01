@@ -1,0 +1,138 @@
+.section {
+  --brd: #E7E7EA;
+  --bg: #FFFFFF;
+
+  padding: clamp(24px, 4vw, 56px);
+  background: var(--bg);
+  color: #111;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 5rem 5rem 0 0;
+  position: relative;
+}
+
+.bgBlanco {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: 100%;
+  background: #eee;
+  z-index: -1;
+}
+
+.header {
+  display: grid;
+  gap: 8px;
+  margin-bottom: clamp(16px, 2.4vw, 28px);
+  max-width: 980px;
+}
+
+.title {
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  color: var(--vinoOsc);
+  letter-spacing: .2px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.spanVino {
+  color: var(--vinoClr);
+  font-weight: 800;
+}
+
+.spanDorado {
+  color: var(--doradoOsc);
+  font-style: italic;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  color: var(--grisOsc);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ------ Cards grid ------ */
+.grid {
+  --min: 220px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  gap: clamp(12px, 1.8vw, 18px);
+}
+
+.card {
+  background: rgba(255, 255, 255, .96);
+  border: 1px solid var(--brd);
+  border-radius: 18px;
+  padding: clamp(14px, 1.8vw, 18px);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, .06),
+    0 2px 6px rgba(0, 0, 0, .04);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  position: relative;
+  isolation: isolate;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(1200px circle at top left, rgba(160, 33, 66, 0.06), transparent 55%);
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--vinoClr) 40%, var(--brd));
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, .10),
+    0 4px 10px rgba(0, 0, 0, .06);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.cardTitle {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  color: var(--vinoOsc);
+  margin: 0 0 6px 0;
+}
+
+.cardText {
+  font-size: clamp(.95rem, 1.3vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--grisOsc);
+  margin: 0;
+}
+
+/* ------ Footer ------ */
+.footer {
+  margin-top: clamp(16px, 2.4vw, 28px);
+  padding-top: clamp(10px, 1.6vw, 14px);
+  border-top: 1px dashed rgba(0, 0, 0, .12);
+}
+
+.footerText {
+  font-size: clamp(0.95rem, 1.2vw, 1rem);
+  color: var(--grisOsc);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .section {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .grid {
+    --min: 180px;
+  }
+}

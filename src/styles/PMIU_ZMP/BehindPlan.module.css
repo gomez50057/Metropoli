@@ -1,0 +1,127 @@
+.container {
+  --gap: 1.25rem;
+  --pad-x: clamp(1rem, 5vw, 5rem);
+  --pad-t: clamp(1.5rem, 4vw, 3rem);
+  --pad-b: clamp(1rem, 3vw, 2rem);
+  --radius-top: clamp(1.25rem, 4vw, 5rem);
+  --text-sm: clamp(.95rem, 1.2vw, 1rem);
+  --text-md: clamp(1.05rem, 1.6vw, 1.25rem);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+  padding: var(--pad-t) var(--pad-x) var(--pad-b) var(--pad-x);
+  width: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  margin-top: clamp(1rem, 3vw, 2rem);
+  border-radius: var(--radius-top) var(--radius-top) 0 0;
+}
+
+.imageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  order: 0;
+}
+
+.image {
+  width: min(100%, 640px);
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.textWrapper {
+  width: 100%;
+  max-width: 72ch;
+  order: 1;
+}
+
+.subTitule {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--grisOsc);
+  margin-bottom: .75rem;
+}
+
+.subTitule span {
+  color: var(--dorado);
+  font-weight: 700;
+  font-style: italic;
+}
+
+.paragraph {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--grisOsc);
+  text-align: justify;
+  text-wrap: pretty;
+}
+
+.cardLabel {
+  display: block;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--grisOsc);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .container {
+    --gap: 1.5rem;
+  }
+
+  .textWrapper {
+    max-width: 78ch;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .imageWrapper {
+    flex: 1;
+    margin-top: -2rem;
+  }
+
+  .textWrapper {
+    flex: 1.4;
+  }
+}
+
+@media (min-width: 992px) {
+  .subTitule {
+    font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  }
+
+  .paragraph {
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+  }
+
+  .image {
+    width: min(100%, 720px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .imageWrapper {
+    flex: 1.1;
+  }
+
+  .textWrapper {
+    flex: 1.5;
+  }
+
+  .image {
+    border-radius: 12px;
+  }
+}

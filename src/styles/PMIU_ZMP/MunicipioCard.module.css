@@ -1,0 +1,159 @@
+/* ====== Padre (MunicipiosGrid) con FLEX ====== */
+.grid {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====== Card: base imagen izquierda / texto derecha ====== */
+.card {
+  --vino: var(--vinoOsc, #691b32);
+  --border: rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-evenly;
+  gap: clamp(16px, 3vw, 32px);
+  width: calc(100vw - 5rem);
+  height: auto;
+  max-height: 100vh;
+  box-sizing: border-box;
+
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  margin: 2rem 2.5rem;
+  padding: 2rem;
+}
+
+/* Alterna: pares (2,4,...) -> invierte el orden */
+.grid>.card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+
+
+/* ==== Columna imagen ==== */
+.media {
+  display: flex;
+  align-items: center;
+  overflow: visible;
+}
+
+.media img {
+  display: block;
+  height: auto;
+  width: clamp(220px, 25vw, 1200px);
+
+}
+
+/* ==== Columna contenido ==== */
+.content {
+  width: 40%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 20px);
+  color: var(--grisOsc);
+  overflow-wrap: anywhere;
+}
+
+/* Bloques verticales */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.blockTitle {
+  margin: 0;
+  font-size: clamp(1.05rem, 3vw, 4rem);
+  color: var(--vino);
+  font-weight: 400;
+}
+
+.blockText {
+  margin: 0;
+  line-height: 1.5;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+}
+
+/* CTA */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  width: 300px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--vino);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid rgba(105, 27, 50, 0.35);
+  box-shadow: 0 8px 20px rgba(105, 27, 50, 0.25);
+  transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+}
+
+.cta:focus-visible {
+  outline: 3px solid rgba(105, 27, 50, 0.35);
+  outline-offset: 2px;
+}
+
+.ctaDisabled {
+  cursor: not-allowed;
+  opacity: .7;
+  box-shadow: none;
+}
+
+.extIcon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Meta taller */
+.meta {
+  display: grid;
+  width: 300px;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(105, 27, 50, 0.06);
+  border: 1px solid rgba(105, 27, 50, 0.12);
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+}
+
+.meta dt {
+  margin: 0;
+  font-weight: 700;
+  color: var(--vino);
+}
+
+.meta dd {
+  margin: 0;
+  color: var(--grisOsc);
+}
+
+/* ====== Responsivo ====== */
+@media (max-width: 1024px) {
+
+  .grid>.card,
+  .grid>.card:nth-child(even),
+  .card.reverse {
+    flex-direction: column;
+    align-items: center;
+  }
+}

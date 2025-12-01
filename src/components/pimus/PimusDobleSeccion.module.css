@@ -1,0 +1,169 @@
+.wrap {
+  --shadow: 0 10px 30px rgba(0, 0, 0, .12);
+  --gap: clamp(16px, 2vw, 24px);
+  --side: clamp(180px, 30%, 380px);
+  --outerMax: 10vw;
+  width: 100vw;
+
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+  padding: 5rem 2.5rem 5rem 2.5rem;
+  background-color: var(--blanco);
+}
+
+/* -------- Fila base (dos columnas) -------- */
+.row {
+  display: grid;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+/* Superior: [Imagen exterior] [Card] */
+.rowTop {
+  grid-template-columns: minmax(0, var(--outerMax)) 1fr;
+}
+
+/* Inferior: [Card] [Imagen exterior] */
+.rowBottom {
+  grid-template-columns: 1fr minmax(0, var(--outerMax));
+}
+
+/* -------- Imagen exterior (columna angosta) -------- */
+.outerImgBox {
+  align-self: stretch;
+  height: 100%;
+  display: grid;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.outerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* -------- Card con borde vino -------- */
+.card {
+  position: relative;
+  background: var(--bgCard);
+  border: 3px solid var(--vinoClr);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: var(--gap);
+  color: var(--grisOsc);
+  overflow: hidden;
+}
+
+.sideImg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--side);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sideImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Lado derecho (sección superior) */
+.sideRight {
+  right: 0;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+/* Lado izquierdo (sección inferior) */
+.sideLeft {
+  left: 0;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+
+/* -------- Texto dentro del card -------- */
+.cardHeader {
+  position: relative;
+  z-index: 1;
+}
+
+.cardTitle {
+  margin: 0 0 8px 0;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  color: var(--vinoOsc);
+}
+
+.titleRight {
+  text-align: right;
+}
+
+.cardBody {
+  position: relative;
+  z-index: 1;
+  line-height: 1.55;
+  text-align: justify;
+  font-size: clamp(.95rem, 1.1vw, 1.05rem);
+}
+
+.cardBody .resaltar {
+  color: var(--grisOsc);
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Deja espacio para no tapar el texto con la imagen interna */
+.hasRightImg .cardBody,
+.hasRightImg .cardHeader {
+  padding-right: calc(var(--side) + var(--gap));
+}
+
+.hasLeftImg .cardBody,
+.hasLeftImg .cardHeader {
+  padding-left: calc(var(--side) + var(--gap));
+}
+
+@media (max-width: 980px) {
+
+  .rowTop,
+  .rowBottom {
+    grid-template-columns: 1fr;
+  }
+
+  .outerImgBox {
+    height: auto;
+    min-height: 220px;
+  }
+
+  .sideImg {
+    position: relative;
+    width: 100%;
+    height: clamp(180px, 36vh, 320px);
+    border-radius: 18px;
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: var(--gap);
+  }
+
+  .hasRightImg .cardBody,
+  .hasRightImg .cardHeader,
+  .hasLeftImg .cardBody,
+  .hasLeftImg .cardHeader {
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+  }
+
+  .titleRight {
+    text-align: left;
+  }
+}

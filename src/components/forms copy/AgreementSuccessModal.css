@@ -1,0 +1,64 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.styled-modal {
+  background: rgba(255, 255, 255, 0.75); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 20px;
+  width: 50%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1010; 
+}
+
+.styled-modal h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.styled-modal p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-botton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.styled-modal button {
+  background: linear-gradient(to right, #a02142, #92203e, #841e3b, #761d36, #691b32);  
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.styled-modal button:hover {
+  background: linear-gradient(to right, #a7193f, #7c0d2b, #5b1126, #4b0c1e, #380716);  
+  transform: scale(1.05);
+}
+
+.styled-modal button:active {
+  transform: scale(0.95);
+}

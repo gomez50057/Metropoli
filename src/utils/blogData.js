@@ -1,0 +1,464 @@
+// Negrita: **Este texto estará en negrita**
+// Cursiva: *Este texto estará en cursiva*
+// Viñetas: * Elemento de lista
+// Saltos de línea: \n
+// Negrita y Cursiva: **_Este texto estará en negrita y Cursiva_**
+
+import styles from "../components/blog/FullPost.module.css";
+
+export const blogPosts = [
+  {
+    name: "16va Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "En seguimiento a la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 19 de noviembre del presente año, se reunieron en la Ciudad de México la Ing. Arq. Marlene López García, Directora General de Desarrollo Regional y Metropolitano en representación de la Unidad de Planeación y Prospectiva, la acompaña Enrique Soto Alva de la SEDATU, Valeria Hamel, Directora General de Coordinación Metropolitana en representación de la CDMX, Luis Gilberto Marrón Agustín, Director General de Proyectos y Coordinación Metropolitana del Estado de México, así como personal de la consultoría que realiza el Programa y demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar la propuesta de instrumentación, homologación y armonización normativa, gestión y gobernanza; así como presentar y retroalimentar las estrategias y agenda, para la Zona Metropolitana del Valle de México. \n Uno de los temas que se destacó fue la necesidad de construir una cartera de proyectos que incorporare un análisis costo-beneficio, para que el Programa se fortalezca y se identifiquen oportunidades de ingresos compartidos. \n **La revisión del POZMVM hará posible consolidar una visión común para toda la zona metropolitana, sustentada en la colaboración entre las cuatro entidades participantes y la SEDATU. Este proceso impulsa una gestión territorial que requiere compromiso político, solidez técnica y, principalmente, la certeza de que las decisiones tomadas en conjunto son fundamentales para lograr un desarrollo territorial más justo y equilibrado.**",
+    date: "19 de noviembre, 2025",
+    image: "/img/noticias/ZMVM/16va Sesión de Trabajo del STCDMVM. actualización del POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "15va Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "Continuando con los trabajos de la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 12 de noviembre del presente año, se reunieron en el estado de Morelos la Ing. Arq. Marlene López García, Directora General de Desarrollo Regional y Metropolitano en representación de la Unidad de Planeación y Prospectiva, la acompaña Enrique Soto de la SEDATU, Karla Ortíz del Estado de Morelos, Valeria Hamel, Directora General de Coordinación Metropolitana en representación del  Mtro. Alejandro Encinas Rodríguez, Secretario de Desarrollo Urbano y Vivienda de la CDMX, Luis Marrón, en representación del Estado de México, Ricardo Ely en representación de la Secretaría de Hacienda y Crédito Público, así como personal de la consultoría que realiza el Programa y demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar en una primera etapa la estrategia y agenda metropolitana, así como presentar y retroalimentar la propuesta de instrumentación, homologación y armonización normativa, gestión y gobernanza para la Zona Metropolitana del Valle de México. \n Uno de los temas que se destacó fue que el primer paso es la homologación normativa y jurídica en la ZMVM,la gestión del suelo y de la vivienda debe orientarse hacia un uso eficiente, garantizando que las zonas de reserva se desarrollen con calidad, con servicios y promoviendo la creación de policentros. Exhorta a continuar avanzando con visión y compromiso, convencidos de que la planeación es una herramienta estratégica que trasciende los límites territoriales y los mapas, y que la gobernanza implica reconocer que lo que ocurre en una entidad impacta directamente en las demás. \n **La actualización del POZMVM permitirá construir una visión metropolitana compartida, basada en la coordinación entre las cuatro entidades federativas y la SEDATU, para avanzar hacia una gestión e instrumentación del territorio que exige voluntad política, claridad técnica y, sobre todo, la convicción firme de que los acuerdos colectivos son la base de un desarrollo equilibrado.**",
+    date: "12 de noviembre, 2025",
+    image: "/img/noticias/ZMVM/15va Sesión de Trabajo del STCDMVM. actualización del POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Foro de Arranque y Diagnóstico del Plan Integral de Movilidad Urbana Sustentable de la Zona Metropolitana de Pachuca",
+    description: "Como parte de los trabajos para la **Elaboración del Plan Integral de Movilidad Urbana Sustentable (PIMUS) de la Zona Metropolitana de Pachuca**, el pasado 10 de noviembre a las 14:00 horas, en el Aula Training Room, Edificio “Innovación” del complejo **CITNOVA**, ubicado en el municipio de San Agustín Tlaxiaca, Hidalgo, se llevó a cabo el **Foro de Arranque y Diagnóstico**, reuniendo a 36 asistentes clave en un proceso de validación técnica. \n Dicho foro tuvo como principal objetivo validar los **hallazgos preliminares del diagnóstico** técnico del PIMUS y recoger las percepciones directas sobre los retos cotidianos de la movilidad en la zona metropolitana. Esto, con el fin de asegurar que el Plan responda a las necesidades reales de la población a través de un enfoque participativo. \n El evento fue coordinado por la **Unidad de Planeación y Prospectiva del Estado de Hidalgo** (UPLAPH) y contó con la participación del **Mtro. Onésimo Rodrigo Serrano Rivera**, Coordinador General de Planeación y Proyectos de la UPLAPH, el **Dr. José Antonio Pérez Sánchez**, Director General del Sistema de Transporte Convencional; y el **Dr. Ulises Ramón Navarro Hernández**, Socio y Director del Proyecto de Modelística S.A. de C.V. \n Durante la jornada, se contó además con la presencia de representantes de diversas dependencias estatales, entre ellas la **Secretaría de Movilidad y Transporte**, la **Secretaría de Infraestructura Pública, Desarrollo Urbano y Sostenibilidad**, la **Secretaría de Seguridad Pública** y la **Comisión de Derechos Humanos** del Estado de Hidalgo. Asimismo, participaron servidores públicos de las áreas de Planeación, Desarrollo Urbano, Obras Públicas y Seguridad Pública de los municipios que integran la zona metropolitana de Pachuca: Epazoyucan, Mineral de la Reforma, Mineral del Monte, Pachuca de Soto, San Agustín Tlaxiaca, Zapotlán de Juárez y Zempoala. \n Durante el desarrollo del foro se llevó a cabo la presentación técnica del PIMUS, seguida de una activación colectiva y una dinámica de rotación de mesas en torno a cuatro ejes temáticos. Esta metodología participativa permitió identificar hallazgos relevantes, entre ellos las deficientes condiciones peatonales como banquetas en mal estado y falta de seguridad vial, aunado a las limitaciones del sistema Tuzobús en materia de cobertura, frecuencia de servicio e integración física y tarifaria. \n La participación evidenció un alto nivel de interés y disposición para colaborar en la construcción de soluciones compartidas, lo que reafirma la importancia de mantener un proceso de planificación con legitimidad social y un enfoque plenamente participativo. En conjunto, **las aportaciones reflejan la necesidad de avanzar hacia un modelo de movilidad más sostenible, equitativo y articulado a escala metropolitana.**",
+    date: "10 de noviembre, 2025",
+    image: "/img/noticias/ZMP/PIMUS/Foro_AD_PIMUS_ZMP.jpg",
+    category: "PIMUS ZMP",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Focus Group General: Movilidad Urbana Sustentable en la Zona Metropolitana de Pachuca",
+    description: "En el marco de la Elaboración del **Plan Integral de Movilidad Urbana Sustentable (PIMUS) de la Zona Metropolitana de Pachuca**, se llevó a cabo el **Focus Group General**, un encuentro clave para recoger las percepciones de usuarios del transporte público y actores institucionales sobre los retos de la movilidad. La sesión se realizó el jueves 06 de noviembre de 2025 a las 10:00 horas, en el Aula Training Room, Edificio “Innovación” del complejo **CITNOVA**, ubicado en el municipio de San Agustín Tlaxiaca, Hidalgo. \n El evento fue coordinado por la **Unidad de Planeación y Prospectiva del Estado de Hidalgo**, con el propósito de conocer las experiencias, necesidades y retos que enfrentan las y los usuarios del transporte público y movilidad activa. El ejercicio permitió analizar distintos modos de transporte como el sistema Tuzobús, el transporte metropolitano y la movilidad activa, así como aspectos clave relacionados con la infraestructura vial, la accesibilidad, la seguridad, la identidad territorial y la relación con el entorno barrial. \n El encuentro contó con la participación de autoridades y representantes clave, entre ellos el **Dr. José Antonio Pérez Sánchez**, Director General del Sistema de Transporte Convencional de Hidalgo, y el **C. José Matías Durán Gutiérrez**, representante de Actitud Bi-Sí. Durante la jornada, se contó además con la presencia de representantes de la Secretaría de Movilidad y Transporte del Estado de Hidalgo, así como de las y los **usuarios del transporte público** y representantes municipales de las áreas de Planeación de los siete municipios que integran la Zona Metropolitana de Pachuca. \n La metodología de trabajo se basó en una conversación estructurada y flexible de dos horas, diseñada para promover el diálogo horizontal en torno a cinco ejes temáticos. Tras la bienvenida y la contextualización del ejercicio, la sesión se desarrolló mediante la presentación de los temas de análisis, en la que cada participante compartió sus percepciones y experiencias sobre: **Tuzobús y transporte metropolitano, movilidad activa, accesibilidad urbana y seguridad vial, así como el Tren México–Pachuca** (tramo AIFA–Pachuca). \n Al cierre, las y los participantes compartieron sus percepciones como usuarios del transporte público y de la movilidad activa, destacando preocupaciones relacionadas con la seguridad, los horarios de circulación, la frecuencia y disponibilidad del servicio, así como las dificultades logísticas para realizar traslados que les permitan cumplir con sus responsabilidades cotidianas. De igual manera, mencionaron que no existen condiciones adecuadas para el uso de la bicicleta, debido a la falta de ciclovías seguras y la escasa conectividad entre rutas, lo que limita las opciones de movilidad sustentable en la zona metropolitana. \n Las principales ideas y propuestas se recopilaron en una relatoría, que concentra las valiosas aportaciones del grupo y servirá como insumo fundamental para el desarrollo del PIMUS.",
+    date: "06 de noviembre, 2025",
+    image: "/img/noticias/ZMP/PIMUS/FG_General_MUS_ZMP.jpg",
+    category: "PIMUS ZMP",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Focus Group Personas con Discapacidad: Hacia una Movilidad Accesible en la Zona Metropolitana de Pachuca",
+    description: "En el marco de la **Elaboración del Plan Integral de Movilidad Urbana Sustentable de la Zona Metropolitana de Pachuca**, se llevó a cabo el **Focus Group Personas con Discapacidad**, con el objetivo de construir un diagnóstico de movilidad inclusiva. Este encuentro se realizó el pasado miércoles 05 de noviembre de 2025 a las 14:00 horas, en el Aula Training Room, Edificio “Innovación” del complejo del Consejo Estatal de Ciencia, Tecnología e Innovación de Hidalgo (CITNOVA), ubicado en el municipio de San Agustín Tlaxiaca, Hidalgo, bajo la coordinación de la **Unidad de Planeación y Prospectiva de Gobierno del Estado de Hidalgo.** \n Dicha jornada tuvo como **objetivo identificar las experiencias, necesidades y los retos que enfrentan las personas con discapacidad en su movilidad cotidiana** dentro de la Zona Metropolitana, abarcando temas como el transporte público, la movilidad activa y la seguridad vial. La información recabada es crucial para establecer estrategias y proyectos que promuevan un sistema de movilidad más seguro, accesible y equitativo. \n El evento contó con la participación de autoridades clave, destacando la presencia del **Lic. José Carlos Ramírez Rivera**, Director de Planeación y Evaluación de la Secretaría de Movilidad y Transporte; y la **Ing. Arq. Marlene López García**, Directora General de Desarrollo Regional y Metropolitano de la Unidad de Planeación y Prospectiva de Gobierno del Estado. Asimismo, asistieron representantes de la Secretaría de Bienestar e Inclusión Social (SITMAH), junto a personas con alguna discapacidad de los municipios de Pachuca de Soto, Mineral de la Reforma, Zapotlán de Juárez y San Agustín Tlaxiaca. \n La dinámica del focus group se llevó a cabo como una conversación estructurada y flexible con una duración de dos horas, diseñada para fomentar el diálogo horizontal entre los asistentes. Es importante destacar que a la reunión asistieron personas con **diversos tipos de discapacidades, incluyendo auditiva, visual, motriz y talla baja.** Esta participación directa permitió capturar la experiencia y las vivencias en territorio, lo cual enriqueció el diagnóstico al evidenciar que las necesidades son diversas y se presentan una serie de temas críticos que afectan su movilidad cotidiana. \n Como resultado de este proceso participativo, se logró identificar la falta de accesibilidad y las deficiencias en la adaptación de las unidades de transporte público (especialmente ante la dificultad para abordar vehículos saturados), así como la ejecución deficiente en la construcción de rampas en la infraestructura urbana. Adicionalmente, se concluyó que la configuración acústica de los semáforos puede ser confusa, elevando el riesgo durante los desplazamientos cotidianos. Se subraya la necesidad de implementar tarifas preferenciales que se ajusten a las condiciones particulares de las personas con discapacidad. Todas las aportaciones obtenidas serán integradas como base fundamental para la construcción de propuestas orientadas hacia una meta clara y necesaria: **MOVILIDAD ACCESIBLE PARA TODAS Y TODOS.**",
+    date: "05 de noviembre, 2025",
+    image: "/img/noticias/ZMP/PIMUS/FGP_Discapacidad_HMA_ZMP.jpg",
+    category: "PIMUS ZMP",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Focus Group Mujeres: Perspectiva de Género en la Movilidad Sustentable de la Zona Metropolitana de Pachuca",
+    description: "En el marco de la **Elaboración del Plan Integral de Movilidad Urbana Sustentable de la Zona Metropolitana de Pachuca**, y con el propósito de asegurar la incorporación transversal de la perspectiva de género en dicho instrumento de planeación, se llevó a cabo el **Focus Group Mujeres.** Este importante encuentro se realizó el pasado miércoles 05 de noviembre a las 10:00 horas, en el Aula Training Room, Edificio “Innovación” del complejo del Consejo Estatal de Ciencia, Tecnología e Innovación de Hidalgo (CITNOVA), ubicado en el municipio de San Agustín Tlaxiaca, Hidalgo, bajo la coordinación de la **Unidad de Planeación y Prospectiva del Estado de Hidalgo.** \n Dicha jornada tuvo como objetivo **identificar las experiencias, necesidades y los retos que enfrentan las mujeres en su movilidad cotidiana**, abarcando temas cruciales como el uso del transporte público, la movilidad activa, la seguridad vial y la dinámica de los viajes de cuidado. Con la información recabada, se busca establecer una estrategia integral que oriente acciones y proyectos concretos, promoviendo así un sistema de movilidad más seguro, accesible y equitativo para este sector de la población. \n El evento contó con la participación de autoridades clave, destacando la presencia de la **Mtra. Lizbeth Campero Oviedo**, Subdirectora de Vinculación del Instituto Hidalguense de las Mujeres; el **Lic. José Carlos Ramírez Rivera**, Director de Planeación y Evaluación de la Secretaría de Movilidad y Transporte (SEMOT); y la **Ing. Arq. Marlene López García**, Directora General de Desarrollo Regional y Metropolitano de la Unidad de Planeación y Prospectiva. Asimismo, la asistencia incluyó a las titulares de dependencias Municipales de la Mujer de los municipios de Epazoyucan, Mineral de la Reforma, Mineral del Monte, Pachuca de Soto, San Agustín Tlaxiaca, Zapotlán de Juárez y Zempoala. Un elemento fundamental fue la participación directa de **amas de casa y cuidadoras de los municipios de la zona metropolitana**, quienes enriquecieron el diálogo con sus vivencias cotidianas. \n La dinámica del focus group se concibió como una conversación estructurada y flexible para garantizar la participación abierta y el diálogo horizontal entre las asistentes. La sesión se articuló mediante cinco ejes temáticos que funcionaron como preguntas detonadoras, apoyados con una guía visual. Esta metodología, diseñada para nutrirse del conocimiento empírico y cotidiano de cada participante, permitió identificar directamente las principales problemáticas desde su perspectiva como cuidadoras, amas de casa, madres e hijas al utilizar los sistemas de transporte público. Entre los temas recurrentes que emergieron, destacaron la percepción de inseguridad, las deficiencias en los horarios de circulación y la limitada disponibilidad del servicio, así como las significativas dificultades logísticas en los traslados. Estas valiosas aportaciones servirán de base fundamental para la construcción de una propuesta orientada hacia una **MOVILIDAD SEGURA PARA TODAS.**",
+    date: "05 de noviembre, 2025",
+    image: "/img/noticias/ZMP/PIMUS/FG_Mujeres_PGMS_ZMP.jpeg",
+    category: "PIMUS ZMP",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "14va Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "En seguimiento a la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 22 de octubre del presente año, se reunieron en el estado de México la Ing. Arq. Marlene López García, Directora General de Desarrollo Regional y Metropolitano en representación de la Unidad de Planeación y Prospectiva, la acompaña Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Valeria Hamel, Directora General de Coordinación Metropolitana en representación del  Mtro. Alejandro Encinas Rodríguez, Secretario de Desarrollo Urbano y Vivienda de la CDMX, Carlos Jesús Maza Lara, en representación de la Secretaría de Desarrollo Urbano e Infraestructura del Gobierno de México, así como personal de la consultoría que realiza el Programa y demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar los aspectos de unidades de paisaje, análisis de aptitud territorial, modelo de ordenamiento territorial para el Valle de México, así como la presentación de estrategias y agenda metropolitana primera parte. \n Uno de los temas que se destacó fue la importancia de configurar estructuras de gobernanza metropolitanas, lo que conlleva a actualizar lineamientos jurídicos como la Ley de Desarrollo Metropolitano del Valle de México. \n **La actualización del POZMVM busca guiar el desarrollo de la zona metropolitana hacia un modelo que reconozca los límites ecológicos del territorio, promueva la equidad social y garantice el ejercicio pleno de derechos como el acceso a la vivienda adecuada, la movilidad segura, el medio ambiente sano y la vida digna.**",
+    date: "22 de octubre, 2025",
+    image: "/img/noticias/ZMVM/14va Sesión de Trabajo del STCDMVM. actualización del POZMVM.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "13va Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "Continuando con los trabajos de la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 8 de octubre del presente año, se reunieron en el estado de Hidalgo el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos en representación del Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, lo acompaña Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Valeria Hamel, Directora General de Coordinación Metropolitana en representación del  Mtro. Alejandro Encinas Rodríguez, Secretario de Desarrollo Urbano y Vivienda de la CDMX, Alejandro Guadarrama, Director General de Planeación Urbana del EDOMEX, así como personal de la consultoría que realiza el Programa y demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar los aspectos de prospectiva, visión y objetivos metropolitanos para la Zona Metropolitana del Valle de México, así como presentar las unidades de paisaje, análisis de aptitud territorial y el modelo de ordenamiento territorial. \n Uno de los temas que se destacó fue el tema de espacios públicos donde se propusieron 9 políticas para poder clasificarlos entre las que se encuentran preservación ecológica, conservación ecológica, restauración ecológica, aprovechamiento sustentable, conservación histórico cultural, contención de asentamientos humanos, consolidación de asentamientos humanos, reciclamiento de asentamientos humanos y crecimiento de asentamientos humanos. \n **La actualización del POZMVM busca que los espacios públicos sean más integrados, sostenibles, equitativos y resilientes, fortaleciendo la calidad de vida y la cohesión urbana en toda la zona metropolitana.**",
+    date: "08 de octubre, 2025",
+    image: "/img/noticias/ZMVM/13va Sesión de Trabajo del STCDMVM. actualización del POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: true
+  },
+  {
+    name: "Taller de Diseño Participativo en el municipio de Zempoala, Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca",
+    description: "Como parte de los trabajos del Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca el pasado 01 de octubre en el Salón Victoria, ubicado en el municipio de Zempoala, se llevó a cabo el Taller de Diseño Participativo, especialmente en el área del Acceso y zona del Acueducto de Padre Tembleque, como parte del proceso de elaboración del Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca. \n Dicho taller tiene por objetivo fomentar la participación ciudadana de los diferentes actores políticos, sociales, académicos y del sector privado del municipio, mediante un Taller de Diseño Participativo desarrollado de manera dinámica, interactiva, inclusiva y abierta, que propicie la discusión, el intercambio de ideas y la construcción colectiva de soluciones orientadas a fortalecer la imagen urbana del municipio de Zempoala. \n El taller contó con la participación de la Directora General de Desarrollo Regional y Metropolitano de la Unidad de Planeación y Prospectiva, Ing. Arq. Marlene López García, Contralor Municipal de Zempoala, Mtro. Miguel Ángel Campoy Sánchez,  servidores públicos municipales y estatales, así como público en general. \n Dentro del desarrollo del taller los participantes marcaron en un mapa su el camino que siguen día a día, buscando conocer sus percepciones positivas y negativas de esos trayectos, de igual manera se utilizaron una serie de figuras tridimensionales que representaban luminarias, señaléticas, señalización, bancas, ciclovías y áreas verdes, principalmente, las cuales fueron colocadas en los lugares que se consideraron mejorarían el entorno urbano de la zona. Este taller permitió conocer los diferentes puntos de vista de los participantes, así como las necesidades que perciben en la vida cotidiana en el municipio.",
+    date: "01 de octubre, 2025",
+    image: "/img/noticias/imagenUrbana/TDP_mun_zempuala_PMIU_ZMP_29-06-2025.webp",
+    category: "Imagen Urbana",
+    featuredPosts: true,
+    bgPosts: true
+  },
+  {
+    name: "Taller de Diseño Participativo en el municipio de Zapotlán de Juárez, Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca",
+    description: "Como parte de los trabajos del Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca el pasado martes 30 de septiembre en el Auditorio Ejidal del centro de San Pedro Huaquilpan, ubicado en el municipio de Zapotlán de Juárez, se llevó a cabo el Taller de Diseño Participativo como parte del proceso de elaboración del Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca. \n Dicho taller tiene por objetivo fomentar la participación ciudadana de los diferentes actores políticos, sociales, académicos y del sector privado del municipio, mediante un Taller de Diseño Participativo desarrollado de manera dinámica, interactiva, inclusiva y abierta, que propicie la discusión, el intercambio de ideas y la construcción colectiva de soluciones orientadas a fortalecer la imagen urbana del municipio de Zapotlán de Juárez. \n El taller contó con la participación de la Directora General de Desarrollo Regional y Metropolitano de la Unidad de Planeación y Prospectiva, Ing. Arq. Marlene López García, el Secretario de Obras Públicas del municipio de Zapotlán de Juárez, Arq. Javier Ángeles Villegas, la Directora de Planeación del municipio de Zapotlán de Juárez, Ing. Ana Belén Arista Vázquez, la Directora de Desarrollo Urbano y Ordenamiento Territorial del municipio de Zapotlán de Juárez, Ing. Rebeca Patricia Vázquez Bautista,  servidores públicos municipales y estatales, así como público en general. \n Dentro del desarrollo del taller los participantes imaginaron su trayecto del día a día, buscando percibir sensaciones positivas y negativas de quienes fueron parte de la dinámica en sus trayectos, de igual manera se utilizaron una serie de figuras tridimensionales que representaban luminarias, señaléticas, señalización, bancas, ciclovías y áreas verdes, principalmente, las cuales fueron situadas donde estimaban podrían mejorar las características urbanas de la zona. Este taller permitió comprender cómo los habitantes experimentan y perciben la vida cotidiana en el municipio, así como visualizar cómo el derecho a la ciudad es vivido de manera única por cada persona, según su experiencia cotidiana ",
+    date: "30 de septiembre, 2025",
+    image: "/img/noticias/imagenUrbana/TDP_mun_zapotlanJuarez_PMIU_ZMP_29-06-2025.webp",
+    category: "Imagen Urbana",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Taller de Diseño Participativo en el municipio de San Agustín Tlaxiaca, Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca",
+    description: "Continuando con los trabajos del Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca el pasado viernes 26 de septiembre en el Rancho “La Purísima”, ubicado en el municipio de San Agustín Tlaxiaca, se llevó a cabo el Taller de Diseño Participativo como parte del proceso de elaboración del Plan Maestro de Imagen Urbana de la Zona Metropolitana de Pachuca. \n Dicho taller tiene por objetivo fomentar la participación ciudadana de los diferentes actores políticos, sociales, académicos y del sector privado del municipio, mediante un Taller de Diseño Participativo desarrollado de manera dinámica, interactiva, inclusiva y abierta, que propicie la discusión, el intercambio de ideas y la construcción colectiva de soluciones orientadas a fortalecer la imagen urbana del municipio de San Agustín Tlaxiaca. \n El taller contó con la participación del Presidente Municipal de San Agustín Tlaxiaca, Lic. Mario David Medina Hernández, la Directora General de Desarrollo Regional y Metropolitano de la Unidad de Planeación y Prospectiva, Ing. Arq. Marlene López García, servidores públicos municipales y estatales, así como público en general. \n Dentro del desarrollo del taller los participantes tuvieron una experiencia sensorial basada en un audio con la finalidad de que pudieran imaginar su recorrido cotidiano, contemplando todos los aspectos del entorno urbano del centro del municipio, de igual manera se utilizaron una serie de figuras tridimensionales que representaban luminarias, señaléticas, señalización, bancas, ciclovías y áreas verdes, principalmente, las cuales fueron colocadas donde se consideraban más necesarias para el mejoramiento de la imagen urbana del lugar. \n Este taller permitió conocer cómo viven y de qué manera se vive la ciudad por los habitantes, las trayectorias que recorren y cómo cada persona percibe su derecho a la ciudad, así como la manera en que expresan su identidad por medio de los elementos físicos y naturales que constituyen al entorno urbano.",
+    date: "26 de septiembre, 2025",
+    image: "/img/noticias/imagenUrbana/TDP_mun_sanAguistin_PMIU_ZMP_29-06-2025.webp",
+    category: "Imagen Urbana",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "12va Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "En seguimiento a los trabajos de la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 24 de septiembre del presente año, se reunieron en la Ciudad de México el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos en representación del Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, lo acompaña Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU,  Mtro. Alejandro Encinas Rodríguez, Secretario de Desarrollo Urbano y Vivienda de la CDMX, Luis Gilberto Marrón Agustín, Director General de Proyectos y Coordinación Metropolitana del EDOMEX, María Fernanda Tomasini Padilla, Directora de Seguimiento y Evaluación Territorial del Estado de Morelos, así como personal de la consultoría que realiza el Programa y demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar aspectos de economía circular, residuos sólidos y energía para la Zona Metropolitana del Valle de México, así como presentar el la prospectiva y visión metropolitana. \n Uno de los temas que se destacó fue el tema de residuos sólidos, ya que representan un reto importante y se deberán promover acciones conjuntas en la zona metropolitana, como la generación de normas técnicas que rijan y guían su disposición final. \n **La actualización del POZMVM permitirá ordenar el territorio con acciones coordinadas que transformen la vida de la población que vive y transita en la Zona Metropolitana del Valle de México.**",
+    date: "10 de septiembre, 2025",
+    image: "/img/noticias/ZMVM/12va Sesión de Trabajo del STCDMVM. actualización del POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "11va Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "En seguimiento a los trabajos de la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 10 de septiembre del presente año, se reunieron en la Ciudad de México el Mtro. Miguel Ángel Tello Vargas, Titular de la UPLAPH, acompañado por el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos, el Biol. Magdaleno Cervantes Bautista de la Secretaría de Medio Ambiente y Recursos Naturales de Hidalgo, Sergio Zirath Hernández Villaseñor, de la Secretaría de Medio Ambiente y Recursos Naturales de Gobierno Federal, Enrique Soto Alba, Director General de Ordenamiento Metropolitano y Regional de la SEDATU,  Mtro. Alejandro Encinas Rodríguez, Secretario de Desarrollo Urbano y Vivienda de la CDMX, Luis Gilberto Marrón Agustín, Director General de Proyectos y Coordinación Metropolitana del EDOMEX, Fernanda Tomasini de la Secretaría de Desarrollo Sustentable del Estado de Morelos, así como personal de la consultoría que realiza el Programa y demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar aspectos de economía y vivienda para el Valle de México, así como presentar el diagnóstico, proyectos, acciones y políticas en materia de economía circular, residuos sólidos y energía. \n Uno de los temas que se destacó fue la importancia de abordar el tema residuos sólidos en el Valle de México y lo fundamental que será el parque ecológico de economía circular el cual se ubicará en Hidalgo. \n **La actualización del POZMVM permitirá establecer proyectos innovadores, que transformen la vida de la población que vive y transita en la Zona Metropolitana del Valle de México.**",
+    date: "10 de septiembre, 2025",
+    image: "/img/noticias/ZMVM/11va Sesión de Trabajo del STCDMVM. actualización del POZMVM.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "10ma Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "Continuando con los trabajos de la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 27 de agosto del presente año, se reunieron en el estado de Morelos el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos, y representante del Mtro. Miguel Ángel Tello Vargas, Titular de la UPLAPH, acompañado de Jorge Armando Azuña Nicolás, Director de Planeación de la Secretaría de Desarrollo Económico, Itzel España Cabra, Directora General de Inversiones de la Secretaría de Desarrollo Económico, Diana Vanessa Puga Navarrete, Directora de Seguimiento y Evaluación de Política de Vivienda de la SEDATU, Enrique Soto Alba, Director General de Ordenamiento Metropolitano y Regional de la SEDATU,  Mtro. Alejandro Encinas Rodríguez, Secretario de Desarrollo Urbano y Vivienda de la CDMX, Berenice Flores de la Secretaría de Desarrollo Económico del EDOMEX, Diderot Daniel González Hernández, Coordinador Operativo de Hábitat del Estado de Morelos, así como personal de la consultoría que realiza el Programa y demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar el tema de infraestructura y servicios públicos, equipamiento, espacio público, estructura metropolitana y patrimonio para el Valle de México, así como presentar el diagnóstico con los proyectos, acciones y políticas en materia de vivienda y aspectos económicos.  \n  Uno de los temas que se destacó fue la importancia de abordar el tema de vivienda bajo el marco de instrumentos de diseño y planeación territorial, acompañados de coordinación institucional, con la finalidad de impulsar ciudades compactas y garantizar el derecho a la misma para los sectores más vulnerables. \n **La actualización del POZMVM en materia de vivienda es clave porque asegurará un crecimiento urbano ordenado y sostenible, evitando asentamientos irregulares y la expansión descontrolada. Permitirá que la vivienda esté vinculada con servicios, infraestructura y espacios públicos, garantizando hogares dignos y accesibles, sobre todo para los sectores más vulnerables. Además, promoverá la certeza jurídica y la sostenibilidad, fortaleciendo la equidad social y la calidad de vida en toda la Zona Metropolitana del Valle de México.**",
+    date: "27 de agosto, 2025",
+    image: "/img/noticias/ZMVM/10ma Sesión de Trabajo del STCDMVM. actualización del POZMVM.jpeg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: true
+  },
+  {
+    name: "9na Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "En seguimiento a los trabajos de la Actualización del  Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 20 de agosto del presente año, se reunieron en el estado de México el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos, y representante del Mtro. Miguel Ángel Tello Vargas, Titular de la UPLAPH, acompañado por Eduardo Badillo Betancourt, Subsecretario de Desarrollo Urbano Sostenible de la Secretaría de Infraestructura y Desarrollo Urbano Sostenible,  Samuel Juárez Romero, Director General de Patrimonio Cultural de la Secretaría de Cultura, Andrés Manning Novales, Comisionado Estatal de Mejora Regulatoria, Enrique Soto Alba, Director General de Ordenamiento Metropolitano y Regional, SEDATU,  Marco Antonio Sánchez Rico, Director de Seguimiento Socioterritorial y Planeación de la Dirección General de Obras Comunitarias, SEDATU, Pablo Trujillo García, Arquitecto Perito adscrito a la Subdirección de Catálogo y Zonas de la Coordinación Nacional de Monumentos Históricos, INAH, Armando Rodríguez Melquiades, Jefe de Departamento de Planeación Divisional, División Valle de México Norte, CFE, Mtro. Alejandro Encinas Rodríguez, Secretario de Desarrollo Urbano y Vivienda de la CDMX, Tania Martínez García, Subsecretaria de Desarrollo Urbano de la Secretaría de Desarrollo Urbano e Infraestructura del EDOMEX, Rafael Enríquez Rayas, Asesor externo del Instituto de Pueblos y Comunidades Indígenas y Afromexicanas del Estado de Morelos, así como personal de la consultoría que realiza el Programa y demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar los aspectos de mercado inmobiliario, suelo, tenencia de la tierra y conflictos socioterritoriales, así como presentar el diagnóstico con los proyectos acciones y políticas en infraestructura y servicios públicos. \n  Uno de los temas que se destacó fue la importancia de diseñar e implementar una política metropolitana de espacios públicos que permita articular los esfuerzos institucionales, sociales y comunitarios, con el fin de garantizar el derecho a la ciudad, mejorar la calidad de vida y fortalecer la cohesión social. \n **La actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) es fundamental porque permitirá que los espacios públicos y la infraestructura urbana dejen de ser acciones aisladas para convertirse en parte de una estrategia integral de desarrollo metropolitano.**",
+    date: "20 de agosto, 2025",
+    image: "/img/noticias/ZMVM/9na Sesión de Trabajo del STCDMVM. actualización del POZMVM.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "8va Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Actualización del POZMVM",
+    description: "Como parte de los trabajos de la Actualización del  Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 13 de agosto del presente año, se reunieron en el estado de Hidalgo el Mtro. Miguel Ángel Tello Vargas, Titular de la UPLAPH, acompañado por el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos Eduardo Badillo Betancourt, Subsecretario de Desarrollo Urbano Sostenible de la Secretaría de Infraestructura y Desarrollo Urbano Sostenible,  Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda,  Dulce María Franco Pérez, Directora de Planeación y Evaluación de Proyectos del INSUS, Arturo Aldisac Merlo Reyes Director de Catastro Rural (RAN),  Patricia Ramírez Kuri, Directoria del Instituto de Planeación y Prospectiva de la CDMX, Blanca Heredia Piña Moreno, Directora General de Planeación Urbana del EDOMEX, Francisco Javier Alcántara Serrato, Director Operativo de la Comisión Estatal de Reservas Territoriales del Estado de Morelos, Daniel Pérez Torres, Director General de Consultoría en Planeación, Desarrollo y Territorial, así como demás servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar el tema de aspectos demográficos, sistema urbano rural y crecimiento urbano para el Valle de México, presentar el diagnóstico, proyectos, acciones y políticas en materia de mercado inmobiliario, asentamientos humanos irregulares, estructura económica, conflictos socio territoriales y tenencia de la tierra. \n Uno de los temas que se destacó fue la importancia de contar con información de las 4 entidades para ser incorporada a este instrumento, así como la dificultad de atender todas las problemáticas de los asentamientos humanos irregulares, poniendo énfasis en la calidad y seguridad de la vida de las personas que con mucho esfuerzo adquieren una vivienda, es por esto que **resulta indispensable la actualización del POZMVM ya que marcará la base para plantear estrategias específicas sobre este y otros temas que aquejan a la Zona Metropolitana.** \n **La actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) permitirá ordenar el crecimiento urbano, garantizar la coordinación entre los cuatro estados involucrados (CDMX, Estado de México, Hidalgo y Morelos), atender los retos de movilidad, agua, contaminación y servicios, y generar un marco de acción que promueva un desarrollo sostenible, equilibrado y con mejor calidad de vida para la ciudadanía.**",
+    date: "13 de agosto, 2025",
+    image: "/img/noticias/ZMVM/8va Sesión de Trabajo del STCDMVM. actualización del POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "7ma Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Inicio de los trabajos para la elaboración del POZMVM",
+    description: "Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 16 de julio del presente año, se reunieron en la Ciudad de México el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos y representante del Mtro. Miguel Ángel Tello Vargas, Titular de la UPLAP, Eduardo Badillo Betancour, Subsecretario de Desarrollo Urbano Sostenible de la Secretaría de Infraestructura y Desarrollo Urbano Sostenible,  junto con Enrique Soto Alba, Director General de Ordenamiento Metropolitano y Regional de la SEDATU, Alejandro Encinas Rodríguez, Secretario de Metrópolis CDMX, Patricia Ramírez Kuri, titular del Instituto de Planeación y Prospectiva de la CDMX, Tania Martínez García, titular de la Subsecretaría de Desarrollo Urbano del Estado, Alejandro Guadarrama Gil, Director General de Planeación Urbana del Estado de México, Marco Antonio Abadó de la Secretaría de Bienestar del Estado de Morelos, Rodrigo Jiménez Uribe, Coordinador de Planeación en Desarrollo y Territorio de la CONAPO, Daniel Pérez Torres, Director General de Consultoría en Planeación, Desarrollo y Territorial, así como servidores públicos de las 4 Entidades e invitados especiales. \n Los objetivos de esta reunión fueron consolidar el Diagnóstico de Movilidad para el Valle de México, presentar los proyectos, acciones y políticas en materia de aspectos demográficos, sistema urbano rural, y crecimiento urbano. \n **La actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) es fundamental porque este instrumento guía el desarrollo urbano, territorial y ambiental de una de las zonas más complejas y pobladas del país.**",
+    date: "16 de julio, 2025",
+    image: "/img/noticias/ZMVM/7ma Sesión de Trabajo del STC del CDMVM. Inicio de los trabajos para la elaboración del POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "6ta Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Inicio de los trabajos para la elaboración del POZMVM",
+    description: "Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 2 de julio del presente año, se reunieron en la Ciudad de México el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos y representante del Mtro. Miguel Ángel Tello Vargas, Titular de la UPLAP, Humberto Cabrera Román, Director General del Sistema Integrado de Transporte Masivo de Hidalgo,  junto con Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Enrique Soto Alba, Director General de Ordenamiento Metropolitano y Regional de la SEDATU, Alejandro Encinas, Secretario de Metrópolis CDMX, Carlos Jesús Maza Lara, Secretario de Desarrollo Urbano e Infraestructura del Estado de México, Jorge Alberto Barrera Toledo Coordinador General de Movilidad y Transporte del Estado de Morelos, Salvador Medina Ramírez, Director General de Planeación y Proyectos de Transporte Público de la Agencia Reguladora del Transporte Ferroviario, así como Daniel Pérez Torres, Director General de Consultoría en Planeación, Desarrollo y Territorial. \n Los objetivos de esta reunión fueron revisar la consolidación del Diagnóstico del Medio Físico Natural para el Valle de México, así como presentar los proyectos, acciones y políticas en materia de Movilidad, siendo uno de los acuerdos el actualiza los instrumentos normativos en materia de movilidad. \n **La movilidad en la actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) es clave para avanzar hacia una zona metropolitana más equitativa, eficiente, sustentable y conectada, donde el desarrollo urbano esté al servicio de las personas y no al revés. Sin movilidad bien planeada, no hay ordenamiento territorial posible.**",
+    date: "02 de julio, 2025",
+    image: "/img/noticias/ZMVM/6ta Sesión de Trabajo del STC del CDMVM. Inicio de los trabajos para la elaboración del POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "5ta Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Inicio de los trabajos para la elaboración del POZMVM",
+    description: "Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el jueves 19 de junio del presente año, se reunieron en el Estado de Morelos el Biol. Magdaleno Cervantes Bautista Subsecretario de Política Ambiental del Estado de Hidalgo, lo acompaña Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Margarita González Saravia, Gobernadora Constitucional del Estado de Morelos, Alejandro Encinas, Secretario de Metrópolis CDMX, Julia Álvarez Icaza Ramírez, titular de la SEDEMA de la CDMX , Nicolas Mendoza Jiménez, Director General para el Territorio Sostenible de la Secretaría de Medio Ambiente y Recursos Naturales del Estado de México, Daniel Pérez Torres, Director General de Consultoría en Planeación, Desarrollo y Territorial, así como servidores públicos de las diferentes Entidades. \n Los objetivos de esta reunión fueron consolidad el Diagnóstico de Gestión Integral de Riesgos y Cambio Climático, así como presentar el diagnóstico, proyectos, acciones y políticas en materia de medio físico natural para el Valle de México.  \n **La coordinación interinstitucional garantiza que la actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) sea técnicamente sólida, socialmente legítima y operativamente viable, asegurando un desarrollo ordenado, equitativo y sustentable para millones de personas en la metrópoli más grande del país.**",
+    date: "19 de junio, 2025",
+    image: "/img/noticias/ZMVM/5ta Sesión de Trabajo del STC del CDMVM. Inicio de los trabajos para la elaboración del POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "4ta Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Inicio de los trabajos para la elaboración del POZMVM",
+    description: "Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 4 de junio del presente año, se reunieron en el Estado de México el Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, así como Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos, Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Alejandro Encinas, Secretario de Metrópolis CDMX, Carlos Jesús Maza Lara, Secretario de Desarrollo Urbano e Infraestructura del Estado de México, así como Daniel Pérez Torres, Director General de Consultoría en Planeación, Desarrollo y Territorial. \n El objetivo de esta reunión fue revisar las conclusiones de la temática Sistema Hidrológico e Infraestructura hidráulica, así como presentar el diagnóstico, proyectos, acciones y políticas en materia de Gestión de Riesgos y Cambio Climático.  \n **La actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) representa una oportunidad estratégica para transformar la ZMVM en una metrópoli más justa, eficiente y preparada para los desafíos del siglo XXI.**",
+    date: "04 de junio, 2025",
+    image: "/img/noticias/ZMVM/4ta. Sesión de Trabajo del STC del CDMVM POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "3ra Sesión de Trabajo del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Inicio de los trabajos para la elaboración del POZMVM",
+    description: "En relación con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 21 de mayo del presente año, se reunieron en el Estado de Hidalgo, el Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, así como Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos, Eugenia García en representación de Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Ussiel García Moreno en representación de Enrique Soto Alva,  Director General de Ordenamiento Metropolitano y Regional de la SEDATU, Alejandro Encinas, Secretario de Metrópolis CDMX, José Arnunlfo García, del Gobierno del Estado de México, así como Juan Ansberto Cruz por parte de la Consultoría. \n El objetivo de esta reunión fue establecer una metodología de trabajo, así como presentar el diagnóstico, proyectos, acciones y políticas en materia del sistema hidrológico e infraestructura hídrica del Valle de México. \n **La actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) marca un punto de inflexión en la gestión urbana de la región, al proponer un modelo de desarrollo más compacto, sustentable y coordinado entre entidades, buscando corregir patrones de crecimiento desordenado, fortalecer la resiliencia ambiental, garantizar la equidad territorial y mejorar la calidad de vida de millones de habitantes. **",
+    date: "21 de mayo, 2025",
+    image: "/img/noticias/ZMVM/3ra. Sesión de Trabajo del STC del CDMVM POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "2da Sesión Ordinaria del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Inicio de los trabajos para la elaboración del POZMVM",
+    description: "Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 7 de mayo del presente año, se reunieron en la Ciudad de México el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos, en representación del Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, así como Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Enrique Soto Alva,  Director General de Ordenamiento Metropolitano y Regional de la SEDATU, Patricia Ramírez Kuri, Titular del Instituto de Planeación Democrática y Prospectiva (IPDP), funcionarios públicos del Estado de México, así como Roberto Eibenschutz Hartman por parte de la Consultoría.  \n Los objetivos de esta sesión fueron presentar las propuestas del calendario de actividades para la elaboración del POZMVM, dar avances de la primera entrega administrativa por parte de los Estados, así como la revisión de los avances del documento del POZMVM. \n **La actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) está en proceso, y con la coordinación de todas las entidades pronto será una realidad que impulsará el desarrollo urbano de la ZMVM.**",
+    date: "07 de mayo, 2025",
+    image: "/img/noticias/ZMVM/2da. Sesión Ordinaria del STC del CDMVM POZMVM.png",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "15va reunión y 1ra Sesión Ordinaria del Secretariado Técnico Conjunto del Consejo de Desarrollo Metropolitano del Valle de México. Inicio de los trabajos para la elaboración del POZMVM",
+    description: "Inicio de los trabajos para la elaboración del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM). \n Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 25 de abril del presente año, se reunieron en la Ciudad de México el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos, en representación del Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, así como Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda, Enrique Soto Alva,  Director General de Ordenamiento Metropolitano y Regional de la SEDATU, Alejandro Encinas Rodríguez, Secretario de Planeación, Ordenamiento Territorial y Coordinación Metropolitana de la CDMX, Carlos Maza Lara, Secretario de Desarrollo Urbano e Infraestructura del EDOMEX Patricia Ramírez Kuri, Titular del Instituto de Planeación Democrática y Prospectiva (IPDP), Selina Trujillo Arizmendi, Diputada Distrito XXXI del Estado de México, así como Roberto Eibenschutz Hartman por parte de la Consultoría. \n Esta reunión y sesión tuvieron como objetivos dar a conocer el Plan de Trabajo por parte de la Consultoría encargada de la elaboración del POZMVM, revisar los avances sobre la integración de la información de cada Entidad Federativa, así como la suscripción por parte de las cuatro Entidades Federativas de los Convenios de Coordinación para impulsar el Ordenamiento Territorial y la Planeación Urbana de la Zona Metropolitana del Valle de México, estableciendo como acuerdo reunirse quincenalmente para continuar con los trabajos de la Actualización del POZMVM. \n **La actualización del Programa de Ordenación de la Zona Metropolitana del Valle de México (POZMVM) es un instrumento clave para coordinar el desarrollo urbano de la ZMVM, por lo que su actualización es esencial para lograr un crecimiento más ordenado, equitativo y sustentable.**",
+    date: "25 de abril, 2025",
+    image: "/img/noticias/ZMVM/15va reunión y 1ra Sesión Ordinaria del STC del CDMVM POZMVM.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "14va reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México",
+    description: "Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el miércoles 09 de abril del presente año, se reunieron de manera virtual la Ing. Arq. Marlene López García, Directora General de Desarrollo Regional y Metropolitano, en representación del Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, así como Víctor Hugo Hofmann Aguirre, Subsecretario de Ordenamiento Territorial, Urbano y Vivienda, Enrique Soto Alva,  Director General de Ordenamiento Metropolitano y Regional de la SEDATU, Valeria Hamel, Asesora del Secretario de Planeación, Ordenamiento Territorial y Coordinación Metropolitana en representación de Secretario Alejandro Encinas Rodríguez, Luis Gilberto Marrón Agustín, Director General de Proyectos y Coordinación Metropolitana, a nombre de Carlos Maza Lara, Harald Alcaraz, Director de Planeación e Instrumentación Territorial, en representación del Secretario Alan Dupré. \n El objetivo de esta reunión fue atender las dudas referentes a la información solicitada por la SEDATU para el proceso de elaboración del POZMVM y la consistencia del mismo, así como, presentar las primeras consideraciones técnicas derivadas de la consulta indígena que se realizará para la elaboración de dicho programa. \n **La participación y colaboración en la elaboración del Programa de Ordenamiento Metropolitano del Valle de México es indispensable para el éxito en la construcción de este instrumento de planeación. **",
+    date: "09 de abril, 2025",
+    image: "/img/noticias/ZMVM/14va reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Reunión preparatoria para la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México",
+    description: "Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, se reunió con representantes de la SEDATU, así como de las Secretarías de Gobierno, Movilidad y Transporte, Salud, Cultura, Medio Ambiente y Recursos Naturales, Hacienda, Infraestructura Pública y Desarrollo Urbano Sostenible, Educación Pública y Turismo de Gobierno del estado de Hidalgo, representantes de la Comisión Estatal del Agua y de la Comisión Estatal para el Desarrollo Sostenible de los Pueblos Indígenas, de igual manera asistieron presidentas y presidentes municipales, titulares de planeación y desarrollo urbano de Tula de Allende, Tepeji del Río de Ocampo, Atitalaquia, Tlaxcoapan, Atotonilco de Tula, Tolcayuca, Villa de Tezontepec y Tizayuca. \n En esta reunión se dio a conocer los alcances del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, así como las estrategias de coordinación para contar con la información necesaria en el proceso de elaboración del instrumento de planeación, el cual tendrá como objetivo de contar con un instrumento de planeación para promover el desarrollo integral entre los estados y las demarcaciones que conforman la metrópoli, el cual aborde los principales retos metropolitanos de manera inclusiva, efectiva y con una visión que fomente la gobernanza y colaboración, a partir de políticas, directrices, acciones y proyectos metropolitanos. \n **La suma de esfuerzos y la participación coordinada con los municipios que forman para de la ZMVM, y las Dependencias de Gobierno del Estado resulta indispensable para poder contar con un instrumento que beneficie a la población.**",
+    date: "02 de abril, 2025",
+    image: "/img/noticias/ZMVM/Reunión preparatoria para la Actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: true
+  },
+  {
+    name: "13va reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México",
+    description: "Continuando con los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el Mtro. Onésimo Rodrigo Serrano Rivera, en representación del Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, participó en la reunión virtual coordinada por la SEDATU, donde participaron el Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Víctor Hugo Hofmann Aguirre, el Secretario de Desarrollo Urbano e Infraestructura del Estado de México, Carlos Maza Lara, el Secretario de Planeación, Ordenamiento Territorial y Coordinación Metropolitana de la Ciudad de México, Alejandro Encinas Rodríguez, y el Secretario de Desarrollo Sustentable del estado de Morelos, Alan Dupré Ramírez.\n En esta reunión se destacó la importancia de la coordinación entre las entidades para poder integrar el Programa de Ordenamiento de la Zona Metropolitana del Valle de México. \n **La coordinación en la elaboración del Programa de Ordenamiento Metropolitano del Valle de México es fundamental para generar un instrumento efectivo de planeación, gestión y ejecución de proyectos estratégicos.**",
+    date: "26 de marzo, 2025",
+    image: "/img/noticias/ZMVM/13va reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "12va reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México",
+    description: "Con el objetivo de dar seguimiento a los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el Mtro. Miguel Ángel Tello Vargas, Titular de la Unidad de Planeación y Prospectiva, participó en la reunión virtual coordinada por el Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU, Víctor Hugo Hofmann Aguirre, donde además participaron el Secretario de Desarrollo Urbano e Infraestructura del Estado de México, Carlos Maza Lara, el Secretario de Planeación, Ordenamiento Territorial y Coordinación Metropolitana de la Ciudad de México, Alejandro Encinas Rodríguez, el Secretario de Desarrollo Sustentable del estado de Morelos, Alan Dupré Ramírez \n En esta reunión se definió y validó la delimitación de la ZMVM de 84 municipios para la elaboración del POZMVM, de igual manera se acordó incorporar proyectos estratégicos de gran impacto al Plan Maestro, entre los que se encuentran el Trolebús Elevado que va del municipio de Ixtapaluca en el Estado de México a la estación Martín Carrera del metro en la Ciudad de México. \n **El Programa de Ordenamiento Metropolitano del Valle de México es fundamental para garantizar un desarrollo sostenible, equitativo y eficiente, mejorar la calidad de vida, optimizar la infraestructura, impulsar la economía y preservar el medio ambiente, asegurando que el crecimiento de la metrópoli sea ordenado y funcional para sus habitantes.**",
+    date: "26 de febrero, 2025",
+    image: "/img/noticias/ZMVM/12va reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "11va reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México",
+    description: "En Seguimiento a los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el Secretario de Desarrollo Urbano e Infraestructura del Estado de México, Carlos Maza Lara,  el Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la Secretaría de Desarrollo Agrario, Territorial y Urbano (Sedatu), Víctor Hugo Hofmann Aguirre,  el Secretario de Planeación, Ordenamiento Territorial y Coordinación Metropolitana de la Ciudad de México, Alejandro Encinas Rodríguez, el titular de la Secretaría del Agua del Estado de México, Pedro Moctezuma Barragan, el Secretario de Desarrollo Sustentable del estado de Morelos, Alan Dupré Ramírez, así como el Coordinador General de Planeación y Proyectos, Onésimo Rodrigo Serrano Rivera, se reunieron el 28 de enero de 2025, para llevar a cabo la 11va reunión para la elaboración del POZMVM. \n En esta décima sesión se acordó incluir municipios para Hidalgo, municipios del Estado de México y del Estado de Morelos a la Zona Metropolitana del Valle de México, los cuales se buscarán ser publicados en gacetas municipales y periódicos oficiales estatales para su reconocimiento técnico-jurídico. Esta incorporación permitirá generar estrategias para atender necesidades conjuntas. \n  Con el **_Programa de Ordenamiento de la Zona Metropolitana del Valle de México (ZMVM), se atenderá la necesidad de ordenar la ZMVM así como las zonas de impacto del Aeropuerto Internacional Felipe Ángeles (AIFA) y del Tren AIFA – Pachuca._**",
+    date: "28 de enero, 2025",
+    image: "/img/noticias/ZMVM/11va reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "10ma reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México",
+    description: "En Seguimiento a los trabajos del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el titular de la UPLAPH, Mtro. Miguel Ángel Tello Vargas se reunió el 15 de enero de 2025, con la Secretaria de la SEDATU, Edna Vega Rangel, el Subsecretario de Desarrollo Urbano y Vivienda de la SEDATU, Víctor Hugo Hofmann Aguirre, así como el Secretario de Planeación, Ordenamiento Territorial y Coordinación Metropolitana de la CDMX, Alejandro Encinas y el Secretario del Agua del EDOMEX, Pedro Moctezuma. \n En esta décima sesión se analizaron los alcances del Programa, los proyectos estratégicos que debe contener y los pasos a seguir para contar con una zona metropolitana planificada y ordenada. \n Contar con un **Programa de Ordenamiento de la Zona Metropolitana del Valle de México (ZMVM) traerá múltiples beneficios estratégicos para el desarrollo sostenible, la mejora de la calidad de vida y la gobernanza de esta región clave en el país.**",
+    date: "15 de enero, 2025",
+    image: "/img/noticias/ZMVM/10ma reunión de coordinación para la elaboración del Programa de Ordenamiento Metropolitano del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "9na reunión previa a la actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México",
+    description: " **¡Retos en materia de gobernanza y coordinación metropolitana!** \n El 11 de diciembre de 2024 se llevó a cabo la 9a reunión para la elaboración del Programa de Ordenamiento de la ZMVM, en la Secretaría de Planeación, Ordenamiento Territorial y Coordinación Metropolitana, encabezada por el secretario Alejandro Encinas, en la cual se presentó el diagnóstico general y los principales retos en materia de gobernanza y coordinación metropolitana en las entidades que conforman la ZMVM (Ciudad de México, Estado de México e Hidalgo), así como el avance del Atlas de Riesgos de la Zona Metropolitana del Valle de México. \n Asistieron también representantes del Estado de México, Hidalgo y la federación. \n Con estas acciones se busca mejorar la provisión de servicios públicos, la infraestructura y la calidad de vida de los habitantes, así como uso del suelo y los recursos naturales. \n Con la elaboración del Atlas de Riesgos de la Zona Metropolitana del Valle de México, se busca planificar el crecimiento urbano de manera más segura, evitando las zonas de mayor riesgo para la construcción de viviendas, infraestructuras y equipamientos, e identificar áreas vulnerables a riesgos naturales (como inundaciones, deslizamientos de tierra o sismos) y otros riesgos (como contaminación del aire o accidentes industriales). Esto permite tomar decisiones para mitigar los impactos de estos riesgos antes de que ocurran.",
+    date: "11 de diciembre, 2024",
+    image: "/img/noticias/ZMVM/9na reunión previas actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Red Nacional Metropolitana 2024 Sexta Edición Día 2",
+    description: " **Gobernanza Metropolitana del Valle de México.** \n El pasado 29 de noviembre del 2024, el titular de Planeación y Prospectiva, Mtro. Miguel Ángel Tello Vargas, participó con una conferencia en la edición de la Red Nacional Metropolitana llevada a cabo en el estado de Tlaxcala. Donde destacó que, para garantizar una efectiva gobernanza metropolitana, es fundamental la coordinación entre los 3 órdenes de gobierno, en donde la escala metropolitana no conoce fronteras ni límites de competencia gubernamental. \n El titular destacó 4 principales pasos que se han llevado a cabo en la Zona Metropolitana del Valle de México para garantizar una efectiva coordinación: \n* Establecimiento de una agenda de trabajo permanente \n* Colaboración con identidades federativas \n* Trabajo cercano y permanente con autoridades municipales \n* Construcción con los sectores sociales \n Con estas acciones garantizamos fortalecer la gobernabilidad, coordinación y gobernanza de las metrópolis en México, además de promover la transferencia de metodologías, buenas prácticas, el fortalecimiento de las capacidades locales y el intercambio de información; así como el desarrollo y promoción de proyectos estratégicos de impacto metropolitano.",
+    date: "29 de noviembre, 2024",
+    image: "/img/noticias/ZMVM/Red Nacional Metropolitana 2024 Sexta Edición Día 2.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Red Nacional Metropolitana 2024 Sexta Edición Día 1",
+    description: "En representación del titular de Planeación y Prospectiva de gobierno de Hidalgo, Miguel Ángel Tello Vargas, el Mtro. Onésimo Rodrigo Serrano Rivera, Coordinador General de Planeación y Proyectos, participó junto al Secretario de Planeación Ordenamiento Territorial y Coordinación Metropolitana de la CDMX, Alejandro Encinas Rodríguez, y el Secretario de Desarrollo Urbano e Infraestructura del Estado de México, en la mesa redonda denominada Retos y desafíos en la coordinación, planeación y ordenamiento de la Zona Metropolitana del Valle de México. \n En dicha mesa se abordaron temas como los principales desafíos para lograr una coordinación efectiva, la generación de estrategias coordinadas para mejorar la problemática de movilidad, abastecimiento de agua, residuos sólidos, contaminación del aire, entre otros, así como las acciones que permitan garantizar una efectiva Planeación y ordenamiento territorial en la ZMVM. \n Este evento, liderado por la SEDATU, busca mejorar la coordinación y gobernanza en las metrópolis del país, trazando estrategias para enfrentar los desafíos de las zonas metropolitanas. **Hidalgo reafirma su compromiso con el desarrollo metropolitano y el fortalecimiento de su conexión con otras entidades.**",
+    date: "28 de noviembre, 2024",
+    image: "/img/noticias/ZMVM/Red Nacional Metropolitana 2024 Sexta Edición Día 1.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "8va reunión para la actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México",
+    description: " **¡Impulso a la movilidad!** El pasado 28 de noviembre del 2024 se llevó a cabo la 8va reunión de actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, en la cual se realizó la   Presentación del diagnóstico general y los principales retos y acciones en materia de financiamiento, turismo, movilidad y desarrollo económico en las entidades que conforman la ZMVM. \n  Se contó con la asistencia del Subsecretario Víctor Hugo Hofmann Aguirre, en representación de la Secretaría de Desarrollo Agrario, Territorial y Urbano (SEDATU), Álvaro Lomelí Covarrubias, Coordinador General de Desarrollo Metropolitano y Movilidad (SEDATU), entre otros representantes de la SEDATU. \n Con estas acciones se busca mejorar la calidad de vida de los habitantes, fortalecer la economía regional, reducir los impactos negativos sobre el medio ambiente y fomentar la inclusión social. Una movilidad eficiente, sostenible e inclusiva es clave para abordar los desafíos urbanos y crear un futuro más equitativo y resiliente para esta región, ya que la zona enfrenta desafíos significativos relacionados con el transporte y la conectividad.",
+    date: "28 de noviembre, 2024",
+    image: "/img/noticias/ZMVM/8va reunión para la actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "7ma reunión previa a la actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México",
+    description: "Como parte de los trabajos para la actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México, el titular de la #UPLAPH, el Mtro. Miguel Ángel Tello Vargas se reunió el pasado 13 de noviembre, con representantes del Gobierno de la Ciudad de México, Estado de México y la SEDATU, donde se abordaron los principales retos y acciones en materia de vivienda de las entidades que conforman la #ZMVM. \n Uno de los objetivos es crear un entorno urbano más equilibrado, sostenible, seguro e inclusivo, adaptado a las necesidades y desafíos actuales de la región, para incorporar medidas para evitar que la vivienda se construya en zonas de alto riesgo y garantizar la seguridad de los habitantes. \n De igual forma se busca la creación de políticas que promuevan la construcción de viviendas asequibles y de calidad para las poblaciones más vulnerables, evitando la expansión descontrolada de asentamientos informales y las condiciones de vida precarias.",
+    date: "13 de noviembre, 2024",
+    image: "/img/noticias/ZMVM/7ma reunión previas actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "6ta reunión previa a la actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México",
+    description: " **_sede Hidalgo_** \n Como parte de la Agenda Metropolitana del Valle de México, llevamos a cabo una reunión el 30 de octubre de 2024, donde se abordaron temas sobre asentamientos humanos, equipamiento e infraestructura, como parte de los trabajos previos a la actualización del **Programa de Ordenación de la ZMVM**, entre las entidades que conforman la #ZMVM: Estado de México, Ciudad de México e Hidalgo, junto con la SEDATU. \n Es importante la discusión de estos temas ya que permiten crear una ciudad más ordenada, inclusiva, sostenible y resiliente. La correcta planificación y distribución de estos elementos favorece la mejora de las condiciones de vida de los habitantes, optimiza los recursos urbanos, reduce las desigualdades y fortalece la capacidad de la zona metropolitana para hacer frente a desafíos futuros. \n  A través de una planificación integrada puede garantizar que los asentamientos humanos se desarrollen en zonas adecuadas, con la infraestructura necesaria para su funcionamiento, y que estos sean sostenibles a largo plazo.",
+    date: "30 de octubre, 2024",
+    image: "/img/noticias/ZMVM/6ta reunión previas actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "5ta Reunión para la elaboración del Programa de Ordenamiento de la Zona Metropolitana del Valle de México (POZMVM)",
+    description: "El Jueves 17 de octubre de 2024, se llevó a cabo la 5ta. Reunión para la elaboración del Programa de Ordenamiento de la Zona Metropolitana del Valle de México (POZMVM), contando con la presencia del Secretario de Planeación, Ordenamiento Territorial y Coordinación Metropolitana  Alejandro Encinas,  el Coordinador General de Desarrollo Metropolitano y Movilidad, Álvaro Lomelí Covarrubias, entre otros representantes de la SEDATU y del estado de Hidalgo, en dicha reunión se abordaron los principales retos acerca de la Gestión Integral de Riesgos y Desastres, así como al Cambio Climático, en las entidades que conforman la ZMVM. \n Esto con el objetivo de enfrentar los desafíos derivados de la alta densidad poblacional, la vulnerabilidad a desastres naturales y los problemas ambientales. \n A través de un enfoque coordinado y de largo plazo, estas acciones contribuyen a la protección de la vida humana, la sostenibilidad ambiental y el desarrollo económico y social de la región, garantizando su resiliencia frente a los futuros riesgos climáticos y naturales.",
+    date: "17 de octubre, 2024",
+    image: "/img/noticias/ZMVM/5ta Reunión para la elaboración del Programa de Ordenamiento de la Zona Metropolitana del Valle de México (POZMVM).jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "3ra reunión previa a la actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México",
+    description: "En seguimiento a los trabajos del programa de ordenamiento de la Zona Metropolitana del Valle de México, el titular de la #UPLAPH, Mtro. Miguel Ángel Tello Vargas se reunió el 12 de septiembre de 2024, con representantes del Gobierno del Estado de México, Gobierno de la Ciudad de México, SEDATU y Lyzbeth Robles, titular de la Secretaría de Movilidad y Transporte de Hidalgo. \n En dicha reunión se hizo hincapié en que el **transporte público en la #ZMVM** debe ser seguro, sustentable e interconectado, para que las personas se desplacen con facilidad, sin importar las divisiones municipales o estatales. \n En reunión con representantes del Gobierno del Estado de México, Gobierno de la Ciudad de México, SEDATU, con Lyzbeth Robles, titular de la Secretaría de Movilidad y Transporte de Hidalgo, dimos seguimiento a los avances del programa de ordenamiento de la Zona Metropolitana del Valle de México. \n El transporte público en la ZMVM es esencial no solo para mejorar la movilidad y reducir la congestión, sino también para crear una ciudad más sostenible, equitativa y funcional. Es clave para asegurar el acceso a oportunidades y servicios para todos los habitantes, promover el desarrollo económico, reducir el impacto ambiental y fomentar un modelo de urbanización más ordenado y eficiente. Por estas razones, es fundamental invertir en la mejora y expansión del transporte público como parte de un enfoque integral para el desarrollo de la zona metropolitana.",
+    date: "12 de septiembre, 2024",
+    image: "/img/noticias/ZMVM/3ra reunión previas actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "2da reunión previa a la actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México",
+    description: "Con representantes del Gobierno del Estado de México y Gobierno de la Ciudad de México, el titular de la #UPLAPH, Miguel Tello participó en la reunión de seguimiento con el equipo de transición de la SEDATU, llevada a cabo el 29 de agosto de 2024, donde se abordaron temas relacionados con la movilidad y el crecimiento ordenado de la Zona Metropolitana del Valle de México. \n Se acordó realizar reuniones quincenales, las cuales permitirán generar carteras de proyectos, estrategias y acciones coordinadas en materia hídrica, de movilidad, ambientales, de residuos sólidos, financiamiento, asentamientos humanos, migración, entre otros. \n **En esta reunión, se promovieron acciones que mejoran la calidad de vida de las y los hidalguenses!**",
+    date: "29 de agosto, 2024",
+    image: "/img/noticias/ZMVM/2da reunión previas actualización del Programa de Ordenamiento de la Zona Metropolitana del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Segunda Sesión Ordinaria del Consejo de Desarrollo Metropolitano del Valle de México",
+    description: " **Acuerdan gobernadores consolidar el Corredor Logístico Industrial CDMX-HIDALGO-EDOMEX del AIFA.**  \n El 24 noviembre del 2023 se llevó a cabo la Segunda Sesión Ordinaria del Consejo de Desarrollo Metropolitano del Valle de México, donde participaron la gobernadora del Estado de México, el gobernador de Hidalgo y el Jefe de gobierno de la CDMX, para impulsar el programa de ordenación de la Zona Metropolitana del Valle de México y la continuación de los trabajos de las Comisiones Metropolitanas y la Agenda Metropolitana del Valle de México. Destacando el impacto del Corredor Logístico Industrial. \n Lo anterior con el objetivo de establecer las bases para crear una visión compartida a largo plazo en la ordenación del territorio, teniendo como resultado la transformación metropolitana del Valle de México. \n En dicha reunión se destacó la importancia y el impacto del Corredor Logístico Industrial, el cual permitirá obtener beneficios en materia de desarrollo económico y atracción de inversiones, generación de empleos, mejora en la movilidad, ordenamiento urbano y desarrollo sostenible, impulso al sector aeroespacial y a los sectores estratégicos, entre otros. \n Este corredor fortalecerá la posición de Hidalgo como un actor clave en el panorama industrial y económico del país, promoviendo un desarrollo integral y sostenible en la región.",
+    date: "24 noviembre, 2023",
+    image: "/img/noticias/ZMVM/Segunda Sesión Ordinaria del Consejo de Desarrollo Metropolitano del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Primera Sesión Ordinaria del Consejo de Desarrollo Metropolitano del Valle de México",
+    description: "Hidalgo fue sede de la Primera Sesión Ordinaria del Consejo de Desarrollo Metropolitano del Valle de México 2023, la cual se llevó a cabo el día 19 de mayo de 2023. \n Se contó con la presencia de la Jefa de Gobierno de la Ciudad de México, Claudia Sheinbaum, el gobernador del Estado de México, Alfredo Del Mazo Maza y siendo el anfitrión el gobernador Julio Menchaca; así como representantes de los tres niveles de gobierno de los estados, en la cual se aprobaron **6 grandes acuerdos**: \n*	Aprobación de la Agenda Metropolitana.\n*	Crear un corredor logístico-industrial Ciudad de México, Hidalgo y Estado de México.\n*	Creación de mecanismos financieros para el desarrollo metropolitano. \n*	Análisis para la integración de nuevos municipios de Hidalgo a la ZMVM.\n*	Actualización de las condiciones de aprovechamiento de los recursos hídricos de la ZMVM.\n*	Análisis de la propuesta de reglamento interior del Consejo de Desarrollo Metropolitano del Valle de México. \n Con estos acuerdos Hidalgo reafirma su compromiso para trabajar de manera coordinada con CDMX, EDOMEX y Gobierno Federal, para beneficiar a las y los mexicanos de la Zona Metropolitana del Valle de México.",
+    date: "19 de mayo, 2023",
+    image: "/img/noticias/ZMVM/Primera Sesión Ordinaria del Consejo de Desarrollo Metropolitano del Valle de México.jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+  {
+    name: "Comisiones Metropolitanas de Gestión Integral de Riesgos (COMEPROC) y de Seguridad Pública y Procuración de Justicia (CMSPyPJ)",
+    description: "El 09 marzo del 2023 se llevó a cabo una reunión con titulares de Hidalgo, Ciudad de México y Estado de México en temas de seguridad pública, procuración de justicia y gestión integral de riesgos y protección civil para analizar,  **evaluar y dar seguimiento a las propuestas en materia de gestión integral de riesgos y protección civil** , así como seguridad pública y procuración de justicia. \n Con estos temas se busca reducir los impactos de desastres naturales y otras emergencias, sino también promover un desarrollo urbano organizado, equitativo y accesible para todos los habitantes. La integración de esfuerzos entre gobiernos, empresas y ciudadanos es crucial para fortalecer la capacidad de la zona metropolitana para enfrentar y superar los riesgos, mejorando así la calidad de vida de la población. \n La prevención de riesgos y una adecuada respuesta ante emergencias permiten minimizar los daños económicos y garantizar que los recursos sean mejor utilizados en lugar de ser desperdiciados en la recuperación de pérdidas.",
+    date: "9 de marzo, 2023",
+    image: "/img/noticias/ZMVM/Comisiones Metropolitanas de Gestión Integral de Riesgos (COMEPROC) y de Seguridad Pública y Procuración de Justicia (CMSPyPJ).jpg",
+    category: "ZMVM",
+    featuredPosts: true,
+    bgPosts: false
+  },
+
+
+
+
+
+  // {
+  //   name: "Sed viverra purus",
+  //   description: "texto",
+  //   date: "19 de septiembre, 2024",
+  //   image: "https://via.placeholder.com/400x300",
+  //   quote: "El lugar donde la naturaleza te deja sin palabras.",
+  //   category: "ZMP"
+  // },
+];
+
+// Función para normalizar nombres (elimina acentos y caracteres especiales)
+export const normalizeName = (str) => {
+  return str
+    .normalize("NFD") // Descompone los caracteres acentuados
+    .replace(/[\u0300-\u036f]/g, "") // Elimina los diacríticos
+    .replace(/[^\w\s-]/g, "") // Elimina caracteres especiales
+    .replace(/\s+/g, "-") // Reemplaza espacios con guiones
+    .toLowerCase(); // Convierte a minúsculas
+};
+
+// Función para procesar texto con negritas, cursivas y combinaciones
+export const renderTextWithStyles = (text) => {
+  const combinedRegex = /(\*\*_(.*?)_\*\*)|(\*\*(.*?)\*\*)|(\*(.*?)\*)/g;
+
+  const elements = [];
+  let lastIndex = 0;
+
+  text.replace(combinedRegex, (match, boldItalic, boldItalicContent, bold, boldContent, italic, italicContent, offset) => {
+    // Agregar el texto previo a la coincidencia
+    if (offset > lastIndex) {
+      elements.push(text.substring(lastIndex, offset));
+    }
+
+    // Negrita y cursiva
+    if (boldItalicContent) {
+      elements.push(
+        <strong key={offset}>
+          <em>{boldItalicContent}</em>
+        </strong>
+      );
+    }
+    // Negrita
+    else if (boldContent) {
+      elements.push(<strong key={offset}>{boldContent}</strong>);
+    }
+    // Cursiva
+    else if (italicContent) {
+      elements.push(<em key={offset}>{italicContent}</em>);
+    }
+    lastIndex = offset + match.length;
+  }
+  );
+
+  // Agregar el resto del texto después de la última coincidencia
+  if (lastIndex < text.length) {
+    elements.push(text.substring(lastIndex));
+  }
+  return elements;
+};
+
+// Función para renderizar texto con saltos de línea, viñetas y estilos
+export const renderDescription = (description) => {
+  return description.split("\n").map((line, index) => {
+    if (line.startsWith("*")) {
+      // Aplica una clase específica para viñetas alineadas a la derecha
+      return (
+        <li key={index} className={styles.rightAlignedList}>
+          {renderTextWithStyles(line.substring(2))}
+        </li>
+      );
+    } else if (line.trim() === "") {
+      return <br key={index} />;
+    } else {
+      return (
+        <p key={index} style={{ margin: "0.5rem 0" }}>
+          {renderTextWithStyles(line)}
+        </p>
+      );
+    }
+  });
+};

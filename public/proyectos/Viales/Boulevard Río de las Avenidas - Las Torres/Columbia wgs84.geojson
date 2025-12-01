@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Columbia wgs84",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Proyecto": "Puente Vehicular Columbia", "Tipo": "Puente" }, "geometry": { "type": "Point", "coordinates": [ -98.751156980774113, 20.08231867195866, 0.0 ] } }
+]
+}

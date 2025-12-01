@@ -1,0 +1,48 @@
+{
+  "name": "metropoli",
+  "version": "1.15.0",
+  "private": true,
+  "homepage": "./",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.5",
+    "@mui/material": "^7.3.5",
+    "axios": "^1.13.2",
+    "chart.js": "^4.5.1",
+    "cross-spawn": "^7.0.6",
+    "export-to-csv": "^1.4.0",
+    "formik": "^2.4.9",
+    "framer-motion": "^12.23.25",
+    "fuse.js": "^7.1.0",
+    "googleapis": "^166.0.0",
+    "gridstack": "^12.3.3",
+    "gsap": "^3.13.0",
+    "leaflet": "^1.9.4",
+    "lottie-web": "^5.13.0",
+    "material-react-table": "^3.2.1",
+    "micromatch": "^4.0.8",
+    "nanoid": "^5.1.6",
+    "next": "^16.0.6",
+    "react": "^19.2.0",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^19.2.0",
+    "react-dropzone": "^14.3.8",
+    "react-leaflet": "^5.0.0",
+    "react-select": "^5.10.2",
+    "react-swipeable": "^7.0.2",
+    "swiper": "^12.0.3",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.6"
+  }
+}

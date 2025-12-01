@@ -1,0 +1,234 @@
+.pageWrapper {
+  --white: #fffef7;
+  --black: #000;
+  --gray: #666;
+  --gray-light: #aaa;
+  --transparent: #fff0;
+  --bg-primary: var(--white);
+  --text-primary: var(--black);
+  --fs-base: 1.4rem;
+  --lh-heading: 1;
+  --ls-tight: -0.02em;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fs-h4: 3.375rem;
+
+  overflow: clip;
+  position: relative;
+}
+
+
+.wBackgroundVideo {
+  color: #fff;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wBackgroundVideo>video {
+  object-fit: cover;
+  z-index: -100;
+  background-position: 50%;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  position: absolute;
+  inset: -100%;
+}
+
+.sectionHomeHero {
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100svh;
+  display: flex;
+  position: relative;
+}
+
+.homeHeroSvgBg {
+  z-index: 3;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: relative;
+}
+
+.homeHeroSvgBg.themeLight {
+  mix-blend-mode: screen;
+  flex-flow: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  height: 100%;
+  padding-top: 10rem;
+  display: flex;
+  overflow: hidden;
+}
+
+.homeHero.themeDark {
+  background-color: var(--transparent);
+  flex: 1;
+  top: auto;
+  bottom: 0;
+}
+
+.themeDark {
+  background-color: var(--black);
+  color: var(--white);
+  --bg-primary: var(--black);
+  --text-primary: var(--white);
+}
+
+.themeLight {
+  background-color: var(--white);
+  color: var(--black);
+  --bg-primary: var(--white);
+  --text-primary: var(--black);
+}
+
+.heroBackgroundBlur {
+  z-index: 1;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  will-change: transform;
+  background-color: #ffffff80;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  inset: 0%;
+}
+
+.heroSvg {
+  z-index: 2;
+  position: relative;
+}
+
+.homeHeroTop {
+  position: relative;
+}
+
+.bgVideoWrap {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* video contenedor */
+.bgVideo {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+.paddingGlobal {
+  padding-left: clamp(1rem, 4vw, 2.5rem);
+  padding-right: clamp(1rem, 4vw, 2.5rem);
+}
+
+.paddingSectionSmall {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.containerFull {
+  width: 100%;
+  max-width: 120rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homeHeroTextWrap {
+  flex-flow: column;
+  max-width: 70ch;
+  display: flex;
+}
+
+.headerWrap {
+  gap: 1.5rem;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+
+.eyebrowWrap {
+  gap: 0.38rem;
+  font-size: var(--fs-base);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+  white-space: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: var(--fw-regular);
+  display: flex;
+  overflow: hidden;
+}
+
+.headingStyleH4 {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-medium);
+  margin: 0;
+}
+
+
+@media screen and (max-width: 991px) {
+  .pageWrapper {
+    --fs-h4: 2.5rem;
+  }
+
+  .sectionHomeHero {
+    height: 140svh;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .eyebrowWrap {
+    white-space: normal;
+  }
+
+  .pageWrapper {
+    --fs-h4: 1.5rem;
+  }
+
+  .bgVideo {
+    height: 100svh;
+  }
+
+  .sectionHomeHero {
+    height: 50rem;
+  }
+
+  .paddingGlobal {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .paddingSectionSmall {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .headerWrap {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .pageWrapper {
+    --fs-h4: 1.5rem;
+  }
+
+  .sectionHomeHero {
+    height: 50rem;
+  }
+
+  .paddingSectionSmall {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}

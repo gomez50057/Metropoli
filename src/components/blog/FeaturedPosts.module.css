@@ -1,0 +1,158 @@
+.featuredSection {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  width: 30vw;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 80px;
+}
+
+.featuredTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.featuredList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.featuredItem {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+.featuredImage {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.featuredContent {
+  min-width: 0;
+}
+
+.featuredDate {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.featuredLink {
+  font-size: 0.98rem;
+  color: #333;
+  font-weight: 700;
+  text-decoration: none;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+
+
+.featuredLink:hover {
+  text-decoration: underline;
+}
+
+.featuredLink:focus-visible {
+  outline: 2px solid #691B32;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (max-width: 1024px) {
+  .featuredSection {
+    padding: 18px;
+    top: 72px;
+  }
+
+  .featuredItem {
+    grid-template-columns: 52px 1fr;
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .featuredImage {
+    width: 52px;
+    height: 52px;
+  }
+
+  .featuredTitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .featuredSection {
+    width: 100%;
+  }
+
+  .featuredSection {
+    position: static;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  .featuredList {
+    gap: 10px;
+  }
+
+  .featuredItem {
+    grid-template-columns: 48px 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .featuredImage {
+    width: 48px;
+    height: 48px;
+  }
+
+  .featuredTitle {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .featuredDate {
+    font-size: 0.8rem;
+  }
+
+  .featuredLink {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuredItem {
+    grid-template-columns: 44px 1fr;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .featuredImage {
+    width: 44px;
+    height: 44px;
+  }
+
+  .featuredLink {
+    font-size: 0.92rem;
+  }
+}

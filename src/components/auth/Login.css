@@ -1,0 +1,150 @@
+/* login.css */
+
+.container_login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+.container_login p {
+  color: var(--vinoOsc);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.background-login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -20;
+  background-image: linear-gradient(to right bottom, #691b32, #691b32, #691b32, #691b32, #691b32, #844359, #b34e6b, #a02142, #a02142, #a02142, #a02142, #a02142);
+  opacity: 0.95;
+
+}
+
+.background-login-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: -10;
+
+}
+
+.login_txt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: hsla(0, 0%, 93%, 0.8);
+  width: 40vw;
+  height: 100vh;
+  padding: 3vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.login_txt form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+.login_txt img {
+  width: 7vw;
+  max-width: 100px;
+  height: auto;
+}
+
+.link-registrarse {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.link-registrarse:hover {
+  color: var(--vinoClr);
+}
+
+.login_txt p:last-child {
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  box-sizing: border-box;
+  background-color: transparent;
+  margin-bottom: 5px;
+  color: var(--grisOsc);
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  border-bottom: 2px solid var(--doradoOsc);
+  transition: border-color 0.3s ease;
+}
+
+.input-container input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--doradoOsc);
+}
+
+.input-container .input-img {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  filter: drop-shadow(2px 4px 6px black);
+  cursor: pointer;
+}
+
+.login_txt button {
+  max-width: 300px;
+  width: 80%;
+  padding: 18px 12px;
+  background-image: linear-gradient(to right, #a02142, #92203e, #841e3b, #761d36, #691b32);
+  color: var(--blanco);
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login_txt button:hover {
+  background-color: #691b32;
+  transform: scale(1.05);
+}
+
+.login_txt button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.loading-indicator {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #691b32;
+}

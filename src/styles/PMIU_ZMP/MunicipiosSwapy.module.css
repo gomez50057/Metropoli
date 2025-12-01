@@ -1,0 +1,103 @@
+.wrap {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.field {
+  --size: 100px;
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+}
+
+.slot {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.slot:hover,
+.slot:focus-within {
+  z-index: 1000;
+}
+
+.item {
+  all: unset;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  transition: transform 140ms ease, filter 140ms ease, box-shadow 140ms ease;
+  will-change: transform;
+  z-index: 1;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .15), inset 0 0 0 2px rgba(255, 255, 255, .9);
+}
+
+/* Tooltip + efecto foco */
+.item::after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: rgba(0, 0, 0, .82);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 2000;
+}
+
+.item:hover::after {
+  opacity: 1;
+}
+
+.field:hover .item {
+  transform: scale(.92);
+  filter: saturate(.9);
+}
+
+.field .item:hover {
+  transform: scale(1.12);
+  filter: saturate(1.1);
+}
+
+@media (max-width:900px) {
+  .field {
+    --size: 76px;
+  }
+}
+
+@media (max-width:720px) {
+  .field {
+    --size: 70px;
+  }
+}
+
+@media (max-width:560px) {
+  .field {
+    --size: 64px;
+  }
+}

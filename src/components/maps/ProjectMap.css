@@ -1,0 +1,270 @@
+/* ====== CONTENEDOR MAPA ====== */
+.mapaConte {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+  background-color: #007BFF;
+}
+
+#map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ====== SIDEBAR ====== */
+#sidebar {
+  position: absolute;
+  top: 0;
+  left: -300px;
+  bottom: 0;
+  width: 300px;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(105, 27, 50, 0.6);
+  color: var(--blanco);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9);
+  transition: left 0.4s ease-in-out;
+  z-index: 1000;
+}
+
+#sidebar.open {
+  left: 0;
+}
+
+.sidebar-title {
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--blanco);
+  background: rgba(125, 28, 52, 0.8);
+  border-radius: 8px;
+}
+
+/* Toggle botón */
+#toggleSidebar {
+  position: absolute;
+  top: 87px;
+  left: 10px;
+  padding: 10px 15px;
+  background: #9f2241;
+  color: var(--blanco);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: left 0.4s ease-in-out;
+  z-index: 1010;
+}
+
+#toggleSidebar.open {
+  left: 320px;
+}
+
+/* ====== FULLSCREEN BUTTON ====== */
+#fullscreenButton {
+  position: absolute;
+  top: 85px;
+  right: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+#fullscreenButton:hover {
+  background: var(--blanco);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  #fullscreenButton {
+    top: 5px;
+    right: 5px;
+    font-size: 24px;
+    padding: 8px;
+  }
+}
+
+/* ====== ICONOS DE PROYECTOS ====== */
+#icons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 90vh;
+  padding: 20px 10px 5px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50px 0 0 0;
+  z-index: 1000;
+}
+
+#icons img {
+  display: block;
+  width: 42px;
+  height: 50px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+#icons img:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* ====== POPUPS LEAFLET ====== */
+.leaflet-popup-content-wrapper {
+  padding: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  background: rgba(245, 245, 245, 0.8);
+  backdrop-filter: blur(10px);
+  border: 4px solid rgba(105, 27, 50, 0.6);
+  border-radius: 40px 0 40px 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.leaflet-popup-tip-container {
+  display: none;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+}
+
+.leaflet-popup-content a {
+  color: #007BFF;
+  text-decoration: underline;
+}
+
+.PopupT {
+  margin-bottom: 4px;
+  padding: 4px;
+  text-align: center;
+  font-weight: 900;
+  color: var(--blanco);
+  background: #9F2241;
+  border-radius: 10px;
+}
+
+.PopupSubT {
+  margin: 4px 0;
+  text-align: center;
+  color: #BC955B;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .leaflet-popup-content-wrapper {
+    width: 90vw;
+    border-radius: 20px;
+  }
+}
+
+/* ====== MODAL PDF ====== */
+.mapaConte .modalOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+}
+
+.mapaConte .modalContent {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+  background: var(--blanco);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mapaConte .closeModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  background: #f44336;
+  color: var(--blanco);
+}
+
+/* ====== MENÚ FLOTANTE DE ACCIONES ====== */
+.iconActionMenu {
+  position: fixed;
+  transform: translate(-120%, 0);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--vinoGradient);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
+}
+
+.iconActionMenu .menuHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 4px;
+  color: var(--blanco);
+  font-weight: 600;
+}
+
+.iconActionMenu .menuHeader p {
+  color: var(--blanco);
+  font-weight: 600;
+}
+
+.iconActionMenu .menuBtn {
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: var(--doradoGradient);
+  color: var(--blanco);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.iconActionMenu .menuBtn:hover {
+  background: linear-gradient(-45deg, var(--doradoClr), var(--doradoOsc));
+  transform: translateY(-1px);
+}

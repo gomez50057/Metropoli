@@ -1,0 +1,544 @@
+.btnWrap {
+  display: inline-block;
+}
+
+.btnWrap .tituloBtn {
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin: 0 0 0.2rem 0;
+  color: var(--vinoOsc);
+}
+
+.btnWrap .descriptionBtn {
+  margin: 0 0 0.8rem 0;
+  font-size: 1rem;
+  color: var(--grisOsc);
+  font-weight: 500;
+}
+
+.btnWrap .descriptionBtn span {
+  font-weight: 600;
+  color: var(--vinoOsc);
+}
+
+.opinionBtn {
+  --primary: #A02142;
+  --neutral-1: #ffffff;
+  --neutral-2: #f3f4f6;
+  --radius: 16px;
+
+  cursor: pointer;
+  border-radius: var(--radius);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border: none;
+  box-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.15),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform .25s cubic-bezier(.175, .885, .32, 1.275),
+    box-shadow .25s cubic-bezier(.175, .885, .32, 1.275);
+  min-width: 220px;
+  padding: 22px;
+  height: 72px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  background: transparent;
+}
+
+.opinionBtn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 2px 2px rgba(255, 255, 255, 0.4),
+    0 18px 32px rgba(0, 0, 0, 0.15),
+    0 8px 12px rgba(0, 0, 0, 0.1);
+  min-width: 230px;
+}
+
+.opinionBtn:active {
+  transform: scale(1);
+  box-shadow:
+    0 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 10px 3px -3px rgba(0, 0, 0, 0.2);
+}
+
+.opinionBtn:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  border: 2.5px solid transparent;
+  background:
+    linear-gradient(#ffffff, #f3f4f6) padding-box,
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45)) border-box;
+  z-index: 0;
+  transition: all 0.4s ease;
+}
+
+.opinionBtn:hover::after {
+  transform: scale(1.05, 1.1);
+  box-shadow: inset 0 -1px 3px 0 rgba(255, 255, 255, 1);
+}
+
+.opinionBtn::before {
+  content: "";
+  inset: 7px 6px 6px 6px;
+  position: absolute;
+  background: linear-gradient(to top, #ffffff, #f3f4f6);
+  border-radius: 30px;
+  filter: blur(0.5px);
+  z-index: 2;
+}
+
+.btnState p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnIcon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transform: scale(1.25);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnIcon svg {
+  overflow: visible;
+}
+
+/* Outline animado */
+.outlineGlow {
+  position: absolute;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  inset: -2px -3.5px;
+}
+
+.outlineGlow::before {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: conic-gradient(from 180deg,
+      transparent 60%,
+      var(--primary) 85%,
+      transparent 100%);
+  animation: obm_spin 2.5s linear infinite;
+  animation-play-state: paused;
+  opacity: 0.7;
+}
+
+@keyframes obm_spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.opinionBtn:hover .outlineGlow {
+  opacity: 1;
+}
+
+.opinionBtn:hover .outlineGlow::before {
+  animation-play-state: running;
+}
+
+/* Letras */
+.btnState p span {
+  display: block;
+  opacity: 0;
+  animation: obm_slideDown 0.8s ease forwards calc(var(--i) * 0.03s);
+}
+
+.opinionBtn:hover p span {
+  opacity: 1;
+  animation: obm_wave 0.5s ease forwards calc(var(--i) * 0.02s);
+}
+
+.opinionBtn:focus p span {
+  opacity: 1;
+  animation: obm_disapear 0.6s ease forwards calc(var(--i) * 0.03s);
+}
+
+@keyframes obm_wave {
+  30% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+    color: var(--primary);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes obm_slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) translateX(5px) rotate(-90deg);
+    color: var(--primary);
+    filter: blur(5px);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(4px) translateX(0) rotate(0);
+    filter: blur(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes obm_disapear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(5px) translateY(20px);
+    color: var(--primary);
+    filter: blur(5px);
+  }
+}
+
+/* Ícono: Opinar (globo de diálogo + líneas) */
+.btnStateDefault .btnIcon svg {
+  animation: obm_land 0.6s ease forwards;
+}
+
+.opinionBtn:hover .btnStateDefault .btnIcon {
+  transform: rotate(45deg) scale(1.25);
+}
+
+.opinionBtn:focus .btnStateDefault svg {
+  animation: obm_takeOff 0.8s linear forwards;
+}
+
+.opinionBtn:focus .btnStateDefault .btnIcon {
+  transform: rotate(0) scale(1.25);
+}
+
+@keyframes obm_takeOff {
+  0% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(80px) rotate(45deg) scale(2.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(180px) rotate(45deg) scale(0);
+  }
+}
+
+@keyframes obm_land {
+  0% {
+    transform: translateX(-60px) translateY(30px) rotate(-50deg) scale(2);
+    opacity: 0;
+    filter: blur(3px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0) rotate(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Estela */
+.btnStateDefault .btnIcon:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  width: 0;
+  left: -5px;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5));
+}
+
+.opinionBtn:focus .btnStateDefault .btnIcon:before {
+  animation: obm_contrail 0.8s linear forwards;
+}
+
+@keyframes obm_contrail {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+
+  8% {
+    width: 15px;
+  }
+
+  60% {
+    opacity: 0.7;
+    width: 80px;
+  }
+
+  100% {
+    opacity: 0;
+    width: 160px;
+  }
+}
+
+/* Estados */
+.btnState {
+  padding-left: 29px;
+  z-index: 2;
+  display: flex;
+  position: relative;
+}
+
+.btnStateSent {
+  display: none;
+}
+
+.btnStateSent svg {
+  transform: scale(1.25);
+  margin-right: 8px;
+}
+
+.opinionBtn:focus .btnStateDefault {
+  position: absolute;
+}
+
+.opinionBtn:focus .btnStateSent {
+  display: flex;
+}
+
+/* Espacio entre “s” (8º) y “j” */
+.btnStateSent span:nth-child(8) {
+  margin-right: 5px;
+}
+
+/* ----------------- Modal  */
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modalCard {
+  width: min(560px, 96vw);
+  background: #ffffff;
+  /* blanco */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f0f0f0;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, .08);
+}
+
+.modalTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+}
+
+.modalClose {
+  all: unset;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #707271;
+  /* grisOsc */
+  transition: background .15s ease, color .15s ease;
+}
+
+.modalClose:hover {
+  background: rgba(0, 0, 0, .05);
+  color: #000000;
+}
+
+.modalBody {
+  padding: 1rem;
+  max-height: min(60vh, 520px);
+  overflow: auto;
+  background: #F5F3F5;
+  /* blanco (tu variable), como tono suave */
+}
+
+.modalOptions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .5rem;
+}
+
+.modalOption {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  padding: .55rem .7rem;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 10px;
+  transition: border-color .15s ease, background .15s ease;
+  background: #ffffff;
+}
+
+.modalOption:hover {
+  border-color: rgba(0, 0, 0, .18);
+  background: rgba(0, 0, 0, .02);
+}
+
+.modalOption input {
+
+  pointer-events: none;      /* extra seguridad */
+  /* Opcional: estilo visual personalizado */
+  appearance: none;          /* si quieres dibujar tu propio “radio” */
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  display: inline-block;
+  margin-right: 8px;
+  position: relative;
+
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: .6rem;
+  padding: .9rem 1rem 1.1rem;
+  border-top: 1px solid rgba(0, 0, 0, .08);
+  background: #ffffff;
+}
+
+.modalSecondary {
+  all: unset;
+  cursor: pointer;
+  padding: .6rem .95rem;
+  border-radius: 10px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.modalSecondary {
+  background: #f2f2f2;
+  color: #333333;
+}
+
+.modalSecondary:hover {
+  background: #e8e8e8;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modalTitle {
+    font-size: 1rem;
+  }
+
+  .modalOption {
+    padding: .5rem;
+  }
+}
+
+.opinionBtn:hover .btnStateDefault {
+  position: absolute;
+}
+
+.opinionBtn:hover .btnStateSent {
+  display: flex;
+}
+
+.opinionBtn:hover .btnStateDefault p span {
+  opacity: 1;
+  animation: obm_disapear 0.6s ease forwards calc(var(--i) * 0.03s);
+}
+
+.opinionBtn:hover .btnStateSent p span {
+  opacity: 0;
+  animation: obm_slideDown 0.8s ease forwards calc(var(--i) * 0.2s);
+}
+
+.opinionBtn:hover .btnStateDefault svg {
+  animation: obm_takeOff 0.8s linear forwards;
+}
+
+/* Evita conflicto con la regla que rotaba 45° en hover */
+.opinionBtn:hover .btnStateDefault .btnIcon {
+  transform: rotate(0) scale(1.25);
+}
+
+.opinionBtn:hover .btnStateDefault .btnIcon:before {
+  animation: obm_contrail 0.8s linear forwards;
+}
+
+.opinionBtn:hover .btnStateSent p span {
+  animation: obm_slideDown .36s ease-out forwards;
+  animation-delay: calc(var(--i) * .02s);
+  opacity: 0;
+}
+
+/* Pausa sutil entre la “s” (8º span) y la “j” (9º span visual) */
+.opinionBtn:hover .btnStateSent p span:nth-child(n+9) {
+  /* pequeño offset extra para que “juntos” entre un poco después */
+  animation-delay: calc((var(--i) * .02s) + .06s);
+}
+
+/* espacio visual entre “s” y “j” */
+.btnStateSent span:nth-child(8) {
+  margin-right: 5px;
+}
+
+.optionLink {
+  cursor: pointer;
+  font-weight: 600;
+  color: #A02142; /* vinoClr */
+  text-decoration: underline;
+}
+.optionLink:hover {
+  text-decoration: none;
+}

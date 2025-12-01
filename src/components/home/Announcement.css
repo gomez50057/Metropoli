@@ -1,0 +1,15 @@
+.announcement-section {
+    text-align: center;
+    padding: 60px 20px;
+    color: white;
+}
+
+.announcement-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.announcement-section p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,90 @@
+/* Estilos del contenedor general */
+.zonasContainer {
+  margin: 100px 0 0 0;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+/* Estilos del selector de zonas */
+.selector {
+  margin-left: 50px;
+}
+
+.selector button {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--grisClr);
+  background-color: #d3d3d35e;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+/* Estilo para el botón activo */
+.selector .active {
+  font-weight: 600;
+  background-color: var(--blanco);
+  color: var(--doradoOsc);
+  border-color: var(--vinoOsc);
+  border-bottom-color: transparent;
+  transform: scale(1.2);
+}
+
+/* Efecto hover en los botones */
+.selector button:hover {
+  border-color: var(--doradoClr);
+}
+
+/* Estilos para el contenido de la zona seleccionada */
+.zonaContent {
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Efecto de transición cuando cambia la zona */
+.zonaContent.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.zonaContent.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Título de la zona */
+.zonaTitle {
+  font-size: 2rem;
+  color: #0070f3;
+  margin-bottom: 10px;
+}
+
+/* Texto de la descripción de la zona */
+.zonaDescription {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .selector {
+    flex-direction: column;
+  }
+
+  .selector button {
+    margin: 10px 0;
+    width: 100%;
+  }
+}

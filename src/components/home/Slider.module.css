@@ -1,0 +1,244 @@
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  margin: 0 auto;
+  padding: 20vh 80px;
+  overflow: visible;
+}
+
+/* Animaciones */
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card principal */
+.slide {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: clamp(1000px, 94vw, 1400px);
+  gap: 20px;
+  height: 60vh;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(transparent 65%, hsla(240, 1%, 60%, 0.47));
+  border-radius: 0 80px 0 80px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 10px 20px, rgba(0, 0, 0, 0.22) 0 14px 28px, rgba(0, 0, 0, 0.1) 0 30px 60px -12px;
+  transform: perspective(1000px) rotateX(10deg) rotateY(0deg);
+  transition: transform .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.slide::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  border-radius: 0 80px 0 80px;
+  border: 5px solid rgba(105, 27, 50, 0.3);
+  transform: translate(10px, 10px);
+  z-index: -1;
+  transition: transform .3s ease-in-out, border-color .3s ease-in-out;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .slide:hover {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-10px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0 10px 20px, rgba(0, 0, 0, 0.25) 0 22px 70px 4px;
+  }
+
+  .slide:hover::after {
+    transform: translate(0, 0);
+    border-color: rgba(105, 27, 50, 0.6);
+  }
+}
+
+/* Elementos internos + animación de entrada */
+.slideTitle,
+.slideDescription,
+.slideImage img {
+  animation: fadeInUp .6s ease forwards;
+}
+
+/* Estado "saliendo" */
+.isFading .slideTitle,
+.isFading .slideDescription,
+.isFading .slideImage img {
+  animation: fadeOutUp .6s ease forwards;
+}
+
+/* Imagen */
+.slideImage {
+  width: 250px;
+  flex: 0 0 auto;
+  margin-left: -55px;
+}
+
+.slideImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenido */
+.slideContent {
+  margin-left: 20px;
+  max-width: 60ch;
+}
+
+.slideTitle {
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin: 10px 0;
+  color: var(--vinoOsc);
+  padding-right: 20%;
+}
+
+.slideDescription {
+  font-size: 1.4rem;
+  color: var(--grisOsc);
+  margin: 0 15% 20px 0;
+  text-align: justify;
+  padding: 20px 0;
+}
+
+/* Controles */
+.sliderControls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: var(--grisClr);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color .3s ease, height .2s ease, border-radius .2s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: var(--vinoClr);
+  height: 20px;
+  width: 10px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .sliderContainer {
+    width: 100vw;
+    padding: 6vh 16px;
+  }
+
+  .slide {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 16px;
+    transform: none;
+    width: 96vw;
+  }
+
+  .slide::after {
+    display: none;
+    /* simplifica sombras */
+  }
+
+  .slideImage {
+    margin-left: 0;
+    width: min(65vw, 320px);
+  }
+
+  .slideContent {
+    margin-left: 0;
+    max-width: 85vw;
+    text-align: center;
+  }
+
+  .slideTitle {
+    font-size: 1.5rem;
+    padding-right: 0;
+  }
+
+  .slideDescription {
+    font-size: 1rem;
+    margin: 8px 0 0 0;
+    padding: 12px 0 0 0;
+    text-align: justify;
+  }
+
+  .sliderControls {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px 0 0 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sliderContainer {
+    width: 95vw;
+    padding: 10vh 40px;
+  }
+
+  .slide {
+    gap: 16px;
+    width: 95vw;
+    height: 50vh;
+    transform: perspective(800px) rotateX(6deg);
+  }
+
+  .slideImage {
+    margin-left: -20px;
+    width: 220px;
+  }
+
+  .slideContent {
+    margin-left: 12px;
+    max-width: 70vw;
+  }
+
+  .slideTitle {
+    font-size: 1.8rem;
+    padding-right: 10%;
+  }
+
+  .slideDescription {
+    font-size: 1.1rem;
+    margin: 0 8% 12px 0;
+  }
+
+  .sliderControls {
+    gap: 6px;
+  }
+}

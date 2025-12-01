@@ -1,0 +1,258 @@
+/* Contenedor principal */
+.headerContainer {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.backgroundSvg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.contentHeader {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  color: var(--blanco);
+  justify-content: flex-end;
+  align-items: center;
+  margin: 2%;
+  z-index: 1;
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.headerTxt {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  margin-left: -3vw;
+  transform: translateY(-50%);
+  width: min(1597px, 50vw);
+  opacity: 0;
+  transition: opacity 1s ease-in;
+  z-index: 2;
+}
+
+.headerImg {
+  width: min(2122px, 48vw);
+  opacity: 0;
+  transition: opacity 1s ease-in;
+  will-change: opacity, transform;
+  z-index: 1;
+}
+
+.headerImg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.floatingImg {
+  animation: floatingAnimation 10s infinite alternate ease-in-out, shadowAnimation 8s infinite alternate ease-in-out;
+  will-change: transform, filter;
+}
+
+@keyframes floatingAnimation {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes shadowAnimation {
+  0% {
+    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.2));
+  }
+
+  100% {
+    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.35));
+  }
+}
+
+.fadeIn {
+  opacity: 1 !important;
+}
+
+.zonasMetro {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  bottom: 20%;
+  left: 2vw;
+  width: min(720px, 50vw);
+  height: 250px;
+  transform: translateY(40%);
+  z-index: 2;
+}
+
+.zonasMetro p {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  margin: 0;
+}
+
+.contentCirculeZm {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: clamp(8px, 1.6vw, 24px);
+  width: 100%;
+  height: auto;
+  flex-wrap: nowrap;
+}
+
+.circuleZm {
+  position: relative;
+  width: clamp(5.5rem, 7vw, 8rem);
+  height: clamp(5.5rem, 7vw, 8rem);
+  border-radius: 50%;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.circuleZm img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .circuleZm:hover {
+    transform: translateY(-18px) scale(1.15);
+    transition: transform .35s ease;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: .8rem;
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.circuleZm:hover .tooltip {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .headerImg {
+    margin: 0;
+  }
+
+  .headerContainer {
+    height: auto;
+    padding-block: 6vh;
+  }
+
+  .contentHeader {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .headerTxt {
+    position: static;
+    transform: none;
+    width: 90vw;
+    text-align: center;
+    order: 1;
+  }
+
+  .headerImg {
+    width: min(90vw, 520px);
+    order: 2;
+  }
+
+  .zonasMetro {
+    position: static;
+    transform: none;
+    width: 100%;
+    height: auto;
+    margin-top: 8px;
+    order: 3;
+  }
+
+  .contentCirculeZm {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .circuleZm {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .tooltip {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .headerImg {
+    margin: 0;
+  }
+
+  .headerContainer {
+    height: auto;
+    padding-block: 8vh;
+  }
+
+  .contentHeader {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .headerTxt {
+    position: static;
+    transform: none;
+    width: 45vw;
+    text-align: left;
+    order: 1;
+  }
+
+  .headerImg {
+    width: 40vw;
+    order: 2;
+  }
+
+  .zonasMetro {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 16px;
+    order: 3;
+  }
+
+  .contentCirculeZm {
+    gap: 16px;
+  }
+}

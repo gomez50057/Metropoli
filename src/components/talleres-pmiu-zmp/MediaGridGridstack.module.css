@@ -1,0 +1,392 @@
+/* ====== Canvas minimal (light only) — OPTIMIZADO ====== */
+.wrap {
+  /* === Aliases locales (toman global si existe, si no usan fallback) === */
+  --c-dorado-osc: var(--doradoOsc, #BC955B);
+  --c-dorado: var(--doradoClr, #DEC9A3);
+  --c-vino-osc: var(--vinoOsc, #691B32);
+  --c-vino: var(--vinoClr, #A02142);
+  --c-gris-osc: var(--grisOsc, #707271);
+  --c-gris: var(--grisClr, #98989A);
+  --c-blanco: var(--blanco, #FFFFFF);
+
+  /* Derivados (1 sola vez, reutilizados) */
+  --c-dorado-500: var(--dorado500, #C5A169);
+  --c-dorado-300: var(--dorado300, #E5D2B1);
+  --c-dorado-100: var(--dorado100, #F5ECDA);
+  --c-vino-500: var(--vino500, #7A2540);
+  --c-vino-300: var(--vino300, #C25B7B);
+  --c-vino-100: var(--vino100, #F3E4E9);
+  --c-gris-500: var(--gris500, #808285);
+  --c-gris-300: var(--gris300, #C9CACC);
+  --c-gris-100: var(--gris100, #F2F3F5);
+
+  /* Gradientes base */
+  --g-vino: linear-gradient(-45deg, var(--c-vino-osc), var(--c-vino));
+  --g-dorado: linear-gradient(-45deg, var(--c-dorado-osc), var(--c-dorado));
+
+  /* Superficie */
+  --c-card: var(--card, #FFFFFF);
+  --c-brd: var(--brd, #E6E6E6);
+
+  /* Glass tokens (calculados una sola vez) */
+  --glass-bg: color-mix(in oklab, var(--c-card) 72%, var(--c-dorado-100) 8%);
+  --glass-brd: color-mix(in oklab, var(--c-brd) 70%, var(--c-dorado-300) 10%);
+  --shadow-sm: 0 6px 30px rgba(0, 0, 0, .06);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, .10);
+
+  --radius: 18px;
+  --hover-raise: -4px;
+  --pin-tilt: -0.2deg;
+
+  /* GridStack v11 defaults (si no vienen por JS) */
+  --gs-cell-height: 10px;
+  --gs-gap: 8px;
+
+  width: 100%;
+  max-width: 1400px;
+  min-height: 100%;
+  margin-inline: auto;
+  padding: clamp(12px, 3vw, 28px);
+
+  border-radius: 55px;
+  box-shadow: inset 5px 5px 9px #d0d0d0,
+    inset -5px -5px 9px #f0f0f0;
+
+
+  /* Fondo ligero */
+  background:
+    radial-gradient(80% 50% at 20% 0%, color-mix(in oklab, var(--c-blanco) 96%, var(--c-gris-100) 4%) 0%, transparent 70%),
+    radial-gradient(70% 40% at 100% 10%, color-mix(in oklab, var(--c-gris-100) 25%, transparent) 0%, transparent 70%),
+    var(--c-blanco);
+
+  container-type: inline-size;
+}
+
+/* ====== Header minimal ====== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: clamp(12px, 2vw, 20px);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: .2px;
+  background: var(--g-vino);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: clamp(.95rem, 1.6vw, 1.05rem);
+  color: color-mix(in oklab, var(--c-gris-osc) 75%, black 5%);
+  opacity: .95;
+}
+
+/* ====== Grid ====== */
+.grid {
+  --gs-cell-height: var(--gs-cell-height);
+  --gs-gap: var(--gs-gap);
+}
+
+.grid :global(.grid-stack-item) {
+  transition: transform .2s ease;
+}
+
+/* ====== Card glass ====== */
+.card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  border: 1px solid var(--glass-brd);
+  box-shadow: var(--shadow-sm);
+
+  /* Rendimiento: evita pintar contenido fuera de viewport */
+  content-visibility: auto;
+  contain: content;
+
+  /* Entrada “Pinterest” */
+  opacity: 0;
+  transform: translateY(18px) rotate(var(--pin-tilt));
+  transition:
+    opacity .34s ease,
+    transform .34s cubic-bezier(.2, .8, .2, 1),
+    box-shadow .22s ease,
+    filter .22s ease,
+    border-color .22s ease,
+    background .22s ease;
+  transition-delay: var(--pin-delay, 0ms);
+}
+
+.reveal {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+/* Hover minimal */
+.card:hover {
+  transform: translateY(var(--hover-raise)) scale(1.01);
+  box-shadow: var(--shadow-lg);
+  border-color: color-mix(in oklab, var(--c-dorado) 40%, var(--glass-brd) 60%);
+}
+
+/* Dragging feedback */
+.dragging,
+.dragging .content {
+  cursor: grabbing;
+}
+
+.dragging {
+  transform: scale(.995) !important;
+  filter: none !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .14) !important;
+}
+
+/* ====== Media inside card ====== */
+.content {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  display: block;
+  /* Sólo optimizar en hover/focus para no forzar composición en masa */
+}
+
+.figure {
+  margin: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.media {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* mezcla normal, sin filtros costosos */
+  mix-blend-mode: normal;
+  cursor: pointer;
+}
+
+.videoFigure {
+  background: #000;
+}
+
+/* Shine / vignette suave */
+.glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(50% 35% at 20% 0%, rgba(255, 255, 255, .16), transparent 60%),
+    linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, .06));
+  opacity: .8;
+  mix-blend-mode: soft-light;
+}
+
+/* ====== Botón (opcional) ====== */
+.resetBtn {
+  appearance: none;
+  border: 1px solid color-mix(in oklab, var(--c-brd) 80%, transparent);
+  background: linear-gradient(to bottom right,
+      color-mix(in oklab, var(--c-card) 88%, var(--c-dorado-100) 12%),
+      color-mix(in oklab, var(--c-card) 96%, transparent));
+  color: color-mix(in oklab, var(--c-vino-osc) 85%, black 5%);
+  border-radius: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  transition: background .2s ease, transform .08s ease, box-shadow .2s ease, border-color .2s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.resetBtn:hover {
+  border-color: color-mix(in oklab, var(--c-dorado) 35%, var(--c-brd) 65%);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .09);
+}
+
+.resetBtn:active {
+  transform: translateY(1px);
+}
+
+/* ====== Utilidades ====== */
+.textVino {
+  color: var(--c-vino-osc);
+}
+
+.textDorado {
+  color: var(--c-dorado-osc);
+}
+
+.badgeDorado {
+  background: var(--c-dorado-100);
+  color: color-mix(in oklab, var(--c-dorado-osc) 80%, black 10%);
+  border: 1px solid color-mix(in oklab, var(--c-dorado-300) 60%, transparent);
+  padding: .25rem .5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .85rem;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--c-gris-300), transparent);
+  border: 0;
+  margin-block: 12px;
+}
+
+/* ====== Accesibilidad / preferencias ====== */
+@media (prefers-reduced-motion: reduce) {
+
+  .grid :global(.grid-stack-item),
+  .card,
+  .resetBtn {
+    transition: none !important;
+  }
+
+  .card {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Transparencia reducida: baja costo de blur */
+@media (prefers-reduced-transparency: reduce) {
+
+  .card,
+  .resetBtn {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* ====== Lightbox / Modal ====== */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, #000 65%, transparent);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  padding: clamp(8px, 4vw, 24px);
+  animation: fadeIn .2s ease;
+}
+
+.modalContent {
+  position: relative;
+  width: min(1200px, 96vw);
+  height: min(86vh, 900px);
+  background: rgba(18, 18, 18, .75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 16px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, .5);
+}
+
+.modalTopBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem .75rem;
+  color: #fff;
+  font-size: .95rem;
+}
+
+.modalCounter {
+  opacity: .85;
+}
+
+.modalClose {
+  all: unset;
+  cursor: pointer;
+  font-size: 1.75rem;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .1);
+  transition: transform .15s ease, background .2s ease;
+}
+
+.modalClose:hover {
+  background: rgba(255, 255, 255, .18);
+  transform: scale(1.04);
+}
+
+.modalMediaWrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 12px;
+}
+
+.modalMedia {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #000;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(42px, 4vw, 56px);
+  height: clamp(42px, 4vw, 56px);
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  font-size: clamp(24px, 3.2vw, 34px);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s ease, transform .15s ease;
+  user-select: none;
+}
+
+.navBtn:hover {
+  background: rgba(255, 255, 255, .2);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.prev {
+  left: 12px;
+}
+
+.next {
+  right: 12px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Arrastrando GridStack */
+.dragging {
+  cursor: grabbing !important;
+}
