@@ -249,9 +249,8 @@
   transform: scale(1.2);
 }
 
-/* Mobile: columna y swipe vertical */
 @media (max-width: 767px) {
-  :root {
+  .section {
     --closed: 100%;
     --open: 100%;
     --gap: 0.85rem;

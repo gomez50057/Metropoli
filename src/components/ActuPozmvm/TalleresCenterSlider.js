@@ -1,8 +1,30 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "@/styles/ActuPozmvm/TalleresCenterSlider.module.css";
+
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia(query);
+
+    const onChange = () => setMatches(mq.matches);
+    onChange();
+
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange);
+
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
+      else mq.removeListener(onChange);
+    };
+  }, [query]);
+
+  return matches;
+}
 
 export default function TalleresCenterSlider({
   items = [
@@ -29,73 +51,75 @@ export default function TalleresCenterSlider({
       date: "24 de julio, 2025",
       image: "/img/noticias/ZMVM/taller-PPEPOZMVM/1er Taller de Planeación Participativa Atitalaquia.jpg",
       link: "/noticias/primer-taller-de-planeacion-participativa-para-la-elaboracion-del-programa-de-ordenacion-de-la-zona-metropolitana-del-valle-de-mexico-pozmvm---atitalaquia",
-    }
+    },
   ],
 }) {
-  const trackRef = useRef(null);
   const wrapRef = useRef(null);
+  const trackRef = useRef(null);
   const touchRef = useRef({ sx: 0, sy: 0 });
 
   const data = useMemo(() => items ?? [], [items]);
+
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const reduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+
   const [current, setCurrent] = useState(0);
 
-  const isMobile = () =>
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 767px)").matches;
+  const clampIndex = useCallback(
+    (i) => Math.max(0, Math.min(i, data.length - 1)),
+    [data.length]
+  );
 
-  const clampIndex = (i) => Math.max(0, Math.min(i, data.length - 1));
+  const center = useCallback(
+    (i) => {
+      const wrap = wrapRef.current;
+      const track = trackRef.current;
+      if (!wrap || !track) return;
 
-  const center = (i) => {
-    const wrap = wrapRef.current;
-    const track = trackRef.current;
-    if (!wrap || !track) return;
+      const cards = Array.from(track.children);
+      const card = cards[i];
+      if (!card) return;
 
-    const cards = Array.from(track.children);
-    const card = cards[i];
-    if (!card) return;
+      const axis = isMobile ? "top" : "left";
+      const size = isMobile ? "clientHeight" : "clientWidth";
+      const start = isMobile ? card.offsetTop : card.offsetLeft;
 
-    const axis = isMobile() ? "top" : "left";
-    const size = isMobile() ? "clientHeight" : "clientWidth";
-    const start = isMobile() ? card.offsetTop : card.offsetLeft;
+      wrap.scrollTo({
+        [axis]: start - (wrap[size] / 2 - card[size] / 2),
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    },
+    [isMobile, reduceMotion]
+  );
 
-    wrap.scrollTo({
-      [axis]: start - (wrap[size] / 2 - card[size] / 2),
-      behavior: "smooth",
-    });
-  };
+  const activate = useCallback(
+    (i, scroll = true) => {
+      const nextIndex = clampIndex(i);
+      setCurrent((prev) => (prev === nextIndex ? prev : nextIndex));
+      if (scroll) requestAnimationFrame(() => center(nextIndex));
+    },
+    [clampIndex, center]
+  );
 
-  const activate = (i, scroll = true) => {
-    const nextIndex = clampIndex(i);
-    setCurrent(nextIndex);
-    if (scroll) requestAnimationFrame(() => center(nextIndex));
-  };
-
-  const go = (step) => activate(current + step, true);
+  const go = useCallback((step) => activate(current + step, true), [activate, current]);
 
   useEffect(() => {
     if (!data.length) return;
-    activate(0, true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.length]);
+    setCurrent((prev) => clampIndex(prev));
+    requestAnimationFrame(() => center(clampIndex(current)));
+  }, [data.length, isMobile]);
 
   useEffect(() => {
+    if (!data.length) return;
+
     const onKeyDown = (e) => {
-      if (!data.length) return;
       if (["ArrowRight", "ArrowDown"].includes(e.key)) go(1);
       if (["ArrowLeft", "ArrowUp"].includes(e.key)) go(-1);
     };
 
-    const onResize = () => center(current);
-
     window.addEventListener("keydown", onKeyDown, { passive: true });
-    window.addEventListener("resize", onResize, { passive: true });
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("resize", onResize);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [current, data.length]);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [data.length, go]);
 
   if (!data.length) return null;
 
@@ -109,11 +133,9 @@ export default function TalleresCenterSlider({
 
         <h3 className={styles.title}>
           <span className="span-vino">Así</span> se<span className="span-vino">Vivió</span> el{" "}
-          <span className="span-doarado">Taller</span> en <span className="span-doarado">Hidalgo</span>
+          <span className="span-doarado">Taller</span> en{" "}
+          <span className="span-doarado">Hidalgo</span>
         </h3>
-
-
-        {/* <h2 className={styles.title}>{title}</h2> */}
 
         <div className={styles.controls}>
           <button
@@ -149,10 +171,10 @@ export default function TalleresCenterSlider({
             const dx = e.changedTouches[0].clientX - touchRef.current.sx;
             const dy = e.changedTouches[0].clientY - touchRef.current.sy;
 
-            const trigger = isMobile() ? Math.abs(dy) > 60 : Math.abs(dx) > 60;
+            const trigger = isMobile ? Math.abs(dy) > 60 : Math.abs(dx) > 60;
             if (!trigger) return;
 
-            const val = isMobile() ? dy : dx;
+            const val = isMobile ? dy : dx;
             go(val > 0 ? -1 : 1);
           }}
         >
@@ -165,7 +187,16 @@ export default function TalleresCenterSlider({
                 key={item.link ?? `${item.name}-${idx}`}
                 className={styles.card}
                 data-active={isActive ? "true" : undefined}
+                role="button"
+                tabIndex={0}
+                aria-label={`Abrir ${shortTitle}`}
                 onClick={() => activate(idx, true)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    activate(idx, true);
+                  }
+                }}
                 onMouseEnter={() => {
                   if (
                     typeof window !== "undefined" &&
@@ -175,20 +206,10 @@ export default function TalleresCenterSlider({
                   }
                 }}
               >
-                <img
-                  className={styles.bg}
-                  src={item.image}
-                  alt=""
-                  aria-hidden="true"
-                />
+                <img className={styles.bg} src={item.image} alt="" aria-hidden="true" />
 
                 <div className={styles.content}>
-                  <img
-                    className={styles.thumb}
-                    src={item.image}
-                    alt={item.name}
-                    loading="lazy"
-                  />
+                  <img className={styles.thumb} src={item.image} alt={item.name} loading="lazy" />
 
                   <div className={styles.text}>
                     <h3 className={styles.cardTitle}>{shortTitle}</h3>
@@ -196,7 +217,7 @@ export default function TalleresCenterSlider({
                     <p className={styles.desc}>{item.name}</p>
                     <p className={styles.desc}>{item.date}</p>
 
-                    <Link className={styles.btn} href={item.link}>
+                    <Link className={styles.btn} href={item.link} target="_blank" rel="noopener noreferrer" prefetch={false}>
                       Ver detalles
                     </Link>
                   </div>
