@@ -133,7 +133,7 @@ export default function TalleresCenterSlider({
 
         <h3 className={styles.title}>
           <span className="span-vino">Así</span> se<span className="span-vino">vivieron </span> los{" "}
-          <span className="span-doarado">Taller</span> en{" "}
+          <span className="span-doarado">Talleres</span> en{" "}
           <span className="span-doarado">Hidalgo</span>
         </h3>
 
