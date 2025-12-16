@@ -10,6 +10,21 @@
   font-weight: 600;
 }
 
+.vino {
+  color: var(--vinoOsc);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.dorado {
+  color: var(--doradoOsc);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+
 .cards {
   display: grid;
   gap: 12px;

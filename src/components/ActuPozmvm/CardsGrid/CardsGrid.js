@@ -31,7 +31,11 @@ export default function CardsGrid({ title, items = [] }) {
     },
   };
 
-  const hoverFx = prefersReduced ? {} : { y: -2, scale: 1.02, transition: { type: "spring", stiffness: 240, damping: 18 } };
+  const hoverFx = prefersReduced
+    ? {}
+    : { y: -2, scale: 1.02, transition: { type: "spring", stiffness: 240, damping: 18 } };
+
+  const ariaTitle = typeof title === "string" ? title : "Lista";
 
   return (
     <LazyMotion features={domAnimation}>
@@ -51,7 +55,7 @@ export default function CardsGrid({ title, items = [] }) {
           <m.div
             className={styles.cards}
             role="list"
-            aria-label={title || "Lista"}
+            aria-label={ariaTitle}
             variants={container}
             initial="hidden"
             whileInView="show"

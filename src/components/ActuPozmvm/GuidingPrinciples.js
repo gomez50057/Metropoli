@@ -1,9 +1,16 @@
 import CardsGrid from "@/components/ActuPozmvm/CardsGrid/CardsGrid";
+import styles from "@/components/ActuPozmvm/CardsGrid/CardsGrid.module.css";
 
 export default function GuidingPrinciples() {
   return (
     <CardsGrid
-      title="Principios rectores de la Actualización del POZMVM"
+      title={
+        <>
+          <span className={styles.dorado}>Principios rectores</span>
+          {" de la actualización del "}
+          <span className={styles.vino}>POZMVM</span>
+        </>
+      }
       items={[
         { icon: "=", text: "Igualdad de derechos y oportunidades para todas las personas en todo el territorio." },
         { icon: "👥", text: "Las personas, los pueblos y las comunidades se deben situar al centro del desarrollo sostenible e inclusivo del territorio." },

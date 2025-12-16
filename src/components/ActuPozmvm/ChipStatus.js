@@ -12,7 +12,7 @@ export default function ChipStatus({ currentPhase = 1 }) {
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.titule}>Estatus actual</h2>
+      <h2 className={styles.titule}>Estatus <span className="span-doarado">actual</span></h2>
 
       <div className={styles.status}>
         {PHASES.map((text, idx) => {

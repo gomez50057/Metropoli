@@ -1,9 +1,16 @@
 import CardsGrid from "@/components/ActuPozmvm/CardsGrid/CardsGrid";
+import styles from "@/components/ActuPozmvm/CardsGrid/CardsGrid.module.css";
 
 export default function TransverseAxles() {
   return (
     <CardsGrid
-      title="Ejes transversales en la actualización del POZMVM"
+      title={
+        <>
+          <span className={styles.dorado}>Ejes transversales</span>
+          {" en la actualización del  "}
+          <span className={styles.vino}>POZMVM</span>
+        </>
+      }
       items={[
         { icon: "DH", text: "Derechos Humanos." },
         { icon: "PC", text: "Participación Social y Ciudadana." },
