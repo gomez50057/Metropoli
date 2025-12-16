@@ -15,7 +15,7 @@ export default function PagePOZMVM() {
       <AntecedentesSection />
       <TransverseAxles />
       <GuidingPrinciples/>
-      <ChipStatus label="Fase 3.  Modelo de Ordenamiento Territorial." />
+<ChipStatus currentPhase={3} />
     </>
   );
 }
