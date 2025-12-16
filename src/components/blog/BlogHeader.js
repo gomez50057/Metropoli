@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import styles from "./BlogHeader.module.css";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";

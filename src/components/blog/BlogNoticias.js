@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useMemo } from "react";
 import styles from "./BlogNoticias.module.css";
 import FeaturedPosts from "./FeaturedPosts";
