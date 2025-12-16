@@ -4,6 +4,7 @@ import SplitSection from "@/components/ActuPozmvm/SplitSection";
 import AntecedentesSection from "@/components/ActuPozmvm/AntecedentesSection";
 import TransverseAxles from "@/components/ActuPozmvm/TransverseAxles";
 import GuidingPrinciples from "@/components/ActuPozmvm/GuidingPrinciples";
+import TalleresCenterSlider from "@/components/ActuPozmvm/TalleresCenterSlider";
 import ChipStatus from "@/components/ActuPozmvm/ChipStatus";
 
 export default function PagePOZMVM() {
@@ -14,8 +15,9 @@ export default function PagePOZMVM() {
       <SplitSection />
       <AntecedentesSection />
       <TransverseAxles />
-      <GuidingPrinciples/>
-<ChipStatus currentPhase={3} />
+      <GuidingPrinciples />
+      <TalleresCenterSlider />
+      <ChipStatus currentPhase={4} />
     </>
   );
 }

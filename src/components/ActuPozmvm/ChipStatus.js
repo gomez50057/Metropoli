@@ -7,7 +7,6 @@ const PHASES = [
   "Fase 4: Instrumentación; Monitoreo y evaluación; Anteproyecto del Programa y Ficha Síntesis",
 ];
 
-
 export default function ChipStatus({ currentPhase = 1 }) {
   const safeCurrent = Math.max(1, Math.min(currentPhase, PHASES.length));
 
@@ -19,9 +18,6 @@ export default function ChipStatus({ currentPhase = 1 }) {
         {PHASES.map((text, idx) => {
           const phaseNumber = idx + 1;
           const isCurrent = phaseNumber === safeCurrent;
-
-          // Quita "Fase 1:" / "Fase 2:" / etc.
-          const textNoNum = text.replace(/^Fase\s*\d+\s*:\s*/i, "");
 
           return (
             <div key={phaseNumber} className={styles.chipWrap}>
@@ -35,7 +31,7 @@ export default function ChipStatus({ currentPhase = 1 }) {
                 className={`${styles.chip} ${isCurrent ? styles.chipActive : ""}`}
                 aria-current={isCurrent ? "step" : undefined}
               >
-                {textNoNum}
+                {text}
               </span>
             </div>
           );
