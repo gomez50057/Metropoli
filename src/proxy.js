@@ -1,5 +1,3 @@
-// src/proxy.js (DESPUÉS)
-
 import { NextResponse } from 'next/server';
 
 export function proxy(request) {
