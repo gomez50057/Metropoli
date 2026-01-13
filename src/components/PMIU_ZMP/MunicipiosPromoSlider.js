@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo } from "react";
-import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation, Autoplay, Keyboard, A11y, Parallax } from "swiper/modules";
 import "swiper/css";
@@ -10,49 +9,124 @@ import "swiper/css/navigation";
 
 import styles from "@/styles/PMIU_ZMP/MunicipiosPromoSlider.module.css";
 
-/* ==================== Aliases y catálogos ==================== */
 const ID_ALIASES = {
   "mineral-de-la-reforma": "mineral-reforma",
   "mineral-del-monte": "mineral-monte",
   "pachuca-de-soto": "pachuca",
 };
 
-const OPINION_LINKS = {
-  epazoyucan: { encuesta: "https://docs.google.com/forms/d/e/1FAIpQLSfsi8OzJO7icEa6-UDdgaYCv8TH5jNoVh1U6_h6-yiPQINYFA/viewform" },
-  "mineral-reforma": { encuesta: "https://docs.google.com/forms/d/e/1FAIpQLSdIEqGlVbpePoHKob1AQ9g7iXWZbUuN67qtBkfNBgis9KHgIw/viewform" },
-  "mineral-monte": { encuesta: "https://docs.google.com/forms/d/e/1FAIpQLSfUqAs2r1UwAI39vNeS54njpT-RSr3uR7sIlUwgFUJH0HsvBA/viewform" },
-  pachuca: { encuesta: "https://docs.google.com/forms/d/e/1FAIpQLSfTGVpEXcBZOV3p58hZn1jW5LIDt96xa6dTctgp9wV5Dm_8IQ/viewform" },
-  "san-agustin-tlaxiaca": { encuesta: "https://docs.google.com/forms/d/e/1FAIpQLSd-1dzfiBDMP4CG4sTuL4Ha1nwV94XV-ydNwo40_lGG3oX72g/viewform" },
-  zapotlan: { encuesta: "https://docs.google.com/forms/d/e/1FAIpQLSd5RWDiQTvh_g0YHQ2H8JPdnJnkGDzrc217nnsw8KAwkCkLEA/viewform" },
-  zempoala: { encuesta: "https://docs.google.com/forms/d/e/1FAIpQLSeyfSsxnareGC6Koyf4Y1_zp1ZfYHOksziL9c4Mlu_s7ttmPg/viewform" },
-};
-
 const PARTICIPA_INFO = {
-  epazoyucan: { fecha: "26-Septiembre-2025", hora: "04:00 pm", lugar: "Auditorio Municipal de Epazoyucan" },
-  "mineral-reforma": { fecha: "30-Septiembre-2025", hora: "10:00 am", lugar: "Centro Mineralense de las Artes (CEMARTH)" },
-  "mineral-monte": { fecha: "25-Septiembre-2025", hora: "04:00 pm", lugar: "Auditorio CBIS" },
-  pachuca: { fecha: "01-Octubre-2025", hora: "10:00 am", lugar: "Consejo Coordinador Empresarial" },
-  "san-agustin-tlaxiaca": { fecha: "26-Septiembre-2025", hora: "10:00 am", lugar: "Rancho La Purísima" },
-  zapotlan: { fecha: "01-Octubre-2025", hora: "04:00 pm", lugar: "Auditorio Ejidal de Centro San Pedro Huaquilpan" },
-  zempoala: { fecha: "30-Septiembre-2025", hora: "04:00 pm", lugar: "Salón Victoria" },
+  epazoyucan: {
+    responses: 28,
+    representativos: ["Ex Convento de San Andrés Apóstol", "Centro de Epazoyucan (Kiosco y canchas).", "Autódromo Moisés Solana."],
+    prioritarias: [
+      { text: "Aumentar y cuidar áreas verdes", pct: 25 },
+      { text: "Restaurar y conservar el patrimonio arquitectónico y cultural", pct: 21.4 },
+      { text: "Mejorar la movilidad peatonal y ciclista", pct: 17.9 },
+    ],
+    seguridad:
+      "Seguro(a) - La mayoría de las veces me siento confiado(a) al transitar.",
+    mantenimiento:
+      "Regular: conservación aceptable, aunque con detalles que requieren atención (pintura desgastada, áreas verdes con poco cuidado, alumbrado irregular).",
+  },
+
+  "mineral-reforma": {
+    responses: 107,
+    representativos: ["Hacienda Chavarria", "Centro Historico de Pachuquilla", "Ciudad del Conocimiento"],
+    prioritarias: [
+      { text: "Aumentar y cuidar áreas verdes", pct: 30.8 },
+      { text: "Mejorar la movilidad peatonal y ciclista", pct: 29 },
+      { text: "Reforzar la seguridad en espacios públicos", pct: 21.5 },
+    ],
+    seguridad:
+      "Neutral - Ni seguro(a) ni inseguro(a); depende mucho de la zona o del momento.",
+    mantenimiento:
+      "Muy malo: Espacios en deterioro evidente, sin mantenimiento, con basura, mobiliario roto o inexistente.",
+  },
+
+  "mineral-monte": {
+    responses: 63,
+    representativos: ["Parroquia de Nuestra Señora de la Asunción", "Las Minas", "Plaza Principal y Kiosco"],
+    prioritarias: [
+      { text: "Restaurar y conservar el patrimonio", pct: 38.1 },
+      { text: "Mejorar la señalética y el mobiliario urbano", pct: 15.9 },
+      { text: "Reforzar la seguridad en espacios públicos", pct: 15.9 },
+    ],
+    seguridad:
+      "Neutral - Ni seguro(a) ni inseguro(a); depende mucho de la zona o del momento.",
+    mantenimiento:
+      "Regular: Conservación aceptable, aunque con detalles que requieren atención (pintura gastada, áreas verdes con poco cuidado, alumbrado irregular).",
+  },
+
+  pachuca: {
+    responses: 128,
+    representativos: ["Reloj Monumental de Pachuca", "Centro histórico", "Plaza Juárez"],
+    prioritarias: [
+      { text: "Aumentar y cuidar áreas verdes", pct: 25.2 },
+      { text: "Mejorar la movilidad peatonal y ciclista", pct: 18.9 },
+      { text: "Reforzar la seguridad en espacios públicos", pct: 13.4 },
+    ],
+    seguridad:
+      "Poco seguro(a) - Solo me siento con cierta confianza en algunos horarios, pero en general percibo inseguridad.",
+    mantenimiento:
+      "Muy malo: Espacios en deterioro evidente, sin mantenimiento, con basura, mobiliario roto o inexistente.",
+  },
+
+  "san-agustin-tlaxiaca": {
+    responses: 37,
+    representativos: ["Iglesia de San Agustín", "Plaza principal y kiosco", "Presidencia Municipal"],
+    prioritarias: [
+      { text: "Aumentar y cuidar áreas verdes", pct: 35.1 },
+      { text: "Mejorar la señalética y el mobiliario urbano", pct: 18.9 },
+      { text: "Reforzar la seguridad en espacios públicos", pct: 18.9 },
+    ],
+    seguridad:
+      "Neutral - Ni seguro(a) ni inseguro(a); depende mucho de la zona o del momento.",
+    mantenimiento:
+      "Regular: Conservación aceptable, aunque con detalles que requieren atención (pintura gastada, áreas verdes con poco cuidado, alumbrado irregular).",
+  },
+
+  zapotlan: {
+    responses: 44,
+    representativos: ["Centro de Zapotlán de Juárez", "Iglesia de San Pedro Apóstol", "Presidencia Municipal"],
+    prioritarias: [
+      { text: "Restaurar y conservar el patrimonio arquitectónico y cultural", pct: 34.1 },
+      { text: "Aumentar y cuidar áreas verdes", pct: 27.3 },
+      { text: "Reforzar la seguridad en espacios públicos", pct: 15.9 },
+    ],
+    seguridad:
+      "Neutral - Ni seguro(a) ni inseguro(a); depende mucho de la zona o del momento.",
+    mantenimiento:
+      "Regular: Conservación aceptable, aunque con detalles que requieren atención (pintura gastada, áreas verdes con poco cuidado, alumbrado irregular).",
+  },
+
+  zempoala: {
+    responses: 87,
+    representativos: ["Acueducto Padre Tembleque", "Parroquia de Todos los Santos", "Cerro el Tecajete"],
+    prioritarias: [
+      { text: "Restaurar y conservar el patrimonio arquitectónico y cultural", pct: 28.7 },
+      { text: "Mejorar la movilidad peatonal y ciclista", pct: 14.9 },
+      { text: "Reforzar la seguridad en espacios públicos", pct: 14.9 },
+    ],
+    seguridad:
+      "Seguro(a) - La mayoría de las veces me siento confiado(a) al transitar",
+    mantenimiento:
+      "Regular: Conservación aceptable, aunque con detalles que requieren atención (pintura desgastada, áreas verdes con poco cuidado, alumbrado irregular).",
+  },
 };
 
-const ZONA_KEY = "selectedTaller_PMIU_ZMP";
+const DEFAULT_PARTICIPA = {
+  responses: 0,
+  representativos: ["—", "—", "—"],
+  prioritarias: [],
+  seguridad: "—",
+  mantenimiento: "—",
+};
 
-/* ==================== Utils ==================== */
 function normId(id) {
   return ID_ALIASES[id] ?? id;
 }
 
-function handleVisitImages(zoneKey) {
-  try {
-    localStorage.setItem(ZONA_KEY, zoneKey);
-  } catch {
-    // no-op: evita romper SSR/privacidad
-  }
-}
-
-/* ==================== Componente ==================== */
 export default function MunicipiosPromoSlider({ items = [] }) {
   const slides = useMemo(() => {
     return (items || []).map((m, idx) => {
@@ -60,9 +134,8 @@ export default function MunicipiosPromoSlider({ items = [] }) {
       return {
         ...m,
         _id: id,
-        encuesta: OPINION_LINKS[id]?.encuesta || null,
-        participa: PARTICIPA_INFO[id] || null,
-        reversed: idx % 2 === 1, // alterna layout L/R
+        participa: PARTICIPA_INFO[id] || DEFAULT_PARTICIPA,
+        reversed: idx % 2 === 1,
       };
     });
   }, [items]);
@@ -118,66 +191,42 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                 </h3>
                 <p className={styles.desc}>Gracias por su participación.</p>
 
-                {/* Datos del taller */}
+
                 <div className={styles.actions}>
-                  {s.participa ? (
-                    <div className={styles.meta} aria-label="Datos del taller">
-                      <div>
-                        <strong>Fecha:</strong> {s.participa.fecha}
-                      </div>
-                      <div>
-                        <strong>Hora:</strong> {s.participa.hora}
-                      </div>
-                      <div>
-                        <strong>Lugar:</strong> {s.participa.lugar}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className={styles.metaMuted}>
-                      Próximamente fecha y sede del taller para {s.name}.
-                    </div>
-                  )}
+                  <p className={styles.descRow}>
+                    <span className={styles.boldRow}>{s.participa.responses}</span> respuestas
+                  </p>
+
+                  <div className={styles.rowRepresentativos}>
+                    <p className={styles.titleRow}>Lugares representativos</p>
+                    <p className={styles.descRow}>
+                      <span>1. {s.participa.representativos?.[0] ?? "—"}</span>
+                    </p>
+                    <p className={styles.descRow}>2. {s.participa.representativos?.[1] ?? "—"}</p>
+                    <p className={styles.descRow}>3. {s.participa.representativos?.[2] ?? "—"}</p>
+                  </div>
+
+                  <div className={styles.row222}>
+                    <p className={styles.titleRow}>Acciones prioritarias</p>
+
+                    {(s.participa.prioritarias || []).slice(0, 3).map((a, i) => (
+                      <p key={`${s._id}-prio-${i}`} className={styles.descRow}>
+                        {a.text}
+                        <span> {Number(a.pct).toFixed(1)}%</span>
+                      </p>
+                    ))}
+                  </div>
+
+                  <div className={styles.row}>
+                    <p className={styles.titleRow}>Seguridad percibida</p>
+                    <p className={styles.descRow}>{s.participa.seguridad}</p>
+                  </div>
+
+                  <div className={styles.row}>
+                    <p className={styles.titleRow}>Mantenimiento urbano</p>
+                    <p className={styles.descRow}>{s.participa.mantenimiento}</p>
+                  </div>
                 </div>
-
-                {/* Enlace solicitado que guarda la zona y navega */}
-                {/* <p className={styles.visitText}>
-                  <Link
-                    href="/talleres-pmiu-zmp"
-                    onClick={() => handleVisitImages(s._id)}
-                    className={styles.ctaAlt ?? styles.cta}
-                    aria-label={`Ver imágenes del taller de ${s.name}`}
-                  >
-                    Conoce como se vivió el taller en {s.name}
-                  </Link>
-                </p> */}
-
-                {/* Opinión ciudadana */}
-                <h3 className={styles.title}>
-                  <span className="span-doarado">Opinión</span> ciudadana
-                </h3>
-                <p className={styles.desc}>
-                  Tu opinión es clave para fortalecer el PMIU. Responde el cuestionario de {s.name}.
-                </p>
-
-                {s.encuesta ? (
-                  <a
-                    href={s.encuesta}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.cta}
-                    aria-label={`Responder encuesta ciudadana de ${s.name}`}
-                  >
-                    <span>Responder encuesta</span>
-                    <svg width="15px" height="10px" viewBox="0 0 13 10" aria-hidden="true">
-                      <path d="M1,5 L11,5"></path>
-                      <polyline points="8 1 12 5 8 9"></polyline>
-                    </svg>
-                  </a>
-                ) : (
-                  <button className={`${styles.cta} ${styles.ctaDisabled}`} disabled>
-                    Próximamente
-                  </button>
-                )}
               </div>
             </article>
           </SwiperSlide>
