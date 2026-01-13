@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation, Autoplay, Keyboard, A11y, Parallax } from "swiper/modules";
 import "swiper/css";
@@ -140,6 +141,32 @@ export default function MunicipiosPromoSlider({ items = [] }) {
     });
   }, [items]);
 
+  const [tip, setTip] = useState(null); // { x, y, text }
+
+  const showTipIfTruncated = useCallback((e, text) => {
+    const el = e.currentTarget;
+    if (el.scrollWidth <= el.clientWidth) return;
+
+    const rect = el.getBoundingClientRect();
+    setTip({
+      x: rect.left + rect.width / 2,
+      y: rect.bottom + 10,
+      text,
+    });
+  }, []);
+
+  const moveTip = useCallback((e) => {
+    setTip((prev) => (prev ? { ...prev, x: e.clientX, y: e.clientY + 14 } : prev));
+  }, []);
+
+  const hideTip = useCallback(() => setTip(null), []);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section className={styles.wrap} aria-label="Carrusel promocional de municipios">
       <div className={styles.contentTitule}>
@@ -166,7 +193,6 @@ export default function MunicipiosPromoSlider({ items = [] }) {
         {slides.map((s) => (
           <SwiperSlide key={s._id} className={styles.slide}>
             <article className={`${styles.card} ${s.reversed ? styles.reverse : ""}`} aria-label={s.name}>
-              {/* Media */}
               <div className={styles.media} data-swiper-parallax={s.reversed ? "-25%" : "25%"}>
                 <img
                   className={styles.mediaImg}
@@ -176,7 +202,6 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                 />
               </div>
 
-              {/* Content */}
               <div
                 className={`${styles.content} ${s.reversed ? styles.contentRight : styles.contentLeft}`}
                 data-swiper-parallax={s.reversed ? "25%" : "-25%"}
@@ -199,11 +224,42 @@ export default function MunicipiosPromoSlider({ items = [] }) {
 
                   <div className={styles.rowRepresentativos}>
                     <p className={styles.titleRow}>Lugares representativos</p>
+
                     <p className={styles.descRow}>
-                      <span>1. {s.participa.representativos?.[0] ?? "—"}</span>
+                      <span
+                        className={styles.truncate}
+                        title={`1. ${s.participa.representativos?.[0] ?? "—"}`}
+                        onMouseEnter={(e) => showTipIfTruncated(e, `1. ${s.participa.representativos?.[0] ?? "—"}`)}
+                        onMouseMove={moveTip}
+                        onMouseLeave={hideTip}
+                      >
+                        1. {s.participa.representativos?.[0] ?? "—"}
+                      </span>
                     </p>
-                    <p className={styles.descRow}>2. {s.participa.representativos?.[1] ?? "—"}</p>
-                    <p className={styles.descRow}>3. {s.participa.representativos?.[2] ?? "—"}</p>
+
+                    <p className={styles.descRow}>
+                      <span
+                        className={styles.truncate}
+                        title={`2. ${s.participa.representativos?.[1] ?? "—"}`}
+                        onMouseEnter={(e) => showTipIfTruncated(e, `2. ${s.participa.representativos?.[1] ?? "—"}`)}
+                        onMouseMove={moveTip}
+                        onMouseLeave={hideTip}
+                      >
+                        2. {s.participa.representativos?.[1] ?? "—"}
+                      </span>
+                    </p>
+
+                    <p className={styles.descRow}>
+                      <span
+                        className={styles.truncate}
+                        title={`3. ${s.participa.representativos?.[2] ?? "—"}`}
+                        onMouseEnter={(e) => showTipIfTruncated(e, `3. ${s.participa.representativos?.[2] ?? "—"}`)}
+                        onMouseMove={moveTip}
+                        onMouseLeave={hideTip}
+                      >
+                        3. {s.participa.representativos?.[2] ?? "—"}
+                      </span>
+                    </p>
                   </div>
 
                   <div className={styles.row222}>
@@ -215,6 +271,7 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                         <span> {Number(a.pct).toFixed(1)}%</span>
                       </p>
                     ))}
+                    <p className={styles.note}>Los 3 más elegidos </p>
                   </div>
 
                   <div className={styles.row}>
@@ -227,6 +284,17 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                     <p className={styles.descRow}>{s.participa.mantenimiento}</p>
                   </div>
                 </div>
+                {mounted && tip
+                  ? createPortal(
+                    <div
+                      style={{ left: tip.x, top: tip.y }}
+                      role="tooltip"
+                    >
+                      {tip.text}
+                    </div>,
+                    document.body
+                  )
+                  : null}
               </div>
             </article>
           </SwiperSlide>
