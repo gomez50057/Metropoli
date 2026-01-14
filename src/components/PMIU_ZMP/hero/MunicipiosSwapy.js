@@ -12,7 +12,7 @@ export default function MunicipiosSwapy() {
 
   // Control maestro: activar / desactivar navegación
   // false = NO navega, pero conserva hover/animación
-  const [linksEnabled, setLinksEnabled] = useState(true);
+  const [linksEnabled, setLinksEnabled] = useState(false);
 
   const desktopPreset = [
     { top: 14, left: 22 },
