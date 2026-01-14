@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import styles from "@/styles/PMIU_ZMP/MunicipiosSwapy.module.css";
 import { MUNICIPIOS as items } from "@/utils/municipios";
 import { OPINION_LINKS } from "@/utils/municipios";
@@ -10,7 +10,10 @@ export default function MunicipiosSwapy() {
   const imgBasePath = "/img/PMIU_ZMP/municipios/";
   const [positions, setPositions] = useState([]);
 
-  // Presets base (% del contenedor)
+  // Control maestro: activar / desactivar navegación
+  // false = NO navega, pero conserva hover/animación
+  const [linksEnabled, setLinksEnabled] = useState(true);
+
   const desktopPreset = [
     { top: 14, left: 22 },
     { top: 10, left: 60 },
@@ -55,7 +58,6 @@ export default function MunicipiosSwapy() {
     }));
   };
 
-  // Resolución de colisiones en px, luego mapea a %
   function resolveCollisions(posPercent, fieldEl, count) {
     if (!fieldEl) return posPercent.slice(0, count);
 
@@ -103,34 +105,33 @@ export default function MunicipiosSwapy() {
     }));
   }
 
-  const recompute = () => {
+  const recompute = useCallback(() => {
     const base = pickPreset();
     const jitter = jitterize(base);
 
-    // Si hay más ítems que el preset, reusa posiciones con más jitter
     const want = items.length;
     const tiled = Array.from({ length: want }, (_, i) => jitter[i % jitter.length]);
-    const jitter2 = jitterize(tiled); // un poco más de variación
+    const jitter2 = jitterize(tiled);
 
     const resolved = resolveCollisions(jitter2, fieldRef.current, want);
     setPositions(resolved);
-  };
+  }, []);
 
   useEffect(() => {
     recompute();
-    const onResize = () => recompute();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items.length]);
+    window.addEventListener("resize", recompute);
+    return () => window.removeEventListener("resize", recompute);
+  }, [recompute]);
 
   return (
     <div className={styles.wrap}>
       <div className={styles.field} ref={fieldRef}>
         {items.map((m, idx) => {
           const pos = positions[idx] ?? { top: 50, left: 50 };
-          const href = OPINION_LINKS[m.id]?.encuesta || "#";
-          const isDisabled = href === "#";
+          const href = OPINION_LINKS?.[m.id]?.encuesta || "#";
+
+          const hasLink = href && href !== "#";
+          const isDisabled = !linksEnabled || !hasLink;
 
           return (
             <div
@@ -139,14 +140,23 @@ export default function MunicipiosSwapy() {
               style={{ top: `${pos.top}%`, left: `${pos.left}%` }}
             >
               <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={hasLink ? href : "#"}
+                target={!isDisabled ? "_blank" : undefined}
+                rel={!isDisabled ? "noopener noreferrer" : undefined}
                 aria-disabled={isDisabled}
+                data-disabled={isDisabled ? "true" : "false"}
                 className={styles.item}
                 data-title={m.name}
                 onClick={(e) => {
-                  if (isDisabled) e.preventDefault();
+                  if (isDisabled) {
+                    e.preventDefault(); // bloquea navegación
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (!isDisabled) return;
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                  }
                 }}
               >
                 <img

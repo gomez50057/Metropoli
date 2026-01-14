@@ -84,6 +84,16 @@
   filter: saturate(1.1);
 }
 
+/* Estilo para items deshabilitados (no navegan) */
+.item[data-disabled="true"] {
+  opacity: 0.85;
+  cursor: default;
+}
+
+.item[data-disabled="true"]:hover {
+  opacity: 1;
+}
+
 @media (max-width:900px) {
   .field {
     --size: 76px;
