@@ -45,7 +45,7 @@ export const getTextoObjetivo = (zonaSeleccionada) => {
     case 'ZMVM':
       return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Esta región, estrechamente interconectada en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México.';
     default:
-      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra 16 alcaldías de la Ciudad de México, así como 57 municipios del Estado de México, 8 municipios del Estado de Hidalgo y 1 municipio del Estado de Morelos. \n\n Esta región, estrechamente interconectada en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México.';
+      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Esta región, estrechamente interconectada en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México.';
   }
 };
 

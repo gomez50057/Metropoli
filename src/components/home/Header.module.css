@@ -138,7 +138,7 @@
 
 .tooltip {
   position: absolute;
-  bottom: 110%;
+  top: 110%;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.75);
@@ -212,8 +212,40 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@keyframes pulseZm {
+  0% {
+    transform: translateY(-18px) scale(1.15);
+    box-shadow: 0 0 0 0 rgba(188, 149, 91, 0.55);
+  }
 
+  60% {
+    transform: translateY(-18px) scale(1.19);
+    box-shadow: 0 0 0 14px rgba(188, 149, 91, 0);
+  }
+
+  100% {
+    transform: translateY(-18px) scale(1.15);
+    box-shadow: 0 0 0 0 rgba(188, 149, 91, 0);
+  }
+}
+
+.circuleZmActive {
+  transform: translateY(-18px) scale(1.15);
+  transition: transform 0.35s ease;
+  animation: pulseZm 1.6s ease-in-out infinite;
+}
+
+.circuleZmActive .tooltip {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circuleZmActive {
+    animation: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
   .headerImg {
     margin: 0;
   }
