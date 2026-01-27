@@ -225,9 +225,10 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                   <div className={styles.rowRepresentativos}>
                     <p className={styles.titleRow}>Lugares representativos</p>
 
+
                     <p className={styles.descRow}>
                       <span
-                        className={styles.truncate}
+                        className={styles.item}
                         title={`1. ${s.participa.representativos?.[0] ?? "—"}`}
                         onMouseEnter={(e) => showTipIfTruncated(e, `1. ${s.participa.representativos?.[0] ?? "—"}`)}
                         onMouseMove={moveTip}
@@ -237,9 +238,10 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                       </span>
                     </p>
 
-                    <p className={styles.descRow}>
+
+                    <p className={styles.descRowBottom}>
                       <span
-                        className={styles.truncate}
+                        className={styles.item}
                         title={`2. ${s.participa.representativos?.[1] ?? "—"}`}
                         onMouseEnter={(e) => showTipIfTruncated(e, `2. ${s.participa.representativos?.[1] ?? "—"}`)}
                         onMouseMove={moveTip}
@@ -247,11 +249,10 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                       >
                         2. {s.participa.representativos?.[1] ?? "—"}
                       </span>
-                    </p>
 
-                    <p className={styles.descRow}>
+
                       <span
-                        className={styles.truncate}
+                        className={styles.item}
                         title={`3. ${s.participa.representativos?.[2] ?? "—"}`}
                         onMouseEnter={(e) => showTipIfTruncated(e, `3. ${s.participa.representativos?.[2] ?? "—"}`)}
                         onMouseMove={moveTip}

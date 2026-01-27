@@ -92,7 +92,7 @@ function useCountUpOnView(target, { threshold = 12, rootMargin = "0px 0px -10% 0
 export default function CountsPanel() {
   const counts = [
     { key: "zapotlan", label: "Zapotlán de Juárez", total: 44 },
-    { key: "pachuca", label: 'Pachuca de Soto "La Españita"', total: 128 },
+    { key: "pachuca", label: 'Pachuca de Soto', total: 128 },
     { key: "mdlr", label: "Mineral de la Reforma", total: 107 },
     { key: "mdm", label: "Mineral del Monte", total: 63 },
     { key: "epaz", label: "Epazoyucan", total: 28 },
@@ -114,7 +114,7 @@ export default function CountsPanel() {
             <span className="span-doarado">Tu voz cuenta </span>en la{" "}
             <span>Zona Metropolitana </span>
           </h2>
-          <p className={styles.subtitle}>Respuestas ciudadanas registradas por municipio</p>
+          <p className={styles.subtitle}>Respuestas ciudadanas registradas por municipio.</p>
         </div>
       </header>
 
