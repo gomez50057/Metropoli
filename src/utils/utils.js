@@ -251,6 +251,15 @@ export const hgoTeamMembers = [
   },
 ];
 
+export const morelosTeamMembers = [
+  {
+    "name": "Alan Dupré Ramírez",
+    "position": "Secretario de Desarrollo Sustentable",
+    "description": ["Comisión Metropolitana de Seguridad Pública y Procuración de Justicia"],
+    "image": "/img/ZMVM/integrantesComisiones/Morelos/Alan Dupré Ramírez.png"
+  },
+];
+
 export const tecnicoTeamMembersZMVM = [
   {
     "name": "Guillermo Olivares Reyna",
@@ -303,10 +312,17 @@ export const tecnicoTeamMembersZMVM = [
     "image": "/img/ZMVM/Secretariado Técnico Conjunto/Enrique Soto Alva.png"
   },
   {
-    "name": "Víctor Hugo Hofmann Aguirre",
+    "name": "José Alfonso Iracheta Carroll",
     "position": "Subsecretario de Ordenamiento Territorial, Urbano y Vivienda de la SEDATU",
     "gobierno": "Gobierno Federal",
-    "image": "/img/ZMVM/Secretariado Técnico Conjunto/Víctor Hugo Hofmann Aguirre.png"
+    "image": "/img/ZMVM/Secretariado Técnico Conjunto/José Alfonso Iracheta Carroll.png"
+  },
+
+    {
+    "name": "Alan Dupré Ramírez",
+    "position": "Secretario de Desarrollo Sustentable",
+    "gobierno": "Gobierno del Estado de Morelos",
+    "image": "/img/ZMVM/Secretariado Técnico Conjunto/Alan Dupré Ramírez.png"
   },
 ];
 

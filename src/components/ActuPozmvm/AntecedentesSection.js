@@ -77,7 +77,7 @@ export default function AntecedentesSection() {
               tabIndex={0}
             >
               <span className={styles.srOnly}>Punto 03: </span>
-              Actualmente, la ZMVM enfrenta nuevas dinámicas territoriales, sociales, económicas y ambientales, por lo que es necesario actualizar este instrumento que responda de manera adecuada a estos desafíos
+              Actualmente, la ZMVM enfrenta nuevas dinámicas territoriales, sociales, económicas y ambientales, por lo que es necesario actualizar este instrumento que responda de manera adecuada a estos desafíos.
             </m.li>
           </m.ul>
         </section>

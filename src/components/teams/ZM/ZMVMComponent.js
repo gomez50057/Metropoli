@@ -5,6 +5,7 @@ import Tecnico from '@/components/teams/Tecnico';
 import CDMXTeam from '@/components/teams/CDMXTeam';
 import EDOMEXTeam from '@/components/teams/EDOMEXTeam';
 import HGOTeam from '@/components/teams/HGOTeam';
+// import MorelosTeam from '@/components/teams/MorelosTeam';
 
 const ZMVMComponent = () => {
   return (
@@ -15,6 +16,7 @@ const ZMVMComponent = () => {
       <HGOTeam />
       <CDMXTeam />
       <EDOMEXTeam />
+      {/* <MorelosTeam /> */}
     </div>
   );
 };

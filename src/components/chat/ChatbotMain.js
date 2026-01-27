@@ -75,7 +75,7 @@ const ChatbotMain = () => {
           </li>
         </a>
 
-        <a
+        {/* <a
           href="/mapa-proyectos"
           target="_blank"
           rel="noopener noreferrer"
@@ -90,7 +90,7 @@ const ChatbotMain = () => {
               <p>Explora los proyectos metropolitanos a través de un mapa interactivo y conoce su impacto en la región.</p>
             </div>
           </li>
-        </a>
+        </a> */}
         <a
           href="https://bibliotecadigitaluplaph.hidalgo.gob.mx/"
           target="_blank"
