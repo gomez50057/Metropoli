@@ -516,3 +516,17 @@ export const renderDescription = (description) => {
     }
   });
 };
+
+// Función para renderizar párrafos con estilos para el mapa de home
+export const renderParagraphsWithStyles = (text) => {
+  if (!text) return null;
+  if (typeof text !== "string") return text;
+
+  return text
+    .split(/\n/g)
+    .map((block, i) => (
+      <p key={i} style={{ margin: "0.5rem 0" }}>
+        {renderTextWithStyles(block.trim())}
+      </p>
+    ));
+};

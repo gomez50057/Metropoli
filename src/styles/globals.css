@@ -98,3 +98,21 @@ p {
 .readMoreBtn:hover {
   background-color: var(--vinoOsc);
 }
+
+.leaflet-popup-content-wrapper {
+  padding: 20px;
+  width: auto;
+  height: auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  background: rgba(245, 245, 245, 0.8);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  border-left: 2px solid rgba(105, 27, 50, 0.6);
+  border-right: 2px solid rgba(105, 27, 50, 0.6);
+  border-top: 4px solid rgba(105, 27, 50, 0.6);
+  border-bottom: 4px solid rgba(105, 27, 50, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 6px 20px rgba(0, 0, 0, 0.9);
+  border-radius: 40px 0 40px 0;
+  animation: fadeIn 0.3s ease-in-out;
+}

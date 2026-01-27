@@ -3,9 +3,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
-import './InteractiveMap.css';
+import styles from "./InteractiveMap.module.css";
 import { ZMP_Info, ZMT_Info, ZMTUL_Info, zmvm_InfoGeneral } from './ZM';
-import { getTituloZona, getPreposicion } from '@/utils/home';
+import { getTituloZona, getPreposicion, getMunAlc, getMapNom } from '@/utils/home';
+import { renderParagraphsWithStyles } from "@/utils/blogData";
 
 const InteractiveMap = () => {
   const mapRef = useRef(null);
@@ -252,27 +253,41 @@ const InteractiveMap = () => {
   }, []);
 
   return (
-    <section className="mapaConte">
-      <div id='map'>
-        {/* <button
-                    id="toggleSidebar"
-                    onClick={toggleSidebar}
-                    className={isSidebarOpen ? 'open' : ''}
-                >
-                    {isSidebarOpen ? 'Cerrar' : 'Abrir panel de información'}
-                </button> */}
-
-        <div id="fullscreenButton" onClick={toggleFullScreen}>
+    <section className={styles.mapaConte}>
+      <div id="map" className={styles.map}>
+        <div className={styles.fullscreenButton} onClick={toggleFullScreen}>
           {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
         </div>
 
-        {/* <div id="sidebar" className={isSidebarOpen ? 'open' : ''}>
-                    <p className="sidebar-title">Proyectos</p>
-                </div> */}
+        {/* Sidebar (si lo vuelves a usar)
+        <div className={`${styles.sidebar} ${isSidebarOpen ? styles.sidebarOpen : ""}`}>
+          <p className={styles.sidebarTitle}>Proyectos</p>
+        </div>
+
+        <button
+          onClick={toggleSidebar}
+          className={`${styles.toggleSidebar} ${isSidebarOpen ? styles.toggleSidebarOpen : ""}`}
+        >
+          {isSidebarOpen ? "Cerrar" : "Abrir panel de información"}
+        </button> */}
       </div>
-      <div className="mapaTxt">
-        <h2><span>Explora</span> la <span className="span-doarado">Zona Metropolitana</span> en el <span>Mapa</span> Interactivo</h2>
-        <p>Descubre sobre la Zona Metropolitana {getPreposicion(zonaSeleccionada)} {getTituloZona(zonaSeleccionada)}. Haz clic en cada zona para ver datos detallados de los municipios y sus características. ¡Explora ahora!</p>
+
+      <div className={styles.mapaTxt}>
+        <h2>
+          <span>Explora</span> la{" "}
+          <span className="span-doarado">Zona Metropolitana</span> en el{" "}
+          <span>Mapa</span> Interactivo
+        </h2>
+
+        <p>
+          Descubre la Zona Metropolitana {getPreposicion(zonaSeleccionada)}{" "}
+          {getTituloZona(zonaSeleccionada)}. Haz clic en cada zona para consultar
+          información de sus {getMunAlc(zonaSeleccionada)}, así como sus principales
+          características. ¡Explora ahora!
+        </p>
+
+        {renderParagraphsWithStyles(getMapNom(zonaSeleccionada))}
+
       </div>
     </section>
   );
