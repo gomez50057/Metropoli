@@ -45,7 +45,7 @@ export default function PimusZmpBenefits({
           Lo que el <span className={styles.spanVino}>PIMUS</span>{" "}
           <span className={styles.spanDorado}>trae para ti</span>
         </h2>
-        <p className={styles.subtitle}>Por una movilidad más segura, incluyente y eficiente.</p>
+        <p className={styles.subtitle}>Una movilidad más segura, incluyente y eficiente.</p>
       </header>
 
       <div className={styles.grid} role="list">
