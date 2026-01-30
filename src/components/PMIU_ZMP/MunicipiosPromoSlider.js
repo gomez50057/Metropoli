@@ -9,6 +9,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 
 import styles from "@/styles/PMIU_ZMP/MunicipiosPromoSlider.module.css";
+import { renderDescription } from "@/utils/blogData";
 
 const ID_ALIASES = {
   "mineral-de-la-reforma": "mineral-reforma",
@@ -19,7 +20,7 @@ const ID_ALIASES = {
 const PARTICIPA_INFO = {
   epazoyucan: {
     responses: 28,
-    representativos: ["Ex Convento de San Andrés Apóstol", "Centro de Epazoyucan (Kiosco y canchas).", "Autódromo Moisés Solana."],
+    representativos: ["Ex Convento de San Andrés Apóstol", "Centro de Epazoyucan (Kiosco y canchas)", "Autódromo Moisés Solana"],
     prioritarias: [
       { text: "Aumentar y cuidar áreas verdes", pct: 25 },
       { text: "Restaurar y conservar el patrimonio arquitectónico y cultural", pct: 21.4 },
@@ -29,6 +30,8 @@ const PARTICIPA_INFO = {
       "Seguro(a) - La mayoría de las veces me siento confiado(a) al transitar.",
     mantenimiento:
       "Regular: conservación aceptable, aunque con detalles que requieren atención (pintura desgastada, áreas verdes con poco cuidado, alumbrado irregular).",
+    hallazgos:
+      "\n* La **ciudadanía percibe condiciones seguras** para transitar por las principales avenidas y espacios públicos, durante el día como en la noche. \n* Se observó una percepción regular respecto al mantenimiento urbano, lo que se sugiere la necesidad de **reforzar las acciones de conservación y mejora** de la infraestructura y los espacios públicos.",
   },
 
   "mineral-reforma": {
@@ -43,6 +46,8 @@ const PARTICIPA_INFO = {
       "Neutral - Ni seguro(a) ni inseguro(a); depende mucho de la zona o del momento.",
     mantenimiento:
       "Muy malo: Espacios en deterioro evidente, sin mantenimiento, con basura, mobiliario roto o inexistente.",
+    hallazgos:
+      "\n* La ciudadanía percibe un **equilibrio** sobre las condiciones de tránsito en las principales avenidas y espacios públicos, durante el día y noche. \n* Se identificó áreas con **oportunidad de mejora en el mantenimiento urbano**, por lo que se propone fortalecer las acciones de conservación y mejora de la infraestructura y los espacios públicos.",
   },
 
   "mineral-monte": {
@@ -57,6 +62,8 @@ const PARTICIPA_INFO = {
       "Neutral - Ni seguro(a) ni inseguro(a); depende mucho de la zona o del momento.",
     mantenimiento:
       "Regular: Conservación aceptable, aunque con detalles que requieren atención (pintura gastada, áreas verdes con poco cuidado, alumbrado irregular).",
+    hallazgos:
+      "\n* La ciudadanía percibe un **equilibrio** sobre las condiciones de tránsito en las principales avenidas y espacios públicos, durante el día y noche. \n* Se observó una percepción regular respecto al mantenimiento urbano, lo que se sugiere la necesidad de **reforzar las acciones de conservación y mejora** de la infraestructura y los espacios públicos.",
   },
 
   pachuca: {
@@ -71,6 +78,8 @@ const PARTICIPA_INFO = {
       "Poco seguro(a) - Solo me siento con cierta confianza en algunos horarios, pero en general percibo inseguridad.",
     mantenimiento:
       "Muy malo: Espacios en deterioro evidente, sin mantenimiento, con basura, mobiliario roto o inexistente.",
+    hallazgos:
+      "\n* La ciudadanía percibe *oportunidades* en mejorar las condiciones de seguridad al transitar por las principales avenidas y espacios públicos, durante el día como en la noche, lo que destaca la importancia de fortalecer entornos urbanos más seguros y confiables. \n* Se identificó áreas con **oportunidad de mejora en el mantenimiento urbano**, por lo que se propone fortalecer las acciones de conservación y mejora de la infraestructura y los espacios públicos.",
   },
 
   "san-agustin-tlaxiaca": {
@@ -85,6 +94,8 @@ const PARTICIPA_INFO = {
       "Neutral - Ni seguro(a) ni inseguro(a); depende mucho de la zona o del momento.",
     mantenimiento:
       "Regular: Conservación aceptable, aunque con detalles que requieren atención (pintura gastada, áreas verdes con poco cuidado, alumbrado irregular).",
+    hallazgos:
+      "\n* La ciudadanía percibe un **equilibrio** sobre las condiciones de tránsito en las principales avenidas y espacios públicos, durante el día y noche. \n* Se observó una percepción regular respecto al mantenimiento urbano, lo que se sugiere la necesidad de **reforzar las acciones de conservación y mejora** de la infraestructura y los espacios públicos.",
   },
 
   zapotlan: {
@@ -99,6 +110,8 @@ const PARTICIPA_INFO = {
       "Neutral - Ni seguro(a) ni inseguro(a); depende mucho de la zona o del momento.",
     mantenimiento:
       "Regular: Conservación aceptable, aunque con detalles que requieren atención (pintura gastada, áreas verdes con poco cuidado, alumbrado irregular).",
+    hallazgos:
+      "\n* La ciudadanía percibe un **equilibrio** sobre las condiciones de tránsito en las principales avenidas y espacios públicos, durante el día y noche. \n* Se observó una percepción regular respecto al mantenimiento urbano, lo que se sugiere la necesidad de **reforzar las acciones de conservación y mejora** de la infraestructura y los espacios públicos.",
   },
 
   zempoala: {
@@ -113,6 +126,8 @@ const PARTICIPA_INFO = {
       "Seguro(a) - La mayoría de las veces me siento confiado(a) al transitar",
     mantenimiento:
       "Regular: Conservación aceptable, aunque con detalles que requieren atención (pintura desgastada, áreas verdes con poco cuidado, alumbrado irregular).",
+    hallazgos:
+      "\n* La ciudadanía percibe condiciones seguras** para transitar por las principales avenidas y espacios públicos, durante el día como en la noche. \n* Se observó una percepción regular respecto al mantenimiento urbano, lo que se sugiere la necesidad de **reforzar las acciones de conservación y mejora** de la infraestructura y los espacios públicos.",
   },
 };
 
@@ -275,7 +290,7 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                     <p className={styles.note}>Los 3 más elegidos </p>
                   </div>
 
-                  <div className={styles.row}>
+                  {/* <div className={styles.row}>
                     <p className={styles.titleRow}>Seguridad percibida</p>
                     <p className={styles.descRow}>{s.participa.seguridad}</p>
                   </div>
@@ -283,6 +298,14 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                   <div className={styles.row}>
                     <p className={styles.titleRow}>Mantenimiento urbano</p>
                     <p className={styles.descRow}>{s.participa.mantenimiento}</p>
+                  </div> */}
+
+                  <div className={styles.row222}>
+                    <p className={styles.titleRow}>Hallazgos Clave</p>
+
+                    <ul className={styles.descriptionList}>
+                      {renderDescription(s.participa.hallazgos, styles.descRow)}
+                    </ul>
                   </div>
                 </div>
                 {mounted && tip

@@ -76,10 +76,9 @@
   list-style: disc;
   padding-left: 1.25rem;
   margin: 0;
-
+  color: var(--grisOsc);
   font-size: clamp(1rem, 0.96rem + 0.4vw, 1.125rem);
   line-height: 1.7;
-  color: #1f2937;
   text-align: justify;
 }
 
@@ -105,7 +104,7 @@
 .sidebar {
   padding: 0 4px;
   position: sticky;
-  top: 88px; 
+  top: 88px;
   align-self: start;
 }
 

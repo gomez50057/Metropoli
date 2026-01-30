@@ -28,11 +28,9 @@ export default function BehindPlan() {
         <h2>Lo que <span className="span-doarado">pasa detrás</span> del <span className="span-doarado">Plan</span></h2>
         <p className={styles.subTitule}><span>Fase de diagnóstico:</span> Escuchamos y analizamos a la Metropoli.</p>
         <p className={styles.paragraph}>
-          Realizamos la recopilación de información y percepciones sobre las características arquitectónicas, urbanísticas y socioeconómicas de la Zona Metropolitana de Pachuca.
-          El objetivo es conocer la visión de la ciudadanía y analizar los modelos culturales, arquitectónicos y naturales existentes, con el fin de identificar las áreas que requieren atención e intervención.
+          Realizamos la recopilación de información y percepciones ciudadanas sobre las características arquitectónicas, urbanísticas y socioeconómicas de la Zona Metropolitana de Pachuca, con el objetivo de conocer la visión de la población y analizar los modelos culturales, arquitectónicos y naturales existentes, a fin de identificar las áreas que requieren atención e intervención.
         </p>
       </div>
-
     </section>
   );
 }
