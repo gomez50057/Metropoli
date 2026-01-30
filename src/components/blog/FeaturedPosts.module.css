@@ -66,7 +66,6 @@
   line-height: 1.25;
 }
 
-
 .featuredLink:hover {
   text-decoration: underline;
 }
@@ -76,6 +75,65 @@
   outline-offset: 2px;
   border-radius: 6px;
 }
+
+.toggleWrap {
+  margin-top: 14px;
+  display: grid;
+  gap: 6px;
+}
+
+.toggleBtn {
+  width: 100%;
+  border: 1px solid rgba(105, 27, 50, 0.18);
+  background: rgba(105, 27, 50, 0.06);
+  color: #691B32;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.toggleBtn:hover {
+  background: rgba(105, 27, 50, 0.10);
+  border-color: rgba(105, 27, 50, 0.28);
+  transform: translateY(-1px);
+}
+
+.toggleBtn:active {
+  transform: translateY(0);
+}
+
+.toggleBtn:focus-visible {
+  outline: 2px solid #691B32;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.toggleIcon {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.toggleHint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #777;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .toggleBtn {
+    font-size: 0.92rem;
+    padding: 10px 12px;
+  }
+}
+
 
 @media (max-width: 1024px) {
   .featuredSection {
