@@ -283,7 +283,7 @@ const InteractiveMap = () => {
           Descubre la Zona Metropolitana {getPreposicion(zonaSeleccionada)}{" "}
           {getTituloZona(zonaSeleccionada)}. Haz clic en cada zona para consultar
           información de sus {getMunAlc(zonaSeleccionada)}, así como sus principales
-          características. ¡Explora ahora!
+          características. <span>¡Explora ahora!</span>
         </p>
 
         {renderParagraphsWithStyles(getMapNom(zonaSeleccionada))}

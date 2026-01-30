@@ -7,9 +7,9 @@ export const getTextoDescripcion = (zonaSeleccionada) => {
     case 'ZMP':
       return 'Las Comisiones de la Zona Metropolitana de Pachuca son órganos auxiliares del Consejo, cuya labor consiste en informar, desahogar, proponer, recomendar, analizar, investigar, opinar y evaluar los Asuntos Metropolitanos que corresponden a la problemática sectorial que atiende cada Comisión en particular.';
     case 'ZMTula':
-      return 'Las Comisiones de la Zona Metropolitana de Tula tienen la responsabilidad de coordinar y gestionar iniciativas relacionadas con el desarrollo sostenible, el manejo ambiental, y la planificación urbana que afecta a la región metropolitana de Tula.';
+      return 'Las Comisiones de la Zona Metropolitana de Tula tienen la responsabilidad de coordinar y gestionar iniciativas relacionadas con el desarrollo sostenible, el manejo ambiental y la planificación urbana que afecta a la Zona Metropolitana de Tula.';
     case 'ZMTulancingo':
-      return 'Las Comisiones de la Zona Metropolitana de Tulancingo se encargan de analizar y promover políticas que favorezcan el desarrollo económico y social de la región, enfocándose en temas de infraestructura, movilidad, y servicios públicos.';
+      return 'Las Comisiones de la Zona Metropolitana de Tulancingo se encargan de analizar y promover políticas que favorezcan el desarrollo económico y social del territorio Metropolitana de Tulancingo, enfocándose en temas de infraestructura, movilidad y servicios públicos.';
     case 'ZMVM':
       return 'Las Comisiones del Valle de México son órganos auxiliares del Consejo, cuya labor consiste en informar, desahogar, proponer, recomendar, analizar, investigar, opinar y evaluar los Asuntos Metropolitanos que corresponden a la problemática sectorial que atiende cada Comisión en particular.';
     default:
@@ -37,15 +37,15 @@ export const getTituloZona = (zonaSeleccionada) => {
 export const getTextoObjetivo = (zonaSeleccionada) => {
   switch (zonaSeleccionada) {
     case 'ZMP':
-      return 'La Zona Metropolitana de Pachuca es una región clave en el desarrollo urbano del estado de Hidalgo, conformada por los municipios de Epazoyucan, Mineral de la Reforma, Mineral del Monte, Pachuca de Soto, San Agustín Tlaxiaca, Zapotlán de Juárez y Zempoala. Esta área representa una integración funcional y territorial que facilita la planificación conjunta en aspectos económicos, sociales y de infraestructura, promoviendo un crecimiento ordenado y sostenible que mejora la calidad de vida de sus habitantes.';
+      return 'La Zona Metropolitana de Pachuca es un territorio clave en el desarrollo urbano del estado de Hidalgo, conformada por los municipios de Epazoyucan, Mineral de la Reforma, Mineral del Monte, Pachuca de Soto, San Agustín Tlaxiaca, Zapotlán de Juárez y Zempoala. Esta área representa una integración funcional y territorial que facilita la planificación conjunta en aspectos económicos, sociales y de infraestructura, promoviendo un crecimiento ordenado y sostenible que mejora la calidad de vida de sus habitantes.';
     case 'ZMTula':
-      return 'La Zona Metropolitana de Tula es una región estratégica en el estado de Hidalgo, integrada por los municipios de Atitalaquia, Atotonilco de Tula, Tlahuelilpan, Tlaxcoapan y Tula de Allende. Esta zona destaca por su importancia económica, social y territorial, promoviendo la colaboración intermunicipal para un desarrollo urbano ordenado y sostenible, así como para el fortalecimiento de la infraestructura y los servicios que beneficien a sus habitantes.';
+      return 'La Zona Metropolitana de Tula es una conurbación estratégica en el estado de Hidalgo, integrada por los municipios de Atitalaquia, Atotonilco de Tula, Tlahuelilpan, Tlaxcoapan y Tula de Allende. Esta zona destaca por su importancia económica, social y territorial, promoviendo la colaboración intermunicipal para un desarrollo urbano ordenado y sostenible, así como para el fortalecimiento de la infraestructura y los servicios que beneficien a sus habitantes.';
     case 'ZMTulancingo':
-      return 'La Zona Metropolitana de Tulancingo, ubicada en el estado de Hidalgo, está conformada por los municipios de Cuautepec de Hinojosa, Santiago Tulantepec de Lugo Guerrero y Tulancingo de Bravo. Esta región representa una integración estratégica para impulsar el desarrollo económico, social y urbano, fortaleciendo la infraestructura y servicios, y promoviendo un crecimiento sostenible que beneficie a los habitantes de los municipios que la integran';
+      return 'La Zona Metropolitana de Tulancingo, ubicada en el estado de Hidalgo, está conformada por los municipios de Cuautepec de Hinojosa, Santiago Tulantepec de Lugo Guerrero y Tulancingo de Bravo. Esta Zona Metropolitana representa una integración estratégica para impulsar el desarrollo económico, social y urbano, fortaleciendo la infraestructura y servicios, y promoviendo un crecimiento sostenible que beneficie a los habitantes de los municipios que la integran.';
     case 'ZMVM':
-      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Esta región, estrechamente interconectada en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México.';
+      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Este territorio metropolitano, estrechamente interconectado en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México..';
     default:
-      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Esta región, estrechamente interconectada en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México.';
+      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Este territorio metropolitano, estrechamente interconectado en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México..';
   }
 };
 
@@ -104,9 +104,9 @@ export const getMunAlc = (zonaSeleccionada) => {
 export const getMapNom = (zonaSeleccionada) => {
   switch (zonaSeleccionada) {
     case 'ZMP':
-      return 'La Zona Metropolitana de Pachuca es una región clave en el desarrollo urbano del estado de Hidalgo, conformada por los municipios de Epazoyucan, Mineral de la Reforma, Mineral del Monte, Pachuca de Soto, San Agustín Tlaxiaca, Zapotlán de Juárez y Zempoala.';
+      return 'La Zona Metropolitana de Pachuca es un territorio clave en el desarrollo urbano del estado de Hidalgo, conformada por los municipios de Epazoyucan, Mineral de la Reforma, Mineral del Monte, Pachuca de Soto, San Agustín Tlaxiaca, Zapotlán de Juárez y Zempoala.';
     case 'ZMTula':
-      return 'La Zona Metropolitana de Tula es una región estratégica en el estado de Hidalgo, integrada por los municipios de Atitalaquia, Atotonilco de Tula, Tlahuelilpan, Tlaxcoapan y Tula de Allende.';
+      return 'La Zona Metropolitana de Tula es una conurbación estratégica en el estado de Hidalgo, integrada por los municipios de Atitalaquia, Atotonilco de Tula, Tlahuelilpan, Tlaxcoapan y Tula de Allende.';
     case 'ZMTulancingo':
       return 'La Zona Metropolitana de Tulancingo, ubicada en el estado de Hidalgo, está conformada por los municipios de Cuautepec de Hinojosa, Santiago Tulantepec de Lugo Guerrero y Tulancingo de Bravo.';
     case 'ZMVM':
