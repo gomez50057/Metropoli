@@ -268,3 +268,25 @@
     height: 180px;
   }
 }
+/* Cuando ya caben 3 cards (min 3*480px + gaps) */
+@media (min-width: 1500px) {
+  /* 6 columnas = equivalente visual a 3 columnas */
+  .cardsGrid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  /* cada card ocupa 2/6 => 3 cards por fila */
+  .cardWrapper {
+    grid-column: span 2;
+  }
+
+  /* Si la última fila tiene 1 card (total = 3n + 1) => centrarla */
+  .cardsGrid > :nth-last-child(1):nth-child(3n + 1) {
+    grid-column: 3 / span 2;
+  }
+
+  /* Si la última fila tiene 2 cards (total = 3n + 2) => centrar el par */
+  .cardsGrid > :nth-last-child(2):nth-child(3n + 1) {
+    grid-column: 2 / span 2;
+  }
+}

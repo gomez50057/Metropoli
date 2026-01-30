@@ -13,7 +13,7 @@ export default function PimusZmpAbout({
             <span className={styles.leadBold}>El Plan Integral de Movilidad Urbana Sustentable de la Zona Metropolitana de Pachuca (PIMUS-ZMP)</span> es un <span className={styles.leadBold}>instrumento de planeación</span> para <span className={styles.leadBold}>mejorar la movilidad </span>de forma <span className={styles.leadBold}>sostenible, eficiente y segura</span>. Busca reducir congestión y tiempos de traslado mediante la integración de transporte peatonal, ciclista, público y privado.
           </p>
           <p className={styles.lead}>
-            La <span className={styles.leadBold}>Zona Metropolitana de Pachuca </span>incluye <span className={styles.leadBold}>Pachuca de Soto, Mineral de la Reforma, Epazoyucan, Mineral del Monte, San Agustín Tlaxiaca, Zapotlán de Juárez y Zempoala</span>. El PIMUS-ZMP define una ruta común para <span className={styles.leadBold}>fortalecer infraestructura y servicios</span>, impulsando <span className={styles.leadBold}></span>traslados más seguros, incluyentes, resilientes y sustentables.
+            La <span className={styles.leadBold}>Zona Metropolitana de Pachuca</span> está conformada por los municipios de <span className={styles.leadBold}>Pachuca de Soto, Mineral de la Reforma, Epazoyucan, Mineral del Monte, San Agustín Tlaxiaca, Zapotlán de Juárez y Zempoala.</span> En este ámbito, el PIMUS-ZMP establece una ruta de acción común orientada a <span className={styles.leadBold}>fortalecer la infraestructura y los servicios de movilidad,</span> promoviendo traslados seguros, incluyentes, resilientes y sustentables, mediante la coordinación intermunicipal y una visión integral del territorio.
           </p>
         </div>
       </div>

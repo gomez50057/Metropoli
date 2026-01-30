@@ -246,6 +246,11 @@
 }
 
 @media (max-width: 600px) {
+  .slider {
+    height: 140vh;
+    height: 140dvh;
+  }
+
   .overlay {
     background: rgba(0, 0, 0, 0.55);
   }

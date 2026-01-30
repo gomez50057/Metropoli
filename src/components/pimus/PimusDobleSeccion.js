@@ -64,7 +64,7 @@ export default function PimusDobleSeccion({
           </div>
 
           <header className={styles.cardHeader}>
-            <h3 className={`${styles.cardTitle} ${styles.titleRight}`}><span className="span-doarado">Red Metropolitana: </span><span className="span-vino">Transporte Público, bici y Peatón</span></h3>
+            <h3 className={`${styles.cardTitle} ${styles.titleRight}`}><span className="span-doarado">Red Metropolitana: </span><span className="span-vino">Transporte Público, Bici y Peatón</span></h3>
           </header>
 
           <div className={styles.cardBody}>
