@@ -37,78 +37,6 @@
   position: relative;
 }
 
-.gallery {
-  position: relative;
-  width: 350px;
-  height: 175px;
-}
-
-.gallery img {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid var(--vinoOsc);
-  padding: 5px;
-  background-color: var(--blanco);
-  animation: semicircle 12s infinite ease-in-out;
-}
-
-.gallery img:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.gallery img:nth-child(2) {
-  animation-delay: 3s;
-}
-
-.gallery img:nth-child(3) {
-  animation-delay: 6s;
-}
-
-.gallery img:nth-child(4) {
-  animation-delay: 9s;
-}
-
-/* Animación semicircular */
-@keyframes semicircle {
-  0% {
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 0) scale(0);
-    opacity: 0;
-  }
-
-  25% {
-    top: 50%;
-    left: 100%;
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-
-  50% {
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-
-  75% {
-    top: 50%;
-    left: 0%;
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-
-  100% {
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 0) scale(0);
-    opacity: 0;
-  }
-}
-
-/* 📱 Móvil */
 @media (max-width: 768px) {
   .aboutContainer {
     flex-direction: column;
@@ -135,19 +63,8 @@
     width: 100%;
     margin-bottom: 2rem;
   }
-
-  .gallery {
-    width: 250px;
-    height: 125px;
-  }
-
-  .gallery img {
-    width: 90px;
-    height: 90px;
-  }
 }
 
-/* 💻 Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
   .aboutContainer {
     flex-direction: column;
@@ -172,15 +89,5 @@
   .aboutGiro {
     width: 100%;
     margin-bottom: 2rem;
-  }
-
-  .gallery {
-    width: 300px;
-    height: 150px;
-  }
-
-  .gallery img {
-    width: 100px;
-    height: 100px;
   }
 }

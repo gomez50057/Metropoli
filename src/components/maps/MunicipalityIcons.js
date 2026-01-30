@@ -192,7 +192,8 @@ export const municipalityIcons = {
   "Temamatla": ["/icons/ACT_PO_ZMVM.png"],
   "Tezoyuca": ["/icons/ACT_PO_ZMVM.png"],
   "Coyotepec": ["/icons/ACT_PO_ZMVM.png"],
-  "Chalco": ["/icons/ACT_PO_ZMVM.png"]
+  "Chalco": ["/icons/ACT_PO_ZMVM.png"],
+  "Huitzilac": ["/icons/ACT_PO_ZMVM.png"]
 };
 
 // Mapa de equivalencias por proyecto (key = filename)
@@ -200,7 +201,7 @@ export const PROJECT_META = {
   'ACT_PDUyOT_ZMP.png': {
     label: 'Actualización del PDUyOT – Zona Metropolitana de Pachuca',
     pdf: '/icons/ACT_PDUyOT_ZMP.pdf',
-    color: '#2ecc71', // opcional (color de impacto)
+    color: '#2ecc71',
   },
   'ACT_PO_ZMVM.png': {
     label: 'Actualización del Programa de Ordenamiento – ZM del Valle de México',
