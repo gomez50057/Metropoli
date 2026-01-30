@@ -20,9 +20,9 @@ const safeUrl = (path) => {
 // Slug consistente para categorías: quita acentos, separa camelCase, minúsculas y guiones
 const toSlug = (s = "") =>
   String(s)
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")         
-    .replace(/([a-z])([A-Z])/g, "$1-$2")                    
-    .replace(/[^\w\s-]/g, "")                              
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/([a-z])([A-Z])/g, "$1-$2")
+    .replace(/[^\w\s-]/g, "")
     .trim()
     .replace(/[\s_]+/g, "-")
     .toLowerCase();
@@ -128,7 +128,9 @@ const BlogNoticias = ({ posts = [], featuredPosts = [] }) => {
         </div>
       </div>
 
-      <FeaturedPosts featuredPosts={featuredPosts} />
+      <div className={styles.featuredCol}>
+        <FeaturedPosts featuredPosts={featuredPosts} />
+      </div>
     </section>
   );
 };

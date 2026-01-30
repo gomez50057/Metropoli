@@ -2,7 +2,7 @@
 
 import styles from "./FeaturedPosts.module.css";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { normalizeName } from "@/utils/blogData";
 import SafeImage from "./shared/SafeImage";
 
@@ -10,12 +10,56 @@ const DEFAULT_VISIBLE = 5;
 
 const FeaturedPosts = ({ featuredPosts = [] }) => {
   const [expanded, setExpanded] = useState(false);
+  const [heights, setHeights] = useState({ collapsed: 0, expanded: 0 });
+
+  const listRef = useRef(null);
 
   const items = useMemo(() => featuredPosts ?? [], [featuredPosts]);
   if (!items.length) return null;
 
-  const visiblePosts = expanded ? items : items.slice(0, DEFAULT_VISIBLE);
   const canToggle = items.length > DEFAULT_VISIBLE;
+
+  const measure = () => {
+    const ul = listRef.current;
+    if (!ul) return;
+
+    const children = Array.from(ul.children);
+    if (!children.length) return;
+
+    const visibleCount = Math.min(DEFAULT_VISIBLE, children.length);
+
+    // Altura hasta el final del item #5 (incluye gaps por offsetTop)
+    const lastVisible = children[visibleCount - 1];
+    const collapsed = lastVisible.offsetTop + lastVisible.offsetHeight;
+
+    // Altura total real del UL (todas las notas)
+    const expandedH = ul.scrollHeight;
+
+    setHeights({ collapsed, expanded: expandedH });
+  };
+
+  useLayoutEffect(() => {
+    measure();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items.length]);
+
+  useEffect(() => {
+    const ul = listRef.current;
+    if (!ul) return;
+
+    // Recalcula al cambiar tamaños (imágenes, fonts, responsive, etc.)
+    const ro = new ResizeObserver(() => measure());
+    ro.observe(ul);
+
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const maxH = expanded ? heights.expanded : heights.collapsed;
 
   return (
     <aside className={styles.featuredSection} aria-labelledby="featured-title">
@@ -23,31 +67,43 @@ const FeaturedPosts = ({ featuredPosts = [] }) => {
         Publicación destacada
       </h3>
 
-      <ul className={styles.featuredList}>
-        {visiblePosts.map((post) => (
-          <li key={normalizeName(post.name)} className={styles.featuredItem}>
-            <SafeImage
-              src={post.image}
-              alt={post.name || "Imagen de la publicación"}
-              className={styles.featuredImage}
-              loading="lazy"
-              decoding="async"
-              fallbackSrc="/img/noticias/fallback.webp"
-            />
+      {/* Wrapper animable */}
+      <div
+        className={styles.listWrap}
+        style={{ maxHeight: maxH ? `${maxH}px` : undefined }}
+        data-expanded={expanded ? "true" : "false"}
+      >
+        <ul
+          ref={listRef}
+          className={styles.featuredList}
+          data-expanded={expanded ? "true" : "false"}
+          id="featured-list"
+        >
+          {items.map((post) => (
+            <li key={normalizeName(post.name)} className={styles.featuredItem}>
+              <SafeImage
+                src={post.image}
+                alt={post.name || "Imagen de la publicación"}
+                className={styles.featuredImage}
+                loading="lazy"
+                decoding="async"
+                fallbackSrc="/img/noticias/fallback.webp"
+              />
 
-            <div className={styles.featuredContent}>
-              <p className={styles.featuredDate}>{post.date}</p>
+              <div className={styles.featuredContent}>
+                <p className={styles.featuredDate}>{post.date}</p>
 
-              <Link
-                href={`/noticias/${normalizeName(post.name)}`}
-                className={styles.featuredLink}
-              >
-                {post.name}
-              </Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+                <Link
+                  href={`/noticias/${normalizeName(post.name)}`}
+                  className={styles.featuredLink}
+                >
+                  {post.name}
+                </Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {canToggle && (
         <div className={styles.toggleWrap}>
@@ -58,9 +114,16 @@ const FeaturedPosts = ({ featuredPosts = [] }) => {
             aria-expanded={expanded}
             aria-controls="featured-list"
           >
-            {expanded ? "Ver menos publicaciones" : `Ver más (${items.length - DEFAULT_VISIBLE})`}
-            <span className={styles.toggleIcon} aria-hidden="true">
-              {expanded ? "▲" : "▼"}
+            {expanded
+              ? "Ver menos publicaciones"
+              : `Ver más (${items.length - DEFAULT_VISIBLE})`}
+
+            <span
+              className={styles.toggleIcon}
+              aria-hidden="true"
+              data-expanded={expanded ? "true" : "false"}
+            >
+              ▼
             </span>
           </button>
 
