@@ -21,7 +21,6 @@ function renderTextWithBreaks(text) {
 }
 
 export default function PimusDobleSeccion({
-  // Placeholders (cámbialos por tus rutas reales)
   topOuterImg = "/img/PIMUS_ZMP/PimusDobleSeccion/topOuterImg.jpg",
   topInnerImg = "/img/PIMUS_ZMP/PimusDobleSeccion/topInnerImg.jpg",
   bottomInnerImg = "/img/PIMUS_ZMP/PimusDobleSeccion/bottomInnerImg.jpg",

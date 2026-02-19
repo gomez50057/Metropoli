@@ -8,8 +8,9 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import { motion, useReducedMotion } from "framer-motion";
 import styles from "./HaptichashSlider.module.css";
-const BASE_PATH = "/img/PIMUS_ZMP/foros";
 import OpinionButton from "@/components/shared/botones/OpinionButton";
+
+const BASE_PATH = "/img/PIMUS_ZMP/foros";
 
 const FOLDERS = [
   { slug: "personas-discapacidad", title: "Personas con Discapacidad", count: 3 },
@@ -114,24 +115,6 @@ export default function HaptichashSlider() {
       <div className={styles.slider}>
         <button ref={prevRef} className={`${styles.arrow} ${styles.prev}`} aria-label="Anterior">‹</button>
         <button ref={nextRef} className={`${styles.arrow} ${styles.next}`} aria-label="Siguiente">›</button>
-
-        <div className={styles.engagementBadge}>
-          <h3 className={styles.tituloBtn}>
-            <span className="span-doarado">Participa</span> en la
-            <span className="span-doarado">Consulta</span>
-          </h3>
-
-          <p className={styles.descriptionBtn}>
-            <span>Opinión ciudadana </span>
-            Tu opinión es clave para fortalecer el PIMUS.
-          </p>
-
-          <OpinionButton
-            mode="link"
-            href="https://forms.gle/CNPGfARzoP1sy4nZ7"
-          />
-        </div>
-
         <Swiper
           modules={[Navigation, Autoplay, EffectFade, Keyboard]}
           effect="fade"
@@ -160,7 +143,7 @@ export default function HaptichashSlider() {
             return (
               <SwiperSlide key={s.img}>
                 <div className={styles.slide}>
-                  {/* Fondo con overlay + Ken Burns sutil */}
+                  {/* Fondo */}
                   <div className={styles.slideBgImg}>
                     <motion.img
                       src={s.img}
@@ -174,45 +157,62 @@ export default function HaptichashSlider() {
                     <span className={styles.overlay} />
                   </div>
 
-                  {/* Tarjeta central animada */}
-                  <div className={styles.slideMainImg}>
-                    <motion.div
-                      className={styles.slideMainImgMotion}
-                      initial={false}
-                      variants={cardV}
-                      animate={isActive ? "active" : "inactive"}
-                    >
-                      <div className={styles.slideMainImgWrapper}>
-                        <img
-                          src={s.img}
-                          alt={`${s.title} - principal`}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                    </motion.div>
-                  </div>
+                  {/* GRID: texto | imagen | botón */}
+                  <div className={styles.slideGrid}>
+                    {/* TEXTO */}
+                    <div className={styles.slideCopy}>
+                      <motion.div
+                        className={styles.slideTitle}
+                        initial={false}
+                        variants={titleV}
+                        animate={isActive ? "active" : "inactive"}
+                      >
+                        <h1>{s.title}</h1>
+                      </motion.div>
 
+                      <motion.div
+                        className={styles.slideDescription}
+                        initial={false}
+                        variants={descV}
+                        animate={isActive ? "active" : "inactive"}
+                      >
+                        <p>{s.description}</p>
+                      </motion.div>
+                    </div>
 
-                  {/* Copy animado */}
-                  <div className={styles.slideCopy}>
-                    <motion.div
-                      className={styles.slideTitle}
-                      initial={false}
-                      variants={titleV}
-                      animate={isActive ? "active" : "inactive"}
-                    >
-                      <h1>{s.title}</h1>
-                    </motion.div>
+                    {/* IMAGEN */}
+                    <div className={styles.slideMainImg}>
+                      <motion.div
+                        className={styles.slideMainImgMotion}
+                        initial={false}
+                        variants={cardV}
+                        animate={isActive ? "active" : "inactive"}
+                      >
+                        <div className={styles.slideMainImgWrapper}>
+                          <img
+                            src={s.img}
+                            alt={`${s.title} - principal`}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </motion.div>
+                    </div>
 
-                    <motion.div
-                      className={styles.slideDescription}
-                      initial={false}
-                      variants={descV}
-                      animate={isActive ? "active" : "inactive"}
-                    >
-                      <p>{s.description}</p>
-                    </motion.div>
+                    {/* BOTÓN (CTA) */}
+                    <div className={styles.slideCta}>
+                      <h3 className={styles.tituloBtn}>
+                        <span className="span-doarado">Participa</span> en la{" "}
+                        <span className="span-doarado">Consulta</span>
+                      </h3>
+
+                      <p className={styles.descriptionBtn}>
+                        <span>Opinión ciudadana </span>
+                        Tu opinión es clave para fortalecer el PIMUS.
+                      </p>
+
+                      <OpinionButton mode="link" href="https://forms.gle/CNPGfARzoP1sy4nZ7" />
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>

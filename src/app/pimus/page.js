@@ -20,7 +20,7 @@ const PIMUS_ZMP_Page = () => {
       /> */}
       <PimusZmpAbout />
       <PimusJustificacionAlcance />
-      < HaptichashSlider/>
+      <HaptichashSlider/>
       <PimusZmpGoals />
       <PimusZmpBenefits />
       <Pimuskpis />

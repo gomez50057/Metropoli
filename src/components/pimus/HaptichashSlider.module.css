@@ -1,8 +1,14 @@
+/* HaptichashSlider.module.css */
+
 .wrap {
   --bg: #000;
   --fg: #fff;
-  --pad: clamp(1rem, 3vw, 3rem);
-  --arrow-size: 48px;
+
+  /* espacio base */
+  --pad: clamp(14px, 3vw, 44px);
+
+  /* controles */
+  --arrow-size: clamp(38px, 4.2vw, 54px);
 
   width: 100%;
   min-height: 50vh;
@@ -17,8 +23,7 @@
 .slider {
   position: relative;
   width: 100%;
-  height: 50vh;
-  height: 50dvh;
+  height: clamp(420px, 55dvh, 760px);
   z-index: 1;
 }
 
@@ -27,16 +32,18 @@
   height: 100%;
 }
 
+/* Slide wrapper */
 .slide {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* Fondo */
+/* ===== Fondo ===== */
 .slideBgImg {
   position: absolute;
   inset: 0;
+  z-index: 0;
 }
 
 .slideBgImg img {
@@ -54,17 +61,74 @@
   pointer-events: none;
 }
 
-/* Tarjeta central */
+/* =========================================================
+   GRID REAL: Desktop = texto | imagen | botón
+   Mobile = botón | texto | imagen
+   ========================================================= */
+.slideGrid {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  padding: var(--pad);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(220px, 0.55fr);
+  grid-template-areas: "copy card cta";
+  align-items: center;
+  gap: clamp(14px, 2.2vw, 28px);
+}
+
+/* Áreas */
+.slideCopy {
+  grid-area: copy;
+  position: relative;
+  z-index: 3;
+  max-width: 720px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.slideTitle {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.slideTitle h1 {
+  color: var(--fg);
+  margin: 0;
+  font-size: clamp(1.6rem, 3.8vw, 3rem);
+  line-height: 1.15;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.slideDescription {
+  width: 100%;
+}
+
+.slideDescription p {
+  color: var(--fg);
+  margin: 0;
+  font-size: clamp(1rem, 2.1vw, 1.25rem);
+  line-height: 1.25;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+/* ===== Card central ===== */
 .slideMainImg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 35%;
-  height: 50%;
-  transform: translate(-30%, -50%);
+  grid-area: card;
+  position: relative;
   z-index: 2;
+
+  width: min(520px, 44vw);
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+
+  justify-self: center;
+  align-self: center;
+
   box-shadow:
-    rgba(0, 0, 0, 0.1) 0px 1px 3px,
+    rgba(0, 0, 0, 0.10) 0px 1px 3px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px;
 }
 
@@ -78,7 +142,7 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  border-radius: 30px;
+  border-radius: clamp(18px, 2vw, 30px);
 }
 
 .slideMainImgWrapper img {
@@ -87,62 +151,75 @@
   object-fit: cover;
 }
 
-/* Copy */
-.slideCopy {
-  position: absolute;
-  top: 50%;
-  left: 15%;
-  transform: translate(-15%, -50%);
-  z-index: 6;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+/* ===== CTA / Botón ===== */
+.slideCta {
+  grid-area: cta;
+
+  justify-self: end;
+  align-self: start;
+
+  width: min(420px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+
+  padding-top: clamp(4px, 1vw, 14px);
+
+  /* estilo “badge” */
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 12px 16px;
 }
 
-.slideTitle {
-  width: min(720px, 90vw);
-  margin-bottom: 0.75rem;
+.tituloBtn {
+  margin: 0 0 0.2rem 0;
+  font-size: clamp(1.05rem, 2.1vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.05;
 }
 
-.slideTitle h1 {
+.tituloBtn span {
+  font-size: clamp(1.2rem, 2.6vw, 2rem);
+}
+
+.descriptionBtn {
+  margin: 0 0 0.75rem 0;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
   color: var(--fg);
-  margin: 0;
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  line-height: 1.15;
-  font-weight: 700;
-  overflow-wrap: anywhere;
-}
-
-.slideDescription {
-  width: min(720px, 90vw);
-}
-
-.slideDescription p {
-  color: var(--fg);
-  margin: 0;
-  font-size: clamp(1rem, 2.4vw, 1.25rem);
-  line-height: 1.25;
-  font-weight: 600;
+  font-weight: 500;
   opacity: 0.95;
+  text-align: right;
 }
 
-/* Flechas */
+.descriptionBtn span {
+  font-weight: 700;
+}
+
+/* ===== Flechas ===== */
 .arrow {
   position: absolute;
   z-index: 7;
   top: 50%;
   transform: translateY(-50%);
+
   width: var(--arrow-size);
   height: var(--arrow-size);
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(2px);
+
   color: var(--fg);
   font-size: 28px;
   line-height: 1;
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .arrow:hover {
@@ -152,124 +229,87 @@
 }
 
 .prev {
-  left: 1.25rem;
+  left: max(0.75rem, env(safe-area-inset-left));
 }
 
 .next {
-  right: 1.25rem;
+  right: max(0.75rem, env(safe-area-inset-right));
 }
 
-.engagementBadge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+/* ========= Breakpoints ========= */
 
-  font-size: clamp(12px, 1.2vw, 16px);
-  font-weight: 600;
-  padding: 10px 18px;
-  z-index: 1100;
-
-
-}
-
-.tituloBtn {
-  font-size: 2rem;
-  font-weight: 400;
-  margin: 0 0 0.2rem 0;
-}
-
-.tituloBtn span {
-  font-size: 2.5rem;
-}
-
-.descriptionBtn {
-  margin: 0 0 0.8rem 0;
-  font-size: 1rem;
-  color: var(--blanco);
-  font-weight: 500;
-}
-
-.descriptionBtn span {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-
+/* Tablet: reduce CTA width a la derecha */
 @media (max-width: 1200px) {
+  .slideGrid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(200px, 0.6fr);
+  }
+
   .slideMainImg {
-    width: 42%;
-    height: 50%;
-    transform: translate(-38%, -50%);
-  }
-
-  .slideCopy {
-    left: 12%;
-    transform: translate(-12%, -50%);
-  }
-
-  .arrow {
-    --arrow-size: 46px;
+    width: min(520px, 46vw);
   }
 }
 
 @media (max-width: 1024px) {
+  .slideGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(190px, 0.7fr);
+  }
+
   .slideMainImg {
-    width: 50%;
-    height: 48%;
-    transform: translate(-42%, -50%);
-  }
-
-  .slideCopy {
-    left: 10%;
-    transform: translate(-10%, -50%);
-  }
-
-  .arrow {
-    --arrow-size: 44px;
+    width: min(520px, 48vw);
   }
 }
 
+/* Mobile: botón -> texto -> imagen */
 @media (max-width: 900px) {
-  .slideMainImg {
-    width: 85%;
-    height: 45%;
-    transform: translate(-50%, -55%);
+  .slider {
+    height: min(92dvh, 780px);
+  }
+
+  .slideGrid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "cta"
+      "copy"
+      "card";
+    align-content: center;
+    padding: clamp(14px, 4vw, 22px);
+  }
+
+  .slideCta {
+    justify-self: center;
+    align-self: start;
+    width: min(520px, 92vw);
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .descriptionBtn {
+    text-align: left;
   }
 
   .slideCopy {
-    width: 85%;
-    top: 72%;
-    left: 50%;
-    transform: translate(-50%, -72%);
-    text-align: left;
+    width: min(720px, 92vw);
+    justify-self: center;
+  }
+
+  .slideMainImg {
+    width: min(720px, 92vw);
+    aspect-ratio: 16 / 10;
+    justify-self: center;
   }
 }
 
 @media (max-width: 600px) {
   .slider {
-    height: 140vh;
-    height: 140dvh;
+    height: min(92svh, 760px);
   }
 
   .overlay {
     background: rgba(0, 0, 0, 0.55);
   }
 
-  .slideMainImg {
-    width: 92%;
-    height: 42%;
-    transform: translate(-50%, -56%);
-  }
-
-  .slideCopy {
-    width: min(92vw, 640px);
-    top: 78%;
-    left: 50%;
-    transform: translate(-50%, -78%);
-  }
-
   .slideTitle h1 {
-    font-size: clamp(1.35rem, 6vw, 2rem);
+    font-size: clamp(1.25rem, 6vw, 2rem);
   }
 
   .slideDescription p {
@@ -277,49 +317,29 @@
   }
 
   .arrow {
-    --arrow-size: 40px;
-  }
-
-  .prev {
-    left: .75rem;
-  }
-
-  .next {
-    right: .75rem;
+    font-size: 24px;
+    top: 90%;
   }
 }
 
 @media (max-width: 380px) {
   .arrow {
-    --arrow-size: 36px;
+    font-size: 22px;
   }
 
   .slideTitle h1 {
-    font-size: clamp(1.2rem, 6.5vw, 1.6rem);
+    font-size: clamp(1.15rem, 6.5vw, 1.6rem);
   }
 }
 
 @media (min-width: 1536px) {
   .slideMainImg {
-    width: 28%;
-    height: 56%;
-    transform: translate(-28%, -50%);
-  }
-
-  .slideCopy {
-    left: 18%;
-    transform: translate(-18%, -50%);
-  }
-
-  .arrow {
-    --arrow-size: 54px;
-  }
-
-  .slideTitle h1 {
-    font-size: clamp(2.25rem, 3vw, 3.5rem);
+    width: min(640px, 36vw);
+    aspect-ratio: 16 / 10;
   }
 }
 
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .arrow {
     transition: none;
