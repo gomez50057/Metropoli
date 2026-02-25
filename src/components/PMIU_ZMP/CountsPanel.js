@@ -97,6 +97,7 @@ export default function CountsPanel() {
     { key: "mdm", label: "Mineral del Monte", total: 63 },
     { key: "epaz", label: "Epazoyucan", total: 28 },
     { key: "zempoala", label: "Zempoala", total: 87 },
+    { key: "satl", label: "San Agustín Tlaxiaca", total: 37 }, 
   ];
 
   const totalGeneral = useMemo(
