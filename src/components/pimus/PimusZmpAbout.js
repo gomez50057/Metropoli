@@ -41,7 +41,7 @@ export default function PimusZmpAbout({
           ariaLabel="Ir a Participación Ciudadana en nueva pestaña"
         /> */}
 
-        <div className={styles.engagementBadge}>
+        {/* <div className={styles.engagementBadge}>
           <h3 className={styles.tituloBtn}>
             <span className="span-doarado">Participa</span> en la <span className="span-doarado">Consulta</span>
           </h3>
@@ -55,7 +55,7 @@ export default function PimusZmpAbout({
             mode="link"
             href="https://forms.gle/CNPGfARzoP1sy4nZ7"
           />
-        </div>
+        </div> */}
 
         <div className={styles.cardLg} aria-hidden="true">
           <img

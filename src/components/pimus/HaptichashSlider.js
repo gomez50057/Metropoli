@@ -200,7 +200,7 @@ export default function HaptichashSlider() {
                     </div>
 
                     {/* BOTÓN (CTA) */}
-                    <div className={styles.slideCta}>
+                    {/* <div className={styles.slideCta}>
                       <h3 className={styles.tituloBtn}>
                         <span className="span-doarado">Participa</span> en la{" "}
                         <span className="span-doarado">Consulta</span>
@@ -212,7 +212,7 @@ export default function HaptichashSlider() {
                       </p>
 
                       <OpinionButton mode="link" href="https://forms.gle/CNPGfARzoP1sy4nZ7" />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </SwiperSlide>
