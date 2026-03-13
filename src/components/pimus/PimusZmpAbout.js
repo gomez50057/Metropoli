@@ -30,32 +30,23 @@ export default function PimusZmpAbout({
           />
         </div>
 
-        {/* <CtaButton
-          primaryTop="Participación"
-          primaryBottom="Ciudadana"
-          hoverText="¡Participa!"
-          href="https://forms.gle/CNPGfARzoP1sy4nZ7"
-          openInNewTab={true}
-          prefetch={true}
-          title="Participación Ciudadana"
-          ariaLabel="Ir a Participación Ciudadana en nueva pestaña"
-        /> */}
-
-        {/* <div className={styles.engagementBadge}>
+        <div className={styles.engagementBadge}>
           <h3 className={styles.tituloBtn}>
-            <span className="span-doarado">Participa</span> en la <span className="span-doarado">Consulta</span>
+            <span className="span-doarado">Próximamente</span> disponible el{" "}
+            <span className="span-doarado">PIMUS</span>
           </h3>
 
           <p className={styles.descriptionBtn}>
-            <span>Opinión ciudadana </span>
-            Tu opinión es clave para fortalecer el PIMUS.
+            Muy pronto podrás consultar y descargar el PIMUS desde este espacio.
+            Estamos preparando su publicación para que tengas acceso al documento completo.
           </p>
 
-          <OpinionButton
+          {/* <OpinionButton
             mode="link"
             href="https://forms.gle/CNPGfARzoP1sy4nZ7"
-          />
-        </div> */}
+          /> */}
+        </div>
+
 
         <div className={styles.cardLg} aria-hidden="true">
           <img
