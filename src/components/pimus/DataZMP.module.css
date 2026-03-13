@@ -1,0 +1,142 @@
+/*  */
+/* contenedor general */
+/*  */
+
+.section {
+  width: 100%;
+  background: #ffffff;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+}
+
+/*  */
+/* grid principal */
+/*  */
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "left right"
+    "bottom bottom";
+  gap: 1rem;
+  align-items: start;
+  background: #ffffff;
+}
+
+/*  */
+/* columnas */
+/*  */
+
+.leftColumn,
+.rightColumn {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  width: 100%;
+  align-content: start;
+}
+
+.leftColumn {
+  grid-area: left;
+}
+
+.rightColumn {
+  grid-area: right;
+}
+
+/*  */
+/* cards */
+/*  */
+
+.card {
+  width: 100%;
+  min-width: 0;
+  background: #ffffff;
+  border-radius: 1.35rem;
+  overflow: hidden;
+}
+
+/*  */
+/* imagen */
+/*  */
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+}
+
+/*  */
+/* anchos iguales por columna */
+/*  */
+
+.topLeft,
+.middleLeft,
+.topRight,
+.middleRight {
+  width: 100%;
+}
+
+/*  */
+/* inferior */
+/*  */
+
+.bottom {
+  grid-area: bottom;
+  width: 100%;
+}
+
+/*  */
+/* pantallas grandes */
+/*  */
+
+@media (min-width: 1600px) {
+  .grid,
+  .leftColumn,
+  .rightColumn {
+    gap: 1.1rem;
+  }
+
+  .card {
+    border-radius: 1.45rem;
+  }
+}
+
+/*  */
+/* laptop / tablet horizontal */
+/*  */
+
+@media (max-width: 1199px) {
+  .grid,
+  .leftColumn,
+  .rightColumn {
+    gap: 0.95rem;
+  }
+}
+
+/*  */
+/* móvil */
+/*  */
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "right"
+      "bottom";
+    gap: 0.9rem;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    gap: 0.9rem;
+  }
+
+  .card {
+    border-radius: 1rem;
+  }
+}

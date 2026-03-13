@@ -7,7 +7,8 @@ import PimusJustificacionAlcance from "@/components/pimus/PimusDobleSeccion";
 import HaptichashSlider from "@/components/pimus/HaptichashSlider";
 import PimusZmpGoals from "@/components/pimus/PimusZmpGoals";
 import PimusZmpBenefits from "@/components/pimus/PimusZmpBenefits";
-import Pimuskpis from "@/components/pimus/Pimuskpis";
+// import Pimuskpis from "@/components/pimus/Pimuskpis";
+import DataZMP from "@/components/pimus/DataZMP";
 
 const PIMUS_ZMP_Page = () => {
   return (
@@ -23,7 +24,8 @@ const PIMUS_ZMP_Page = () => {
       <HaptichashSlider/>
       <PimusZmpGoals />
       <PimusZmpBenefits />
-      <Pimuskpis />
+      {/* <Pimuskpis /> */}
+      <DataZMP />
     </div>
   );
 };
