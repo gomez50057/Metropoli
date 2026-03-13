@@ -115,7 +115,7 @@ export default function CountsPanel() {
             <span className="span-doarado">Tu voz cuenta </span>en la{" "}
             <span>Zona Metropolitana </span>
           </h2>
-          <p className={styles.subtitle}>Respuestas por municipio en los talleres de consulta ciudadana.</p>
+          <p className={styles.subtitle}>Participación por municipio, con base en las respuestas recabadas en los cuestionarios de la consulta digital.</p>
         </div>
       </header>
 

@@ -226,8 +226,8 @@ export default function MunicipiosPromoSlider({ items = [] }) {
                 </div>
 
                 <h3 className={styles.title}>
-                  <span className="span-vino">Así</span> se<span className="span-vino">Vivió</span> el{" "}
-                  <span className="span-doarado">Taller</span>
+                  Lo que nos <span className="span-vino">dijo</span> la <span className="span-vino">ciudadanía</span> en la{" "}
+                  <span className="span-doarado">consulta digital</span>
                 </h3>
                 <p className={styles.desc}>Gracias por su participación.</p>
 
