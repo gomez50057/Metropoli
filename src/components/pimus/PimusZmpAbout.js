@@ -38,7 +38,6 @@ export default function PimusZmpAbout({
 
           <p className={styles.descriptionBtn}>
             Muy pronto podrás consultar y descargar el PIMUS desde este espacio.
-            Estamos preparando su publicación para que tengas acceso al documento completo.
           </p>
 
           {/* <OpinionButton
