@@ -265,9 +265,8 @@ export default function WorkshopResults({
                   </header>
 
                   <div
-                    className={`${styles.grid} ${
-                      isThree ? styles.gridThree : styles.gridFour
-                    }`}
+                    className={`${styles.grid} ${isThree ? styles.gridThree : styles.gridFour
+                      }`}
                   >
                     {municipalityData.items.map((item, index) => {
                       const cardBg =
@@ -288,17 +287,23 @@ export default function WorkshopResults({
                     })}
                   </div>
 
-                  <div className={styles.footerStats}>
-                    {footerItems.map((item, index) => (
-                      <motion.div
-                        key={item.id}
-                        className={styles.footerItem}
-                        animate={footerAnimation(isActive, index)}
-                      >
-                        <span className={styles.footerIcon}>{item.icon}</span>
-                        <span className={styles.footerLabel}>{item.title}</span>
-                      </motion.div>
-                    ))}
+                  <div className={styles.footer}>
+                    <div className={styles.footerIntro}>
+                      <p className={styles.footerTitle}>Creado con:</p>
+                    </div>
+
+                    <div className={styles.footerStats}>
+                      {footerItems.map((item, index) => (
+                        <motion.div
+                          key={item.id}
+                          className={styles.footerItem}
+                          animate={footerAnimation(isActive, index)}
+                        >
+                          <span className={styles.footerIcon}>{item.icon}</span>
+                          <span className={styles.footerLabel}>{item.title}</span>
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

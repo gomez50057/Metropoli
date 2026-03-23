@@ -15,10 +15,10 @@ const pmiu_zmp = () => {
       <Navbar />
       <Hero />
       <BehindPlan />
+      <WorkshopResults />
       <HaptichashSlider />
       <CountsPanel />
       <MunicipiosPromoSlider items={MUNICIPIOS} />
-      <WorkshopResults />
     </div>
   );
 };
