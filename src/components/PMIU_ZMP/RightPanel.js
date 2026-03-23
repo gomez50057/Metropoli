@@ -1,6 +1,64 @@
 "use client";
 
+import { motion } from "framer-motion";
 import styles from "@/styles/PMIU_ZMP/RightPanel.module.css";
+
+const panelVariants = {
+  hidden: {
+    opacity: 0,
+    y: 22,
+    filter: "blur(10px)",
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1],
+      staggerChildren: 0.08,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const blockVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const softItemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      delay: 0.08 + i * 0.06,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+const actionItemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.18 + i * 0.08,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
 
 export default function RightPanel({ participa = {} }) {
   const {
@@ -17,13 +75,13 @@ export default function RightPanel({ participa = {} }) {
   );
 
   const getFadeStop = (pct) => {
-    const value = Number(pct) || 0
-    const min = 22
-    const max = 78
-    const ratio = value / maxPct
-    const stop = min + (max - min) * ratio
-    return `${stop}%`
-  }
+    const value = Number(pct) || 0;
+    const min = 22;
+    const max = 78;
+    const ratio = value / maxPct;
+    const stop = min + (max - min) * ratio;
+    return `${stop}%`;
+  };
 
   const getRankBadgeClass = (index) => {
     if (index === 1) return styles.rankBadgeWine;
@@ -38,64 +96,199 @@ export default function RightPanel({ participa = {} }) {
   };
 
   return (
-    <section className={styles.panel}>
-      <div className={styles.topBlock}>
-        <div className={styles.responsesCard}>
-          <span className={styles.responsesNumber}>{responses}</span>
-          <span className={styles.responsesLabel}>respuestas</span>
-        </div>
+    <motion.section
+      className={styles.panel}
+      variants={panelVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.3 }}
+    >
+      <motion.div className={styles.topBlock} variants={blockVariants}>
+        <motion.div className={styles.responsesCard} variants={blockVariants}>
+          <motion.span
+            className={styles.responsesNumber}
+            initial={{ opacity: 0, scale: 0.85, y: 8 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {responses}
+          </motion.span>
 
-        <div className={styles.placesBlock}>
-          <h3 className={styles.placesTitle}>Lugares más representativos</h3>
+          <motion.span
+            className={styles.responsesLabel}
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            respuestas
+          </motion.span>
+        </motion.div>
 
-          <div className={styles.placeFeatured}>
-            <div className={styles.trophy}>🏆</div>
-            <p className={styles.placePrimary}>{representativos[0] ?? "—"}</p>
-          </div>
+        <motion.div className={styles.placesBlock} variants={blockVariants}>
+          <motion.h3 className={styles.placesTitle} variants={softItemVariants} custom={0}>
+            Lugares más representativos
+          </motion.h3>
 
-          <ol className={styles.placesList}>
-            <li className={styles.placeItem}>{representativos[1] ?? "—"}</li>
-            <li className={styles.placeItem}>{representativos[2] ?? "—"}</li>
-          </ol>
-        </div>
-      </div>
+          <motion.div
+            className={styles.placeFeatured}
+            variants={softItemVariants}
+            custom={1}
+          >
+            <motion.div
+              className={styles.trophy}
+              initial={{ opacity: 0, scale: 0.7, rotate: -10 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 0.45, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            >
+              🏆
+            </motion.div>
 
-      <div className={styles.separator} />
+            <motion.p
+              className={styles.placePrimary}
+              initial={{ opacity: 0, x: 10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.5 }}
+              transition={{ duration: 0.45, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {representativos[0] ?? "—"}
+            </motion.p>
+          </motion.div>
 
-      <div className={styles.actionsBlock}>
-        <h3 className={styles.actionsTitle}>Acciones prioritarias</h3>
+          <motion.ol className={styles.placesList}>
+            <motion.li
+              className={styles.placeItem}
+              variants={softItemVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.5 }}
+              custom={2}
+            >
+              {representativos[1] ?? "—"}
+            </motion.li>
+
+            <motion.li
+              className={styles.placeItem}
+              variants={softItemVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.5 }}
+              custom={3}
+            >
+              {representativos[2] ?? "—"}
+            </motion.li>
+          </motion.ol>
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className={styles.separator}
+        initial={{ opacity: 0, scaleX: 0.8 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: false, amount: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+        style={{ transformOrigin: "left center" }}
+      />
+
+      <motion.div className={styles.actionsBlock} variants={blockVariants}>
+        <motion.h3 className={styles.actionsTitle} variants={softItemVariants} custom={0}>
+          Acciones prioritarias
+        </motion.h3>
 
         <div className={styles.actionsList}>
           {topPrioritarias.map((item, index) => {
             const rank = String(index + 1).padStart(2, "0");
 
             return (
-              <article key={`${item.text}-${index}`} className={styles.actionItem}>
-                <div className={`${styles.rankBadge} ${getRankBadgeClass(index)}`}>
+              <motion.article
+                key={`${item.text}-${index}`}
+                className={styles.actionItem}
+                variants={actionItemVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: false, amount: 0.35 }}
+                custom={index}
+              >
+                <motion.div
+                  className={`${styles.rankBadge} ${getRankBadgeClass(index)}`}
+                  initial={{ opacity: 0, scale: 0.85, y: 8 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.5 }}
+                  transition={{
+                    duration: 0.42,
+                    delay: 0.24 + index * 0.08,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
                   {rank}
-                </div>
+                </motion.div>
 
                 <div className={styles.actionContent}>
                   <div className={styles.actionHeader}>
-                    <p className={styles.actionLabel}>{item.text}</p>
-                    <span className={styles.actionValue}>
+                    <motion.p
+                      className={styles.actionLabel}
+                      initial={{ opacity: 0, x: 8 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: false, amount: 0.5 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.28 + index * 0.08,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
+                      {item.text}
+                    </motion.p>
+
+                    <motion.span
+                      className={styles.actionValue}
+                      initial={{ opacity: 0, y: 8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.5 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.32 + index * 0.08,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
                       {Number(item.pct).toFixed(1)}%
-                    </span>
+                    </motion.span>
                   </div>
+
                   <div className={styles.barTrack}>
-                    <div
+                    <motion.div
                       className={`${styles.barFill} ${getBarFillClass(index)}`}
-                      style={{ "--fade-stop": getFadeStop(item.pct) }}
+                      style={{
+                        "--fade-stop": getFadeStop(item.pct),
+                        transformOrigin: "left center",
+                      }}
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      whileInView={{ scaleX: 1, opacity: 1 }}
+                      viewport={{ once: false, amount: 0.5 }}
+                      transition={{
+                        duration: 0.7,
+                        delay: 0.36 + index * 0.08,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                     />
                   </div>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
         </div>
 
-        <p className={styles.note}>Los 3 más elegidos por la ciudadanía</p>
-      </div>
-    </section>
+        <motion.p
+          className={styles.note}
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.4, delay: 0.52, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Los 3 más elegidos por la ciudadanía
+        </motion.p>
+      </motion.div>
+    </motion.section>
   );
 }

@@ -205,7 +205,7 @@ export default function MunicipiosPromoSlider({ items = [] }) {
               className={`${styles.card} ${slide.reversed ? styles.reverse : ""}`}
               aria-label={slide.name}
               style={{
-                backgroundImage: "url(/img/PMIU_ZMP/fondo.png)",
+                backgroundImage: "url(/img/PMIU_ZMP/fondo.webp)",
               }}
             >
               <div

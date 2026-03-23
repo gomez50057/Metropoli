@@ -588,3 +588,12 @@
     padding-left: 18px;
   }
 }
+
+.panel,
+.responsesCard,
+.rankBadge,
+.barFill,
+.placePrimary,
+.actionValue {
+  will-change: transform, opacity;
+}
