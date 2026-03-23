@@ -1,41 +1,44 @@
 .wrap {
-  --vino: var(--vinoOsc, #691B32);
-  --vinoSoft: rgba(105, 27, 50, .06);
-  --vinoBrd: rgba(105, 27, 50, .12);
-  --brd: rgba(0, 0, 0, .08);
-
+  --vino: var(--vinoOsc, #691b32);
+  --vinoSoft: rgba(105, 27, 50, 0.06);
+  --vinoBrd: rgba(105, 27, 50, 0.12);
+  --brd: rgba(0, 0, 0, 0.5);
   position: relative;
   padding: clamp(12px, 2vw, 24px);
   padding-left: max(clamp(12px, 2vw, 24px), env(safe-area-inset-left));
   padding-right: max(clamp(12px, 2vw, 24px), env(safe-area-inset-right));
 }
 
-/* ------ Títulos ------ */
+/*  */
+/* títulos */
+/*  */
+
 .contentTitule {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   margin-bottom: clamp(24px, 4vw, 48px);
   padding: 0 clamp(16px, 4vw, 48px);
+  text-align: center;
 }
+
+/* texto */
 
 .tituleBack {
   position: absolute;
-  /* top: -85%;
-  left: 50%;
-  transform: translateX(-50%); */
+  width: min(90vw, 1400px);
+  margin-inline: auto;
   font-size: clamp(1.5rem, 8vw, 18rem);
   font-weight: 800;
-  color: rgba(0, 0, 0, .04);
+  color: rgba(0, 0, 0, 0.04);
   user-select: none;
   pointer-events: none;
   z-index: 0;
-  width: min(90vw, 1400px);
-  margin-inline: auto;
 }
+
+/* texto */
 
 .titleFrond {
   font-size: clamp(1.5rem, 4vw, 5rem);
@@ -46,17 +49,20 @@
   z-index: 1;
 }
 
-/* ------ Flechas / navegación ------ */
+/*  */
+/* navegación */
+/*  */
+
 .navBtn {
   position: absolute;
   top: 40%;
   z-index: 10;
   width: clamp(40px, 4.5vw, 56px);
   height: clamp(40px, 4.5vw, 56px);
-  border-radius: 999px;
   border: 1px solid var(--brd);
+  border-radius: 999px;
   background: var(--blanco);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
   transform: translateY(-50%);
   cursor: pointer;
   touch-action: manipulation;
@@ -64,15 +70,15 @@
 
 .navBtn::before {
   content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: block;
   width: clamp(12px, 1.6vw, 16px);
   height: clamp(12px, 1.6vw, 16px);
   border: 2px solid var(--vino);
   border-top: none;
   border-right: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(-40%, -50%) rotate(45deg);
 }
 
@@ -88,7 +94,10 @@
   transform: translate(-60%, -50%) rotate(-135deg);
 }
 
-/* ------ Carrusel ------ */
+/*  */
+/* carrusel */
+/*  */
+
 .swiper {
   width: min(1260px, 94vw);
   margin: 0 auto;
@@ -103,7 +112,10 @@
   overflow: hidden;
 }
 
-/* ------ Tarjeta ------ */
+/*  */
+/* tarjeta */
+/*  */
+
 .card {
   container-type: inline-size;
   position: relative;
@@ -113,36 +125,63 @@
   justify-content: space-between;
   gap: clamp(16px, 3vw, 48px);
   width: 100%;
-  background: #fff;
-  border-radius: 28px;
-  border: 1px solid var(--brd);
   padding: clamp(16px, 2.5vw, 36px);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, .10);
+  border-radius: 32px;
+  background: #fff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  isolation: isolate;
   opacity: 1;
-  transform: translateY(6px) scale(.995);
-  transition: opacity .35s ease, transform .35s ease;
+  transform: translateY(6px) scale(0.995);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  box-shadow: inset 10px 10px 50px #bebebe,
+    inset -10px -10px 50px #ffffff;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.08) 30%,
+      rgba(105, 27, 50, 0.12) 100%);
+  pointer-events: none;
+}
+
+.card>* {
+  position: relative;
+  z-index: 1;
 }
 
 .swiper-slide-active .card {
-  opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-/* ------ Media (imagen) ------ */
+/*  */
+/* imagen */
+/*  */
+
 .media {
   flex: 0 0 auto;
 }
 
 .mediaImg {
-  inline-size: clamp(260px, 36vw, 640px);
-  block-size: auto;
   display: block;
+  inline-size: clamp(260px, 36vw, 640px);
+  max-width: 100%;
+  height: auto;
   border-radius: 20px;
   transform-origin: center;
   animation: kenburns 7s ease-in-out forwards paused;
-  max-width: 100%;
-  height: auto;
 }
+
+/*  */
+/* animación imagen */
+/*  */
 
 @keyframes kenburns {
   0% {
@@ -160,7 +199,10 @@
   animation-play-state: running;
 }
 
-/* ------ Contenido ------ */
+/*  */
+/* contenido */
+/*  */
+
 .content {
   flex: 1 1 auto;
   display: flex;
@@ -168,8 +210,7 @@
   gap: clamp(12px, 2vw, 18px);
   color: var(--grisOsc);
   opacity: 1;
-  transform: translateX(24px);
-  transition: opacity .45s ease, transform .45s ease;
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .contentLeft {
@@ -181,220 +222,52 @@
 }
 
 .swiper-slide-active .content {
-  opacity: 1;
   transform: translateX(0);
 }
 
+/* texto */
+
 .kicker {
   font-weight: 700;
+  letter-spacing: 0.02em;
   color: var(--vino);
-  letter-spacing: .02em;
 }
+
+/* texto */
 
 .title {
   margin: 0;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 400;
   line-height: 1.12;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
   color: var(--vinoOsc);
 }
+
+/* texto */
 
 .desc {
   margin: 0;
-  font-size: clamp(.98rem, 1.4vw, 1.1rem);
+  font-size: clamp(0.98rem, 1.4vw, 1.1rem);
   line-height: 1.55;
 }
 
-/* ------ Filas genéricas (Título | Descripción)  ------ */
+.boldRow {
+  font-weight: 800;
+  color: var(--vinoOsc);
+}
+
 .actions {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.6rem, 1vw, 1rem);
-  background: transparent;
 }
 
-.titleRow {
-  margin: 0;
-  font-style: italic;
-  color: var(--doradoOsc);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: clamp(0.65rem, 1vw, 1rem);
-  line-height: 1.1;
-}
-
-.descRow {
-  margin: 0;
-  font-size: clamp(0.65rem, 1vw, 1rem);
-  line-height: 1.35;
-  color: var(--text);
-  text-wrap: pretty;
-}
-
-.note {
-  margin: 0;
-  font-style: italic;
-  color: var(--grisClr);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: clamp(0.65rem, 1vw, .85rem);
-  line-height: 1.1;
-}
-
-.boldRow {
-  display: inline-block;
-  margin-right: 0.35rem;
-  font-weight: 800;
-  line-height: 1.05;
-  font-size: clamp(1.2rem, 2.6vw, 2.1rem);
-  color: var(--vinoOsc);
-}
-
-.row {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  column-gap: 0.75rem;
-  row-gap: 0.2rem;
-  align-items: start;
-}
-
-.row .descRow {
-  text-align: left;
-  hyphens: auto;
-}
-
-.rowRepresentativos {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  column-gap: 0.75rem;
-  row-gap: 0.35rem;
-  align-items: start;
-}
-
-.rowRepresentativos>p {
-  margin: 0;
-}
-
-/* título (col 1, ocupa 2 filas) */
-.titleRow {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  align-self: start;
-}
-
-/* 1er lugar (fila 1, col 2) */
-.descRow> :nth-child(1) {
-  grid-column: 2;
-  grid-row: 1;
-  font-weight: 800;
-  color: var(--vinoOsc);
-  font-size: clamp(1.05rem, 2vw, 1.5rem);
-  line-height: 1.2;
-
-  /* wrap habilitado */
-  white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-/* 2do y 3er lugar (fila 2, col 2) */
-.descRowBottom {
-  grid-column: 2;
-  grid-row: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  flex-wrap: nowrap;
-  color: var(--grisOsc);
-  font-size: clamp(0.65rem, 1vw, 0.95rem);
-  line-height: 1.25;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-.item {
-  display: block;
-  width: 100%;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: initial;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-.row222>p {
-  margin: 0;
-}
-
-/* porcentaje */
-.row222> :nth-child(n + 2).descRow>span {
-  font-weight: 700;
-  color: var(--vinoOsc);
-  white-space: nowrap;
-  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
-}
-
-.truncate {
-  display: block;
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: default;
-}
-
-@media (max-width: 640px) {
-  .row {
-    grid-template-columns: 1fr;
-    row-gap: 0.35rem;
-  }
-
-  .rowRepresentativos {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    row-gap: 0.4rem;
-    column-gap: 0;
-    align-items: start;
-  }
-
-  /* título arriba */
-  .titleRow {
-    grid-column: 1;
-    grid-row: 1;
-    margin-bottom: 0.15rem;
-  }
-
-  /* 1er lugar abajo del título */
-  .descRow {
-    grid-column: 1;
-    grid-row: 2;
-    font-size: 1.05rem;
-    line-height: 1.25;
-  }
-
-  /* 2 y 3 debajo, en columna */
-  .descRowBottom {
-    grid-column: 1;
-    grid-row: 3;
-    flex-direction: column;
-    gap: 0.25rem;
-    font-size: 0.95rem;
-  }
-
-  .item {
-    width: 100%;
-  }
-}
+/*  */
+/* listas de apoyo */
+/*  */
 
 .descriptionList {
-  list-style: disc;
-  padding-left: 0.2rem;
   margin: 0;
+  padding-left: 0.2rem;
+  list-style: disc;
   line-height: 1.7;
   text-align: justify;
 }
@@ -403,22 +276,34 @@
   margin: 0 0 12px;
 }
 
+/*  */
+/* tablet y laptop */
+/*  */
+
 @media (max-width: 1024px) {
 
   .card,
-  .reverse {
+  .card.reverse {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .media,
+  .content {
+    width: 100%;
   }
 
   .mediaImg {
     inline-size: min(84vw, 640px);
     max-width: 100%;
-  }
-
-  .content {
-    width: 100%;
+    height: auto;
+    border-radius: 16px;
   }
 }
+
+/*  */
+/* tablet */
+/*  */
 
 @media (max-width: 768px) {
   .slide {
@@ -426,15 +311,19 @@
   }
 
   .card {
-    border-radius: 22px;
-    padding: clamp(14px, 4vw, 24px);
     gap: clamp(12px, 4vw, 24px);
+    padding: clamp(14px, 4vw, 24px);
+    border-radius: 22px;
   }
 
   .desc {
     line-height: 1.6;
   }
 }
+
+/*  */
+/* móvil */
+/*  */
 
 @media (max-width: 480px) {
   .titleFrond {
@@ -455,7 +344,10 @@
   }
 }
 
-/* Very large desktops: limita expansión para legibilidad */
+/*  */
+/* pantallas grandes */
+/*  */
+
 @media (min-width: 1600px) {
   .swiper {
     width: min(1400px, 92vw);
@@ -466,19 +358,30 @@
   }
 }
 
-/* Orientación paisaje en móviles: reduce altura mínima */
+/*  */
+/* móviles en horizontal */
+/*  */
+
 @media (orientation: landscape) and (max-width: 920px) {
   .slide {
     min-height: 70svh;
   }
 }
 
+/*  */
+/* container query */
+/*  */
+
 @container (max-width: 720px) {
-  .card {
+
+  .card,
+  .card.reverse {
     flex-direction: column;
+    align-items: stretch;
   }
 
-  .content {
+  .content,
+  .media {
     width: 100%;
   }
 
@@ -487,7 +390,10 @@
   }
 }
 
-/* ------ Accesibilidad: reduce animaciones si el usuario lo pide ------ */
+/*  */
+/* accesibilidad */
+/*  */
+
 @media (prefers-reduced-motion: reduce) {
   .mediaImg {
     animation: none !important;
@@ -496,44 +402,5 @@
   .card,
   .content {
     transition: none !important;
-  }
-}
-
-@media (max-width: 1024px) {
-
-  .card,
-  .card.reverse {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .media,
-  .content {
-    width: 100%;
-  }
-
-  .mediaImg {
-    inline-size: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 16px;
-  }
-}
-
-@container (max-width: 720px) {
-
-  .card,
-  .card.reverse {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .media,
-  .content {
-    width: 100%;
-  }
-
-  .mediaImg {
-    inline-size: 100%;
   }
 }

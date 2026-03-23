@@ -1,7 +1,7 @@
 import styles from "@/styles/PMIU_ZMP/Hero.module.css";
 import MunicipiosSwapy from "@/components/PMIU_ZMP/hero/MunicipiosSwapy";
 import { MUNICIPIOS } from "@/utils/municipios";
-import OpinionButtonModal, { OPINION_LINKS } from "@/components/PMIU_ZMP/hero/OpinionButtonModal";
+// import OpinionButtonModal, { OPINION_LINKS } from "@/components/PMIU_ZMP/hero/OpinionButtonModal";
 
 export default function Hero() {
   const imgBasePath = "/img/PMIU_ZMP/";
