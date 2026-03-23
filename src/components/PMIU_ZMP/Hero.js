@@ -1,7 +1,7 @@
 import styles from "@/styles/PMIU_ZMP/Hero.module.css";
 import MunicipiosSwapy from "@/components/PMIU_ZMP/hero/MunicipiosSwapy";
 import { MUNICIPIOS } from "@/utils/municipios";
-// import OpinionButtonModal, { OPINION_LINKS } from "@/components/PMIU_ZMP/hero/OpinionButtonModal";
+import OpinionButtonModal, { OPINION_LINKS } from "@/components/PMIU_ZMP/hero/OpinionButtonModal";
 
 export default function Hero() {
   const imgBasePath = "/img/PMIU_ZMP/";
@@ -20,9 +20,24 @@ export default function Hero() {
           />
         </figure>
 
-        {/* <div className={styles.leftBottomCard}>
-          <OpinionButtonModal links={OPINION_LINKS} />
-        </div> */}
+
+
+
+        <div className={styles.leftBottomCard}>
+          <h3 className={styles.tituloBtn}>
+            <span className="span-doarado">Próximamente</span> disponible el{" "}
+            <span className="span-doarado">PMIU ZMP</span>
+          </h3>
+
+          <p className={styles.descriptionBtn}>
+            Muy pronto podrás consultar y descargar el PIMUS desde este espacio.
+          </p>
+
+          {/* <OpinionButton
+            mode="link"
+            href="https://forms.gle/CNPGfARzoP1sy4nZ7"
+          /> */}
+        </div>
       </div>
 
       {/* Columna centro */}

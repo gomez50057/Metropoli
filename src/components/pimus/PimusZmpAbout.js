@@ -1,5 +1,5 @@
 import styles from "./PimusZmpAbout.module.css";
-import OpinionButton from "@/components/shared/botones/OpinionButton";
+// import OpinionButton from "@/components/shared/botones/OpinionButton";
 
 export default function PimusZmpAbout({
 }) {
