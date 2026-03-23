@@ -6,6 +6,7 @@ import CountsPanel from '@/components/PMIU_ZMP/CountsPanel';
 import MunicipiosPromoSlider from "@/components/PMIU_ZMP/MunicipiosPromoSlider";
 import { MUNICIPIOS } from "@/utils/municipios";
 import HaptichashSlider from "@/components/PMIU_ZMP/HaptichashSlider";
+import WorkshopResults from "@/components/PMIU_ZMP/WorkshopResults/WorkshopResults";
 
 
 const pmiu_zmp = () => {
@@ -17,6 +18,7 @@ const pmiu_zmp = () => {
       <HaptichashSlider />
       <CountsPanel />
       <MunicipiosPromoSlider items={MUNICIPIOS} />
+      <WorkshopResults />
     </div>
   );
 };
