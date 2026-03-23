@@ -114,7 +114,7 @@ export default function HaptichashSlider() {
 
   return (
     <div className={styles.wrap}>
-      
+      <p className={styles.sliderTitle}><span className={styles.vino}>Recursos </span>de los<span className={styles.vino}> talleres</span><span className={styles.dorado}> PMIU-ZMP</span></p>
       <div className={styles.slider}>
         <button ref={prevRef} className={`${styles.arrow} ${styles.prev}`} aria-label="Anterior">‹</button>
         <button ref={nextRef} className={`${styles.arrow} ${styles.next}`} aria-label="Siguiente">›</button>

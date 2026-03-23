@@ -1,5 +1,4 @@
 .wrap {
-  --bg: #000;
   --fg: #fff;
   --pad: clamp(1rem, 3vw, 3rem);
   --arrow-size: 48px;
@@ -8,9 +7,27 @@
   min-height: 50vh;
   min-height: 50dvh;
   position: relative;
-  background: var(--bg);
   color: var(--fg);
   overflow: hidden;
+}
+
+.sliderTitle {
+  font-size: clamp(0.5rem, 1.5vw, 1.7rem);
+  line-height: 1.15;
+  font-weight: 500;
+  padding-left: 2.5rem;
+}
+
+.sliderTitle .dorado {
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: var(--doradoOsc);
+  font-weight: 700;
+}
+
+.sliderTitle .vino {
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: var(--vinoOsc);
+  font-weight: 700;
 }
 
 /* Slider base */
