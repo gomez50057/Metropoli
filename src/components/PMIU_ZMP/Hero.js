@@ -20,9 +20,6 @@ export default function Hero() {
           />
         </figure>
 
-
-
-
         <div className={styles.leftBottomCard}>
           <h3 className={styles.tituloBtn}>
             <span className="span-doarado">Próximamente</span> disponible el{" "}
@@ -30,7 +27,7 @@ export default function Hero() {
           </h3>
 
           <p className={styles.descriptionBtn}>
-            Muy pronto podrás consultar y descargar el PIMUS desde este espacio.
+            Muy pronto podrás consultar y descargar el PMIU ZMP desde este espacio.
           </p>
 
           {/* <OpinionButton
