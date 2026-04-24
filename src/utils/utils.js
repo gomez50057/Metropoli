@@ -28,12 +28,12 @@ export const cdmxTeamMembers = [
     "image": "/img/ZMVM/integrantesComisiones/CDMX/Pablo Vázquez Camacho.png"
   },
   {
-    "name": "Ulises Lara López",
-    "position": "Encargado del Despacho de la Fiscalía General de Justicia",
+    "name": "Bertha María Alcalde Luján",
+    "position": "Fiscal General de Justicia",
     "description": [
       "Comisión Metropolitana de Seguridad Pública y Procuración de Justicia"
     ],
-    "image": "/img/ZMVM/integrantesComisiones/CDMX/Ulises Lara López.png"
+    "image": "/img/ZMVM/integrantesComisiones/CDMX/Bertha María Alcalde Luján.png"
   },
   {
     "name": "Myriam Urzúa Venegas",
@@ -144,20 +144,20 @@ export const edomexTeamMembers = [
     "image": "/img/ZMVM/integrantesComisiones/EDOMEX/Adrián Hernández Romero.png"
   },
   {
-    "name": "Macarena Montoya Olvera",
+    "name": "Celina Castañeda de la Lanza",
     "position": "Secretaria de Salud",
     "description": [
       "Comisión Metropolitana de Salud"
     ],
-    "image": "/img/ZMVM/integrantesComisiones/EDOMEX/Macarena Montoya Olvera.png"
+    "image": "/img/ZMVM/integrantesComisiones/EDOMEX/Celina Castañeda de la Lanza.png"
   },
   {
-    "name": "Daniel Andrés Sibaja González",
+    "name": "Juan Hugo de la Rosa García",
     "position": "Secretario de Movilidad",
     "description": [
       "Comisión Metropolitana de Movilidad"
     ],
-    "image": "/img/ZMVM/integrantesComisiones/EDOMEX/Daniel Andrés Sibaja González.png"
+    "image": "/img/ZMVM/integrantesComisiones/EDOMEX/Juan Hugo de la Rosa García.png"
   },
   {
     "name": "Alhely Rubio Arronis",
@@ -286,10 +286,10 @@ export const tecnicoTeamMembersZMVM = [
     "image": "/img/ZMVM/Secretariado Técnico Conjunto/Miguel Ángel Tello Vargas.png",
   },
   {
-    "name": "Alejandro Encinas Rodríguez",
+    "name": "Enrique Irazoque Palazuelos",
     "position": "Secretario de Planeación y Ordenamiento Territorial y Coordinación Metropolitana   ",
     "gobierno": "Gobierno de la Ciudad de México",
-    "image": "/img/ZMVM/Secretariado Técnico Conjunto/Alejandro Encinas Rodríguez.png"
+    "image": "/img/ZMVM/Secretariado Técnico Conjunto/Enrique Irazoque Palazuelos.png"
   },
   {
     "name": "Carlos Jesús Maza Lara",
