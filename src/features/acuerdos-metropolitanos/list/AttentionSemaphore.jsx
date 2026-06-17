@@ -2,22 +2,25 @@
 
 import styles from './AgreementsList.module.css';
 
-const classes = {
-  verde: styles.green,
-  amarillo: styles.yellow,
-  rojo: styles.red,
-  gris: styles.gray,
-  terminado: styles.closed,
+const states = {
+  verde: { label: 'Verde', description: 'Avance reciente', className: styles.green },
+  amarillo: { label: 'Amarillo', description: 'Sin actualización reciente', className: styles.yellow },
+  rojo: { label: 'Rojo', description: 'Mucho tiempo sin avances', className: styles.red },
+  gris: { label: 'Gris', description: 'Cancelado', className: styles.gray },
+  terminado: { label: 'Atendido', description: 'Acuerdo atendido', className: styles.closed },
 };
 
 export default function AttentionSemaphore({ value }) {
   const normalized = String(value || 'gris').toLowerCase();
-  const label = normalized === 'terminado' ? 'Terminado' : `Semaforo ${normalized}`;
+  const state = states[normalized] || states.gris;
 
   return (
-    <span className={styles.semaphore} title={label}>
-      <span className={`${styles.dot} ${classes[normalized] || styles.gray}`} aria-hidden="true" />
-      <span>{label}</span>
+    <span className={styles.semaphore} title={`${state.label}: ${state.description}`}>
+      <span className={`${styles.dot} ${state.className}`} aria-hidden="true" />
+      <span className={styles.semaphoreText}>
+        <strong>{state.label}</strong>
+        <small>{state.description}</small>
+      </span>
     </span>
   );
 }

@@ -40,6 +40,7 @@
 .formGroup {
   display: grid;
   gap: 7px;
+  min-width: 0;
 }
 
 .documentUpload {
@@ -161,14 +162,37 @@
 
 .reactSelect {
   color: #333;
+  min-width: 0;
 }
 
 .reactSelect :global(.react-select__control) {
   min-height: 42px;
+  align-items: center;
   border-color: #d8d2ca;
   border-radius: 6px;
   box-shadow: none;
   transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.reactSelect :global(.react-select__value-container) {
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.reactSelect :global(.react-select__multi-value) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.reactSelect :global(.react-select__multi-value__label) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reactSelect :global(.react-select__indicators) {
+  flex-shrink: 0;
 }
 
 .reactSelect :global(.react-select__control:hover),
@@ -251,6 +275,24 @@
 .form button:disabled {
   opacity: 0.7;
   cursor: wait;
+}
+
+.editButton {
+  justify-self: start;
+  min-height: 42px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 18px;
+  background: var(--vinoOsc);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.formActions {
+  display: flex;
+  gap: 10px;
 }
 
 @media (max-width: 920px) {

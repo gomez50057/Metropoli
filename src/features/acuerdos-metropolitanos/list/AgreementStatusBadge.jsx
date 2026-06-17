@@ -1,5 +1,6 @@
 "use client";
 
+import { agreementStatusLabel } from '../constants/statuses';
 import styles from './AgreementsList.module.css';
 
 function statusClass(status) {
@@ -10,5 +11,5 @@ function statusClass(status) {
 }
 
 export default function AgreementStatusBadge({ status, label }) {
-  return <span className={`${styles.badge} ${statusClass(status || label)}`}>{label || status}</span>;
+  return <span className={`${styles.badge} ${statusClass(status || label)}`}>{agreementStatusLabel(status, label)}</span>;
 }

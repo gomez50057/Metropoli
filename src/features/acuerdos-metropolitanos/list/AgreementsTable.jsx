@@ -14,12 +14,13 @@ export default function AgreementsTable({ agreements }) {
           <tr>
             <th>Folio</th>
             <th>Fecha</th>
+            <th>Fecha comprometida</th>
             <th>Zona</th>
             <th>Instancias</th>
             <th>Estatus</th>
-            <th>Semaforo</th>
-            <th>Ultima actualizacion</th>
-            <th>Accion</th>
+            <th>Semáforo</th>
+            <th>Última actualización</th>
+            <th>Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@ export default function AgreementsTable({ agreements }) {
             <tr key={agreement.id}>
               <td>{agreement.folio}</td>
               <td>{formatDate(agreement.date || agreement.fecha)}</td>
+              <td>{formatDate(agreement.committed_date)}</td>
               <td>{agreement.zone_name || agreement.zone}</td>
               <td>{agreement.instances_display || agreement.instances?.join(', ')}</td>
               <td><AgreementStatusBadge status={agreement.status} label={agreement.status_display} /></td>
@@ -39,7 +41,7 @@ export default function AgreementsTable({ agreements }) {
           ))}
           {!agreements.length && (
             <tr>
-              <td colSpan="8" className={styles.empty}>Sin acuerdos para mostrar.</td>
+              <td colSpan="9" className={styles.empty}>Sin acuerdos para mostrar.</td>
             </tr>
           )}
         </tbody>

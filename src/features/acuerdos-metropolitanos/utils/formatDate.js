@@ -6,3 +6,11 @@ export function formatDate(value) {
   }
   return new Intl.DateTimeFormat('es-MX', { dateStyle: 'medium' }).format(new Date(value));
 }
+
+export function formatDateTime(value) {
+  if (!value) return 'Sin registro';
+  return new Intl.DateTimeFormat('es-MX', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }).format(new Date(value));
+}

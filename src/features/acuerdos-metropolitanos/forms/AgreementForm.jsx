@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import ConfirmDialog from '@/components/shared/ConfirmDialog';
+import StatusMessage from '@/components/shared/StatusMessage';
 import { createAgreement, getInstances, getTopics, getZones } from '../services/agreementsApi';
 import { INITIAL_PDF_MAX_BYTES, isInitialPdf } from '../utils/fileHelpers';
 import EvidenceUpload from './EvidenceUpload';
@@ -15,14 +16,14 @@ import styles from './AgreementForm.module.css';
 const fallbackZones = [
   { value: 'ZMP', label: 'Zona Metropolitana de Pachuca' },
   { value: 'ZMT', label: 'Zona Metropolitana de Tulancingo' },
-  { value: 'ZMVM', label: 'Zona Metropolitana del Valle de Mexico' },
+  { value: 'ZMVM', label: 'Zona Metropolitana del Valle de México' },
 ];
 
 const schema = Yup.object({
   date: Yup.string().required('La fecha es obligatoria.'),
   zone: Yup.string().required('Selecciona una zona.'),
   instances: Yup.array().min(1, 'Selecciona al menos una instancia.'),
-  description: Yup.string().max(5000, 'Maximo 5000 caracteres.').required('Captura la descripcion.'),
+  description: Yup.string().max(5000, 'Máximo 5000 caracteres.').required('Captura la descripción.'),
   document: Yup.mixed()
     .nullable()
     .test('pdf', 'El documento inicial debe ser PDF y no superar 25 MB.', isInitialPdf),
@@ -34,6 +35,10 @@ function normalizeOptions(data) {
     value: item.value || item.code || item.id,
     label: item.name || item.label,
   }));
+}
+
+function otherLast(options) {
+  return [...options].sort((a, b) => (a.label === 'Otro') - (b.label === 'Otro'));
 }
 
 export default function AgreementForm() {
@@ -59,7 +64,7 @@ export default function AgreementForm() {
     }
 
     try {
-      setInstances(normalizeOptions(await getInstances(zone)));
+      setInstances(otherLast(normalizeOptions(await getInstances(zone))));
     } catch {
       setInstances([]);
     }
@@ -72,6 +77,7 @@ export default function AgreementForm() {
 
     const formData = new FormData();
     formData.append('date', values.date);
+    if (values.committed_date) formData.append('committed_date', values.committed_date);
     formData.append('zone', values.zone);
     formData.append('topic', values.topic);
     formData.append('responsible', values.responsible);
@@ -106,6 +112,7 @@ export default function AgreementForm() {
 
   return (
     <section className={styles.page}>
+      <StatusMessage message={message} onDismiss={() => setMessage('')} />
       <div className={styles.heading}>
         <h1>Registro de acuerdo</h1>
         <p>Captura del acuerdo original y su documento inicial.</p>
@@ -113,6 +120,7 @@ export default function AgreementForm() {
       <Formik
         initialValues={{
           date: '',
+          committed_date: '',
           zone: '',
           instances: [],
           topic: '',
@@ -130,6 +138,10 @@ export default function AgreementForm() {
                 <label htmlFor="date">Fecha</label>
                 <Field id="date" name="date" type="date" />
                 <ErrorMessage name="date" component="div" className={styles.error} />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="committed_date">Fecha comprometida</label>
+                <Field id="committed_date" name="committed_date" type="date" />
               </div>
               <MetropolitanZoneSelect
                 zones={zones}
@@ -161,12 +173,11 @@ export default function AgreementForm() {
               </div>
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="description">Descripcion</label>
+              <label htmlFor="description">Descripción</label>
               <Field id="description" name="description" as="textarea" rows="7" maxLength="5000" />
               <span className={styles.counter}>{values.description.length}/5000</span>
               <ErrorMessage name="description" component="div" className={styles.error} />
             </div>
-            {message && <div className={styles.success}>{message}</div>}
             {error && <div className={styles.error} role="alert">{error}</div>}
             <button type="submit" disabled={isSubmitting || saving}>
               {isSubmitting || saving ? 'Guardando...' : 'Guardar acuerdo'}
@@ -174,8 +185,8 @@ export default function AgreementForm() {
             <ConfirmDialog
               isOpen={confirmSave}
               title="Guardar acuerdo"
-              message="Estas seguro de que quieres guardar este acuerdo?"
-              confirmText="Si, guardar"
+              message="¿Estás seguro de que quieres guardar este acuerdo?"
+              confirmText="Sí, guardar"
               onCancel={() => setConfirmSave(false)}
               onConfirm={confirmSaveAgreement}
             />

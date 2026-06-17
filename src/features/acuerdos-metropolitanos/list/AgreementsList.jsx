@@ -16,7 +16,7 @@ function normalizeList(data) {
 export default function AgreementsList() {
   const { user } = useSession();
   const [agreements, setAgreements] = useState([]);
-  const [filters, setFilters] = useState({ search: '', status: '', year: '', without_recent_update: '' });
+  const [filters, setFilters] = useState({ search: '', status: '', year: '', committed_date: '', semaphore: '' });
   const [error, setError] = useState('');
   const canExport = canExportAgreements(user?.role);
 
