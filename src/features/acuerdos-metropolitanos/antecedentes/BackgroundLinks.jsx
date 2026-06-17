@@ -55,7 +55,7 @@ export default function BackgroundLinks() {
     <section className={styles.page}>
       <div className={styles.heading}>
         <h1>Antecedentes</h1>
-        <p>Documentos y ligas de referencia del modulo.</p>
+        <p>Documentos y ligas de referencia del módulo.</p>
       </div>
       {error && <div className={styles.alert}>{error}</div>}
       {canManage && (
@@ -79,8 +79,8 @@ export default function BackgroundLinks() {
       <ConfirmDialog
         isOpen={Boolean(pendingDelete)}
         title="Eliminar antecedente"
-        message={`Estas seguro de que quieres eliminar "${pendingDelete?.title || 'este antecedente'}"?`}
-        confirmText="Si, eliminar"
+        message={`¿Estás seguro de que quieres eliminar "${pendingDelete?.title || 'este antecedente'}"?`}
+        confirmText="Sí, eliminar"
         danger
         onCancel={() => setPendingDelete(null)}
         onConfirm={removeItem}

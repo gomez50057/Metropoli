@@ -1,5 +1,5 @@
 const GENERAL_GROUPS = [
-  [/CDMVM/i, 'Consejo de Desarrollo Metropolitano del Valle de Mexico (CDMVM)'],
+  [/CDMVM/i, 'Consejo de Desarrollo Metropolitano del Valle de México (CDMVM)'],
   [/(PJ|PROCURADURIA|SEGURIDAD)/i, 'Comisión Metropolitana de Seguridad Pública y Procuración de Justicia (CMSPyPJ)'],
 ];
 

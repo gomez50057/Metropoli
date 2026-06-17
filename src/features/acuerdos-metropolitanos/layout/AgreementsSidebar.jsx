@@ -24,14 +24,14 @@ export default function AgreementsSidebar({ links, collapsed, onToggle, onLogout
 
   return (
     <aside className={`${styles.sidebar} ${collapsed ? styles.sidebarCollapsed : ''}`}>
-      <button type="button" className={styles.sidebarToggle} onClick={onToggle} aria-label={collapsed ? 'Expandir menu' : 'Contraer menu'}>
+      <button type="button" className={styles.sidebarToggle} onClick={onToggle} aria-label={collapsed ? 'Expandir menú' : 'Contraer menú'}>
         <MenuOpenOutlinedIcon fontSize="small" />
       </button>
       <div className={styles.sidebarTitle}>
-        <p className={styles.eyebrow}>Metropoli</p>
+        <p className={styles.eyebrow}>Metrópoli</p>
         <h2>Acuerdos</h2>
       </div>
-      <nav className={styles.nav} aria-label="Modulo de acuerdos">
+      <nav className={styles.nav} aria-label="Módulo de acuerdos">
         {links.map((link) => (
           <Link key={link.href} href={link.href} className={pathname === link.href ? styles.active : ''} title={link.label}>
             {getIcon(link.href)}
@@ -39,9 +39,9 @@ export default function AgreementsSidebar({ links, collapsed, onToggle, onLogout
           </Link>
         ))}
       </nav>
-      <button type="button" className={styles.logout} onClick={onLogout} title="Cerrar sesion">
+      <button type="button" className={styles.logout} onClick={onLogout} title="Cerrar sesión">
         <LogoutOutlinedIcon fontSize="small" />
-        <span>Cerrar sesion</span>
+        <span>Cerrar sesión</span>
       </button>
     </aside>
   );

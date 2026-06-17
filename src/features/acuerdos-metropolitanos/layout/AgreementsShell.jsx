@@ -44,9 +44,9 @@ export default function AgreementsShell({ children }) {
       </div>
       <ConfirmDialog
         isOpen={confirmLogout}
-        title="Cerrar sesion"
-        message="Estas seguro de que quieres salir?"
-        confirmText="Si, salir"
+        title="Cerrar sesión"
+        message="¿Estás seguro de que quieres salir?"
+        confirmText="Sí, salir"
         danger
         onCancel={() => setConfirmLogout(false)}
         onConfirm={handleLogout}

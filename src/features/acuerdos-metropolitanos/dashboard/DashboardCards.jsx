@@ -5,10 +5,10 @@ import styles from './AgreementsDashboard.module.css';
 const cards = [
   ['total', 'Total'],
   ['in_process', 'En proceso'],
-  ['finished', 'Terminados'],
+  ['finished', 'Atendidos'],
   ['cancelled', 'Cancelados'],
   ['pending_validation', 'Pendientes'],
-  ['without_recent_update', 'Sin actualizacion'],
+  ['without_recent_update', 'Sin actualización'],
 ];
 
 export default function DashboardCards({ summary }) {

@@ -17,7 +17,7 @@ export default function ProtectedRoute({ children, roles }) {
   }, [router, status]);
 
   if (status === 'loading') {
-    return <div className={styles.state}>Cargando sesion...</div>;
+    return <div className={styles.state}>Cargando sesión...</div>;
   }
 
   if (status === 'anonymous') {

@@ -21,11 +21,11 @@ export default function AgreementUpdateForm({ onSubmit }) {
     setError('');
 
     if (!description.trim()) {
-      setError('Captura la descripcion del avance.');
+      setError('Captura la descripción del avance.');
       return;
     }
     if ([...files].some((file) => !isEvidenceAllowed(file))) {
-      setError('Hay archivos con extension no permitida.');
+      setError('Hay archivos con extensión no permitida.');
       return;
     }
 
@@ -53,9 +53,9 @@ export default function AgreementUpdateForm({ onSubmit }) {
 
   return (
     <form ref={formRef} className={styles.form} onSubmit={submit}>
-      <h2>Nueva actualizacion</h2>
+      <h2>Nueva actualización</h2>
       <div className={styles.formGroup}>
-        <label htmlFor="update-description">Descripcion</label>
+        <label htmlFor="update-description">Descripción</label>
         <textarea
           id="update-description"
           rows="5"
@@ -73,12 +73,12 @@ export default function AgreementUpdateForm({ onSubmit }) {
         onChange={setFiles}
       />
       {error && <div className={styles.error}>{error}</div>}
-      <button type="submit" disabled={saving}>{saving ? 'Guardando...' : 'Guardar actualizacion'}</button>
+      <button type="submit" disabled={saving}>{saving ? 'Guardando...' : 'Guardar actualización'}</button>
       <ConfirmDialog
         isOpen={confirmSave}
-        title="Guardar actualizacion"
-        message="Estas seguro de que quieres guardar esta actualizacion?"
-        confirmText="Si, guardar"
+        title="Guardar actualización"
+        message="¿Estás seguro de que quieres guardar esta actualización?"
+        confirmText="Sí, guardar"
         onCancel={() => setConfirmSave(false)}
         onConfirm={confirmSubmit}
       />

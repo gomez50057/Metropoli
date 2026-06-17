@@ -7,7 +7,7 @@ export default function AgreementsTopbar({ user }) {
   return (
     <header className={styles.topbar}>
       <div>
-        <p className={styles.eyebrow}>Sesion activa</p>
+        <p className={styles.eyebrow}>Sesión activa</p>
         <strong>{user?.username}</strong>
       </div>
       <span>{roleLabel(user?.role)}</span>

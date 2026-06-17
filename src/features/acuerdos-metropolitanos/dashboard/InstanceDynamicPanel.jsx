@@ -6,7 +6,7 @@ import styles from './AgreementsDashboard.module.css';
 export default function InstanceDynamicPanel({ updates = [] }) {
   return (
     <section className={styles.panel}>
-      <h2>Ultimas actualizaciones</h2>
+      <h2>Últimas actualizaciones</h2>
       <ul>
         {updates.map((update) => (
           <li key={update.id}>

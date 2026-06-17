@@ -39,7 +39,7 @@ function rejectMessage(file, acceptedExtensions, maxSize) {
     return `${file.name}: solo se aceptan ${extensionList(acceptedExtensions)}.`;
   }
   if (maxSize && file.size > maxSize) {
-    return `${file.name}: supera el limite de ${formatSize(maxSize)}.`;
+    return `${file.name}: supera el límite de ${formatSize(maxSize)}.`;
   }
   return '';
 }
@@ -84,11 +84,11 @@ export default function EvidenceUpload({
       <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.dropzoneActive : ''}`}>
         <input {...getInputProps({ id, name: id })} />
         <InsertDriveFileOutlinedIcon />
-        <span>{isDragActive ? 'Suelta los archivos aqui' : 'Arrastra archivos o haz clic para seleccionar'}</span>
+        <span>{isDragActive ? 'Suelta los archivos aquí' : 'Arrastra archivos o haz clic para seleccionar'}</span>
       </div>
       <p className={styles.uploadNotice}>
         Solo se aceptan {acceptedExtensions.length ? extensionList(acceptedExtensions) : 'los archivos permitidos'}.
-        {maxSize ? ` Tamano maximo: ${formatSize(maxSize)} por archivo.` : ''}
+        {maxSize ? ` Tamaño máximo: ${formatSize(maxSize)} por archivo.` : ''}
       </p>
       {notice && <div className={styles.uploadError} role="alert">{notice}</div>}
       {!!files.length && (
