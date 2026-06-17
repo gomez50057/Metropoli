@@ -97,10 +97,22 @@ export async function downloadFile(path, filename, params) {
 }
 
 export async function openFile(path, params) {
-  const response = await apiClient.get(path, { params, responseType: 'blob' });
-  const url = window.URL.createObjectURL(new Blob([response.data], { type: response.data.type }));
-  window.open(url, '_blank', 'noopener,noreferrer');
-  setTimeout(() => window.URL.revokeObjectURL(url), 30000);
+  const previewWindow = window.open('about:blank', '_blank');
+
+  try {
+    const response = await apiClient.get(path, { params, responseType: 'blob' });
+    const url = window.URL.createObjectURL(new Blob([response.data], { type: response.data.type }));
+    if (previewWindow) {
+      previewWindow.opener = null;
+      previewWindow.location.href = url;
+    } else {
+      window.location.href = url;
+    }
+    setTimeout(() => window.URL.revokeObjectURL(url), 30000);
+  } catch (error) {
+    previewWindow?.close();
+    throw error;
+  }
 }
 
 export default apiClient;

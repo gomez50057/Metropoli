@@ -29,6 +29,37 @@
   margin: 0;
 }
 
+.field {
+  display: grid;
+  gap: 7px;
+  margin-top: 16px;
+  text-align: left;
+}
+
+.field span {
+  font-weight: 800;
+}
+
+.field textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  padding: 10px;
+  font: inherit;
+}
+
+.field textarea:focus {
+  border-color: var(--vinoOsc);
+  box-shadow: 0 0 0 3px rgba(105, 27, 50, 0.1);
+  outline: 0;
+}
+
+.field small {
+  color: var(--semaforoRojo);
+  font-weight: 800;
+}
+
 .actions {
   display: flex;
   justify-content: center;
@@ -44,6 +75,11 @@
   font: inherit;
   font-weight: 800;
   cursor: pointer;
+}
+
+.actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .cancel {

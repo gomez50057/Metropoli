@@ -9,6 +9,11 @@ export default function ConfirmDialog({
   confirmText = 'Confirmar',
   cancelText = 'Cancelar',
   danger = false,
+  inputLabel,
+  inputValue = '',
+  inputError = '',
+  inputRequired = false,
+  onInputChange,
   onConfirm,
   onCancel,
 }) {
@@ -19,11 +24,28 @@ export default function ConfirmDialog({
       <div className={styles.dialog}>
         <h2 id="confirm-dialog-title">{title}</h2>
         <p>{message}</p>
+        {inputLabel && (
+          <label className={styles.field}>
+            <span>{inputLabel}</span>
+            <textarea
+              rows="5"
+              value={inputValue}
+              onChange={(event) => onInputChange?.(event.target.value)}
+              autoFocus
+            />
+            {inputError && <small role="alert">{inputError}</small>}
+          </label>
+        )}
         <div className={styles.actions}>
           <button type="button" className={styles.cancel} onClick={onCancel}>
             {cancelText}
           </button>
-          <button type="button" className={danger ? styles.danger : styles.confirm} onClick={onConfirm}>
+          <button
+            type="button"
+            className={danger ? styles.danger : styles.confirm}
+            disabled={inputRequired && !inputValue.trim()}
+            onClick={onConfirm}
+          >
             {confirmText}
           </button>
         </div>

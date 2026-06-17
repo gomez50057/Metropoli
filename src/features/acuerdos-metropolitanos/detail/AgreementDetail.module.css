@@ -43,6 +43,82 @@
   font-weight: 800;
 }
 
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.addCommentButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 14px;
+  background: var(--vinoOsc);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.panelHint {
+  margin: -8px 0 14px;
+  color: var(--grisOsc);
+  font-size: 13px;
+}
+
+.commentForm {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.commentForm label {
+  font-weight: 800;
+}
+
+.commentForm textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  padding: 10px;
+  font: inherit;
+}
+
+.commentForm textarea:focus {
+  border-color: var(--vinoOsc);
+  box-shadow: 0 0 0 3px rgba(105, 27, 50, 0.1);
+  outline: 0;
+}
+
+.commentForm button {
+  justify-self: start;
+  min-height: 38px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 14px;
+  background: var(--vinoOsc);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.commentForm button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.commentActions {
+  display: flex;
+  gap: 8px;
+}
+
 .panel dl {
   display: grid;
   gap: 10px;
@@ -72,20 +148,121 @@
   padding-left: 18px;
 }
 
+.panel li small {
+  display: block;
+  margin-top: 2px;
+  color: var(--grisOsc);
+}
+
+.updateDetails {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.updateDetails div {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.updateDetails dt,
+.updateEvidence > strong {
+  color: var(--grisOsc);
+  font-weight: 800;
+}
+
+.updateDetails dd {
+  margin: 0;
+}
+
+.updateEvidence {
+  margin-top: 10px;
+}
+
+.updateEvidence ul {
+  margin-top: 6px;
+}
+
+.commentHeader {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.editCommentButton {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--vinoOsc);
+  cursor: pointer;
+}
+
+.expandButton {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 14px;
+  border: 1px solid rgba(105, 27, 50, 0.2);
+  border-radius: 6px;
+  background: rgba(105, 27, 50, 0.06);
+  color: var(--vinoOsc);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.expandButton:hover {
+  background: rgba(105, 27, 50, 0.1);
+}
+
+.expandButton:focus-visible {
+  outline: 2px solid var(--vinoOsc);
+  outline-offset: 2px;
+}
+
 .panel a {
   color: var(--vinoOsc);
   font-weight: 800;
 }
 
 .linkButton {
-  border: 0;
-  padding: 0;
-  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 32px;
+  border: 1px solid rgba(105, 27, 50, 0.2);
+  border-radius: 6px;
+  padding: 0 9px;
+  background: rgba(105, 27, 50, 0.05);
   color: var(--vinoOsc);
   font: inherit;
+  font-size: 13px;
   font-weight: 800;
-  text-align: left;
   cursor: pointer;
+}
+
+.fileRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.fileName {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.fileActions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 6px;
 }
 
 .reviewActions {
@@ -172,5 +349,15 @@
 
   .panel dl div {
     grid-template-columns: 1fr;
+  }
+
+  .updateDetails div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .fileRow {
+    align-items: start;
+    flex-direction: column;
   }
 }

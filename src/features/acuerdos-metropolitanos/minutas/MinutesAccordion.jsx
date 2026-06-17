@@ -2,6 +2,7 @@ import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlin
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import { canPreviewFile } from '../utils/fileHelpers';
 import styles from './MinutesByInstance.module.css';
 
 export default function MinutesAccordion({ title, items, defaultOpen = false }) {
@@ -30,10 +31,12 @@ export default function MinutesAccordion({ title, items, defaultOpen = false }) 
               <span>{minute.date}</span>
             </div>
             <div className={styles.rowActions}>
-              <a href={minute.url} target="_blank" rel="noreferrer" aria-label={`Abrir ${minute.display_name}`}>
-                <VisibilityOutlinedIcon fontSize="small" />
-                <span>Abrir</span>
-              </a>
+              {canPreviewFile(minute) && (
+                <a href={minute.url} target="_blank" rel="noreferrer" aria-label={`Previsualizar ${minute.display_name}`}>
+                  <VisibilityOutlinedIcon fontSize="small" />
+                  <span>Previsualizar</span>
+                </a>
+              )}
               <a href={minute.url} download={minute.name} aria-label={`Descargar ${minute.display_name}`}>
                 <FileDownloadOutlinedIcon fontSize="small" />
                 <span>Descargar</span>

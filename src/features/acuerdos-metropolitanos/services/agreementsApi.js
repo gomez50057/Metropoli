@@ -1,4 +1,4 @@
-import apiClient, { acuerdosUrl, downloadFile } from './apiClient';
+import apiClient, { acuerdosUrl, downloadFile, openFile } from './apiClient';
 
 export async function getZones() {
   const response = await apiClient.get(acuerdosUrl('/catalogs/zones/'));
@@ -69,6 +69,16 @@ export async function getAgreementHistory(id) {
   return response.data;
 }
 
+export async function createInternalComment(id, comment) {
+  const response = await apiClient.post(acuerdosUrl(`/agreements/${id}/comments/`), { comment });
+  return response.data;
+}
+
+export async function updateInternalComment(id, comment) {
+  const response = await apiClient.patch(acuerdosUrl(`/comments/${id}/`), { comment });
+  return response.data;
+}
+
 export async function validateUpdate(id) {
   const response = await apiClient.post(acuerdosUrl(`/updates/${id}/validate/`));
   return response.data;
@@ -81,6 +91,10 @@ export async function rejectUpdate(id, observations) {
 
 export function downloadProtectedFile(url, filename) {
   return downloadFile(url, filename);
+}
+
+export function previewProtectedFile(url) {
+  return openFile(url);
 }
 
 export function exportAgreements(format, params) {
