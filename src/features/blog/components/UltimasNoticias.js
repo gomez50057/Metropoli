@@ -12,29 +12,38 @@ const UltimasNoticias = ({ posts }) => {
       </h2>
 
       <div className={styles.newsGrid}>
-        {posts.map((post, index) => (
-          <div key={index} className={styles.newsItem}>
-            <img
-              src={post.image}
-              alt={post.name}
-              className={styles.newsImage}
-              loading="lazy"
-              decoding="async"
-            />
-            <h3 className={styles.newsTitle}>{post.name}</h3>
-            <p className={styles.newsDate}>{post.date}</p>
+        {posts.map((post, index) => {
+          const postHref = `/noticias/${normalizeName(post.name)}`;
 
-            <div className={styles.newsDescription}>
-              {post.description.length > MAX_LENGTH
-                ? renderDescription(`${post.description.slice(0, MAX_LENGTH)}...`)
-                : renderDescription(post.description)}
-            </div>
+          return (
+            <Link
+              key={index}
+              href={postHref}
+              className={styles.newsItem}
+              aria-label={`Abrir nota: ${post.name}`}
+            >
+              <img
+                src={post.image}
+                alt={post.name}
+                className={styles.newsImage}
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 className={styles.newsTitle}>{post.name}</h3>
+              <p className={styles.newsDate}>{post.date}</p>
 
-            <Link href={`/noticias/${normalizeName(post.name)}`} className="readMoreBtn" >Leer más</Link>
-            {/* Mostrar cita si existe */}
-            {post.quote && <div className={styles.quote}>&quot;{post.quote}&quot;</div>}
-          </div>
-        ))}
+              <div className={styles.newsDescription}>
+                {post.description.length > MAX_LENGTH
+                  ? renderDescription(`${post.description.slice(0, MAX_LENGTH)}...`)
+                  : renderDescription(post.description)}
+              </div>
+
+              <span className="readMoreBtn" aria-hidden="true">Leer más</span>
+              {/* Mostrar cita si existe */}
+              {post.quote && <div className={styles.quote}>&quot;{post.quote}&quot;</div>}
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

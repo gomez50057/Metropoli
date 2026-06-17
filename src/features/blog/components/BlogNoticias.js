@@ -96,32 +96,41 @@ const BlogNoticias = ({ posts = [], featuredPosts = [] }) => {
 
         <div className={`${styles.newsGrid} ${fadeEffect ? styles.fadeOut : styles.fadeIn}`}>
           {filteredPosts.length > 0 ? (
-            filteredPosts.map((post) => (
-              <div key={normalizeName(post.name)} className={styles.newsItem}>
-                <img
-                  src={safeUrl(post.image)}
-                  alt={post.name}
-                  className={styles.newsImage}
-                  loading="lazy"
-                  decoding="async"
-                  onError={(e) => { e.currentTarget.src = "/img/noticias/fallback.webp"; }}
-                />
-                <div className={styles.newsContent}>
-                  <p className={styles.newsMeta}>
-                    {toLabel(post.category)} · {post.date}
-                  </p>
-                  <h3 className={styles.newsTitle}>{post.name}</h3>
-                  <div className={styles.newsDescription}>
-                    {post.description?.length > MAX_LENGTH
-                      ? renderDescription(`${post.description.slice(0, MAX_LENGTH)}...`)
-                      : renderDescription(post.description || "")}
+            filteredPosts.map((post) => {
+              const postHref = `/noticias/${normalizeName(post.name)}`;
+
+              return (
+                <Link
+                  key={normalizeName(post.name)}
+                  href={postHref}
+                  className={styles.newsItem}
+                  aria-label={`Abrir nota: ${post.name}`}
+                >
+                  <img
+                    src={safeUrl(post.image)}
+                    alt={post.name}
+                    className={styles.newsImage}
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => { e.currentTarget.src = "/img/noticias/fallback.webp"; }}
+                  />
+                  <div className={styles.newsContent}>
+                    <p className={styles.newsMeta}>
+                      {toLabel(post.category)} · {post.date}
+                    </p>
+                    <h3 className={styles.newsTitle}>{post.name}</h3>
+                    <div className={styles.newsDescription}>
+                      {post.description?.length > MAX_LENGTH
+                        ? renderDescription(`${post.description.slice(0, MAX_LENGTH)}...`)
+                        : renderDescription(post.description || "")}
+                    </div>
                   </div>
-                </div>
-                <Link href={`/noticias/${normalizeName(post.name)}`} className="readMoreBtn">
-                  Leer más
+                  <span className="readMoreBtn" aria-hidden="true">
+                    Leer más
+                  </span>
                 </Link>
-              </div>
-            ))
+              );
+            })
           ) : (
             <p>No se encontraron publicaciones para esta categoría.</p>
           )}

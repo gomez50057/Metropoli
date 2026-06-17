@@ -22,11 +22,20 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
 }
 
 .newsItem:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.newsItem:focus-visible {
+  outline: 3px solid var(--vinoOsc);
+  outline-offset: 3px;
 }
 
 .newsImage {
