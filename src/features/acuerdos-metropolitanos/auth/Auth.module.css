@@ -1,95 +1,231 @@
 .loginPage {
-  min-height: calc(100vh - 120px);
-  display: grid;
-  place-items: center;
-  padding: 32px 16px;
-  background: #f6f4f1;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 34px 20px;
+  background:
+    radial-gradient(circle at 10% 55%, rgba(125, 0, 47, 0.34), transparent 28%),
+    linear-gradient(135deg, #050406, #12070d 52%, #030303);
+  color: #fff;
+}
+
+.loginContent {
+  width: min(760px, 100%);
+  margin: 0 auto;
 }
 
 .loginPanel {
-  width: min(440px, 100%);
-  padding: 32px;
-  border: 1px solid #e2ddd5;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 14px 34px rgba(32, 24, 27, 0.08);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(230, 48, 108, 0.56);
+  border-radius: 24px 24px 10px 10px;
+  padding: 34px 46px 0;
+  background:
+    linear-gradient(145deg, rgba(32, 16, 27, 0.98), rgba(7, 8, 10, 0.98)),
+    #09080a;
+  box-shadow:
+    0 0 0 8px rgba(10, 8, 9, 0.72),
+    0 22px 55px rgba(0, 0, 0, 0.62),
+    inset 0 0 55px rgba(126, 8, 48, 0.14);
+}
+
+.loginPanel::before,
+.loginPanel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.loginPanel::before {
+  inset: 14px;
+  border: 1px solid rgba(232, 56, 116, 0.18);
+  border-radius: 16px 16px 4px 4px;
+}
+
+.loginPanel::after {
+  top: 20px;
+  right: 28px;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d5ad68);
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(560px, 86%);
+  height: auto;
+  margin: 0 auto 8px;
+  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.45));
 }
 
 .loginPanel h1 {
-  margin: 0 0 24px;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+  margin: 8px 0 24px;
+  color: #d8ad65;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 }
 
-.eyebrow {
-  margin: 0 0 8px;
-  color: var(--doradoOsc);
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
+.formPanel {
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(236, 48, 112, 0.52);
+  border-radius: 8px;
+  padding: 30px;
+  background: rgba(8, 9, 11, 0.54);
+  box-shadow: inset 0 0 28px rgba(125, 8, 48, 0.12);
 }
 
 .form {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 .formGroup {
   display: grid;
-  gap: 7px;
+  gap: 6px;
 }
 
-.formGroup label {
-  color: #373737;
-  font-size: 14px;
-  font-weight: 700;
+.formGroup > label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
-.formGroup input {
-  width: 100%;
-  min-height: 42px;
-  border: 1px solid #d8d2ca;
+.inputRow {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 58px;
+  border: 1px solid rgba(205, 199, 202, 0.38);
   border-radius: 6px;
-  padding: 10px 12px;
-  font: inherit;
+  background: linear-gradient(90deg, rgba(43, 42, 43, 0.82), rgba(20, 21, 22, 0.9));
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
-.passwordRow {
-  display: flex;
-  gap: 8px;
+.inputRow:focus-within {
+  border-color: #d33b72;
+  box-shadow: 0 0 0 3px rgba(211, 59, 114, 0.14);
 }
 
-.textButton,
-.primaryButton {
-  border: 0;
-  border-radius: 6px;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.textButton {
-  padding: 0 12px;
-  background: #eee9e2;
-  color: var(--vinoOsc);
-}
-
-.primaryButton {
-  min-height: 44px;
-  background: var(--vinoOsc);
+.inputIcon {
+  display: grid;
+  align-self: stretch;
+  place-items: center;
+  border: 1px solid #ec467f;
+  border-radius: 14px 4px 14px 4px;
+  background: linear-gradient(145deg, #a20d47, #67102f);
+  box-shadow: inset 0 0 15px rgba(255, 89, 143, 0.22);
   color: #fff;
 }
 
+.inputIcon svg {
+  font-size: 30px;
+}
+
+.inputRow input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  padding: 0 20px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 18px;
+}
+
+.inputRow input::placeholder {
+  color: #b9b4b7;
+  opacity: 1;
+}
+
+.visibilityButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  padding: 0 14px 0 4px;
+  background: transparent;
+  color: #c5c1c3;
+  cursor: pointer;
+}
+
+.visibilityButton span {
+  font-size: 15px;
+}
+
+.visibilityButton svg {
+  font-size: 25px;
+}
+
+.primaryButton {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  min-height: 64px;
+  border: 1px solid #e4b65a;
+  border-radius: 6px;
+  padding: 0 22px 0 58px;
+  background: linear-gradient(90deg, #860c3d, #951444 55%, #761033);
+  box-shadow:
+    0 0 18px rgba(255, 38, 105, 0.2),
+    inset 0 -10px 22px rgba(61, 0, 23, 0.2);
+  color: #d9b468;
+  font: inherit;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.primaryButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(255, 38, 105, 0.38);
+}
+
+.primaryButton svg {
+  font-size: 30px;
+}
+
 .primaryButton:disabled {
-  opacity: 0.7;
+  opacity: 0.68;
   cursor: wait;
 }
 
-.error {
-  color: var(--semaforoRojo);
+.error,
+.loginError {
+  color: #ff91b5;
   font-size: 13px;
   font-weight: 700;
+}
+
+.loginError {
+  border: 1px solid rgba(255, 101, 146, 0.45);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: rgba(126, 0, 43, 0.24);
+  text-align: center;
+}
+
+.skyline {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: calc(100% + 44px);
+  height: 118px;
+  margin: 8px -22px 0;
+  object-fit: cover;
+  object-position: center 78%;
+  mix-blend-mode: screen;
+  opacity: 0.82;
 }
 
 .state {
@@ -99,4 +235,70 @@
   padding: 24px;
   color: var(--grisOsc);
   font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .loginPage {
+    padding: 22px 14px;
+  }
+
+  .loginPanel {
+    padding: 26px 20px 0;
+  }
+
+  .logo {
+    width: 94%;
+  }
+
+  .loginPanel h1 {
+    margin-bottom: 20px;
+    font-size: 26px;
+  }
+
+  .formPanel {
+    padding: 20px;
+  }
+
+  .inputRow {
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    min-height: 56px;
+  }
+
+  .inputRow input {
+    padding: 0 14px;
+    font-size: 16px;
+  }
+
+  .primaryButton {
+    min-height: 58px;
+    padding-left: 48px;
+    font-size: 20px;
+  }
+
+  .skyline {
+    height: 92px;
+  }
+}
+
+@media (max-width: 430px) {
+  .loginPanel {
+    padding-inline: 12px;
+    border-radius: 16px 16px 8px 8px;
+  }
+
+  .loginPanel h1 {
+    font-size: 22px;
+  }
+
+  .formPanel {
+    padding: 14px;
+  }
+
+  .visibilityButton span {
+    display: none;
+  }
+
+  .visibilityButton {
+    padding-right: 10px;
+  }
 }
