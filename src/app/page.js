@@ -1,12 +1,12 @@
-import Header from '@/components/home/Header';
-import About from '@/components/home/About';
-import Slider from '@/components/home/Slider';
-import Map from '@/components/home/InteractiveMap';
-// import Announcement from '@/components/home/Announcement';
+import Header from '@/features/home/components/Header';
+import About from '@/features/home/components/About';
+import Slider from '@/features/home/components/Slider';
+import Map from '@/features/home/components/InteractiveMap';
+// import Announcement from '@/features/home/components/Announcement';
 import Navbar from '@/components/shared/Navbar';
-import Chatbot from '@/components/chat/Chatbot';
-import IntroVideoModal from '../components/shared/IntroVideoModal';
-// import GoogleFor from '../components/shared/GoogleFormEmbed';
+import Chatbot from '@/features/chat/components/Chatbot';
+import IntroVideoModal from '@/components/shared/IntroVideoModal';
+// import GoogleFor from '@/components/shared/GoogleFormEmbed';
 
 export default function Home() {
   return (

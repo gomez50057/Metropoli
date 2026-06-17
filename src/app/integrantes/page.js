@@ -1,5 +1,5 @@
 import React from 'react';
-import ZonasMetropolitanas from '@/components/teams/ZonasMetropolitanas';
+import ZonasMetropolitanas from '@/features/teams/components/ZonasMetropolitanas';
 import Navbar from '@/components/shared/Navbar';
 
 

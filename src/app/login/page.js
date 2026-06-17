@@ -1,6 +1,6 @@
 // src/app/login/page.js
 import React from 'react';
-import Login from '@/components/auth/Login';
+import Login from '@/features/legacy-dashboard/auth/Login';
 import Navbar from '@/components/shared/Navbar';
 
 

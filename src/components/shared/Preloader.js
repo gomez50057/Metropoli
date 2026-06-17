@@ -1,10 +1,10 @@
 import React from 'react';
-import './Preloader.css';
+import preloaderStyles from './Preloader.module.css';
 
 const Preloader = () => {
   return (
-    <div className="loader">
-      <div className="svg-wrapper">
+    <div className={preloaderStyles["loader"]}>
+      <div className={preloaderStyles["svg-wrapper"]}>
         <svg
           id="b"
           xmlns="http://www.w3.org/2000/svg"
@@ -104,11 +104,11 @@ const Preloader = () => {
             />
           </g>
         </svg>
-        <div className="loading-text">Cargando...</div>
-        <div className="loading-messages">
-          <div className="message">Enviando...</div>
-          <div className="message">Analizando salida...</div>
-          <div className="message">Subiendo Formulario...</div>
+        <div className={preloaderStyles["loading-text"]}>Cargando...</div>
+        <div className={preloaderStyles["loading-messages"]}>
+          <div className={preloaderStyles["message"]}>Enviando...</div>
+          <div className={preloaderStyles["message"]}>Analizando salida...</div>
+          <div className={preloaderStyles["message"]}>Subiendo Formulario...</div>
         </div>
 
       </div>

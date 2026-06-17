@@ -1,14 +1,14 @@
 import React from 'react';
 import Navbar from '@/components/shared/Navbar';
-import HomeWebflow from "@/components/pimus/PimusHero";
-// import VerticalLoopContained from "@/components/pimus/VerticalLoop";
-import PimusZmpAbout from "@/components/pimus/PimusZmpAbout";
-import PimusJustificacionAlcance from "@/components/pimus/PimusDobleSeccion";
-import HaptichashSlider from "@/components/pimus/HaptichashSlider";
-import PimusZmpGoals from "@/components/pimus/PimusZmpGoals";
-import PimusZmpBenefits from "@/components/pimus/PimusZmpBenefits";
-// import Pimuskpis from "@/components/pimus/Pimuskpis";
-import DataZMP from "@/components/pimus/DataZMP";
+import HomeWebflow from "@/features/pimus/components/PimusHero";
+// import VerticalLoopContained from "@/features/pimus/components/VerticalLoop";
+import PimusZmpAbout from "@/features/pimus/components/PimusZmpAbout";
+import PimusJustificacionAlcance from "@/features/pimus/components/PimusDobleSeccion";
+import HaptichashSlider from "@/features/pimus/components/HaptichashSlider";
+import PimusZmpGoals from "@/features/pimus/components/PimusZmpGoals";
+import PimusZmpBenefits from "@/features/pimus/components/PimusZmpBenefits";
+// import Pimuskpis from "@/features/pimus/components/Pimuskpis";
+import DataZMP from "@/features/pimus/components/DataZMP";
 
 const PIMUS_ZMP_Page = () => {
   return (

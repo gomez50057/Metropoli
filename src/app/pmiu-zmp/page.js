@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from '@/components/shared/Navbar';
-import Hero from '@/components/PMIU_ZMP/Hero';
-import BehindPlan from '@/components/PMIU_ZMP/BehindPlan';
-import CountsPanel from '@/components/PMIU_ZMP/CountsPanel';
-import MunicipiosPromoSlider from "@/components/PMIU_ZMP/MunicipiosPromoSlider";
-import { MUNICIPIOS } from "@/utils/municipios";
-import HaptichashSlider from "@/components/PMIU_ZMP/HaptichashSlider";
-import WorkshopResults from "@/components/PMIU_ZMP/WorkshopResults/WorkshopResults";
+import Hero from '@/features/pmiu-zmp/components/Hero';
+import BehindPlan from '@/features/pmiu-zmp/components/BehindPlan';
+import CountsPanel from '@/features/pmiu-zmp/components/CountsPanel';
+import MunicipiosPromoSlider from "@/features/pmiu-zmp/components/MunicipiosPromoSlider";
+import { MUNICIPIOS } from "@/data/municipios";
+import HaptichashSlider from "@/features/pmiu-zmp/components/HaptichashSlider";
+import WorkshopResults from "@/features/pmiu-zmp/components/WorkshopResults/WorkshopResults";
 
 
 const pmiu_zmp = () => {

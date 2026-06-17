@@ -1,5 +1,6 @@
-import Footer from '../components/shared/Footer';
-import GoogleAnalytics from '../components/shared/GoogleAnalytics';
+import Footer from '@/components/shared/Footer';
+import GoogleAnalytics from '@/components/shared/GoogleAnalytics';
+import { SITE_URL } from '@/config/api';
 import '../styles/globals.css';
 import 'gridstack/dist/gridstack.min.css';
 
@@ -19,7 +20,7 @@ export const metadata = {
     title: "Metrópoli Hidalgo",
     description:
       "Explora la estrategia metropolitana para el desarrollo sostenible del Estado de Hidalgo.",
-    url: "https://metropoli.hidalgo.gob.mx",
+    url: SITE_URL,
     siteName: "Metrópoli Hidalgo",
     images: [
       {
@@ -32,7 +33,7 @@ export const metadata = {
     locale: "es_MX",
     type: "website",
   },
-  metadataBase: new URL("https://metropoli.hidalgo.gob.mx"),
+  ...(SITE_URL ? { metadataBase: new URL(SITE_URL) } : {}),
 };
 
 export default function RootLayout({ children }) {

@@ -1,6 +1,7 @@
 import styles from "./Footer.module.css";
+import { externalAssetUrl } from "@/config/api";
 
-const imgBasePath = "https://bibliotecadigitaluplaph.hidalgo.gob.mx/img_banco/footer/";
+const footerImage = (name) => externalAssetUrl(`/img_banco/footer/${name}`);
 
 const Footer = () => {
   return (
@@ -11,41 +12,41 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={`${imgBasePath}facebook.webp`} alt="Logo de Facebook" />
+          <img src={footerImage('facebook.webp')} alt="Logo de Facebook" />
         </a>
         <a
           href="https://www.instagram.com/gobiernohidalgo/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={`${imgBasePath}instagram.webp`} alt="Logo de Instagram" />
+          <img src={footerImage('instagram.webp')} alt="Logo de Instagram" />
         </a>
         <a
           href="https://www.youtube.com/@GobiernoHidalgoMx"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={`${imgBasePath}youtube.webp`} alt="Logo de YouTube" />
+          <img src={footerImage('youtube.webp')} alt="Logo de YouTube" />
         </a>
         <a
           href="https://x.com/PlaneacionHgo"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={`${imgBasePath}x.webp`} alt="Logo de X" />
+          <img src={footerImage('x.webp')} alt="Logo de X" />
         </a>
       </div>
 
       {/* 
       <div className={styles.imageContainer}>
-        <img src={`${imgBasePath}logo_footer.png`} alt="img_representativa" />
+        <img src={footerImage('logo_footer.png')} alt="img_representativa" />
       </div> 
       */}
 
       <div className={styles.footerContacto}>
         <div className={styles.footerContactoTxt}>
           <div className={styles.footerContactoIco}>
-            <img src={`${imgBasePath}telefono.webp`} alt="icono de un telefono" />
+            <img src={footerImage('telefono.webp')} alt="icono de un telefono" />
             <div>
               <p>
                 <span>CONTACTO:</span>

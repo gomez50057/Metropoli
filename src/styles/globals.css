@@ -7,6 +7,10 @@
   --vinoClr: #A02142;
   --grisOsc: #707271;
   --grisClr: #98989a;
+  --semaforoVerde: #2e7d32;
+  --semaforoAmarillo: #f2c94c;
+  --semaforoRojo: #d32f2f;
+  --semaforoGris: #80848e;
   --blanco: #F5F3F5;
   --vinoGradient: linear-gradient(-45deg, var(--vinoOsc), var(--vinoClr));
   --doradoGradient: linear-gradient(-45deg, var(--doradoOsc), var(--doradoClr));
@@ -14,6 +18,12 @@
 
   --card: #ffffff;
   --brd: #e6e6e6;
+  --primary-color: #007bff;
+  --secondary-color: #0056b3;
+  --error-color: #ff0000;
+  --background-color: rgba(255, 255, 255, 0.25);
+  --border-color: rgba(209, 213, 219, 0.3);
+  --box-shadow-color: rgba(0, 0, 0, 0.25);
 }
 
 * {

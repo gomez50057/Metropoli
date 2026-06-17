@@ -1,0 +1,62 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.48);
+}
+
+.dialog {
+  width: min(420px, 100%);
+  border: 1px solid rgba(105, 27, 50, 0.18);
+  border-radius: 8px;
+  padding: 22px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.dialog h2 {
+  margin: 0 0 8px;
+  color: var(--vinoOsc);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.dialog p {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.actions button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #e8e3dc;
+  color: #333;
+}
+
+.confirm {
+  background: var(--vinoOsc);
+  color: #fff;
+}
+
+.danger {
+  background: var(--semaforoRojo);
+  color: #fff;
+}

@@ -5,10 +5,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
-import './UserOptionsModal.css';
+import { externalAssetUrl } from '@/config/api';
+import userOptionsModalStyles from './UserOptionsModal.module.css';
 import LogoutModal from './LogoutModal'; // Importar el componente de confirmación
-
-const imgBasePath = "https://bibliotecadigitaluplaph.hidalgo.gob.mx/img_banco/";
 
 const UserOptionsModal = ({ isOpen, onClose, anchorElement, username }) => {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
@@ -54,44 +53,44 @@ const UserOptionsModal = ({ isOpen, onClose, anchorElement, username }) => {
 
   return (
     <>
-      <div className="modal-overlay" onClick={onClose}>
-        <div className="modal-content" style={modalStyle} onClick={(e) => e.stopPropagation()}>
-          <div className="profile-header">
-            <img src={`${imgBasePath}estrella.webp`} alt="img_representativa" />
-            <div className="profile-info">
+      <div className={userOptionsModalStyles["modal-overlay"]} onClick={onClose}>
+        <div className={userOptionsModalStyles["modal-content"]} style={modalStyle} onClick={(e) => e.stopPropagation()}>
+          <div className={userOptionsModalStyles["profile-header"]}>
+            <img src={externalAssetUrl('/img_banco/estrella.webp')} alt="img_representativa" />
+            <div className={userOptionsModalStyles["profile-info"]}>
               {username ? (
-                <div className="username" style={{ cursor: 'pointer' }}>{username}</div>
+                <div className={userOptionsModalStyles["username"]} style={{ cursor: 'pointer' }}>{username}</div>
               ) : (
-                <div className="username" onClick={handleLoginRedirect} >
+                <div className={userOptionsModalStyles["username"]} onClick={handleLoginRedirect} >
                   Inicia sesión primero
                 </div>
               )}
             </div>
           </div>
 
-          <div className="menu-item" onClick={handleFaqClick}>
+          <div className={userOptionsModalStyles["menu-item"]} onClick={handleFaqClick}>
             <HelpOutlineIcon />
             <span>Preguntas frecuentes</span>
           </div>
 
           {/* Bloques de enlaces con íconos */}
-          <div className="menu-item small-screen-links" onClick={handleFaqClick}>
+          <div className={`${userOptionsModalStyles["menu-item"]} ${userOptionsModalStyles["small-screen-links"]}`} onClick={handleFaqClick}>
             <HelpOutlineIcon />
             <span><Link href="/integrantes/">Integrantes</Link></span>
           </div>
 
-          <div className="menu-item small-screen-links" onClick={handleFaqClick}>
+          <div className={`${userOptionsModalStyles["menu-item"]} ${userOptionsModalStyles["small-screen-links"]}`} onClick={handleFaqClick}>
             <HelpOutlineIcon />
             <span><Link href="/noticias/">Noticias</Link></span>
           </div>
 
-          <div className="menu-item small-screen-links" onClick={handleFaqClick}>
+          <div className={`${userOptionsModalStyles["menu-item"]} ${userOptionsModalStyles["small-screen-links"]}`} onClick={handleFaqClick}>
             <HelpOutlineIcon />
             <span><Link href="/login/">Acceder</Link></span>
           </div>
 
           <button
-            className="logout-button"
+            className={userOptionsModalStyles["logout-button"]}
             onClick={username ? handleLogoutClick : handleLoginRedirect}
           >
             <LogoutIcon />

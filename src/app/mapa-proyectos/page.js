@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectMap from '@/components/maps/ProjectMap';
+import ProjectMap from '@/features/maps/components/ProjectMap';
 import Navbar from '@/components/shared/Navbar';
 
 

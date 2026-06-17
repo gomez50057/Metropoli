@@ -1,0 +1,260 @@
+.page,
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.heading h1 {
+  margin: 0 0 4px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.form h2 {
+  margin: 0;
+  color: var(--vinoOsc);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.heading p {
+  margin: 0;
+}
+
+.form {
+  padding: 18px;
+  border: 1px solid rgba(226, 221, 213, 0.72);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 16px 34px rgba(35, 31, 32, 0.12);
+  backdrop-filter: blur(12px);
+  animation: fadeLift 0.24s ease both;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.formGroup {
+  display: grid;
+  gap: 7px;
+}
+
+.documentUpload {
+  grid-column: 1 / -1;
+}
+
+.documentUpload .dropzone {
+  grid-template-columns: auto minmax(0, 1fr);
+  place-items: center start;
+  min-height: 72px;
+  text-align: left;
+}
+
+.formGroup label {
+  color: #333;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  padding: 9px 10px;
+  background: #fff;
+  font: inherit;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: var(--vinoOsc);
+  box-shadow: 0 0 0 3px rgba(105, 27, 50, 0.1);
+  outline: 0;
+}
+
+.formGroup select[multiple] {
+  min-height: 112px;
+}
+
+.dropzone {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  min-height: 118px;
+  border: 2px dashed #d8d2ca;
+  border-radius: 8px;
+  padding: 16px;
+  background: rgba(251, 250, 248, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 18px rgba(35, 31, 32, 0.08);
+  color: var(--grisOsc);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.dropzone:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 12px 24px rgba(35, 31, 32, 0.12);
+}
+
+.dropzoneActive {
+  border-color: var(--vinoOsc);
+  background: #f5edf0;
+  color: var(--vinoOsc);
+  transform: scale(1.01);
+}
+
+.fileList {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fileList li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e2ddd5;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 8px 18px rgba(35, 31, 32, 0.08);
+  animation: fadeLift 0.2s ease both;
+}
+
+.fileList span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileList small {
+  color: var(--grisOsc);
+  font-weight: 700;
+}
+
+.uploadNotice,
+.uploadError {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.uploadNotice {
+  color: var(--grisOsc);
+}
+
+.uploadError {
+  color: var(--semaforoRojo);
+}
+
+.reactSelect {
+  color: #333;
+}
+
+.reactSelect :global(.react-select__control) {
+  min-height: 42px;
+  border-color: #d8d2ca;
+  border-radius: 6px;
+  box-shadow: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.reactSelect :global(.react-select__control:hover),
+.reactSelect :global(.react-select__control--is-focused) {
+  border-color: var(--vinoOsc);
+  box-shadow: 0 0 0 3px rgba(105, 27, 50, 0.1);
+  transform: translateY(-1px);
+}
+
+.reactSelect :global(.react-select__menu) {
+  overflow: hidden;
+  border: 1px solid rgba(226, 221, 213, 0.82);
+  border-radius: 8px;
+  box-shadow: 0 16px 32px rgba(35, 31, 32, 0.16);
+  animation: dropdownIn 0.16s ease both;
+}
+
+.reactSelect :global(.react-select__option) {
+  transition: background 0.14s ease, color 0.14s ease;
+}
+
+.counter {
+  color: var(--grisOsc);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+
+@keyframes fadeLift {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.error,
+.success {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.error {
+  color: var(--semaforoRojo);
+}
+
+.success {
+  color: var(--semaforoVerde);
+}
+
+.form button {
+  justify-self: start;
+  min-height: 42px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 18px;
+  background: var(--vinoOsc);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.form button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+@media (max-width: 920px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

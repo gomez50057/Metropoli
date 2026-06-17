@@ -1,11 +1,11 @@
 import Navbar from '@/components/shared/Navbar';
-import Hero from "@/components/ActuPozmvm/Hero";
-import SplitSection from "@/components/ActuPozmvm/SplitSection";
-import AntecedentesSection from "@/components/ActuPozmvm/AntecedentesSection";
-import TransverseAxles from "@/components/ActuPozmvm/TransverseAxles";
-import GuidingPrinciples from "@/components/ActuPozmvm/GuidingPrinciples";
-import TalleresCenterSlider from "@/components/ActuPozmvm/TalleresCenterSlider";
-import ChipStatus from "@/components/ActuPozmvm/ChipStatus";
+import Hero from "@/features/actualizacion-pozmvm/components/Hero";
+import SplitSection from "@/features/actualizacion-pozmvm/components/SplitSection";
+import AntecedentesSection from "@/features/actualizacion-pozmvm/components/AntecedentesSection";
+import TransverseAxles from "@/features/actualizacion-pozmvm/components/TransverseAxles";
+import GuidingPrinciples from "@/features/actualizacion-pozmvm/components/GuidingPrinciples";
+import TalleresCenterSlider from "@/features/actualizacion-pozmvm/components/TalleresCenterSlider";
+import ChipStatus from "@/features/actualizacion-pozmvm/components/ChipStatus";
 
 export default function PagePOZMVM() {
   return (

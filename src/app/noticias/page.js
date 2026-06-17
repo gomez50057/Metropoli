@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '@/components/shared/Navbar';
-import BlogMain  from '@/components/blog/BlogMain';
+import BlogMain  from '@/features/blog/components/BlogMain';
 
 
 

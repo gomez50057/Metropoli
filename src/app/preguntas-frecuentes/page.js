@@ -1,5 +1,5 @@
 import React from 'react';
-import FAQ from '@/components/faq/FAQ';
+import FAQ from '@/features/faq/components/FAQ';
 import Navbar from '@/components/shared/Navbar';
 
 

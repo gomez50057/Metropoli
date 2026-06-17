@@ -1,0 +1,269 @@
+.page {
+  display: grid;
+  gap: 16px;
+}
+
+.heading h1 {
+  margin: 0 0 4px;
+  color: var(--vinoOsc);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.heading p {
+  margin: 0;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  min-height: 40px;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fff;
+  font: inherit;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: var(--vinoOsc);
+  box-shadow: 0 0 0 3px rgba(105, 27, 50, 0.1);
+  outline: 0;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+.card,
+.alert,
+.empty {
+  border-radius: 8px;
+  background: rgba(248, 246, 247, 0.78);
+  box-shadow: 0 16px 34px rgba(35, 31, 32, 0.14);
+  backdrop-filter: blur(12px);
+}
+
+.card {
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 38px rgba(35, 31, 32, 0.16);
+}
+
+.cardHeader {
+  width: 100%;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  padding: 10px 16px;
+  background: rgba(248, 246, 247, 0.78);
+  color: var(--grisOsc);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.18s ease;
+}
+
+.cardHeader:hover {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.cardHeader::-webkit-details-marker {
+  display: none;
+}
+
+.cardHeader:focus-visible,
+.filters input:focus-visible,
+.filters select:focus-visible,
+.rowActions a:focus-visible {
+  outline: 3px solid var(--doradoOsc);
+  outline-offset: 3px;
+}
+
+.instanceIcon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--vinoOsc);
+  box-shadow: 0 4px 8px rgba(35, 31, 32, 0.22);
+}
+
+.instanceName,
+.instanceSummary {
+  display: block;
+}
+
+.instanceSummary {
+  margin-top: 2px;
+  color: var(--grisClr);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chevron {
+  justify-self: end;
+  color: var(--grisOsc);
+  transition: transform 0.22s ease;
+}
+
+.card[open] .chevron {
+  transform: rotate(180deg);
+}
+
+.minuteList {
+  display: grid;
+  gap: 0;
+  border-left: 7px solid var(--vinoClr);
+  padding: 14px 22px 18px 16px;
+  background: rgba(248, 246, 247, 0.68);
+  transform-origin: top;
+}
+
+.card[open] .minuteList {
+  animation: accordionIn 0.22s ease both;
+}
+
+.minuteRow {
+  min-height: 68px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(112, 114, 113, 0.08);
+  animation: fadeRow 0.18s ease both;
+}
+
+.minuteRow:last-child {
+  border-bottom: 0;
+}
+
+@keyframes accordionIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scaleY(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes fadeRow {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.documentInfo {
+  display: grid;
+  gap: 3px;
+}
+
+.documentInfo strong {
+  display: block;
+  color: #3b3b3b;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.documentInfo span {
+  display: block;
+  color: var(--grisClr);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.typeBadge {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 3px 9px;
+  background: rgba(105, 27, 50, 0.1);
+  color: var(--vinoOsc) !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rowActions a {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(188, 149, 91, 0.35);
+  border-radius: 6px;
+  padding: 0 10px;
+  background: #fff;
+  color: var(--doradoOsc);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.rowActions a:hover {
+  background: rgba(188, 149, 91, 0.12);
+}
+
+.alert,
+.empty {
+  padding: 12px 14px;
+  font-weight: 800;
+}
+
+.alert {
+  color: var(--semaforoRojo);
+}
+
+@media (max-width: 720px) {
+  .cardHeader {
+    grid-template-columns: 42px minmax(0, 1fr) 24px;
+  }
+
+  .minuteRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .rowActions {
+    justify-content: stretch;
+  }
+
+  .rowActions a {
+    flex: 1;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,176 @@
+.page {
+  display: grid;
+  gap: 16px;
+}
+
+.heading h1 {
+  margin: 0 0 4px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.heading p {
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 14px;
+}
+
+.panel,
+.updateForm,
+.alert,
+.success {
+  border: 1px solid rgba(226, 221, 213, 0.72);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 16px 34px rgba(35, 31, 32, 0.12);
+  backdrop-filter: blur(12px);
+  animation: fadeLift 0.22s ease both;
+}
+
+.panel,
+.updateForm {
+  padding: 18px;
+}
+
+.panel h2,
+.updateForm h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.panel dl {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.panel dl div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.panel dt {
+  color: var(--grisOsc);
+  font-weight: 800;
+}
+
+.panel dd {
+  margin: 0;
+}
+
+.panel ul,
+.timeline {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.panel a {
+  color: var(--vinoOsc);
+  font-weight: 800;
+}
+
+.linkButton {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--vinoOsc);
+  font: inherit;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.reviewActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.reviewActions button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 12px;
+  background: var(--vinoOsc);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.reviewActions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(35, 31, 32, 0.14);
+}
+
+.updateForm {
+  display: grid;
+  gap: 12px;
+}
+
+@keyframes fadeLift {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.updateForm textarea,
+.updateForm input {
+  width: 100%;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  padding: 10px;
+  font: inherit;
+}
+
+.updateForm button {
+  justify-self: start;
+  min-height: 42px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 18px;
+  background: var(--vinoOsc);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.alert,
+.success {
+  padding: 12px 14px;
+  font-weight: 800;
+}
+
+.alert {
+  color: var(--semaforoRojo);
+}
+
+.success {
+  color: var(--semaforoVerde);
+}
+
+@media (max-width: 880px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel dl div {
+    grid-template-columns: 1fr;
+  }
+}

@@ -18,7 +18,7 @@ const NAV_ITEMS = [
   { label: "Imagen Urbana ZMP", href: "/pmiu-zmp" },
   { label: "Integrantes", href: "/integrantes" },
   { label: "Noticias", href: "/noticias" },
-  { label: "Acceder", href: "/login" },
+  { label: "Acceder", href: "/acuerdos-metropolitanos" },
 ];
 
 /**

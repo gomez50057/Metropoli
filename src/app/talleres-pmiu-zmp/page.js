@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '@/components/shared/Navbar';
-import ZonasMetropolitanas from '@/components/talleres-pmiu-zmp/ZonasMetropolitanas';
+import ZonasMetropolitanas from '@/features/talleres-pmiu-zmp/components/ZonasMetropolitanas';
 
 const Talleres_PMIU_ZMP_Page = () => {
   return (

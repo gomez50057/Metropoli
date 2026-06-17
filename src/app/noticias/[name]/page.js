@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import FullPost from "../../../components/blog/FullPost";
-import { blogPosts, normalizeName } from "../../../utils/blogData";
+import FullPost from "@/features/blog/components/FullPost";
+import { blogPosts, normalizeName } from "@/data/blogData";
 
 export async function generateStaticParams() {
   return blogPosts.map(p => ({ name: normalizeName(p.name) }));

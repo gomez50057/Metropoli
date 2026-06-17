@@ -1,5 +1,7 @@
+"use client";
+
 import React from 'react';
-import FormularioCarga from '@/components/forms copy/FormularioCarga';
+import CreateFormulario from '@/features/legacy-dashboard/forms/CreateFormulario';
 import Navbar from '@/components/shared/Navbar';
 
 
@@ -7,7 +9,7 @@ const form = () => {
   return (
     <div>
       <Navbar />
-      <FormularioCarga />
+      <CreateFormulario />
 
     </div>
   );
