@@ -9,13 +9,23 @@ import AgreementFilters from './AgreementFilters';
 import AgreementsTable from './AgreementsTable';
 import styles from './AgreementsList.module.css';
 
-function normalizeList(data) {
-  return Array.isArray(data) ? data : data?.results || [];
+function normalizePage(data) {
+  if (Array.isArray(data)) {
+    return { results: data, count: data.length, next: null, previous: null };
+  }
+  return {
+    results: data?.results || [],
+    count: data?.count || 0,
+    next: data?.next || null,
+    previous: data?.previous || null,
+  };
 }
 
 export default function AgreementsList() {
   const { user } = useSession();
   const [agreements, setAgreements] = useState([]);
+  const [page, setPage] = useState(1);
+  const [pageInfo, setPageInfo] = useState({ count: 0, next: null, previous: null });
   const [filters, setFilters] = useState({ search: '', status: '', year: '', committed_date: '', semaphore: '' });
   const [error, setError] = useState('');
   const canExport = canExportAgreements(user?.role);
@@ -25,15 +35,21 @@ export default function AgreementsList() {
     Object.entries(filters).forEach(([key, value]) => {
       if (value) clean[key] = value;
     });
+    clean.page = page;
     return clean;
-  }, [filters]);
+  }, [filters, page]);
 
   useEffect(() => {
     let active = true;
 
     getAgreements(params)
       .then((data) => {
-        if (active) setAgreements(normalizeList(data));
+        if (active) {
+          const normalized = normalizePage(data);
+          setAgreements(normalized.results);
+          setPageInfo(normalized);
+          setError('');
+        }
       })
       .catch(() => {
         if (active) setError('No se pudo cargar el listado.');
@@ -46,6 +62,7 @@ export default function AgreementsList() {
 
   function updateFilter(event) {
     const { name, value } = event.target;
+    setPage(1);
     setFilters((current) => ({ ...current, [name]: value }));
   }
 
@@ -63,6 +80,17 @@ export default function AgreementsList() {
       <AgreementFilters filters={filters} onChange={updateFilter} />
       {error && <div className={styles.alert}>{error}</div>}
       <AgreementsTable agreements={agreements} />
+      {(pageInfo.previous || pageInfo.next) && (
+        <nav className={styles.pagination} aria-label="Paginación de acuerdos">
+          <button type="button" disabled={!pageInfo.previous} onClick={() => setPage((value) => value - 1)}>
+            Anterior
+          </button>
+          <span>Página {page} · {pageInfo.count} acuerdos</span>
+          <button type="button" disabled={!pageInfo.next} onClick={() => setPage((value) => value + 1)}>
+            Siguiente
+          </button>
+        </nav>
+      )}
     </section>
   );
 }

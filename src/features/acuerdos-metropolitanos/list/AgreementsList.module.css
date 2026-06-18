@@ -185,6 +185,31 @@
   text-align: center;
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.pagination button {
+  min-height: 38px;
+  border: 1px solid var(--vinoOsc);
+  border-radius: 6px;
+  padding: 7px 14px;
+  background: #fff;
+  color: var(--vinoOsc);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  border-color: #d8d2ca;
+  color: #888;
+  cursor: not-allowed;
+}
+
 @media (max-width: 700px) {
   .heading {
     display: grid;
@@ -193,5 +218,9 @@
   .filters input,
   .filters select {
     width: 100%;
+  }
+
+  .pagination {
+    justify-content: space-between;
   }
 }
