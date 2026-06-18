@@ -1,5 +1,5 @@
 .loginPage {
-  --login-bg: url("/img/acuerdos-bg-generica.jpg");
+  --login-bg: url("/img/backlogin.jpg");
 
   position: relative;
   isolation: isolate;
