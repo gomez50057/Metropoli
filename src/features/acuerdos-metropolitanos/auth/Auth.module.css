@@ -1,31 +1,711 @@
 .loginPage {
-  min-height: 100vh;
+  --login-bg: url("/img/acuerdos-bg-generica.jpg");
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
   overflow: hidden;
-  padding: 34px 20px;
-  background:
-    radial-gradient(circle at 10% 55%, rgba(125, 0, 47, 0.34), transparent 28%),
-    linear-gradient(135deg, #050406, #12070d 52%, #030303);
   color: #fff;
+  background: #030304;
+}
+
+.loginPage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(90deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(70, 0, 32, 0.18),
+      rgba(0, 0, 0, 0.72)),
+    linear-gradient(180deg,
+      rgba(0, 0, 0, 0.18),
+      rgba(0, 0, 0, 0.88)),
+    var(--login-bg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: saturate(0.98) contrast(1.08);
+}
+
+.loginPage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 34%, rgba(236, 48, 112, 0.3), transparent 28%),
+    radial-gradient(circle at 72% 58%, rgba(188, 149, 91, 0.13), transparent 34%),
+    linear-gradient(90deg,
+      rgba(73, 0, 31, 0.45),
+      rgba(0, 0, 0, 0.2) 48%,
+      rgba(0, 0, 0, 0.72));
+}
+
+.loginShell {
+  display: grid;
+  grid-template-columns: minmax(420px, 48vw) minmax(560px, 1fr);
+  min-height: 100dvh;
+}
+
+.visualSide {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100dvh;
+  background: transparent;
+  cursor: crosshair;
+}
+
+.visualSide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  background:
+    radial-gradient(circle at 31% 38%, rgba(255, 51, 122, 0.18), transparent 27%),
+    radial-gradient(circle at 67% 16%, rgba(188, 149, 91, 0.14), transparent 22%),
+    linear-gradient(90deg, rgba(60, 0, 27, 0.55), rgba(0, 0, 0, 0.12) 64%, transparent);
+  pointer-events: none;
+}
+
+.visualSide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.4) 68%,
+      rgba(0, 0, 0, 0.9) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.15), transparent 58%);
+  pointer-events: none;
+}
+
+.scanGrid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0.42;
+  background-image:
+    linear-gradient(rgba(188, 149, 91, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(188, 149, 91, 0.06) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+}
+
+.scanGrid::before {
+  content: "";
+  position: absolute;
+  inset: -40% 0;
+  background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(255, 73, 140, 0.08) 48%,
+      rgba(255, 210, 139, 0.15) 50%,
+      rgba(255, 73, 140, 0.08) 52%,
+      transparent 100%);
+  animation: metroScan 6s linear infinite;
+}
+
+.energyBeam {
+  position: absolute;
+  left: -18%;
+  top: 42%;
+  z-index: -1;
+  width: 86%;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 71, 139, 0.2),
+      rgba(255, 208, 137, 0.95),
+      rgba(255, 71, 139, 0.35),
+      transparent);
+  box-shadow:
+    0 0 18px rgba(255, 71, 139, 0.55),
+    0 0 42px rgba(188, 149, 91, 0.28);
+  transform: rotate(-9deg);
+  animation: energyTravel 4.8s ease-in-out infinite;
+}
+
+.orbitalGlow {
+  position: absolute;
+  left: 7%;
+  top: 8%;
+  z-index: -2;
+  width: min(540px, 82%);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(236, 48, 112, 0.15), transparent 58%),
+    conic-gradient(from 180deg,
+      transparent,
+      rgba(236, 48, 112, 0.22),
+      transparent,
+      rgba(188, 149, 91, 0.2),
+      transparent);
+  filter: blur(1px);
+  opacity: 0.72;
+  animation: slowRotate 18s linear infinite;
+  mask-image: radial-gradient(circle, transparent 0 38%, #000 39% 64%, transparent 65%);
+}
+
+.mapLayer {
+  position: absolute;
+  top: 18px;
+  left: -8px;
+  z-index: 2;
+  width: min(620px, 78%);
+  opacity: 0.98;
+  filter:
+    drop-shadow(0 0 18px rgba(237, 52, 113, 0.36)) drop-shadow(0 0 58px rgba(188, 149, 91, 0.12));
+}
+
+.mapLayer svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.communicationBackbone path {
+  fill: none;
+  stroke: rgba(105, 27, 50, 0.62);
+  stroke-width: 12;
+  stroke-linecap: round;
+  opacity: 0.52;
+  filter: url("#metroGlow");
+}
+
+.communicationLinks path {
+  fill: none;
+  stroke: url("#connectionStroke");
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  opacity: 0.92;
+  filter: url("#goldGlow");
+}
+
+.dataFlows path {
+  fill: none;
+  stroke: rgba(255, 218, 158, 0.95);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1 21;
+  filter: url("#goldGlow");
+}
+
+.stateNode,
+.metroNode {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.stateHalo {
+  fill: rgba(105, 27, 50, 0.24);
+  stroke: rgba(188, 149, 91, 0.42);
+  stroke-width: 1.4;
+  filter: url("#goldGlow");
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease;
+}
+
+.stateCore {
+  fill: #bc955b;
+  stroke: rgba(255, 255, 255, 0.72);
+  stroke-width: 1.3;
+  filter: url("#goldGlow");
+}
+
+.stateLabel {
+  fill: #dec9a3;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.88));
+}
+
+.stateSubLabel {
+  fill: rgba(255, 255, 255, 0.68);
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stateNode[data-active="true"] .stateHalo {
+  fill: rgba(188, 149, 91, 0.18);
+  stroke: rgba(255, 210, 139, 0.95);
+}
+
+.stateNode[data-active="true"] .stateLabel {
+  fill: #ffd18b;
+}
+
+.metroHalo {
+  fill: rgba(236, 48, 112, 0.15);
+  stroke: rgba(236, 48, 112, 0.72);
+  stroke-width: 1.5;
+  filter: url("#metroGlow");
+}
+
+.metroCore {
+  fill: #a02142;
+  stroke: #dec9a3;
+  stroke-width: 2;
+  filter: url("#metroGlow");
+}
+
+.metroLabel {
+  fill: #ffd18b;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  filter: drop-shadow(0 2px 9px rgba(0, 0, 0, 0.88));
+}
+
+.metroName {
+  fill: rgba(255, 255, 255, 0.7);
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.metroNode[data-active="true"] .metroCore {
+  fill: #bc955b;
+  stroke: #fff3d7;
+}
+
+.metroNode[data-active="true"] .metroLabel {
+  fill: #fff3d7;
+}
+
+.signalHub {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0.58;
+  pointer-events: none;
+}
+
+.signalHub circle {
+  fill: none;
+  stroke: rgba(188, 149, 91, 0.42);
+  stroke-width: 1.2;
+  stroke-dasharray: 7 9;
+}
+
+.signalHub path {
+  fill: none;
+  stroke: rgba(255, 209, 139, 0.6);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.hudRing {
+  position: absolute;
+  left: 12%;
+  top: 15%;
+  z-index: 1;
+  width: min(430px, 66%);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0.48;
+}
+
+.hudRing span {
+  position: absolute;
+  inset: var(--inset, 0);
+  border: 1px solid rgba(188, 149, 91, 0.26);
+  border-radius: inherit;
+  animation: ringPulse 4.5s ease-in-out infinite;
+}
+
+.hudRing span:nth-child(1) {
+  --inset: 0;
+}
+
+.hudRing span:nth-child(2) {
+  --inset: 38px;
+  border-color: rgba(236, 48, 112, 0.22);
+  animation-delay: 0.6s;
+}
+
+.hudRing span:nth-child(3) {
+  --inset: 78px;
+  animation-delay: 1.2s;
+}
+
+.metricRail {
+  position: absolute;
+  top: 92px;
+  right: 26px;
+  z-index: 7;
+  display: grid;
+  gap: 12px;
+  width: min(270px, 38%);
+  pointer-events: auto;
+}
+
+.metricRailHeader {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  padding: 7px 11px;
+  border: 1px solid rgba(188, 149, 91, 0.3);
+  border-radius: 999px;
+  background: rgba(6, 7, 9, 0.48);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.metricRailHeader span {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #d8ad65;
+  box-shadow:
+    0 0 0 5px rgba(216, 173, 101, 0.12),
+    0 0 14px rgba(216, 173, 101, 0.75);
+}
+
+.metricCard {
+  position: relative;
+  width: 100%;
+  border: 1px solid rgba(236, 48, 112, 0.42);
+  border-radius: 3px 18px 3px 18px;
+  padding: 13px 15px 14px;
+  background:
+    linear-gradient(135deg, rgba(105, 27, 50, 0.68), rgba(4, 5, 7, 0.82)),
+    rgba(10, 8, 10, 0.76);
+  box-shadow:
+    0 0 22px rgba(236, 48, 112, 0.14),
+    inset 0 0 18px rgba(188, 149, 91, 0.06);
+  color: inherit;
+  text-align: left;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.metricCard::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: -1px;
+  width: 46px;
+  height: 1px;
+  background: #d8ad65;
+  box-shadow: 0 0 12px rgba(216, 173, 101, 0.8);
+}
+
+.metricCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      transparent,
+      rgba(255, 209, 139, 0.08),
+      transparent);
+  transform: translateX(-120%);
+  transition: transform 0.45s ease;
+}
+
+.metricCard:hover::after,
+.metricCardActive::after {
+  transform: translateX(120%);
+}
+
+.metricCard strong {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: #f0c982;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.metricCard span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.metricCard small {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-top: 7px;
+  color: rgba(222, 201, 163, 0.8);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.metricCardActive {
+  border-color: rgba(255, 210, 139, 0.92);
+  background:
+    linear-gradient(135deg, rgba(160, 33, 66, 0.88), rgba(9, 9, 11, 0.88)),
+    rgba(10, 8, 10, 0.84);
+  box-shadow:
+    0 0 30px rgba(236, 48, 112, 0.3),
+    0 0 44px rgba(188, 149, 91, 0.17),
+    inset 0 0 20px rgba(188, 149, 91, 0.09);
+}
+
+.routePanel {
+  position: absolute;
+  left: 7%;
+  top: 61%;
+  z-index: 4;
+  width: min(390px, 68%);
+  padding: 18px 20px;
+  border: 1px solid rgba(188, 149, 91, 0.34);
+  border-radius: 4px 22px 4px 22px;
+  background:
+    linear-gradient(135deg, rgba(9, 9, 12, 0.76), rgba(105, 27, 50, 0.45)),
+    rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.38),
+    inset 0 0 28px rgba(188, 149, 91, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.routePanel::before,
+.routePanel::after {
+  content: "";
+  position: absolute;
+  width: 42px;
+  height: 1px;
+  background: #bc955b;
+  box-shadow: 0 0 14px rgba(188, 149, 91, 0.7);
+}
+
+.routePanel::before {
+  top: -1px;
+  left: 18px;
+}
+
+.routePanel::after {
+  right: 18px;
+  bottom: -1px;
+}
+
+.routePanel>span {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.routePanel strong {
+  display: block;
+  color: #ffd18b;
+  font-size: clamp(18px, 1.5vw, 26px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.routePanel p {
+  margin: 9px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.visualFooter {
+  position: absolute;
+  left: 7%;
+  bottom: 52px;
+  z-index: 4;
+  width: min(430px, 78%);
+}
+
+.footerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  border: 1px solid rgba(188, 149, 91, 0.32);
+  border-radius: 999px;
+  background: rgba(6, 7, 9, 0.52);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.footerBadge span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #d8ad65;
+  box-shadow:
+    0 0 0 5px rgba(216, 173, 101, 0.12),
+    0 0 16px rgba(216, 173, 101, 0.75);
+  animation: activeDot 1.5s ease-in-out infinite;
+}
+
+.visualFooter p {
+  margin: 0 0 12px;
+  color: #d0a76a;
+  font-size: clamp(14px, 1.12vw, 20px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.82),
+    0 0 20px rgba(188, 149, 91, 0.16);
+}
+
+.visualLine {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(188, 149, 91, 0.8), transparent);
+}
+
+.visualLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 38%;
+  background: linear-gradient(90deg, transparent, #ffd18b, transparent);
+  animation: lineTravel 2.8s ease-in-out infinite;
+}
+
+.footerIcons {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.footerIcons span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  color: #c79654;
+  opacity: 0.94;
+  cursor: default;
+}
+
+.footerIcons span::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 999px;
+  background: rgba(188, 149, 91, 0.08);
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footerIcons span:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.footerIcons svg {
+  position: relative;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px rgba(188, 149, 91, 0.25));
 }
 
 .loginContent {
-  width: min(760px, 100%);
-  margin: 0 auto;
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 48px 64px;
+}
+
+.loginContent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(0, 0, 0, 0.18),
+      rgba(0, 0, 0, 0.72) 34%,
+      rgba(0, 0, 0, 0.88)),
+    radial-gradient(circle at 50% 56%, rgba(137, 10, 58, 0.24), transparent 32%),
+    repeating-linear-gradient(90deg,
+      rgba(188, 149, 91, 0.05) 0 1px,
+      transparent 1px 140px);
+  pointer-events: none;
+}
+
+.loginContent::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(188, 149, 91, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(188, 149, 91, 0.05) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.24;
+  pointer-events: none;
 }
 
 .loginPanel {
   position: relative;
+  z-index: 1;
+  width: min(820px, 100%);
   overflow: hidden;
-  border: 1px solid rgba(230, 48, 108, 0.56);
-  border-radius: 24px 24px 10px 10px;
-  padding: 34px 46px 0;
+  border: 1px solid rgba(230, 48, 108, 0.5);
+  border-radius: 4px 28px 4px 28px;
+  padding: 46px 50px 0;
   background:
-    linear-gradient(145deg, rgba(32, 16, 27, 0.98), rgba(7, 8, 10, 0.98)),
+    linear-gradient(145deg,
+      rgba(28, 16, 24, 0.94),
+      rgba(6, 7, 9, 0.96)),
     #09080a;
   box-shadow:
-    0 0 0 8px rgba(10, 8, 9, 0.72),
-    0 22px 55px rgba(0, 0, 0, 0.62),
-    inset 0 0 55px rgba(126, 8, 48, 0.14);
+    0 0 0 1px rgba(188, 149, 91, 0.1),
+    0 28px 80px rgba(0, 0, 0, 0.72),
+    inset 0 0 72px rgba(126, 8, 48, 0.14);
 }
 
 .loginPanel::before,
@@ -37,48 +717,91 @@
 
 .loginPanel::before {
   inset: 14px;
-  border: 1px solid rgba(232, 56, 116, 0.18);
-  border-radius: 16px 16px 4px 4px;
+  border: 1px solid rgba(232, 56, 116, 0.19);
+  border-radius: 4px 20px 4px 20px;
 }
 
 .loginPanel::after {
-  top: 20px;
+  top: 22px;
   right: 28px;
-  width: 120px;
+  width: 220px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #d5ad68);
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(188, 149, 91, 0.75));
 }
 
 .logo {
   position: relative;
   z-index: 1;
   display: block;
-  width: min(560px, 86%);
+  width: min(560px, 82%);
   height: auto;
-  margin: 0 auto 8px;
-  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.45));
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.48));
+}
+
+.titleDivider {
+  position: relative;
+  z-index: 1;
+  width: 82%;
+  height: 1px;
+  margin: 0 auto 24px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(188, 149, 91, 0.38),
+      transparent);
 }
 
 .loginPanel h1 {
   position: relative;
   z-index: 1;
-  margin: 8px 0 24px;
+  margin: 0 0 28px;
   color: #d8ad65;
-  font-size: 36px;
+  font-size: clamp(32px, 3vw, 46px);
   font-weight: 600;
-  letter-spacing: 0;
+  letter-spacing: 0.015em;
   text-align: center;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
 }
 
 .formPanel {
   position: relative;
   z-index: 2;
-  border: 1px solid rgba(236, 48, 112, 0.52);
+  border: 1px solid rgba(236, 48, 112, 0.48);
   border-radius: 8px;
-  padding: 30px;
-  background: rgba(8, 9, 11, 0.54);
-  box-shadow: inset 0 0 28px rgba(125, 8, 48, 0.12);
+  padding: 32px 36px;
+  background:
+    linear-gradient(145deg,
+      rgba(16, 16, 18, 0.72),
+      rgba(5, 6, 8, 0.62)),
+    rgba(8, 9, 11, 0.54);
+  box-shadow:
+    inset 0 0 32px rgba(125, 8, 48, 0.13),
+    0 0 26px rgba(0, 0, 0, 0.24);
+}
+
+.formPanel::before,
+.formPanel::after {
+  content: "";
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  pointer-events: none;
+}
+
+.formPanel::before {
+  left: 14px;
+  top: 14px;
+  border-top: 1px solid rgba(236, 48, 112, 0.75);
+  border-left: 1px solid rgba(236, 48, 112, 0.75);
+}
+
+.formPanel::after {
+  right: 14px;
+  bottom: 14px;
+  border-right: 1px solid rgba(236, 48, 112, 0.75);
+  border-bottom: 1px solid rgba(236, 48, 112, 0.75);
 }
 
 .form {
@@ -91,7 +814,7 @@
   gap: 6px;
 }
 
-.formGroup > label {
+.formGroup>label {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -102,33 +825,53 @@
 
 .inputRow {
   display: grid;
-  grid-template-columns: 62px minmax(0, 1fr) auto;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
   align-items: center;
-  min-height: 58px;
-  border: 1px solid rgba(205, 199, 202, 0.38);
+  min-height: 66px;
+  border: 1px solid rgba(205, 199, 202, 0.36);
   border-radius: 6px;
-  background: linear-gradient(90deg, rgba(43, 42, 43, 0.82), rgba(20, 21, 22, 0.9));
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  background: linear-gradient(90deg,
+      rgba(48, 47, 48, 0.78),
+      rgba(20, 21, 22, 0.9));
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
 }
 
 .inputRow:focus-within {
   border-color: #d33b72;
+  background: linear-gradient(90deg,
+      rgba(56, 50, 54, 0.86),
+      rgba(22, 23, 24, 0.96));
   box-shadow: 0 0 0 3px rgba(211, 59, 114, 0.14);
 }
 
 .inputIcon {
+  position: relative;
   display: grid;
   align-self: stretch;
   place-items: center;
   border: 1px solid #ec467f;
-  border-radius: 14px 4px 14px 4px;
+  border-radius: 20px 4px 20px 4px;
   background: linear-gradient(145deg, #a20d47, #67102f);
-  box-shadow: inset 0 0 15px rgba(255, 89, 143, 0.22);
+  box-shadow:
+    inset 0 0 15px rgba(255, 89, 143, 0.24),
+    0 0 16px rgba(236, 70, 127, 0.16);
   color: #fff;
 }
 
+.inputIcon::after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  width: 12px;
+  height: 1px;
+  background: rgba(236, 70, 127, 0.8);
+}
+
 .inputIcon svg {
-  font-size: 30px;
+  font-size: 31px;
 }
 
 .inputRow input {
@@ -136,15 +879,15 @@
   min-width: 0;
   border: 0;
   outline: 0;
-  padding: 0 20px;
+  padding: 0 22px;
   background: transparent;
   color: #fff;
   font: inherit;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .inputRow input::placeholder {
-  color: #b9b4b7;
+  color: #c7c2c4;
   opacity: 1;
 }
 
@@ -153,46 +896,56 @@
   align-items: center;
   gap: 8px;
   border: 0;
-  padding: 0 14px 0 4px;
+  padding: 0 16px 0 6px;
   background: transparent;
   color: #c5c1c3;
   cursor: pointer;
 }
 
 .visibilityButton span {
-  font-size: 15px;
+  font-size: 18px;
+  text-transform: lowercase;
 }
 
 .visibilityButton svg {
-  font-size: 25px;
+  font-size: 27px;
 }
 
 .primaryButton {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  min-height: 64px;
+  min-height: 68px;
   border: 1px solid #e4b65a;
   border-radius: 6px;
-  padding: 0 22px 0 58px;
-  background: linear-gradient(90deg, #860c3d, #951444 55%, #761033);
+  padding: 0 28px 0 64px;
+  background: linear-gradient(90deg,
+      #860c3d,
+      #9b1246 56%,
+      #741033);
   box-shadow:
-    0 0 18px rgba(255, 38, 105, 0.2),
-    inset 0 -10px 22px rgba(61, 0, 23, 0.2);
+    0 0 18px rgba(255, 38, 105, 0.22),
+    inset 0 -10px 22px rgba(61, 0, 23, 0.22);
   color: #d9b468;
   font: inherit;
-  font-size: 22px;
+  font-size: 24px;
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
 }
 
 .primaryButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 0 24px rgba(255, 38, 105, 0.38);
+  filter: brightness(1.08);
+  box-shadow:
+    0 0 26px rgba(255, 38, 105, 0.42),
+    0 0 42px rgba(188, 149, 91, 0.12);
 }
 
 .primaryButton svg {
-  font-size: 30px;
+  font-size: 32px;
 }
 
 .primaryButton:disabled {
@@ -219,9 +972,9 @@
   position: relative;
   z-index: 1;
   display: block;
-  width: calc(100% + 44px);
+  width: calc(100% + 54px);
   height: 118px;
-  margin: 8px -22px 0;
+  margin: 10px -27px 0;
   object-fit: cover;
   object-position: center 78%;
   mix-blend-mode: screen;
@@ -237,13 +990,199 @@
   font-weight: 700;
 }
 
+@keyframes metroScan {
+  from {
+    transform: translateY(-22%);
+  }
+
+  to {
+    transform: translateY(42%);
+  }
+}
+
+@keyframes energyTravel {
+
+  0%,
+  100% {
+    opacity: 0.24;
+    transform: translateX(-12%) rotate(-9deg);
+  }
+
+  45%,
+  58% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(58%) rotate(-9deg);
+  }
+}
+
+@keyframes slowRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ringPulse {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes activeDot {
+
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.14);
+  }
+}
+
+@keyframes lineTravel {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(265%);
+  }
+}
+
+@media (max-width: 1120px) {
+  .loginShell {
+    grid-template-columns: 1fr;
+  }
+
+  .visualSide {
+    min-height: 430px;
+  }
+
+  .metricRail {
+    top: 32px;
+    right: 28px;
+    width: min(290px, 36%);
+  }
+
+  .mapLayer {
+    top: 0;
+    left: 2%;
+    width: min(620px, 66%);
+  }
+
+  .routePanel {
+    top: 51%;
+    right: 28px;
+    left: auto;
+    width: min(350px, 44%);
+  }
+
+  .hudRing {
+    width: min(360px, 58%);
+  }
+
+  .loginContent {
+    min-height: auto;
+    padding: 34px 22px 42px;
+  }
+
+  .loginContent::before {
+    background:
+      linear-gradient(180deg,
+        rgba(0, 0, 0, 0.08),
+        rgba(0, 0, 0, 0.76) 24%,
+        rgba(0, 0, 0, 0.9)),
+      radial-gradient(circle at 50% 56%, rgba(137, 10, 58, 0.24), transparent 32%),
+      repeating-linear-gradient(90deg,
+        rgba(188, 149, 91, 0.05) 0 1px,
+        transparent 1px 140px);
+  }
+}
+
 @media (max-width: 760px) {
   .loginPage {
-    padding: 22px 14px;
+    overflow-y: auto;
+  }
+
+  .loginShell {
+    min-height: 100dvh;
+  }
+
+  .visualSide {
+    min-height: 330px;
+    cursor: default;
+  }
+
+  .metricRail {
+    display: none;
+  }
+
+  .mapLayer {
+    top: -4px;
+    left: -4%;
+    width: min(560px, 96%);
+  }
+
+  .hudRing {
+    left: 7%;
+    top: 8%;
+    width: 250px;
+  }
+
+  .routePanel {
+    left: 24px;
+    right: auto;
+    top: auto;
+    bottom: 118px;
+    width: calc(100% - 48px);
+    padding: 13px 15px;
+  }
+
+  .routePanel p {
+    display: none;
+  }
+
+  .visualFooter {
+    left: 24px;
+    bottom: 28px;
+    width: calc(100% - 48px);
+  }
+
+  .footerBadge {
+    font-size: 9px;
+    padding: 6px 10px;
+  }
+
+  .footerIcons {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footerIcons svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .loginContent {
+    padding: 24px 14px 34px;
   }
 
   .loginPanel {
-    padding: 26px 20px 0;
+    padding: 30px 20px 0;
+    border-radius: 18px 18px 8px 8px;
   }
 
   .logo {
@@ -251,22 +1190,26 @@
   }
 
   .loginPanel h1 {
-    margin-bottom: 20px;
-    font-size: 26px;
+    margin-bottom: 22px;
+    font-size: 28px;
   }
 
   .formPanel {
-    padding: 20px;
+    padding: 22px;
   }
 
   .inputRow {
-    grid-template-columns: 54px minmax(0, 1fr) auto;
-    min-height: 56px;
+    grid-template-columns: 58px minmax(0, 1fr) auto;
+    min-height: 58px;
   }
 
   .inputRow input {
     padding: 0 14px;
     font-size: 16px;
+  }
+
+  .inputIcon svg {
+    font-size: 27px;
   }
 
   .primaryButton {
@@ -281,17 +1224,50 @@
 }
 
 @media (max-width: 430px) {
+  .visualSide {
+    min-height: 285px;
+  }
+
+  .mapLayer {
+    width: 110%;
+    left: -22%;
+    top: -10px;
+  }
+
+  .hudRing {
+    width: 210px;
+  }
+
+  .routePanel {
+    bottom: 102px;
+  }
+
+  .routePanel strong {
+    font-size: 15px;
+  }
+
+  .footerBadge {
+    display: none;
+  }
+
+  .visualFooter p {
+    font-size: 11px;
+  }
+
+  .footerIcons {
+    gap: 12px;
+  }
+
   .loginPanel {
     padding-inline: 12px;
-    border-radius: 16px 16px 8px 8px;
   }
 
   .loginPanel h1 {
-    font-size: 22px;
+    font-size: 23px;
   }
 
   .formPanel {
-    padding: 14px;
+    padding: 15px;
   }
 
   .visibilityButton span {
