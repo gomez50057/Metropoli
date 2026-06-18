@@ -64,8 +64,30 @@ export async function uploadUpdateEvidence(id, formData) {
   return response.data;
 }
 
-export async function getAgreementHistory(id) {
-  const response = await apiClient.get(acuerdosUrl(`/agreements/${id}/history/`));
+export async function deleteAgreementDocument(id) {
+  await apiClient.delete(acuerdosUrl(`/evidence/${id}/`));
+}
+
+export async function replaceAgreementDocument(id, file) {
+  const formData = new FormData();
+  formData.append('document', file);
+  const response = await apiClient.patch(acuerdosUrl(`/evidence/${id}/`), formData);
+  return response.data;
+}
+
+export async function deleteUpdateEvidence(id) {
+  await apiClient.delete(acuerdosUrl(`/update-evidence/${id}/`));
+}
+
+export async function replaceUpdateEvidence(id, file) {
+  const formData = new FormData();
+  formData.append('evidence', file);
+  const response = await apiClient.patch(acuerdosUrl(`/update-evidence/${id}/`), formData);
+  return response.data;
+}
+
+export async function getAgreementHistory(id, params) {
+  const response = await apiClient.get(acuerdosUrl(`/agreements/${id}/history/`), { params });
   return response.data;
 }
 
@@ -95,6 +117,20 @@ export function downloadProtectedFile(url, filename) {
 
 export function previewProtectedFile(url) {
   return openFile(url);
+}
+
+export function downloadAgreementReport(id, folio) {
+  return downloadFile(
+    acuerdosUrl(`/agreements/${id}/report.pdf`),
+    `${folio || `acuerdo-${id}`}-reporte.pdf`
+  );
+}
+
+export function downloadAgreementReportPackage(id, folio) {
+  return downloadFile(
+    acuerdosUrl(`/agreements/${id}/report-package.zip`),
+    `${folio || `acuerdo-${id}`}-reporte-con-anexos.zip`
+  );
 }
 
 export function exportAgreements(format, params) {

@@ -65,6 +65,39 @@
   cursor: pointer;
 }
 
+.reportButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  gap: 8px;
+  min-height: 42px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 16px;
+  background: var(--vinoOsc);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primaryActions {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.primaryActions > form {
+  flex: 1 0 100%;
+}
+
+.reportButton:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
 .panelHint {
   margin: -8px 0 14px;
   color: var(--grisOsc);
@@ -263,6 +296,13 @@
   display: flex;
   flex: 0 0 auto;
   gap: 6px;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
 
 .reviewActions {

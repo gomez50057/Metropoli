@@ -1,22 +1,31 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import FolderZipOutlinedIcon from '@mui/icons-material/FolderZipOutlined';
+import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import ConfirmDialog from '@/components/shared/ConfirmDialog';
 import StatusMessage from '@/components/shared/StatusMessage';
 import { useSession } from '../auth/SessionProvider';
 import {
   createInternalComment,
   createAgreementUpdate,
+  deleteAgreementDocument,
+  deleteUpdateEvidence,
+  downloadAgreementReport,
+  downloadAgreementReportPackage,
   downloadProtectedFile,
   getAgreementHistory,
   previewProtectedFile,
   rejectUpdate,
+  replaceAgreementDocument,
+  replaceUpdateEvidence,
   updateAgreement,
   updateAgreementUpdate,
   updateInternalComment,
   validateUpdate,
 } from '../services/agreementsApi';
-import { canCreateUpdates, canManageAgreements } from '../utils/permissions';
+import { canCreateUpdates, canManageAgreements, isAdministrator } from '../utils/permissions';
+import { EVIDENCE_EXTENSIONS, fileExtension, isInitialPdf } from '../utils/fileHelpers';
 import AgreementOriginalEditForm from '../forms/AgreementOriginalEditForm';
 import AgreementUpdateForm from '../forms/AgreementUpdateForm';
 import AgreementExpedient from './AgreementExpedient';
@@ -30,11 +39,16 @@ export default function AgreementDetail({ id }) {
   const [updates, setUpdates] = useState([]);
   const [auditLogs, setAuditLogs] = useState([]);
   const [internalComments, setInternalComments] = useState([]);
+  const [historyPagination, setHistoryPagination] = useState({ page: 1, has_next: false });
+  const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [confirmAction, setConfirmAction] = useState(null);
+  const [downloadingReport, setDownloadingReport] = useState(false);
+  const [downloadingPackage, setDownloadingPackage] = useState(false);
   const canAddUpdate = canCreateUpdates(user?.role);
   const canReview = canManageAgreements(user?.role);
+  const canManageFiles = isAdministrator(user?.role);
 
   useEffect(() => {
     let active = true;
@@ -46,6 +60,7 @@ export default function AgreementDetail({ id }) {
           setUpdates(history.updates || []);
           setAuditLogs(history.audit_logs || []);
           setInternalComments(history.internal_comments || []);
+          setHistoryPagination(history.pagination || { page: 1, has_next: false });
         }
       })
       .catch(() => {
@@ -63,7 +78,10 @@ export default function AgreementDetail({ id }) {
 
     try {
       const created = await createAgreementUpdate(id, formData);
-      setUpdates((current) => [created, ...current]);
+      setUpdates((current) => [
+        created,
+        ...current.map((item) => (user?.role === 'INSTANCIA' ? { ...item, can_edit: false } : item)),
+      ]);
       setMessage('Actualización registrada.');
     } catch {
       setError('No se pudo registrar la actualización.');
@@ -191,19 +209,163 @@ export default function AgreementDetail({ id }) {
     previewProtectedFile(file.download_url || file.url);
   }
 
+  function requestFileDelete(file, kind) {
+    setConfirmAction({
+      title: 'Eliminar archivo',
+      message: `Se eliminará definitivamente "${file.name || file.original_name || 'el archivo'}".`,
+      confirmText: 'Sí, eliminar',
+      danger: true,
+      run: async () => {
+        try {
+          if (kind === 'document') {
+            await deleteAgreementDocument(file.id);
+            setAgreement((current) => ({
+              ...current,
+              documents: (current?.documents || []).filter((item) => item.id !== file.id),
+            }));
+          } else {
+            await deleteUpdateEvidence(file.id);
+            setUpdates((current) => current.map((update) => ({
+              ...update,
+              evidence: (update.evidence || []).filter((item) => item.id !== file.id),
+            })));
+          }
+          setMessage('Archivo eliminado correctamente.');
+        } catch {
+          setError('No se pudo eliminar el archivo.');
+        }
+      },
+    });
+  }
+
+  function requestFileReplace(file, replacement, kind) {
+    const valid = kind === 'document'
+      ? isInitialPdf(replacement)
+      : EVIDENCE_EXTENSIONS.includes(fileExtension(replacement));
+    if (!valid) {
+      setError(kind === 'document'
+        ? 'El documento inicial debe ser PDF y no superar 25 MB.'
+        : 'El tipo de archivo no está permitido.');
+      return;
+    }
+
+    setConfirmAction({
+      title: 'Reemplazar archivo',
+      message: `¿Estás seguro de que quieres reemplazar "${file.name || file.original_name || 'el archivo'}" por "${replacement.name}"?`,
+      confirmText: 'Sí, reemplazar',
+      run: async () => {
+        try {
+          if (kind === 'document') {
+            const updated = await replaceAgreementDocument(file.id, replacement);
+            setAgreement((current) => ({
+              ...current,
+              documents: (current?.documents || []).map((item) => (item.id === file.id ? updated : item)),
+            }));
+          } else {
+            const updated = await replaceUpdateEvidence(file.id, replacement);
+            setUpdates((current) => current.map((item) => ({
+              ...item,
+              evidence: (item.evidence || []).map((evidence) => (evidence.id === file.id ? updated : evidence)),
+            })));
+          }
+          setMessage('Archivo reemplazado correctamente.');
+        } catch {
+          setError('No se pudo reemplazar el archivo.');
+        }
+      },
+    });
+  }
+
+  async function loadMoreHistory() {
+    setLoadingMore(true);
+    setError('');
+    try {
+      const history = await getAgreementHistory(id, { page: historyPagination.page + 1 });
+      const mergeUnique = (current, incoming) => {
+        const ids = new Set(current.map((item) => item.id));
+        return [...current, ...incoming.filter((item) => !ids.has(item.id))];
+      };
+      setUpdates((current) => mergeUnique(current, history.updates || []));
+      setAuditLogs((current) => mergeUnique(current, history.audit_logs || []));
+      setInternalComments((current) => mergeUnique(current, history.internal_comments || []));
+      setHistoryPagination(history.pagination || { page: historyPagination.page + 1, has_next: false });
+    } catch {
+      setError('No se pudo cargar más historial.');
+    } finally {
+      setLoadingMore(false);
+    }
+  }
+
+  async function downloadReport() {
+    setError('');
+    setDownloadingReport(true);
+    try {
+      await downloadAgreementReport(id, agreement?.folio);
+      setMessage('Reporte PDF descargado.');
+    } catch {
+      setError('No se pudo descargar el reporte PDF.');
+    } finally {
+      setDownloadingReport(false);
+    }
+  }
+
+  async function downloadReportPackage() {
+    setError('');
+    setDownloadingPackage(true);
+    try {
+      await downloadAgreementReportPackage(id, agreement?.folio);
+      setMessage('Reporte con anexos descargado.');
+    } catch {
+      setError('No se pudo descargar el reporte con anexos.');
+    } finally {
+      setDownloadingPackage(false);
+    }
+  }
+
   return (
     <section className={styles.page}>
       <StatusMessage message={message} onDismiss={() => setMessage('')} />
-      <AgreementExpedient agreement={agreement} onDownload={downloadFile} onPreview={previewFile} />
+      <AgreementExpedient
+        agreement={agreement}
+        canManageFiles={canManageFiles}
+        onDelete={(file) => requestFileDelete(file, 'document')}
+        onReplace={(file, replacement) => requestFileReplace(file, replacement, 'document')}
+        onDownload={downloadFile}
+        onPreview={previewFile}
+      />
       {error && <div className={styles.alert}>{error}</div>}
-      {canReview && <AgreementOriginalEditForm agreement={agreement} onSave={editAgreement} />}
+      {canReview && (
+        <div className={styles.primaryActions}>
+          <AgreementOriginalEditForm agreement={agreement} onSave={editAgreement} />
+          <button
+            type="button"
+            className={styles.reportButton}
+            disabled={!agreement || downloadingReport}
+            onClick={downloadReport}
+          >
+            <PictureAsPdfOutlinedIcon />
+            {downloadingReport ? 'Generando reporte...' : 'Descargar reporte PDF'}
+          </button>
+          <button
+            type="button"
+            className={styles.reportButton}
+            disabled={!agreement || downloadingPackage}
+            onClick={downloadReportPackage}
+          >
+            <FolderZipOutlinedIcon />
+            {downloadingPackage ? 'Preparando anexos...' : 'Descargar PDF con anexos'}
+          </button>
+        </div>
+      )}
       {canAddUpdate && <AgreementUpdateForm onSubmit={submitUpdate} />}
       <AgreementUpdatesTimeline
         updates={updates}
         canReview={canReview}
-        canEdit={canAddUpdate}
+        canManageFiles={canManageFiles}
         onReview={requestReview}
         onEdit={requestEdit}
+        onDeleteEvidence={(file) => requestFileDelete(file, 'update')}
+        onReplaceEvidence={(file, replacement) => requestFileReplace(file, replacement, 'update')}
         onDownload={downloadFile}
         onPreview={previewFile}
       />
@@ -215,6 +377,16 @@ export default function AgreementDetail({ id }) {
           onAddComment={addInternalComment}
           onEditComment={editInternalComment}
         />
+      )}
+      {historyPagination.has_next && (
+        <button
+          type="button"
+          className={styles.expandButton}
+          disabled={loadingMore}
+          onClick={loadMoreHistory}
+        >
+          {loadingMore ? 'Cargando historial...' : 'Cargar más historial'}
+        </button>
       )}
       <ConfirmDialog
         isOpen={Boolean(confirmAction)}

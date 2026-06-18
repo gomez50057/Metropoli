@@ -4,7 +4,7 @@ import AgreementEvidenceList from './AgreementEvidenceList';
 import AgreementOriginalInfo from './AgreementOriginalInfo';
 import styles from './AgreementDetail.module.css';
 
-export default function AgreementExpedient({ agreement, onDownload, onPreview }) {
+export default function AgreementExpedient({ agreement, canManageFiles, onDelete, onReplace, onDownload, onPreview }) {
   const documents = agreement?.documents || agreement?.evidence || [];
 
   return (
@@ -15,7 +15,14 @@ export default function AgreementExpedient({ agreement, onDownload, onPreview })
       </div>
       <div className={styles.grid}>
         <AgreementOriginalInfo agreement={agreement} />
-        <AgreementEvidenceList files={documents} onDownload={onDownload} onPreview={onPreview} />
+        <AgreementEvidenceList
+          files={documents}
+          canManageFiles={canManageFiles}
+          onDelete={onDelete}
+          onReplace={onReplace}
+          onDownload={onDownload}
+          onPreview={onPreview}
+        />
       </div>
     </>
   );

@@ -11,3 +11,7 @@ export function canExportAgreements(role) {
 export function canCreateUpdates(role) {
   return [ROLES.ADMINISTRADOR, ROLES.CONTROL_TOTAL, ROLES.INSTANCIA].includes(role);
 }
+
+export function isAdministrator(role) {
+  return role === ROLES.ADMINISTRADOR;
+}
