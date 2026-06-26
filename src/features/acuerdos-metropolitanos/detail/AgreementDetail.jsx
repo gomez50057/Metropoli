@@ -10,6 +10,7 @@ import {
   createInternalComment,
   createAgreementUpdate,
   deleteAgreementDocument,
+  deleteAgreementOtherFile,
   deleteUpdateEvidence,
   downloadAgreementReport,
   downloadAgreementReportPackage,
@@ -18,20 +19,73 @@ import {
   previewProtectedFile,
   rejectUpdate,
   replaceAgreementDocument,
+  replaceAgreementOtherFile,
   replaceUpdateEvidence,
   updateAgreement,
   updateAgreementUpdate,
+  uploadUpdateEvidence,
   updateInternalComment,
+  updateResponsibleStatus,
   validateUpdate,
 } from '../services/agreementsApi';
 import { canCreateUpdates, canManageAgreements, isAdministrator } from '../utils/permissions';
-import { EVIDENCE_EXTENSIONS, fileExtension, isInitialPdf } from '../utils/fileHelpers';
-import AgreementOriginalEditForm from '../forms/AgreementOriginalEditForm';
+import { UPLOAD_RULE_TEXT, isUploadAllowed } from '../utils/fileHelpers';
 import AgreementUpdateForm from '../forms/AgreementUpdateForm';
 import AgreementExpedient from './AgreementExpedient';
 import AgreementHistory from './AgreementHistory';
+import AgreementResponsibleStatuses from './AgreementResponsibleStatuses';
 import AgreementUpdatesTimeline from './AgreementUpdatesTimeline';
 import styles from './AgreementDetail.module.css';
+
+const PRODUCTION_HOST = 'metropoli.hidalgo.gob.mx';
+
+function getBrowserOrigin() {
+  if (typeof window === 'undefined') {
+    return 'https://metropoli.hidalgo.gob.mx';
+  }
+
+  return window.location.origin;
+}
+
+function normalizeProtectedFileUrl(file, kind = 'document') {
+  const rawUrl = file?.download_url || file?.url || '';
+
+  if (rawUrl) {
+    const value = String(rawUrl).trim();
+
+    try {
+      const parsed = new URL(value, getBrowserOrigin());
+      if (parsed.pathname.startsWith('/api/')) {
+        return `${parsed.pathname.slice(4)}${parsed.search}`;
+      }
+      if (parsed.pathname.startsWith('/acuerdos-metropolitanos/')) {
+        return `${parsed.pathname}${parsed.search}`;
+      }
+
+      if (typeof window !== 'undefined' && parsed.hostname === window.location.hostname) {
+        return `${window.location.origin}${parsed.pathname}${parsed.search}`;
+      }
+
+      if (parsed.hostname === PRODUCTION_HOST && parsed.protocol === 'http:') {
+        parsed.protocol = 'https:';
+        return parsed.toString();
+      }
+
+      return parsed.toString();
+    } catch {
+      return value.replace(
+        /^http:\/\/metropoli\.hidalgo\.gob\.mx/i,
+        'https://metropoli.hidalgo.gob.mx'
+      );
+    }
+  }
+
+  if (file?.id) {
+    return `/acuerdos-metropolitanos/files/${file.id}/download/?kind=${kind}`;
+  }
+
+  return '';
+}
 
 export default function AgreementDetail({ id }) {
   const { user } = useSession();
@@ -46,6 +100,7 @@ export default function AgreementDetail({ id }) {
   const [confirmAction, setConfirmAction] = useState(null);
   const [downloadingReport, setDownloadingReport] = useState(false);
   const [downloadingPackage, setDownloadingPackage] = useState(false);
+
   const canAddUpdate = canCreateUpdates(user?.role);
   const canReview = canManageAgreements(user?.role);
   const canManageFiles = isAdministrator(user?.role);
@@ -149,6 +204,7 @@ export default function AgreementDetail({ id }) {
       const updated = action === 'validate'
         ? await validateUpdate(updateId)
         : await rejectUpdate(updateId, observations);
+
       setUpdates((current) => current.map((item) => (item.id === updateId ? updated : item)));
       setMessage(action === 'validate' ? 'Actualización validada.' : 'Actualización rechazada.');
     } catch {
@@ -183,6 +239,24 @@ export default function AgreementDetail({ id }) {
     });
   }
 
+  function requestResponsibleStatusChange(item, nextStatus) {
+    if (item.status === nextStatus) return;
+    setConfirmAction({
+      title: 'Actualizar estatus particular',
+      message: `¿Estás seguro de que quieres cambiar el estatus de "${item.responsible_name}"?`,
+      confirmText: 'Sí, actualizar',
+      run: async () => {
+        try {
+          const updatedAgreement = await updateResponsibleStatus(item.id, nextStatus);
+          setAgreement(updatedAgreement);
+          setMessage('Estatus particular actualizado.');
+        } catch {
+          setError('No se pudo actualizar el estatus particular.');
+        }
+      },
+    });
+  }
+
   function requestEdit(update) {
     setConfirmAction({
       title: 'Editar actualización',
@@ -198,15 +272,21 @@ export default function AgreementDetail({ id }) {
   function runConfirmedAction() {
     const action = confirmAction;
     setConfirmAction(null);
-    action?.run(action.inputValue?.trim());
+
+    if (!action) return;
+
+    action.run(action.inputValue?.trim());
   }
 
-  function downloadFile(file) {
-    downloadProtectedFile(file.download_url || file.url, file.name || file.filename || 'archivo');
+  function downloadFile(file, kind = 'document') {
+    downloadProtectedFile(
+      normalizeProtectedFileUrl(file, kind),
+      file.name || file.filename || file.original_name || 'archivo'
+    );
   }
 
-  function previewFile(file) {
-    previewProtectedFile(file.download_url || file.url);
+  function previewFile(file, kind = 'document') {
+    previewProtectedFile(normalizeProtectedFileUrl(file, kind));
   }
 
   function requestFileDelete(file, kind) {
@@ -223,6 +303,12 @@ export default function AgreementDetail({ id }) {
               ...current,
               documents: (current?.documents || []).filter((item) => item.id !== file.id),
             }));
+          } else if (kind === 'other') {
+            await deleteAgreementOtherFile(file.id);
+            setAgreement((current) => ({
+              ...current,
+              other_files: (current?.other_files || []).filter((item) => item.id !== file.id),
+            }));
           } else {
             await deleteUpdateEvidence(file.id);
             setUpdates((current) => current.map((update) => ({
@@ -230,6 +316,7 @@ export default function AgreementDetail({ id }) {
               evidence: (update.evidence || []).filter((item) => item.id !== file.id),
             })));
           }
+
           setMessage('Archivo eliminado correctamente.');
         } catch {
           setError('No se pudo eliminar el archivo.');
@@ -239,13 +326,10 @@ export default function AgreementDetail({ id }) {
   }
 
   function requestFileReplace(file, replacement, kind) {
-    const valid = kind === 'document'
-      ? isInitialPdf(replacement)
-      : EVIDENCE_EXTENSIONS.includes(fileExtension(replacement));
+    const valid = isUploadAllowed(replacement);
+
     if (!valid) {
-      setError(kind === 'document'
-        ? 'El documento inicial debe ser PDF y no superar 25 MB.'
-        : 'El tipo de archivo no está permitido.');
+      setError(UPLOAD_RULE_TEXT);
       return;
     }
 
@@ -261,6 +345,12 @@ export default function AgreementDetail({ id }) {
               ...current,
               documents: (current?.documents || []).map((item) => (item.id === file.id ? updated : item)),
             }));
+          } else if (kind === 'other') {
+            const updated = await replaceAgreementOtherFile(file.id, replacement);
+            setAgreement((current) => ({
+              ...current,
+              other_files: (current?.other_files || []).map((item) => (item.id === file.id ? updated : item)),
+            }));
           } else {
             const updated = await replaceUpdateEvidence(file.id, replacement);
             setUpdates((current) => current.map((item) => ({
@@ -268,6 +358,7 @@ export default function AgreementDetail({ id }) {
               evidence: (item.evidence || []).map((evidence) => (evidence.id === file.id ? updated : evidence)),
             })));
           }
+
           setMessage('Archivo reemplazado correctamente.');
         } catch {
           setError('No se pudo reemplazar el archivo.');
@@ -276,15 +367,42 @@ export default function AgreementDetail({ id }) {
     });
   }
 
+  async function uploadEvidence(update, files) {
+    const list = Array.from(files || []);
+    if (!list.length) return;
+    if (list.some((file) => !isUploadAllowed(file))) {
+      setError(UPLOAD_RULE_TEXT);
+      return;
+    }
+
+    const formData = new FormData();
+    list.forEach((file) => formData.append('evidence', file));
+
+    try {
+      const created = await uploadUpdateEvidence(update.id, formData);
+      setUpdates((current) => current.map((item) => (
+        item.id === update.id
+          ? { ...item, evidence: [...(item.evidence || []), ...created] }
+          : item
+      )));
+      setMessage('Evidencia cargada correctamente.');
+    } catch {
+      setError('No se pudo cargar la evidencia.');
+    }
+  }
+
   async function loadMoreHistory() {
     setLoadingMore(true);
     setError('');
+
     try {
       const history = await getAgreementHistory(id, { page: historyPagination.page + 1 });
+
       const mergeUnique = (current, incoming) => {
         const ids = new Set(current.map((item) => item.id));
         return [...current, ...incoming.filter((item) => !ids.has(item.id))];
       };
+
       setUpdates((current) => mergeUnique(current, history.updates || []));
       setAuditLogs((current) => mergeUnique(current, history.audit_logs || []));
       setInternalComments((current) => mergeUnique(current, history.internal_comments || []));
@@ -299,6 +417,7 @@ export default function AgreementDetail({ id }) {
   async function downloadReport() {
     setError('');
     setDownloadingReport(true);
+
     try {
       await downloadAgreementReport(id, agreement?.folio);
       setMessage('Reporte PDF descargado.');
@@ -312,6 +431,7 @@ export default function AgreementDetail({ id }) {
   async function downloadReportPackage() {
     setError('');
     setDownloadingPackage(true);
+
     try {
       await downloadAgreementReportPackage(id, agreement?.folio);
       setMessage('Reporte con anexos descargado.');
@@ -325,18 +445,33 @@ export default function AgreementDetail({ id }) {
   return (
     <section className={styles.page}>
       <StatusMessage message={message} onDismiss={() => setMessage('')} />
+
       <AgreementExpedient
         agreement={agreement}
         canManageFiles={canManageFiles}
         onDelete={(file) => requestFileDelete(file, 'document')}
         onReplace={(file, replacement) => requestFileReplace(file, replacement, 'document')}
-        onDownload={downloadFile}
-        onPreview={previewFile}
+        onDownload={(file) => downloadFile(file, 'document')}
+        onPreview={(file) => previewFile(file, 'document')}
+        onDeleteOther={(file) => requestFileDelete(file, 'other')}
+        onReplaceOther={(file, replacement) => requestFileReplace(file, replacement, 'other')}
+        onDownloadOther={(file) => downloadFile(file, 'other')}
+        onPreviewOther={(file) => previewFile(file, 'other')}
+        showGlobalStatus={canReview}
+        canEditAgreement={canReview}
+        onSaveAgreement={editAgreement}
       />
+
+      <AgreementResponsibleStatuses
+        statuses={agreement?.responsible_statuses || []}
+        canEdit={canReview}
+        onChange={requestResponsibleStatusChange}
+      />
+
       {error && <div className={styles.alert}>{error}</div>}
+
       {canReview && (
         <div className={styles.primaryActions}>
-          <AgreementOriginalEditForm agreement={agreement} onSave={editAgreement} />
           <button
             type="button"
             className={styles.reportButton}
@@ -346,6 +481,7 @@ export default function AgreementDetail({ id }) {
             <PictureAsPdfOutlinedIcon />
             {downloadingReport ? 'Generando reporte...' : 'Descargar reporte PDF'}
           </button>
+
           <button
             type="button"
             className={styles.reportButton}
@@ -357,7 +493,9 @@ export default function AgreementDetail({ id }) {
           </button>
         </div>
       )}
+
       {canAddUpdate && <AgreementUpdateForm onSubmit={submitUpdate} />}
+
       <AgreementUpdatesTimeline
         updates={updates}
         canReview={canReview}
@@ -366,9 +504,11 @@ export default function AgreementDetail({ id }) {
         onEdit={requestEdit}
         onDeleteEvidence={(file) => requestFileDelete(file, 'update')}
         onReplaceEvidence={(file, replacement) => requestFileReplace(file, replacement, 'update')}
-        onDownload={downloadFile}
-        onPreview={previewFile}
+        onUploadEvidence={uploadEvidence}
+        onDownload={(file) => downloadFile(file, 'evidence')}
+        onPreview={(file) => previewFile(file, 'evidence')}
       />
+
       {canReview && (
         <AgreementHistory
           auditLogs={auditLogs}
@@ -378,6 +518,7 @@ export default function AgreementDetail({ id }) {
           onEditComment={editInternalComment}
         />
       )}
+
       {historyPagination.has_next && (
         <button
           type="button"
@@ -388,6 +529,7 @@ export default function AgreementDetail({ id }) {
           {loadingMore ? 'Cargando historial...' : 'Cargar más historial'}
         </button>
       )}
+
       <ConfirmDialog
         isOpen={Boolean(confirmAction)}
         title={confirmAction?.title}

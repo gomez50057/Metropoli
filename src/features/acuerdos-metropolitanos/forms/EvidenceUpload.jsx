@@ -51,13 +51,13 @@ export default function EvidenceUpload({
   accept,
   acceptedExtensions = [],
   maxSize,
+  noticeText,
   clearKey = 0,
   onChange,
 }) {
   const [files, setFiles] = useState([]);
   const [notice, setNotice] = useState('');
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: accept ? { [accept.split(',')[0]]: accept.split(',').slice(1) } : undefined,
     multiple,
     maxSize,
     onDrop: (acceptedFiles, rejectedFiles) => {
@@ -66,7 +66,7 @@ export default function EvidenceUpload({
         ...rejectedFiles.map(({ file }) => rejectMessage(file, acceptedExtensions, maxSize) || `${file.name}: archivo no permitido.`),
       ];
       const allowedFiles = acceptedFiles.filter((file) => !rejectMessage(file, acceptedExtensions, maxSize));
-      const selected = multiple ? allowedFiles : allowedFiles.slice(0, 1);
+      const selected = multiple ? [...files, ...allowedFiles] : allowedFiles.slice(0, 1);
       setFiles(selected);
       setNotice(rejected[0] || '');
       onChange(multiple ? selected : selected[0] || null);
@@ -82,13 +82,12 @@ export default function EvidenceUpload({
     <div className={styles.formGroup}>
       <label htmlFor={id}>{label}</label>
       <div {...getRootProps()} className={`${styles.dropzone} ${isDragActive ? styles.dropzoneActive : ''}`}>
-        <input {...getInputProps({ id, name: id })} />
+        <input {...getInputProps({ id, name: id, accept })} />
         <InsertDriveFileOutlinedIcon />
         <span>{isDragActive ? 'Suelta los archivos aquí' : 'Arrastra archivos o haz clic para seleccionar'}</span>
       </div>
       <p className={styles.uploadNotice}>
-        Solo se aceptan {acceptedExtensions.length ? extensionList(acceptedExtensions) : 'los archivos permitidos'}.
-        {maxSize ? ` Tamaño máximo: ${formatSize(maxSize)} por archivo.` : ''}
+        {noticeText || `Solo se aceptan ${acceptedExtensions.length ? extensionList(acceptedExtensions) : 'los archivos permitidos'}. ${maxSize ? `Tamaño máximo: ${formatSize(maxSize)} por archivo.` : ''}`}
       </p>
       {notice && <div className={styles.uploadError} role="alert">{notice}</div>}
       {!!files.length && (

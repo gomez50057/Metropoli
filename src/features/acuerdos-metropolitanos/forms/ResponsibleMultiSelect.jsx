@@ -5,6 +5,7 @@ import Select from 'react-select';
 import { ErrorMessage } from 'formik';
 import styles from './AgreementForm.module.css';
 
+const CATEGORY_ORDER = ['MUNICIPIO', 'ESTADO', 'DEPENDENCIA', 'ORGANISMO', 'INSTANCIA'];
 const CUSTOM_PREFIX = '__custom__:';
 const OTHER_VALUE = '__other__';
 const OTHER_OPTION = { value: OTHER_VALUE, label: 'Otro' };
@@ -14,20 +15,24 @@ function customLabel(input) {
   return text ? `Otro: ${text}` : '';
 }
 
-export default function InstanceMultiSelect({ instances, value, onChange }) {
+export default function ResponsibleMultiSelect({ responsibles, value, onChange, allowCustom = true, showError = true }) {
   const [customText, setCustomText] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
-  const uniqueInstances = [...new Map(instances.map((instance) => [instance.label.trim().toLocaleLowerCase('es-MX'), instance])).values()]
-    .filter((instance) => !/^otr[oa]$/i.test(instance.label.trim()));
-  const options = [...uniqueInstances, OTHER_OPTION];
+  const uniqueResponsibles = [...new Map(responsibles.map((item) => [item.label.trim().toLocaleLowerCase('es-MX'), item])).values()]
+    .filter((item) => !/^otr[oa]$/i.test(item.label.trim()));
   const selected = (value || []).map((item) => {
-    const found = uniqueInstances.find((instance) => String(instance.value) === String(item));
+    const found = uniqueResponsibles.find((option) => String(option.value) === String(item));
     if (found) return found;
     if (String(item).startsWith(CUSTOM_PREFIX)) {
       return { value: item, label: String(item).slice(CUSTOM_PREFIX.length) };
     }
     return null;
   }).filter(Boolean);
+  const grouped = CATEGORY_ORDER.map((category) => {
+    const options = uniqueResponsibles.filter((item) => item.category === category);
+    return options.length ? { label: options[0].categoryLabel, options } : null;
+  }).filter(Boolean);
+  const options = allowCustom ? [...grouped, { label: 'Personalizado', options: [OTHER_OPTION] }] : grouped;
 
   function addCustomOption() {
     const label = customLabel(customText);
@@ -39,10 +44,10 @@ export default function InstanceMultiSelect({ instances, value, onChange }) {
 
   return (
     <div className={styles.formGroup}>
-      <label htmlFor="instances">Instancias participantes</label>
+      <label htmlFor="responsibles">Responsables</label>
       <Select
-        inputId="instances"
-        name="instances"
+        inputId="responsibles"
+        name="responsibles"
         className={styles.reactSelect}
         classNamePrefix="react-select"
         options={options}
@@ -52,7 +57,7 @@ export default function InstanceMultiSelect({ instances, value, onChange }) {
           setShowCustomInput(values.includes(OTHER_VALUE));
           onChange([...new Set(values.filter((item) => item !== OTHER_VALUE))]);
         }}
-        placeholder="Selecciona instancias"
+        placeholder="Selecciona responsables"
         isMulti
       />
       {showCustomInput && (
@@ -67,12 +72,12 @@ export default function InstanceMultiSelect({ instances, value, onChange }) {
                 addCustomOption();
               }
             }}
-            placeholder="Nombre de la instancia"
+            placeholder="Nombre del responsable"
           />
           <button type="button" onClick={addCustomOption}>Agregar</button>
         </div>
       )}
-      <ErrorMessage name="instances" component="div" className={styles.error} />
+      {showError && <ErrorMessage name="responsibles" component="div" className={styles.error} />}
     </div>
   );
 }

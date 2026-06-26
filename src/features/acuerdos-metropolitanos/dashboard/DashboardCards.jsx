@@ -7,14 +7,16 @@ const cards = [
   ['in_process', 'En proceso'],
   ['finished', 'Atendidos'],
   ['cancelled', 'Cancelados'],
-  ['pending_validation', 'Pendientes'],
-  ['without_recent_update', 'Sin actualización'],
 ];
 
-export default function DashboardCards({ summary }) {
+export default function DashboardCards({ summary, showPendingValidation }) {
+  const visibleCards = showPendingValidation
+    ? [...cards, ['pending_validation', 'Actualizaciones pendientes']]
+    : cards;
+
   return (
     <div className={styles.metrics}>
-      {cards.map(([key, label]) => (
+      {visibleCards.map(([key, label]) => (
         <article key={key} className={styles.metric}>
           <span>{label}</span>
           <strong>{summary?.[key] ?? 0}</strong>

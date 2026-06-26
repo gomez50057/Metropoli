@@ -10,6 +10,11 @@ export async function getInstances(zone) {
   return response.data;
 }
 
+export async function getResponsibles(zone) {
+  const response = await apiClient.get(acuerdosUrl('/catalogs/responsibles/'), { params: { zone } });
+  return response.data;
+}
+
 export async function getTopics() {
   const response = await apiClient.get(acuerdosUrl('/catalogs/topics/'));
   return response.data;
@@ -17,6 +22,16 @@ export async function getTopics() {
 
 export async function getStatuses() {
   const response = await apiClient.get(acuerdosUrl('/catalogs/statuses/'));
+  return response.data;
+}
+
+export async function getNotifications() {
+  const response = await apiClient.get(acuerdosUrl('/notifications/'));
+  return response.data;
+}
+
+export async function markNotificationRead(id) {
+  const response = await apiClient.post(acuerdosUrl(`/notifications/${id}/read/`));
   return response.data;
 }
 
@@ -37,6 +52,11 @@ export async function createAgreement(formData) {
 
 export async function updateAgreement(id, values) {
   const response = await apiClient.patch(acuerdosUrl(`/agreements/${id}/`), values);
+  return response.data;
+}
+
+export async function updateResponsibleStatus(id, status) {
+  const response = await apiClient.patch(acuerdosUrl(`/responsible-statuses/${id}/`), { status });
   return response.data;
 }
 
@@ -72,6 +92,17 @@ export async function replaceAgreementDocument(id, file) {
   const formData = new FormData();
   formData.append('document', file);
   const response = await apiClient.patch(acuerdosUrl(`/evidence/${id}/`), formData);
+  return response.data;
+}
+
+export async function deleteAgreementOtherFile(id) {
+  await apiClient.delete(acuerdosUrl(`/other-files/${id}/`));
+}
+
+export async function replaceAgreementOtherFile(id, file) {
+  const formData = new FormData();
+  formData.append('other_file', file);
+  const response = await apiClient.patch(acuerdosUrl(`/other-files/${id}/`), formData);
   return response.data;
 }
 

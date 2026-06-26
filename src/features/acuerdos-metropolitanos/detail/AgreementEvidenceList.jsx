@@ -4,13 +4,13 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import { canPreviewFile } from '../utils/fileHelpers';
+import { UPLOAD_ACCEPT, canPreviewFile } from '../utils/fileHelpers';
 import styles from './AgreementDetail.module.css';
 
-export default function AgreementEvidenceList({ files = [], canManageFiles, onDelete, onReplace, onDownload, onPreview }) {
+export default function AgreementEvidenceList({ title = 'Documento de acuerdo', emptyText = 'Sin documentos.', files = [], canManageFiles, onDelete, onReplace, onDownload, onPreview, accept = UPLOAD_ACCEPT }) {
   return (
     <section className={styles.panel}>
-      <h2>Documento inicial</h2>
+      <h2>{title}</h2>
       <ul>
         {files.map((file) => (
           <li className={styles.fileRow} key={file.id || file.url}>
@@ -30,7 +30,7 @@ export default function AgreementEvidenceList({ files = [], canManageFiles, onDe
                     <UploadFileOutlinedIcon fontSize="small" /> Reemplazar
                     <input
                       type="file"
-                      accept=".pdf,application/pdf"
+                      accept={accept}
                       className={styles.fileInput}
                       aria-label={`Reemplazar ${file.name || file.original_name || 'documento'}`}
                       onChange={(event) => {
@@ -48,7 +48,7 @@ export default function AgreementEvidenceList({ files = [], canManageFiles, onDe
             </span>
           </li>
         ))}
-        {!files.length && <li>Sin documentos.</li>}
+        {!files.length && <li>{emptyText}</li>}
       </ul>
     </section>
   );

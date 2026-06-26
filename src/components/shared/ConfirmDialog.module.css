@@ -56,7 +56,7 @@
 }
 
 .field small {
-  color: var(--semaforoRojo);
+  color: var(--estadoRojo);
   font-weight: 800;
 }
 
@@ -93,6 +93,6 @@
 }
 
 .danger {
-  background: var(--semaforoRojo);
+  background: var(--estadoRojo);
   color: #fff;
 }

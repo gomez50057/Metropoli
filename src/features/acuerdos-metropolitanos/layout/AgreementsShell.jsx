@@ -39,7 +39,7 @@ export default function AgreementsShell({ children }) {
         onLogout={() => setConfirmLogout(true)}
       />
       <div className={styles.content}>
-        <AgreementsTopbar user={user} />
+        <AgreementsTopbar user={user} onLogout={() => setConfirmLogout(true)} />
         {children}
       </div>
       <ConfirmDialog

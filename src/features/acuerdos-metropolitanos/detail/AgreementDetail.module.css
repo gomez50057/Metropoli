@@ -48,6 +48,26 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.panelHeader h2 {
+  margin: 0;
+}
+
+.panelHeader > form {
+  flex: 1 0 100%;
+}
+
+.inlineFilter {
+  min-height: 36px;
+  max-width: 240px;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  padding: 0 10px;
+  background: #fff;
+  font: inherit;
 }
 
 .addCommentButton {
@@ -181,10 +201,65 @@
   padding-left: 18px;
 }
 
+.timeline {
+  gap: 14px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.timeline > li {
+  border-left: 3px solid rgba(105, 27, 50, 0.18);
+  border-radius: 6px;
+  padding: 12px 0 12px 14px;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.timeline > li + li {
+  border-top: 1px solid rgba(226, 221, 213, 0.72);
+  padding-top: 16px;
+}
+
+.timeline > .timelineEmpty {
+  border-left: 0;
+  padding: 0;
+  background: transparent;
+}
+
 .panel li small {
   display: block;
   margin-top: 2px;
   color: var(--grisOsc);
+}
+
+.statusList {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.statusItem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px;
+  gap: 10px;
+  align-items: center;
+}
+
+.statusItem > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-weight: 800;
+}
+
+.statusItem select {
+  width: 100%;
+  min-height: 36px;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  padding: 0 10px;
+  background: #fff;
+  font: inherit;
 }
 
 .updateDetails {
@@ -282,8 +357,8 @@
 
 .fileRow {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -294,8 +369,9 @@
 
 .fileActions {
   display: flex;
-  flex: 0 0 auto;
+  flex-wrap: wrap;
   gap: 6px;
+  max-width: 100%;
 }
 
 .fileInput {
@@ -375,11 +451,11 @@
 }
 
 .alert {
-  color: var(--semaforoRojo);
+  color: var(--estadoRojo);
 }
 
 .success {
-  color: var(--semaforoVerde);
+  color: var(--estadoVerde);
 }
 
 @media (max-width: 880px) {
@@ -399,5 +475,19 @@
   .fileRow {
     align-items: start;
     flex-direction: column;
+  }
+
+  .statusItem {
+    grid-template-columns: 1fr;
+  }
+
+  .panelHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .inlineFilter {
+    max-width: none;
+    width: 100%;
   }
 }

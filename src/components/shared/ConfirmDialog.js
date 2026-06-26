@@ -1,5 +1,6 @@
 "use client";
 
+import { createPortal } from 'react-dom';
 import styles from './ConfirmDialog.module.css';
 
 export default function ConfirmDialog({
@@ -19,7 +20,7 @@ export default function ConfirmDialog({
 }) {
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="confirm-dialog-title">
       <div className={styles.dialog}>
         <h2 id="confirm-dialog-title">{title}</h2>
@@ -50,6 +51,7 @@ export default function ConfirmDialog({
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

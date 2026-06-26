@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import ConfirmDialog from '@/components/shared/ConfirmDialog';
-import { EVIDENCE_EXTENSIONS, EVIDENCE_MAX_BYTES, isEvidenceAllowed } from '../utils/fileHelpers';
+import { UPLOAD_ACCEPT, UPLOAD_EXTENSIONS, UPLOAD_MAX_BYTES, UPLOAD_RULE_TEXT, isUploadAllowed } from '../utils/fileHelpers';
 import EvidenceUpload from './EvidenceUpload';
 import styles from './AgreementForm.module.css';
 
@@ -24,8 +24,8 @@ export default function AgreementUpdateForm({ onSubmit }) {
       setError('Captura la descripción del avance.');
       return;
     }
-    if ([...files].some((file) => !isEvidenceAllowed(file))) {
-      setError('Hay archivos con extensión no permitida.');
+    if ([...files].some((file) => !isUploadAllowed(file))) {
+      setError(UPLOAD_RULE_TEXT);
       return;
     }
 
@@ -67,8 +67,10 @@ export default function AgreementUpdateForm({ onSubmit }) {
       </div>
       <EvidenceUpload
         id="update-evidence"
-        acceptedExtensions={EVIDENCE_EXTENSIONS}
-        maxSize={EVIDENCE_MAX_BYTES}
+        accept={UPLOAD_ACCEPT}
+        acceptedExtensions={UPLOAD_EXTENSIONS}
+        maxSize={UPLOAD_MAX_BYTES}
+        noticeText={UPLOAD_RULE_TEXT}
         clearKey={uploadResetKey}
         onChange={setFiles}
       />

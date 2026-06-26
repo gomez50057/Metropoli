@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from 'react';
+import { getZones } from '../services/agreementsApi';
 import { getMinutes } from '../services/minutesApi';
 import MinutesAccordion from './MinutesAccordion';
 import MinutesFilters from './MinutesFilters';
@@ -16,33 +17,39 @@ function groupByInstance(minutes) {
 
 export default function MinutesByInstance() {
   const [minutes, setMinutes] = useState([]);
+  const [zones, setZones] = useState([]);
+  const [zone, setZone] = useState('');
   const [instance, setInstance] = useState('');
   const [search, setSearch] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
     let active = true;
-    getMinutes()
-      .then((data) => {
-        if (active) setMinutes(Array.isArray(data) ? data : data?.results || []);
+    Promise.all([getZones(), getMinutes()])
+      .then(([zoneData, minuteData]) => {
+        if (!active) return;
+        setZones(Array.isArray(zoneData) ? zoneData : zoneData?.results || []);
+        setMinutes(Array.isArray(minuteData) ? minuteData : minuteData?.results || []);
       })
       .catch(() => {
-        if (active) setError('No se pudieron cargar las minutas.');
+        if (active) setError('No se pudieron cargar las minutas o zonas.');
       });
     return () => {
       active = false;
     };
   }, []);
 
-  const instanceCodes = useMemo(() => [...new Set(minutes.map((minute) => minute.instance_code).filter(Boolean))].sort(), [minutes]);
+  const zoneMinutes = useMemo(() => minutes.filter((minute) => minute.zone === zone), [minutes, zone]);
+  const instanceCodes = useMemo(() => [...new Set(zoneMinutes.map((minute) => minute.instance_code).filter(Boolean))].sort(), [zoneMinutes]);
   const filtered = useMemo(() => {
     const needle = search.trim().toLowerCase();
-    return minutes.filter((minute) => {
+    if (!zone) return [];
+    return zoneMinutes.filter((minute) => {
       const matchesInstance = !instance || minute.instance_code === instance || minute.group === instance;
       const matchesSearch = !needle || `${minute.document_type} ${minute.name} ${minute.instance_name}`.toLowerCase().includes(needle);
       return matchesInstance && matchesSearch;
     });
-  }, [minutes, search, instance]);
+  }, [zone, zoneMinutes, search, instance]);
   const grouped = Object.entries(groupByInstance(filtered)).sort(([a], [b]) => a.localeCompare(b));
 
   return (
@@ -53,7 +60,20 @@ export default function MinutesByInstance() {
           <p>Consulta de documentos publicados por comisión metropolitana.</p>
         </div>
       </div>
-      <MinutesFilters value={instance} instances={instanceCodes} onChange={setInstance} search={search} onSearch={setSearch} />
+      <MinutesFilters
+        zone={zone}
+        zones={zones}
+        onZoneChange={(nextZone) => {
+          setZone(nextZone);
+          setInstance('');
+          setSearch('');
+        }}
+        value={instance}
+        instances={instanceCodes}
+        onChange={setInstance}
+        search={search}
+        onSearch={setSearch}
+      />
       {error && <div className={styles.alert}>{error}</div>}
       <div className={styles.grid}>
         {grouped.map(([title, items], index) => (
@@ -64,7 +84,8 @@ export default function MinutesByInstance() {
             defaultOpen={index === 0}
           />
         ))}
-        {!filtered.length && <div className={styles.empty}>Sin minutas para mostrar.</div>}
+        {!zone && <div className={styles.empty}>Selecciona una zona metropolitana para consultar minutas.</div>}
+        {zone && !filtered.length && <div className={styles.empty}>Sin minutas para mostrar.</div>}
       </div>
     </section>
   );

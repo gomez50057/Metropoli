@@ -157,7 +157,7 @@
 }
 
 .uploadError {
-  color: var(--semaforoRojo);
+  color: var(--estadoRojo);
 }
 
 .reactSelect {
@@ -203,6 +203,7 @@
 }
 
 .reactSelect :global(.react-select__menu) {
+  z-index: 20;
   overflow: hidden;
   border: 1px solid rgba(226, 221, 213, 0.82);
   border-radius: 8px;
@@ -212,6 +213,17 @@
 
 .reactSelect :global(.react-select__option) {
   transition: background 0.14s ease, color 0.14s ease;
+}
+
+.customOptionRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.customOptionRow button {
+  justify-self: stretch;
 }
 
 .counter {
@@ -252,11 +264,11 @@
 }
 
 .error {
-  color: var(--semaforoRojo);
+  color: var(--estadoRojo);
 }
 
 .success {
-  color: var(--semaforoVerde);
+  color: var(--estadoVerde);
 }
 
 .form button {

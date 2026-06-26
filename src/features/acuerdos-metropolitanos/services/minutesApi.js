@@ -47,6 +47,8 @@ function normalizeMinute(path, index) {
     group,
     instance_name: group,
     instance_code: codeFromName(group),
+    zone: 'ZMVM',
+    zone_name: 'Zona Metropolitana del Valle de México',
     document_type: documentType(name),
     display_name: documentTitle(name),
     date: documentDate(name),
@@ -60,6 +62,10 @@ export async function getMinutes(params) {
   if (!response.ok) throw new Error('No se pudieron cargar las minutas.');
   const data = await response.json();
   const items = (data.files || []).map(normalizeMinute);
+  const zone = params?.zone;
   const instance = params?.instance;
-  return instance ? items.filter((item) => item.instance_code === instance || item.group === instance) : items;
+  return items.filter((item) => (
+    (!zone || item.zone === zone)
+    && (!instance || item.instance_code === instance || item.group === instance)
+  ));
 }

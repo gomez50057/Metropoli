@@ -25,7 +25,7 @@ export default function ProtectedRoute({ children, roles }) {
   }
 
   if (!allowed) {
-    return <div className={styles.state}>No tienes permiso para ver esta seccion.</div>;
+    return <div className={styles.state}>No tienes permiso para ver esta sección.</div>;
   }
 
   return children;

@@ -1,6 +1,7 @@
 .page {
   display: grid;
   gap: 16px;
+  overflow: visible;
 }
 
 .heading h1 {
@@ -26,13 +27,18 @@
 }
 
 .form {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(260px, 1.2fr) auto;
   gap: 10px;
   padding: 14px;
+  align-items: end;
+  overflow: visible;
 }
 
-.form input {
+.form input,
+.form select {
   min-height: 40px;
   border: 1px solid #d8d2ca;
   border-radius: 6px;
@@ -60,6 +66,8 @@
 }
 
 .list {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 10px;
 }
@@ -93,9 +101,31 @@
   margin: 0 0 8px;
 }
 
-.item a {
+.linkButton {
+  min-height: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
   color: var(--vinoOsc);
+  box-shadow: none;
+  cursor: pointer;
+  font: inherit;
   font-weight: 800;
+  text-align: left;
+}
+
+.linkButton:hover {
+  box-shadow: none;
+  text-decoration: underline;
+  transform: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: start;
 }
 
 .alert,
@@ -105,7 +135,7 @@
 }
 
 .alert {
-  color: var(--semaforoRojo);
+  color: var(--estadoRojo);
 }
 
 @media (max-width: 860px) {

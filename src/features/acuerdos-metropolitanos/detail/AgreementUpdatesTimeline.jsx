@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { formatDate } from '../utils/formatDate';
-import { canPreviewFile, EVIDENCE_EXTENSIONS } from '../utils/fileHelpers';
+import { UPLOAD_ACCEPT, canPreviewFile } from '../utils/fileHelpers';
 import styles from './AgreementDetail.module.css';
 
 export default function AgreementUpdatesTimeline({
@@ -17,22 +17,47 @@ export default function AgreementUpdatesTimeline({
   onEdit,
   onDeleteEvidence,
   onReplaceEvidence,
+  onUploadEvidence,
   onDownload,
   onPreview,
 }) {
   const [expanded, setExpanded] = useState(false);
-  const visibleUpdates = expanded ? updates : updates.slice(0, 4);
+  const [userFilter, setUserFilter] = useState('');
+  const users = useMemo(() => (
+    [...new Set(updates.map((update) => update.created_by_username).filter(Boolean))].sort()
+  ), [updates]);
+  const filteredUpdates = userFilter
+    ? updates.filter((update) => update.created_by_username === userFilter)
+    : updates;
+  const visibleUpdates = expanded ? filteredUpdates : filteredUpdates.slice(0, 4);
 
   return (
     <section className={styles.panel}>
-      <h2>Historial de actualizaciones</h2>
+      <div className={styles.panelHeader}>
+        <h2>Historial de actualizaciones</h2>
+        <select
+          className={styles.inlineFilter}
+          value={userFilter}
+          onChange={(event) => {
+            setUserFilter(event.target.value);
+            setExpanded(false);
+          }}
+          aria-label="Filtrar historial por usuario"
+        >
+          <option value="">Todos los usuarios</option>
+          {users.map((username) => (
+            <option key={username} value={username}>{username}</option>
+          ))}
+        </select>
+      </div>
       <ol className={styles.timeline}>
         {visibleUpdates.map((update) => (
           <li key={update.id}>
             <dl className={styles.updateDetails}>
               <div><dt>Fecha:</dt><dd>{formatDate(update.created_at || update.date)}</dd></div>
               <div><dt>Instancia:</dt><dd>{update.instance_name || 'Sin instancia'}</dd></div>
-              <div><dt>Estatus:</dt><dd>{update.validation_status || update.status || 'Sin estatus'}</dd></div>
+              <div><dt>Usuario que lo aportó:</dt><dd>{update.created_by_username || '-'}</dd></div>
+              <div><dt>Validación de información:</dt><dd>{update.validation_status || update.status || 'Sin estatus'}</dd></div>
               <div><dt>Descripción:</dt><dd>{update.description}</dd></div>
               {(update.review_observations || update.observations) && (
                 <div><dt>Observaciones:</dt><dd>{update.review_observations || update.observations}</dd></div>
@@ -54,13 +79,13 @@ export default function AgreementUpdatesTimeline({
                         <button type="button" className={styles.linkButton} onClick={() => onDownload(file)}>
                           <FileDownloadOutlinedIcon fontSize="small" /> Descargar
                         </button>
-                        {canManageFiles && (
+                        {(canManageFiles || update.can_edit) && (
                           <>
                             <label className={styles.linkButton}>
                               <UploadFileOutlinedIcon fontSize="small" /> Reemplazar
                               <input
                                 type="file"
-                                accept={EVIDENCE_EXTENSIONS.map((extension) => `.${extension}`).join(',')}
+                                accept={UPLOAD_ACCEPT}
                                 className={styles.fileInput}
                                 aria-label={`Reemplazar ${file.name || file.original_name || 'evidencia'}`}
                                 onChange={(event) => {
@@ -83,6 +108,22 @@ export default function AgreementUpdatesTimeline({
             )}
             <div className={styles.reviewActions}>
               {update.can_edit && <button type="button" onClick={() => onEdit(update)}>Editar</button>}
+              {update.can_edit && (
+                <label className={styles.linkButton}>
+                  <UploadFileOutlinedIcon fontSize="small" /> Agregar evidencia
+                  <input
+                    type="file"
+                    multiple
+                    accept={UPLOAD_ACCEPT}
+                    className={styles.fileInput}
+                    aria-label="Agregar evidencia"
+                    onChange={(event) => {
+                      onUploadEvidence(update, event.target.files);
+                      event.target.value = '';
+                    }}
+                  />
+                </label>
+              )}
               {canReview && update.validation_status === 'PENDIENTE' && (
                 <>
                   <button type="button" onClick={() => onReview(update.id, 'validate')}>Validar</button>
@@ -92,16 +133,16 @@ export default function AgreementUpdatesTimeline({
             </div>
           </li>
         ))}
-        {!updates.length && <li>Sin actualizaciones registradas.</li>}
+        {!filteredUpdates.length && <li className={styles.timelineEmpty}>Sin actualizaciones registradas.</li>}
       </ol>
-      {updates.length > 4 && (
+      {filteredUpdates.length > 4 && (
         <button
           type="button"
           className={styles.expandButton}
           aria-expanded={expanded}
           onClick={() => setExpanded((value) => !value)}
         >
-          {expanded ? 'Ver menos' : `Ver más (${updates.length - 4})`}
+          {expanded ? 'Ver menos' : `Ver más (${filteredUpdates.length - 4})`}
         </button>
       )}
     </section>

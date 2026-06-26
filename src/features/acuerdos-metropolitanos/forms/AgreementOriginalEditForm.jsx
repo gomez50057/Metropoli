@@ -5,9 +5,9 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Select from 'react-select';
 import * as Yup from 'yup';
 import ConfirmDialog from '@/components/shared/ConfirmDialog';
-import { AGREEMENT_STATUSES } from '../constants/statuses';
-import { getInstances, getTopics, getZones } from '../services/agreementsApi';
+import { getInstances, getResponsibles, getTopics, getZones } from '../services/agreementsApi';
 import InstanceMultiSelect from './InstanceMultiSelect';
+import ResponsibleMultiSelect from './ResponsibleMultiSelect';
 import TopicSelect from './TopicSelect';
 import styles from './AgreementForm.module.css';
 
@@ -15,8 +15,11 @@ const schema = Yup.object({
   date: Yup.string().required('La fecha es obligatoria.'),
   zone: Yup.mixed().required('Selecciona una zona.'),
   instances: Yup.array().min(1, 'Selecciona al menos una instancia.'),
+  responsibles: Yup.array().min(1, 'Selecciona al menos un responsable.'),
   description: Yup.string().max(5000, 'Máximo 5000 caracteres.').required('Captura la descripción.'),
 });
+
+const CUSTOM_PREFIX = '__custom__:';
 
 function options(data) {
   const list = Array.isArray(data) ? data : data?.results || [];
@@ -39,10 +42,21 @@ function otherLast(items) {
   return [...items].sort((a, b) => /^otr[oa]$/i.test(a.label) - /^otr[oa]$/i.test(b.label));
 }
 
+function responsibleOptions(data) {
+  const list = Array.isArray(data) ? data : data?.results || [];
+  return list.map((item) => ({
+    value: item.id,
+    label: item.name,
+    category: item.category,
+    categoryLabel: item.category_label,
+  }));
+}
+
 export default function AgreementOriginalEditForm({ agreement, onSave }) {
   const [editing, setEditing] = useState(false);
   const [zones, setZones] = useState([]);
   const [instances, setInstances] = useState([]);
+  const [responsibles, setResponsibles] = useState([]);
   const [topics, setTopics] = useState([]);
   const [confirmSave, setConfirmSave] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -61,16 +75,30 @@ export default function AgreementOriginalEditForm({ agreement, onSave }) {
     if (!agreement?.zone) return;
     const zone = zones.find((item) => String(item.value) === String(agreement.zone));
     if (!zone?.code) return;
-    getInstances(zone.code)
-      .then((data) => setInstances(otherLast(options(data))))
-      .catch(() => setInstances([]));
+    Promise.all([getInstances(zone.code), getResponsibles(zone.code)])
+      .then(([instanceData, responsibleData]) => {
+        setInstances(otherLast(options(instanceData)));
+        const selected = responsibleOptions(agreement.responsibles_options || []);
+        const available = responsibleOptions(responsibleData);
+        setResponsibles([...available, ...selected.filter((item) => !available.some((option) => option.value === item.value))]);
+      })
+      .catch(() => {
+        setInstances([]);
+        setResponsibles([]);
+      });
   }, [agreement?.zone, zones]);
 
   async function loadInstances(zone) {
     setInstances([]);
+    setResponsibles([]);
     if (!zone) return;
     try {
-      setInstances(otherLast(options(await getInstances(zone))));
+      const [instanceData, responsibleData] = await Promise.all([
+        getInstances(zone),
+        getResponsibles(zone),
+      ]);
+      setInstances(otherLast(options(instanceData)));
+      setResponsibles(responsibleOptions(responsibleData));
     } catch {
       setInstances([]);
     }
@@ -82,7 +110,14 @@ export default function AgreementOriginalEditForm({ agreement, onSave }) {
     if (!values) return;
 
     setSaving(true);
-    const saved = await onSave(values);
+    const payload = {
+      ...values,
+      instances: values.instances.filter((id) => !String(id).startsWith(CUSTOM_PREFIX)),
+      responsibles: values.responsibles.filter((id) => !String(id).startsWith(CUSTOM_PREFIX)),
+      custom_instances: values.instances.filter((id) => String(id).startsWith(CUSTOM_PREFIX)).map((id) => String(id).slice(CUSTOM_PREFIX.length)),
+      custom_responsibles: values.responsibles.filter((id) => String(id).startsWith(CUSTOM_PREFIX)).map((id) => String(id).slice(CUSTOM_PREFIX.length)),
+    };
+    const saved = await onSave(payload);
     setSaving(false);
     pendingValues.current = null;
     if (saved) setEditing(false);
@@ -106,10 +141,9 @@ export default function AgreementOriginalEditForm({ agreement, onSave }) {
         committed_date: agreement.committed_date || '',
         zone: agreement.zone || '',
         instances: agreement.instances || [],
+        responsibles: agreement.responsibles || [],
         topic: agreement.topic || '',
-        responsible: agreement.responsible || '',
         description: agreement.description || '',
-        status: agreement.status || 'EN_PROCESO',
       }}
       validationSchema={schema}
       onSubmit={(values, { setSubmitting }) => {
@@ -128,16 +162,8 @@ export default function AgreementOriginalEditForm({ agreement, onSave }) {
               <ErrorMessage name="date" component="div" className={styles.error} />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="edit-committed-date">Fecha comprometida</label>
+              <label htmlFor="edit-committed-date">Fecha de entrega</label>
               <Field id="edit-committed-date" name="committed_date" type="date" />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="edit-status">Estatus</label>
-              <Field id="edit-status" name="status" as="select">
-                {AGREEMENT_STATUSES.map((status) => (
-                  <option key={status.value} value={status.value}>{status.label}</option>
-                ))}
-              </Field>
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="edit-zone">Zona metropolitana</label>
@@ -151,6 +177,7 @@ export default function AgreementOriginalEditForm({ agreement, onSave }) {
                 onChange={(zone) => {
                   setFieldValue('zone', zone?.value || '');
                   setFieldValue('instances', []);
+                  setFieldValue('responsibles', []);
                   loadInstances(zone?.code);
                 }}
                 placeholder="Selecciona una zona"
@@ -163,11 +190,12 @@ export default function AgreementOriginalEditForm({ agreement, onSave }) {
               value={values.instances}
               onChange={(selected) => setFieldValue('instances', selected)}
             />
+            <ResponsibleMultiSelect
+              responsibles={responsibles}
+              value={values.responsibles}
+              onChange={(selected) => setFieldValue('responsibles', selected)}
+            />
             <TopicSelect topics={topics} value={values.topic} onChange={(topic) => setFieldValue('topic', topic)} />
-            <div className={styles.formGroup}>
-              <label htmlFor="edit-responsible">Responsable o enlace</label>
-              <Field id="edit-responsible" name="responsible" />
-            </div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="edit-description">Descripción</label>

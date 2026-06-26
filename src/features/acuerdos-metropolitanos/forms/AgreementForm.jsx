@@ -5,11 +5,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import ConfirmDialog from '@/components/shared/ConfirmDialog';
 import StatusMessage from '@/components/shared/StatusMessage';
-import { createAgreement, getInstances, getTopics, getZones } from '../services/agreementsApi';
-import { INITIAL_PDF_MAX_BYTES, isInitialPdf } from '../utils/fileHelpers';
+import { createAgreement, getInstances, getResponsibles, getTopics, getZones } from '../services/agreementsApi';
+import { AGREEMENT_DOCUMENT_ACCEPT, AGREEMENT_DOCUMENT_EXTENSIONS, AGREEMENT_DOCUMENT_RULE_TEXT, UPLOAD_ACCEPT, UPLOAD_EXTENSIONS, UPLOAD_MAX_BYTES, UPLOAD_RULE_TEXT, isAgreementDocumentAllowed, isUploadAllowed } from '../utils/fileHelpers';
 import EvidenceUpload from './EvidenceUpload';
 import InstanceMultiSelect from './InstanceMultiSelect';
 import MetropolitanZoneSelect from './MetropolitanZoneSelect';
+import ResponsibleMultiSelect from './ResponsibleMultiSelect';
 import TopicSelect from './TopicSelect';
 import styles from './AgreementForm.module.css';
 
@@ -19,14 +20,18 @@ const fallbackZones = [
   { value: 'ZMVM', label: 'Zona Metropolitana del Valle de México' },
 ];
 
+const CUSTOM_PREFIX = '__custom__:';
+
 const schema = Yup.object({
   date: Yup.string().required('La fecha es obligatoria.'),
   zone: Yup.string().required('Selecciona una zona.'),
   instances: Yup.array().min(1, 'Selecciona al menos una instancia.'),
+  responsibles: Yup.array().min(1, 'Selecciona al menos un responsable.'),
   description: Yup.string().max(5000, 'Máximo 5000 caracteres.').required('Captura la descripción.'),
   document: Yup.mixed()
     .nullable()
-    .test('pdf', 'El documento inicial debe ser PDF y no superar 25 MB.', isInitialPdf),
+    .test('file', AGREEMENT_DOCUMENT_RULE_TEXT, isAgreementDocumentAllowed),
+  other_files: Yup.array().test('files', UPLOAD_RULE_TEXT, (files) => (files || []).every(isUploadAllowed)),
 });
 
 function normalizeOptions(data) {
@@ -41,9 +46,20 @@ function otherLast(options) {
   return [...options].sort((a, b) => (a.label === 'Otro') - (b.label === 'Otro'));
 }
 
+function normalizeResponsibles(data) {
+  const list = Array.isArray(data) ? data : data?.results || [];
+  return list.map((item) => ({
+    value: item.id,
+    label: item.name,
+    category: item.category,
+    categoryLabel: item.category_label,
+  }));
+}
+
 export default function AgreementForm() {
   const [zones, setZones] = useState(fallbackZones);
   const [instances, setInstances] = useState([]);
+  const [responsibles, setResponsibles] = useState([]);
   const [topics, setTopics] = useState([]);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -59,12 +75,18 @@ export default function AgreementForm() {
 
   async function loadInstances(zone) {
     setInstances([]);
+    setResponsibles([]);
     if (!zone) {
       return;
     }
 
     try {
-      setInstances(otherLast(normalizeOptions(await getInstances(zone))));
+      const [instanceData, responsibleData] = await Promise.all([
+        getInstances(zone),
+        getResponsibles(zone),
+      ]);
+      setInstances(otherLast(normalizeOptions(instanceData)));
+      setResponsibles(normalizeResponsibles(responsibleData));
     } catch {
       setInstances([]);
     }
@@ -80,10 +102,17 @@ export default function AgreementForm() {
     if (values.committed_date) formData.append('committed_date', values.committed_date);
     formData.append('zone', values.zone);
     formData.append('topic', values.topic);
-    formData.append('responsible', values.responsible);
     formData.append('description', values.description);
-    values.instances.forEach((id) => formData.append('instances', id));
+    values.instances.forEach((id) => {
+      if (String(id).startsWith(CUSTOM_PREFIX)) formData.append('custom_instances', String(id).slice(CUSTOM_PREFIX.length));
+      else formData.append('instances', id);
+    });
+    values.responsibles.forEach((id) => {
+      if (String(id).startsWith(CUSTOM_PREFIX)) formData.append('custom_responsibles', String(id).slice(CUSTOM_PREFIX.length));
+      else formData.append('responsibles', id);
+    });
     if (values.document) formData.append('document', values.document);
+    values.other_files.forEach((file) => formData.append('other_files', file));
 
     try {
       await createAgreement(formData);
@@ -115,7 +144,7 @@ export default function AgreementForm() {
       <StatusMessage message={message} onDismiss={() => setMessage('')} />
       <div className={styles.heading}>
         <h1>Registro de acuerdo</h1>
-        <p>Captura del acuerdo original y su documento inicial.</p>
+        <p>Captura del acuerdo original y su documento de acuerdo.</p>
       </div>
       <Formik
         initialValues={{
@@ -123,10 +152,11 @@ export default function AgreementForm() {
           committed_date: '',
           zone: '',
           instances: [],
+          responsibles: [],
           topic: '',
-          responsible: '',
           description: '',
           document: null,
+          other_files: [],
         }}
         validationSchema={schema}
         onSubmit={handleSubmit}
@@ -140,7 +170,7 @@ export default function AgreementForm() {
                 <ErrorMessage name="date" component="div" className={styles.error} />
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="committed_date">Fecha comprometida</label>
+                <label htmlFor="committed_date">Fecha de entrega</label>
                 <Field id="committed_date" name="committed_date" type="date" />
               </div>
               <MetropolitanZoneSelect
@@ -149,27 +179,40 @@ export default function AgreementForm() {
                 onChange={(value) => {
                   setFieldValue('zone', value);
                   setFieldValue('instances', []);
+                  setFieldValue('responsibles', []);
                   loadInstances(value);
                 }}
               />
               <InstanceMultiSelect instances={instances} value={values.instances} onChange={(selected) => setFieldValue('instances', selected)} />
+              <ResponsibleMultiSelect responsibles={responsibles} value={values.responsibles} onChange={(selected) => setFieldValue('responsibles', selected)} />
               <TopicSelect topics={topics} value={values.topic} onChange={(value) => setFieldValue('topic', value)} />
-              <div className={styles.formGroup}>
-                <label htmlFor="responsible">Responsable o enlace</label>
-                <Field id="responsible" name="responsible" />
-              </div>
               <div className={styles.documentUpload}>
                 <EvidenceUpload
                   id="document"
-                  label="Documento inicial PDF"
+                  label="Documento de acuerdo"
                   multiple={false}
-                  accept="application/pdf,.pdf"
-                  acceptedExtensions={['pdf']}
-                  maxSize={INITIAL_PDF_MAX_BYTES}
+                  accept={AGREEMENT_DOCUMENT_ACCEPT}
+                  acceptedExtensions={AGREEMENT_DOCUMENT_EXTENSIONS}
+                  maxSize={UPLOAD_MAX_BYTES}
+                  noticeText={AGREEMENT_DOCUMENT_RULE_TEXT}
                   clearKey={uploadResetKey}
                   onChange={(file) => setFieldValue('document', file)}
                 />
                 <ErrorMessage name="document" component="div" className={styles.error} />
+              </div>
+              <div className={styles.documentUpload}>
+                <EvidenceUpload
+                  id="other_files"
+                  label="Otros archivos"
+                  multiple
+                  accept={UPLOAD_ACCEPT}
+                  acceptedExtensions={UPLOAD_EXTENSIONS}
+                  maxSize={UPLOAD_MAX_BYTES}
+                  noticeText={UPLOAD_RULE_TEXT}
+                  clearKey={uploadResetKey}
+                  onChange={(files) => setFieldValue('other_files', files || [])}
+                />
+                <ErrorMessage name="other_files" component="div" className={styles.error} />
               </div>
             </div>
             <div className={styles.formGroup}>

@@ -100,7 +100,7 @@
 
 .alert {
   padding: 12px 14px;
-  color: var(--semaforoRojo);
+  color: var(--estadoRojo);
   font-weight: 700;
 }
 

@@ -244,7 +244,7 @@
 }
 
 .alert {
-  color: var(--semaforoRojo);
+  color: var(--estadoRojo);
 }
 
 @media (max-width: 720px) {

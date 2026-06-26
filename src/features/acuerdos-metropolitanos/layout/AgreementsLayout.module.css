@@ -133,6 +133,8 @@
 }
 
 .topbar {
+  position: relative;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -150,6 +152,148 @@
 .topbar strong,
 .topbar span {
   color: #2f2f2f;
+}
+
+.topbarActions,
+.topbarLogout {
+  display: flex;
+  align-items: center;
+}
+
+.topbarActions {
+  gap: 16px;
+}
+
+.notifications {
+  position: relative;
+}
+
+.notificationButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d7d0c7;
+  border-radius: 6px;
+  color: #2f2f2f;
+  background: #fff;
+  cursor: pointer;
+}
+
+.notificationButton svg {
+  width: 22px;
+  height: 22px;
+}
+
+.notificationButton:hover {
+  background: #f7f3ed;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  color: #fff;
+  background: #b42318;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+
+.notificationPanel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 101;
+  display: grid;
+  gap: 8px;
+  width: min(360px, calc(100vw - 32px));
+  max-height: 420px;
+  overflow: auto;
+  padding: 12px;
+  border: 1px solid #e2ddd5;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 38px rgba(35, 31, 32, 0.16);
+}
+
+.notificationPanel p {
+  margin: 0;
+  color: #6b625a;
+  font-size: 13px;
+}
+
+.notificationItem {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #eee8df;
+  border-radius: 6px;
+  color: #2f2f2f;
+  text-decoration: none;
+  background: #fbfaf8;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.notificationUnread::after {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #b42318;
+  content: "";
+}
+
+.notificationItem:hover {
+  border-color: #d8cfc3;
+  background: #f7f3ed;
+}
+
+.notificationItem small {
+  color: #7d746b;
+  font-size: 11px;
+}
+
+.topbarLogout {
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid #b42318;
+  border-radius: 6px;
+  color: #b42318;
+  background: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.topbarLogout svg {
+  width: 20px;
+  height: 20px;
+}
+
+.topbarLogout:hover {
+  color: #fff;
+  background: #b42318;
+}
+
+.topbarLogout:focus-visible {
+  outline: 3px solid rgba(180, 35, 24, 0.25);
+  outline-offset: 2px;
 }
 
 @keyframes fadeSlideIn {
@@ -193,5 +337,21 @@
   .sidebarCollapsed .logout {
     justify-content: flex-start;
     width: auto;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .topbarActions {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .notificationPanel {
+    left: 0;
+    right: auto;
   }
 }

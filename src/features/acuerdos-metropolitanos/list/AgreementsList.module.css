@@ -46,10 +46,50 @@
   outline: 0;
 }
 
+.reactSelect {
+  min-width: 280px;
+  flex: 1 1 320px;
+}
+
+.reactSelect :global(.react-select__control) {
+  min-height: 40px;
+  border-color: #d8d2ca;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.reactSelect :global(.react-select__control:hover),
+.reactSelect :global(.react-select__control--is-focused) {
+  border-color: var(--vinoOsc);
+  box-shadow: 0 0 0 3px rgba(105, 27, 50, 0.1);
+}
+
+.reactSelect :global(.react-select__multi-value) {
+  max-width: 220px;
+}
+
+.reactSelect :global(.react-select__multi-value__label) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .actions button {
   border: 0;
   background: var(--vinoOsc);
   color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.clearFilters {
+  min-height: 40px;
+  border: 1px solid var(--vinoOsc);
+  border-radius: 6px;
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--vinoOsc);
+  font: inherit;
   font-weight: 800;
   cursor: pointer;
 }
@@ -122,7 +162,7 @@
 
 .done {
   background: #e4f4e6;
-  color: var(--semaforoVerde);
+  color: var(--estadoVerde);
 }
 
 .cancelled {
@@ -130,45 +170,9 @@
   color: var(--grisOsc);
 }
 
-.dot {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-}
-
-.semaphore {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  white-space: nowrap;
-  font-size: 13px;
-}
-
-.semaphoreText {
-  display: grid;
-  gap: 1px;
-}
-
-.semaphoreText strong {
-  font-weight: 800;
-}
-
-.semaphoreText small {
-  color: var(--grisOsc);
-  font-size: 11px;
-  font-weight: 400;
-}
-
-.green { background: var(--semaforoVerde); }
-.yellow { background: var(--semaforoAmarillo); }
-.red { background: var(--semaforoRojo); }
-.gray { background: var(--semaforoGris); }
-.closed { background: var(--vinoOsc); }
-
 .alert,
 .empty {
-  color: var(--semaforoRojo);
+  color: var(--estadoRojo);
   font-weight: 800;
 }
 

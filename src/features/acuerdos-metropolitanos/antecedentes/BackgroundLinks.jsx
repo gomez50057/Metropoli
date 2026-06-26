@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 import ConfirmDialog from '@/components/shared/ConfirmDialog';
 import { useSession } from '../auth/SessionProvider';
-import { createBackground, deleteBackground, getBackgrounds } from '../services/backgroundsApi';
-import { canManageAgreements } from '../utils/permissions';
+import { createBackground, deleteBackground, getBackgrounds, openBackground, updateBackground } from '../services/backgroundsApi';
+import { getResponsibles } from '../services/agreementsApi';
+import { isAdministrator } from '../utils/permissions';
 import BackgroundLinkForm from './BackgroundLinkForm';
 import styles from './BackgroundLinks.module.css';
 
@@ -15,10 +16,13 @@ function asArray(data) {
 export default function BackgroundLinks() {
   const { user } = useSession();
   const [items, setItems] = useState([]);
-  const [form, setForm] = useState({ title: '', url: '', description: '' });
+  const [form, setForm] = useState({ title: '', description: '', file: null, responsibles: [] });
+  const [formKey, setFormKey] = useState(0);
+  const [editing, setEditing] = useState(null);
+  const [responsibles, setResponsibles] = useState([]);
   const [error, setError] = useState('');
   const [pendingDelete, setPendingDelete] = useState(null);
-  const canManage = canManageAgreements(user?.role);
+  const canManage = isAdministrator(user?.role);
 
   useEffect(() => {
     getBackgrounds().then((data) => setItems(asArray(data))).catch(() => {
@@ -26,22 +30,60 @@ export default function BackgroundLinks() {
     });
   }, []);
 
+  useEffect(() => {
+    if (canManage) getResponsibles().then(setResponsibles).catch(() => {});
+  }, [canManage]);
+
   function updateForm(event) {
-    const { name, value } = event.target;
+    const { name, value, files } = event.target;
+    if (name === 'responsibles') {
+      setForm((current) => ({ ...current, responsibles: value }));
+      return;
+    }
+    if (name === 'file') {
+      setForm((current) => ({ ...current, file: files?.[0] || null }));
+      return;
+    }
     setForm((current) => ({ ...current, [name]: value }));
   }
 
   async function submitForm(event) {
     event.preventDefault();
     setError('');
+    if (!form.responsibles.length) {
+      setError('Selecciona al menos un responsable.');
+      return;
+    }
 
     try {
-      const created = await createBackground(form);
-      setItems((current) => [created, ...current]);
-      setForm({ title: '', url: '', description: '' });
+      if (editing) {
+        const updated = await updateBackground(editing.id, form);
+        setItems((current) => current.map((item) => (item.id === updated.id ? updated : item)));
+      } else {
+        const created = await createBackground(form);
+        setItems((current) => [created, ...current]);
+      }
+      resetForm();
     } catch {
       setError('No se pudo guardar el antecedente.');
     }
+  }
+
+  function resetForm() {
+    setForm({ title: '', description: '', file: null, responsibles: [] });
+    setEditing(null);
+    setFormKey((key) => key + 1);
+  }
+
+  function editItem(item) {
+    setEditing(item);
+    setForm({
+      title: item.title || '',
+      description: item.description || '',
+      file: null,
+      responsibles: item.responsibles || [],
+    });
+    setFormKey((key) => key + 1);
   }
 
   async function removeItem() {
@@ -59,7 +101,15 @@ export default function BackgroundLinks() {
       </div>
       {error && <div className={styles.alert}>{error}</div>}
       {canManage && (
-        <BackgroundLinkForm form={form} onChange={updateForm} onSubmit={submitForm} />
+        <BackgroundLinkForm
+          key={formKey}
+          form={form}
+          responsibles={responsibles}
+          onChange={updateForm}
+          onSubmit={submitForm}
+          editing={Boolean(editing)}
+          onCancel={resetForm}
+        />
       )}
       <div className={styles.list}>
         {items.map((item) => (
@@ -67,10 +117,13 @@ export default function BackgroundLinks() {
             <div>
               <h2>{item.title}</h2>
               <p>{item.description}</p>
-              <a href={item.url} target="_blank" rel="noreferrer">Abrir documento</a>
+              <button type="button" className={styles.linkButton} onClick={() => openBackground(item)}>Abrir documento</button>
             </div>
             {canManage && (
-              <button type="button" onClick={() => setPendingDelete(item)}>Eliminar</button>
+              <div className={styles.actions}>
+                <button type="button" onClick={() => editItem(item)}>Editar</button>
+                <button type="button" onClick={() => setPendingDelete(item)}>Eliminar</button>
+              </div>
             )}
           </article>
         ))}
