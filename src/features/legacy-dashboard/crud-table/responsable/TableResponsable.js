@@ -70,14 +70,14 @@ const TableResponsable = () => {
   const columnHelper = createMRTColumnHelper();
 
   const columns = [
-    columnHelper.accessor('id_unico', { header: 'ID Acuerdo' }),
+    columnHelper.accessor('id_unico', { header: 'ID acuerdo' }),
     columnHelper.accessor('fecha_creacion', { header: 'Fecha' }),
-    columnHelper.accessor('descripcion_acuerdo', { header: 'Descripción del Acuerdo' }),
-    columnHelper.accessor('descripcion_avance', { header: 'Descripción del Avance' }),
+    columnHelper.accessor('descripcion_acuerdo', { header: 'Descripción del acuerdo' }),
+    columnHelper.accessor('descripcion_avance', { header: 'Descripción del avance' }),
     columnHelper.accessor('nombre', { header: 'Nombre' }),
-    columnHelper.accessor('apellido_paterno', { header: 'Apellido Paterno' }),
-    columnHelper.accessor('apellido_materno', { header: 'Apellido Materno' }),
-    columnHelper.accessor('area_adscripcion', { header: 'Área Adscripción' }),
+    columnHelper.accessor('apellido_paterno', { header: 'Apellido paterno' }),
+    columnHelper.accessor('apellido_materno', { header: 'Apellido materno' }),
+    columnHelper.accessor('area_adscripcion', { header: 'Área de adscripción' }),
     columnHelper.accessor('telefono', { header: 'Teléfono' }),
     columnHelper.accessor('extension', { header: 'Extensión' }),
     columnHelper.accessor('correo', { header: 'Correo' }),
@@ -228,7 +228,7 @@ const TableResponsable = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className={cRUDTableStyles["table-grid"]}>
-        <Typography variant="h3">Acuerdos Responsable</Typography>
+        <Typography variant="h3">Acuerdos responsable</Typography>
         <MaterialReactTable table={table} />
       </div>
 

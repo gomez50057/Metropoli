@@ -27,7 +27,7 @@ const LogoutModal = ({ isOpen, onClose, onConfirm }) => {
         <h2>Estás a punto de cerrar sesión</h2>
         <p>¿Estás seguro de que deseas salir?</p>
         <div className={logoutModalStyles["modal-buttons"]}>
-          <button onClick={() => { onConfirm(); handleLogout(); }} className={logoutModalStyles["confirm-button"]}>Sí, Cerrar Sesión</button>
+          <button onClick={() => { onConfirm(); handleLogout(); }} className={logoutModalStyles["confirm-button"]}>Sí, cerrar sesión</button>
           <button onClick={onClose} className={logoutModalStyles["cancel-button"]}>No</button>
         </div>
       </div>

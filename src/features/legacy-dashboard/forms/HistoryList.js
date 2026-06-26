@@ -32,16 +32,16 @@ const HistoryList = ({ projectId, onClose }) => {
 
   return (
     <div className={historyListStyles["history-list"]}>
-      <h3>Historial de Actualizaciones</h3>
+      <h3>Historial de actualizaciones</h3>
       <ul>
         {updates.map((update) => (
           <li key={update.id}>
             <p><strong>Versión:</strong> {update.version}</p>
             <p><strong>Fecha:</strong> {update.fecha_actualizacion}</p>
-            <p><strong>Descripción del Avance:</strong> {update.descripcion_avance}</p>
+            <p><strong>Descripción del avance:</strong> {update.descripcion_avance}</p>
             <p>
               <strong>Documentos:</strong> {update.documentos ? (
-                <a href={update.documentos} target="_blank" rel="noopener noreferrer">Ver Documento</a>
+                <a href={update.documentos} target="_blank" rel="noopener noreferrer">Ver documento</a>
               ) : 'No disponible'}
             </p>
           </li>

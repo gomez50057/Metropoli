@@ -183,11 +183,11 @@ const Dashboard = () => {
 
         <div className={dashboardStyles["sidebar-card"]}>
           <div className={dashboardStyles["sidebarCardImg"]}>
-            <img src="/img/sidebarRecurso.png" alt="Icono de Cerrar Sesión" />
+            <img src="/img/sidebarRecurso.png" alt="Icono de cerrar sesión" />
           </div>
           <button onClick={handleLogoutClick}>
-            <img src="/img/iconos/exit.png" alt="Icono de Cerrar Sesión" className={dashboardStyles["icon"]} />
-            Cerrar Sesión
+            <img src="/img/iconos/exit.png" alt="Icono de cerrar sesión" className={dashboardStyles["icon"]} />
+            Cerrar sesión
           </button>
         </div>
       </div>

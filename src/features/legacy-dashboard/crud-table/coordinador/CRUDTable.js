@@ -56,7 +56,7 @@ const CRUDTable = () => {
 
   const columns = [
     columnHelper.accessor('id_unico', {
-      header: 'ID Acuerdo',
+      header: 'ID acuerdo',
     }),
     columnHelper.accessor('fecha_creacion', {
       header: 'Fecha',
@@ -65,15 +65,15 @@ const CRUDTable = () => {
       header: 'Comisión',
     }),
     columnHelper.accessor('descripcion_acuerdo', {
-      header: 'Descripción del Acuerdo',
+      header: 'Descripción del acuerdo',
     }),
     columnHelper.accessor('estatus', {
       header: 'Estatus',
       Cell: ({ cell }) => {
         const value = cell.getValue();
         const estatusMap = {
-          sin_avance: { label: 'Sin Avance', color: '#FF0000' },
-          en_proceso: { label: 'En Proceso', color: '#FFA500' },
+          sin_avance: { label: 'Sin avance', color: '#FF0000' },
+          en_proceso: { label: 'En proceso', color: '#FFA500' },
           atendido: { label: 'Atendido', color: '#008000' },
           cancelado: { label: 'Cancelado', color: '#808080' },
         };
@@ -137,8 +137,8 @@ const CRUDTable = () => {
 
 
   const estatusMap = {
-    sin_avance: 'Sin Avance',
-    en_proceso: 'En Proceso',
+    sin_avance: 'Sin avance',
+    en_proceso: 'En proceso',
     atendido: 'Atendido',
     cancelado: 'Cancelado',
   };

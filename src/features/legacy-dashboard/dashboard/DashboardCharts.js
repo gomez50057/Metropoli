@@ -53,7 +53,7 @@ const DashboardCharts = () => {
     labels: stats.acuerdos.por_zm.map((item) => item.zm),
     datasets: [
       {
-        label: "Total de Acuerdos",
+        label: "Total de acuerdos",
         data: stats.acuerdos.por_zm.map((item) => item.total),
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgba(255, 99, 132, 1)",
@@ -112,9 +112,9 @@ const DashboardCharts = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}><span>Indicadores</span> de Acuerdos</h2>
+      <h2 className={styles.title}><span>Indicadores</span> de acuerdos</h2>
       <div className={styles.chartTotalAgreements}>
-        <h3>📊 Total de Acuerdos</h3>
+          <h3>📊 Total de acuerdos</h3>
         <p className={styles.totalNumber}>{stats.acuerdos.total}</p>
       </div>
       <div className={styles.chartContainer}>
@@ -124,17 +124,17 @@ const DashboardCharts = () => {
         </div>
 
         <div className={styles.chart}>
-          <h3>Acuerdos por Zona Metropolitana</h3>
+          <h3>Acuerdos por zona metropolitana</h3>
           <Radar data={radarData} options={{ responsive: true }} />
         </div>
 
         <div className={styles.chart}>
-          <h3>Distribución por Comisión</h3>
+          <h3>Distribución por comisión</h3>
           <PolarArea data={polarData} options={{ responsive: true }} />
         </div>
 
         <div className={styles.chart}>
-          <h3>Actualizaciones por Estado</h3>
+          <h3>Actualizaciones por estado</h3>
           <Bubble data={bubbleData} options={{ responsive: true, scales: { x: { beginAtZero: true }, y: { beginAtZero: true } } }} />
         </div>
       </div>

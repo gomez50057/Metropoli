@@ -6,8 +6,8 @@ const getValidationSchema = (context) => {
   };
 
   if (context === 'create' || context === 'edit') {
-    schema.zonaMetropolitana = Yup.string().required('La Zona Metropolitana es obligatoria');
-    schema.comision = Yup.string().required('El nombre es obligatorio');
+    schema.zonaMetropolitana = Yup.string().required('La zona metropolitana es obligatoria');
+    schema.comision = Yup.string().required('La comisión es obligatoria');
     schema.descripcionAcuerdo = Yup.string()
       .max(5000, 'No debe exceder los 5000 caracteres')
       .required('La descripción del acuerdo es obligatoria');

@@ -130,8 +130,8 @@ const EditFormulario = ({ projectId, onClose }) => {
           className={formularioStyles["input-field"]}
         >
           <option value="">Selecciona un estatus</option>
-          <option value="en_proceso">En Proceso</option>
-          <option value="sin_avance">Sin Avance</option>
+          <option value="en_proceso">En proceso</option>
+          <option value="sin_avance">Sin avance</option>
           <option value="atendido">Atendido</option>
           <option value="cancelado">Cancelado</option>
         </select>

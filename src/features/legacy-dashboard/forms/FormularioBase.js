@@ -60,7 +60,7 @@ const FormularioBase = ({ initialValues, onSubmit, files, setFiles, minuta, setM
         <>
           <ZonaEffect setComisionOptions={setComisionOptions} setIsEstadoDisabled={setIsEstadoDisabled} />
           <Form className={formularioStyles["formulario-container"]}>
-            <h2>Datos Generales</h2>
+            <h2>Datos generales</h2>
             <div className={formularioStyles["form-row"]}>
               <div className={formularioStyles["form-group"]}>
                 <label>Fecha:</label>
@@ -69,14 +69,14 @@ const FormularioBase = ({ initialValues, onSubmit, files, setFiles, minuta, setM
               </div>
 
               <div className={formularioStyles["form-group"]}>
-                <label>Zona Metropolitana:</label>
+                <label>Zona metropolitana:</label>
                 <Field name="zonaMetropolitana" as="select" className={formularioStyles["input-field"]} disabled={disableFields.descripcionAcuerdo}>
-                  <option value="">Selecciona una Zona metropolitana</option>
+                  <option value="">Selecciona una zona metropolitana</option>
                   <option value="ZMPachuca">ZMPachuca</option>
                   <option value="ZMTula">ZMTula</option>
                   <option value="ZMTulancingo">ZMTulancingo</option>
                   <option value="ZMVM">ZMValle de México</option>
-                  <option value="no_aplica">No Aplica</option>
+                  <option value="no_aplica">No aplica</option>
                 </Field>
                 <ErrorMessage name="zonaMetropolitana" component="div" className={formularioStyles["error-message"]} />
               </div>
@@ -118,14 +118,14 @@ const FormularioBase = ({ initialValues, onSubmit, files, setFiles, minuta, setM
               )}
               {showFields && (
                 <div className={formularioStyles["form-group"]}>
-                  <label>Apellido Paterno:</label>
+                  <label>Apellido paterno:</label>
                   <Field name="apellidoPaterno" type="text" className={formularioStyles["input-field"]} placeholder="Menchaca" />
                   <ErrorMessage name="apellidoPaterno" component="div" className={formularioStyles["error-message"]} />
                 </div>
               )}
               {showFields && (
                 <div className={formularioStyles["form-group"]}>
-                  <label>Apellido Materno:</label>
+                  <label>Apellido materno:</label>
                   <Field name="apellidoMaterno" type="text" className={formularioStyles["input-field"]} placeholder="Salazar" />
                   <ErrorMessage name="apellidoMaterno" component="div" className={formularioStyles["error-message"]} />
                 </div>
@@ -174,7 +174,7 @@ const FormularioBase = ({ initialValues, onSubmit, files, setFiles, minuta, setM
               )}
               {showFields && (
                 <div className={formularioStyles["form-group"]}>
-                  <label>Correo Electrónico:</label>
+                  <label>Correo electrónico:</label>
                   <Field name="correo" type="email" className={formularioStyles["input-field"]} placeholder="cg.planeacion@hidalgo.gob.mx" />
                   <ErrorMessage name="correo" component="div" className={formularioStyles["error-message"]} />
                 </div>
@@ -183,27 +183,27 @@ const FormularioBase = ({ initialValues, onSubmit, files, setFiles, minuta, setM
 
             <h2>Acuerdo</h2>
             <div className={formularioStyles["form-group"]}>
-              <label>Descripción del Acuerdo:</label>
+              <label>Descripción del acuerdo:</label>
               <Field name="descripcionAcuerdo" as="textarea" rows="5" className={formularioStyles["input-field"]} placeholder="Agrega una descripción del acuerdo no mayor a 5000 caracteres" disabled={disableFields.descripcionAcuerdo} />
               <ErrorMessage name="descripcionAcuerdo" component="div" className={formularioStyles["error-message"]} />
             </div>
 
             {showFields && (
               <div className={formularioStyles["form-group"]}>
-                <label>Descripción del Avance:</label>
+                <label>Descripción del avance:</label>
                 <Field name="descripcionAvance" as="textarea" rows="5" className={formularioStyles["input-field"]} placeholder="Agrega una descripción del avance no mayor a 5000 caracteres" />
                 <ErrorMessage name="descripcionAvance" component="div" className={formularioStyles["error-message"]} />
               </div>
             )}
 
             <div className={formularioStyles["form-group"]}>
-              <label>Documentos Anexos(evidencia):</label>
+              <label>Documentos anexos (evidencia):</label>
               <p>En esta sección, puedes cargar todos los anexos relacionados con el proyecto, excepto la minuta. Recuerda que solo se permite subir un único archivo y debe ser exclusivamente en formato PDF. Asegúrate de que el archivo contiene toda la información relevante antes de realizar la subida.</p>
               <MinutaUploader minuta={minuta} setMinuta={setMinuta} />
             </div>
 
             {/* <div className={formularioStyles["form-group"]}>
-            <label>Documentos Anexos(evidencia):</label>
+            <label>Documentos anexos (evidencia):</label>
             <p>En esta sección, puedes cargar todos los anexos relacionados con el proyecto, excepto la minuta. Puedes subir archivos en formato de imágenes, vídeos o cualquier otro tipo de documento. Asegúrate de incluir toda la información adicional que respalde tu proyecto.</p>
             <FileUploader onFilesChange={setFiles} />
             </div> */}

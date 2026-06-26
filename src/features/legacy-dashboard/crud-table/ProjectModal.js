@@ -62,7 +62,7 @@ const ProjectModal = ({ open, handleClose, projectId, mode }) => {
         </button>
 
         <h2 id="modal-title" style={{ marginBottom: '20px' }}>
-          {mode === 'edit' ? 'Editar Acuerdo' : mode === 'update' ? 'Actualizar Acuerdo' : 'Historial de Actualizaciones'}
+          {mode === 'edit' ? 'Editar acuerdo' : mode === 'update' ? 'Actualizar acuerdo' : 'Historial de actualizaciones'}
         </h2>
         {renderContent()}
       </Box>
