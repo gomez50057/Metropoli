@@ -9,7 +9,7 @@ export const getTextoDescripcion = (zonaSeleccionada) => {
     case 'ZMTula':
       return 'Las Comisiones de la Zona Metropolitana de Tula tienen la responsabilidad de coordinar y gestionar iniciativas relacionadas con el desarrollo sostenible, el manejo ambiental y la planificación urbana que afecta a la Zona Metropolitana de Tula.';
     case 'ZMTulancingo':
-      return 'Las Comisiones de la Zona Metropolitana de Tulancingo se encargan de analizar y promover políticas que favorezcan el desarrollo económico y social del territorio Metropolitana de Tulancingo, enfocándose en temas de infraestructura, movilidad y servicios públicos.';
+      return 'Las Comisiones de la Zona Metropolitana de Tulancingo se encargan de analizar y promover políticas que favorezcan el desarrollo económico y social del territorio metropolitano de Tulancingo, enfocándose en temas de infraestructura, movilidad y servicios públicos.';
     case 'ZMVM':
       return 'Las Comisiones del Valle de México son órganos auxiliares del Consejo, cuya labor consiste en informar, desahogar, proponer, recomendar, analizar, investigar, opinar y evaluar los Asuntos Metropolitanos que corresponden a la problemática sectorial que atiende cada Comisión en particular.';
     default:
@@ -43,9 +43,9 @@ export const getTextoObjetivo = (zonaSeleccionada) => {
     case 'ZMTulancingo':
       return 'La Zona Metropolitana de Tulancingo, ubicada en el estado de Hidalgo, está conformada por los municipios de Cuautepec de Hinojosa, Santiago Tulantepec de Lugo Guerrero y Tulancingo de Bravo. Esta Zona Metropolitana representa una integración estratégica para impulsar el desarrollo económico, social y urbano, fortaleciendo la infraestructura y servicios, y promoviendo un crecimiento sostenible que beneficie a los habitantes de los municipios que la integran.';
     case 'ZMVM':
-      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Este territorio metropolitano, estrechamente interconectado en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México..';
+      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Este territorio metropolitano, estrechamente interconectado en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México.';
     default:
-      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Este territorio metropolitano, estrechamente interconectado en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México..';
+      return 'La Zona Metropolitana del Valle de México (ZMVM) es uno de los núcleos urbanos más extensos y dinámicos del país. Integra **_16 alcaldías de la Ciudad de México_**, así como **_57 municipios del Estado de México_**, **_8 municipios del Estado de Hidalgo_** y **_1 municipio del Estado de Morelos_**. \n\n Este territorio metropolitano, estrechamente interconectado en lo social, económico y cultural, constituye un motor clave del desarrollo metropolitano de México.';
   }
 };
 

@@ -20,12 +20,12 @@ const ChatbotWelcome = ({ onStartChat }) => {
           <div className={styles.content}>
             <img src="img/headertxt.png" alt="Metrópoli Hidalgo" className={styles.logotxt} />
             <img src="img/sidebarRecurso.png" alt="Chatbot Logo" className={styles.logo} />
-            <h1 className={styles.title}>¡Hola!, Bienvenid@ al</h1>
+            <h1 className={styles.title}>¡Hola! Bienvenido al</h1>
             <h2 className={styles.subtitle}>Chatbot de <span>Metrópoli Hidalgo</span></h2>
-            <p className={styles.description}>Un asistente Metropolitano</p>
+            <p className={styles.description}>Un asistente metropolitano</p>
           </div>
           <button className={styles.startButton} onClick={onStartChat}>
-            Iniciar Chat
+            Iniciar chat
             <span className={styles.arrowIcon}>
               <ArrowForwardIosIcon fontSize="small" />
             </span>

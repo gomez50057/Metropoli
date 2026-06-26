@@ -2693,7 +2693,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa Institucional de Desarrollo de la Comisión de Agua y Alcantarillado de Sistemas Intermunicipales 2023-2028, derivado de las necesidades de la ciudadanía y en apego a lo establecido en el Plan Estatal de Desarrollo 2022-2028, y en el marco del Acuerdo 4 Desarrollo Sostenible e Infraestructura Transformadora, se creo mediante la participación de las diferentes áreas administrativas que conforman la Comisión de Agua y Alcantarillado de Sistemas Intermunicipales, exponiendo las principales problemáticas que enfrentan día a día para el desempeño de sus funciones, así como las derivadas en el acercamiento con la ciudadanía, por lo que aquí se exponen las acciones consideradas para su solventación, de acuerdo a la perspectiva del proyecto del Gobierno del Estado de Hidalgo, alineándose a lo que estipula el Plan Nacional de Desarrollo 2019-2024, el Programa Sectorial de Desarrollo de Infraestructura Pública y Desarrollo Urbano Sostenible 2023-2028 y a los Objetivos de Desarrollo Sostenible de las Naciones Unidas definidos en la Agenda Internacional 2030, contribuyendo directamente a esta política pública con el fin de mejorar el bienestar de las y los hidalguenses mediante el aprovechamiento y la preservación del recurso hídrico.",
+      "descriptionBook": "El Programa Institucional de Desarrollo de la Comisión de Agua y Alcantarillado de Sistemas Intermunicipales 2023-2028, derivado de las necesidades de la ciudadanía y en apego a lo establecido en el Plan Estatal de Desarrollo 2022-2028, y en el marco del Acuerdo 4 Desarrollo Sostenible e Infraestructura Transformadora, se creó mediante la participación de las diferentes áreas administrativas que conforman la Comisión de Agua y Alcantarillado de Sistemas Intermunicipales, exponiendo las principales problemáticas que enfrentan día a día para el desempeño de sus funciones, así como las derivadas en el acercamiento con la ciudadanía, por lo que aquí se exponen las acciones consideradas para su solventación, de acuerdo a la perspectiva del proyecto del Gobierno del Estado de Hidalgo, alineándose a lo que estipula el Plan Nacional de Desarrollo 2019-2024, el Programa Sectorial de Desarrollo de Infraestructura Pública y Desarrollo Urbano Sostenible 2023-2028 y a los Objetivos de Desarrollo Sostenible de las Naciones Unidas definidos en la Agenda Internacional 2030, contribuyendo directamente a esta política pública con el fin de mejorar el bienestar de las y los hidalguenses mediante el aprovechamiento y la preservación del recurso hídrico.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Comisión de Agua y Alcantarillado de Sistemas Intermunicipales 2023-2028.pdf'),
       "booksIndex": "245"
     },
@@ -2704,7 +2704,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa Institucional de Desarrollo de la Comisión de Agua y Alcantarillado del Sistema Valle del Mezquital 2023-2028, esta construído en base a una planeación estratégica e institucional, orientada hacia una gestión para resultados con evidencias, que contribuye a la solución de problemas de abasto de agua en los municipios donde tiene cobertura el organismo, partiendo de la formulación de diagnósticos que permiten identificar las principales áreas de oportunidad en temas de recurso hídrico con conocimientos y recursos necesarios para incidir de manera directa y positiva a mejorar todos los aspectos relacionados con el recurso del agua.",
+      "descriptionBook": "El Programa Institucional de Desarrollo de la Comisión de Agua y Alcantarillado del Sistema Valle del Mezquital 2023-2028 está construido con base en una planeación estratégica e institucional, orientada hacia una gestión para resultados con evidencias, que contribuye a la solución de problemas de abasto de agua en los municipios donde tiene cobertura el organismo, partiendo de la formulación de diagnósticos que permiten identificar las principales áreas de oportunidad en temas de recurso hídrico con conocimientos y recursos necesarios para incidir de manera directa y positiva a mejorar todos los aspectos relacionados con el recurso del agua.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Comisión de Agua y Alcantarillado del Sistema Valle del Mezquital 2023-2028.pdf'),
       "booksIndex": "246"
     },
@@ -2715,7 +2715,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "La biodiversidad juega un papel fundamental en la vida de todas las personas, ya que nos brindan servicios ecosistémicos como son alimento, medicamentos, agua, entre otros, ademas proporciona las materias primas que favorecen el desarrollo socioeconómico. Mientras que la Política Institucional de Desarrollo de esta comisión marca la importancia de establecer en el Estado un programa para promover la conservación de los recursos naturales y la biodiversidad, tomando en cuenta la problemática socioambiental del estado, en función a contribuir con el bienestar físico, económico, social y ambiental de los hidalguenses, fundamentado en la Ley de Planeación y Prospectiva del Estado de Hidalgo.",
+      "descriptionBook": "La biodiversidad juega un papel fundamental en la vida de todas las personas, ya que nos brinda servicios ecosistémicos como alimento, medicamentos y agua, entre otros; además, proporciona las materias primas que favorecen el desarrollo socioeconómico. La Política Institucional de Desarrollo de esta comisión marca la importancia de establecer en el Estado un programa para promover la conservación de los recursos naturales y la biodiversidad, tomando en cuenta la problemática socioambiental del estado, en función de contribuir con el bienestar físico, económico, social y ambiental de los hidalguenses, fundamentado en la Ley de Planeación y Prospectiva del Estado de Hidalgo.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Comisión Estatal de Biodiversidad de Hidalgo 2023-2028.pdf'),
       "booksIndex": "247"
     },
@@ -2726,7 +2726,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "Para el Programa Institucional de Desarrollo de la Comisión Estatal de Vivienda 2023-2028, lo prioritario es una política social que atienda las necesidades de los grupos mas vulnerables, que promueva y genere acciones mediante programas integrales para que mas familias que viven en condiciones de pobreza con carencias básicas de vivienda, cuenten con los servicios básicos de vivienda, y se les ofrezca espacios públicos dignos en donde radiquen para fomentar el sano esparcimiento.",
+      "descriptionBook": "Para el Programa Institucional de Desarrollo de la Comisión Estatal de Vivienda 2023-2028, lo prioritario es una política social que atienda las necesidades de los grupos más vulnerables, que promueva y genere acciones mediante programas integrales para que más familias que viven en condiciones de pobreza con carencias básicas de vivienda cuenten con los servicios básicos de vivienda, y se les ofrezcan espacios públicos dignos en donde radiquen para fomentar el sano esparcimiento.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Comisión Estatal de Vivienda 2023-2028.pdf'),
       "booksIndex": "248"
     },
@@ -2814,7 +2814,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa lnstitucional de Desarrollo de la Universidad lntercultural del Estado de Hidalgo 2023 - 2028, tiene el propósito de trazar una ruta clara al 2028, así como establecer una visión prospectiva hacia el 2040, alineándonos al Plan Nacional de Desarrollo 2019-2024 y sumando esfuerzos para cumplir con las políticas, acuerdos, y estrategias plasmadas en el Plan Estatal de Desarrollo 2022-2028 así como lo establecido en la planeación federal, en éste se enmarcan las acciones en materia de inclusión, equidad, interculturalidad, sustentabilidad y calidad en el proceso formativo.",
+      "descriptionBook": "El Programa Institucional de Desarrollo de la Universidad Intercultural del Estado de Hidalgo 2023-2028 tiene el propósito de trazar una ruta clara al 2028, así como establecer una visión prospectiva hacia el 2040, alineándonos al Plan Nacional de Desarrollo 2019-2024 y sumando esfuerzos para cumplir con las políticas, acuerdos y estrategias plasmadas en el Plan Estatal de Desarrollo 2022-2028, así como lo establecido en la planeación federal. En este se enmarcan las acciones en materia de inclusión, equidad, interculturalidad, sustentabilidad y calidad en el proceso formativo.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Universidad Intercultural del Estado de Hidalgo 2023-2028.pdf'),
       "booksIndex": "256"
     },
@@ -2825,7 +2825,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa lnstitucional de Desarrollo 2022-2028 de la Universidad Politécnica de Huejutla es el instrumento principal de planeación integral y participativa, lo que lo convierte en una herramienta estratégica para el desarrollo de la institucion, la cual tiene como fin máximo la formación integral de profesionales que impulsen el desarrollo regional de la huasteca hidalguense y del estado de Hidalgo.",
+      "descriptionBook": "El Programa Institucional de Desarrollo 2022-2028 de la Universidad Politécnica de Huejutla es el instrumento principal de planeación integral y participativa, lo que lo convierte en una herramienta estratégica para el desarrollo de la institución, la cual tiene como fin máximo la formación integral de profesionales que impulsen el desarrollo regional de la huasteca hidalguense y del estado de Hidalgo.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Universidad Politécnica de Huejutla 2023-2028.pdf'),
       "booksIndex": "257"
     },
@@ -2836,7 +2836,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "EI Programa Institucional de Desarrollo de la Universidad Politécnica de Pachuca 2023 - 2028, se da en un 2023 marcado por un cambio de gobierno por la transformación de Hidalgo y posterior a una pandemia; esta herramienta estratégica, prospectiva y evaluatoria, establece los objetivos, metas y líneas de acción mediante un diagnóstico de necesidades de la institución y tiene como propósito impulsar la gestión institucional y escolar de manera eficiente y eficaz favoreciendo la consolidación del servicio educativo en la sociedad hidalguense.",
+      "descriptionBook": "El Programa Institucional de Desarrollo de la Universidad Politécnica de Pachuca 2023-2028 se da en un 2023 marcado por un cambio de gobierno por la transformación de Hidalgo y posterior a una pandemia; esta herramienta estratégica, prospectiva y evaluatoria establece los objetivos, metas y líneas de acción mediante un diagnóstico de necesidades de la institución y tiene como propósito impulsar la gestión institucional y escolar de manera eficiente y eficaz, favoreciendo la consolidación del servicio educativo en la sociedad hidalguense.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Universidad Politécnica de Pachuca 2023-2028.pdf'),
       "booksIndex": "258"
     },
@@ -2847,7 +2847,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa lnstitucional de Desarrollo de la Universidad Politécnica de Tulancingo 2023 - 2028, establece las bases para la coordinación de la planeación en las diversas áreas que integran a la institución, además de que constituye el referente para el diseño de escenarios de mediano y largo plazo, con miras al 2040, en donde se consideran las premisas de calidad, inclusión y equidad, congruentes con la visión y misión institucional y alineadas a los planes de gobierno y programas del sector educativo tanto a nivel estatal como federal, a través de una planeación prospectiva, democrática y participativa.",
+      "descriptionBook": "El Programa Institucional de Desarrollo de la Universidad Politécnica de Tulancingo 2023-2028 establece las bases para la coordinación de la planeación en las diversas áreas que integran a la institución, además de que constituye el referente para el diseño de escenarios de mediano y largo plazo, con miras al 2040, en donde se consideran las premisas de calidad, inclusión y equidad, congruentes con la visión y misión institucional y alineadas a los planes de gobierno y programas del sector educativo, tanto a nivel estatal como federal, a través de una planeación prospectiva, democrática y participativa.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Universidad Politécnica de Tulancingo 2023-2028.pdf'),
       "booksIndex": "259"
     },
@@ -2858,7 +2858,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "La participación de las y los integrantes de la comunidad que conforma la Universidad Politécnica Metropolitana de Hidalgo fue fundamental para la construcción del Programa lnstitucional de Desarrollo 2022-2028. Esta participación resulta en la estructuración de un instrumento estratégico que se apega a las necesidades y expectativas reales de la institución. Con ello, se garantiza la impartición de un servicio educativo de calidad que forme personas que atiendan las adversidades que afronta la sociedad y el sector productivo.",
+      "descriptionBook": "La participación de las y los integrantes de la comunidad que conforma la Universidad Politécnica Metropolitana de Hidalgo fue fundamental para la construcción del Programa Institucional de Desarrollo 2022-2028. Esta participación resulta en la estructuración de un instrumento estratégico que se apega a las necesidades y expectativas reales de la institución. Con ello, se garantiza la impartición de un servicio educativo de calidad que forme personas que atiendan las adversidades que afronta la sociedad y el sector productivo.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Universidad Politécnica Metropolitana de Hidalgo 2023-2028.pdf'),
       "booksIndex": "260"
     },
@@ -2869,7 +2869,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa lnstitucional de Desarrollo representa un compromiso sólido y una guía estratégica que permitirá a la Universidad Tecnolgica de la Huasteca Hidalguense avanzar hacia un futuro más próspero, inclusivo y sostenible, contribuyendo de manera significativa al desarrollo integral de la región y al logro de los objetivos institucionales planteados.",
+      "descriptionBook": "El Programa Institucional de Desarrollo representa un compromiso sólido y una guía estratégica que permitirá a la Universidad Tecnológica de la Huasteca Hidalguense avanzar hacia un futuro más próspero, inclusivo y sostenible, contribuyendo de manera significativa al desarrollo integral de la región y al logro de los objetivos institucionales planteados.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Universidad Tecnológica de la Huasteca Hidalguense 2023-2028.pdf'),
       "booksIndex": "261"
     },
@@ -2891,7 +2891,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "EI Programa Institucional de Desarrollo (PID) de la Universidad Tecnolgica de Tula-Tepeji 2023-2028, fruto de una planificación estratégica intensiva, no es simplemente un documento, sino una oportunidad palpable de redefinir el rumbo que exige nuestra sociedad. Es un compendio de objetivos ambiciosos, estrategias audaces, asignación de responsabilidades y un compromiso inquebrantable con la evaluación continua mediante indicadores de resultados.",
+      "descriptionBook": "El Programa Institucional de Desarrollo (PID) de la Universidad Tecnológica de Tula-Tepeji 2023-2028, fruto de una planificación estratégica intensiva, no es simplemente un documento, sino una oportunidad palpable de redefinir el rumbo que exige nuestra sociedad. Es un compendio de objetivos ambiciosos, estrategias audaces, asignación de responsabilidades y un compromiso inquebrantable con la evaluación continua mediante indicadores de resultados.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de la Universidad Tecnológica de Tula-Tepeji 2023-2028.pdf'),
       "booksIndex": "263"
     },
@@ -2913,7 +2913,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa Institucional de Desarrollo de Servicios de Salud de Hidalgo 2023-2028, es elaborado bajo el modelo de planeación participativa y bajo los lineamientos de la \"Guía Metodológica para la Elaboración de los Programas lnstitucionales de Desarrollo 2023-2028\", emitidos por parte de la Unidad de Planeación y Prospectiva de Hidalgo y establece las principales acciones a realizar, con el propósito de brindar atención médica de calidad a la población históricamente rezagada, como son los pueblos originarios y los grupos de atención prioritaria; para ello es indispensable fortalecer la atención preventiva en el primer nivel de atención, incrementar la cobertura de atención, mejorar la capacidad resolutiva e implementar la referencia y contra referencia en toda la red de atención de servicios de salud; así como abastecer y dignificar las unidades médicas para su operación.",
+      "descriptionBook": "El Programa Institucional de Desarrollo de Servicios de Salud de Hidalgo 2023-2028 es elaborado bajo el modelo de planeación participativa y bajo los lineamientos de la \"Guía Metodológica para la Elaboración de los Programas Institucionales de Desarrollo 2023-2028\", emitidos por parte de la Unidad de Planeación y Prospectiva de Hidalgo, y establece las principales acciones a realizar, con el propósito de brindar atención médica de calidad a la población históricamente rezagada, como son los pueblos originarios y los grupos de atención prioritaria; para ello es indispensable fortalecer la atención preventiva en el primer nivel de atención, incrementar la cobertura de atención, mejorar la capacidad resolutiva e implementar la referencia y contrarreferencia en toda la red de atención de servicios de salud, así como abastecer y dignificar las unidades médicas para su operación.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo de Servicios de Salud de Hidalgo 2023-2028.pdf'),
       "booksIndex": "265"
     },
@@ -2935,7 +2935,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa lnstitucional de Desarrollo del Centro Estatal de Maquinaria para el Desarrollo 2023-2028, tiene como propósito establecer la dirección estratégica que se seguir en los próximos seis años, plasmando una misión, visión, objetivos y líneas de acción, perfectamente alineadas a los Objetivos de Desarrollo Sostenible de la Agenda 2030, Plan Nacional de Desarrollo 2018-2024, Plan Estatal de Desarrollo 2022-2028, así como al Programa Sectorial de Desarrollo de Infraestructura Pública y Desarrollo Urbano Sostenible 2023-2028, respondiendo a los problemas públicos y necesidades actuales que demanda el pueblo hidalguense.",
+      "descriptionBook": "El Programa Institucional de Desarrollo del Centro Estatal de Maquinaria para el Desarrollo 2023-2028 tiene como propósito establecer la dirección estratégica que se seguirá en los próximos seis años, plasmando una misión, visión, objetivos y líneas de acción perfectamente alineadas a los Objetivos de Desarrollo Sostenible de la Agenda 2030, Plan Nacional de Desarrollo 2018-2024, Plan Estatal de Desarrollo 2022-2028, así como al Programa Sectorial de Desarrollo de Infraestructura Pública y Desarrollo Urbano Sostenible 2023-2028, respondiendo a los problemas públicos y necesidades actuales que demanda el pueblo hidalguense.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo del Centro Estatal de Maquinaria para el Desarrollo 2023-2028.pdf'),
       "booksIndex": "267"
     },
@@ -3023,7 +3023,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El propósito general del programa esta centrado en la contribución para la disminución del rezago educativo en nuestra entidad y de esta manera contribuir para alcanzar las metas y objetivos del Plan Estatal de Desarrollo 2022-2028 y el Plan Nacional de Desarrollo 2019-2024, los cuales buscan cumplir con el derecho a la educación de la población, generando una ciudadanía estable, feliz, y plena, donde se busca que la educación impulse el mejoramiento personal , el bienestar social, en el cual fija los estándares para alcanzar una mejor calidad de vida, buscando generar empleos con gente preparada y culta, que defienda sus derechos, que sepa sus obligaciones y que contribuya con el crecimiento del país. Por lo anterior la importancia de garantizar congruencia entre políticas Nacionales y Estatales.",
+      "descriptionBook": "El propósito general del programa está centrado en la contribución para la disminución del rezago educativo en nuestra entidad y, de esta manera, contribuir para alcanzar las metas y objetivos del Plan Estatal de Desarrollo 2022-2028 y el Plan Nacional de Desarrollo 2019-2024, los cuales buscan cumplir con el derecho a la educación de la población, generando una ciudadanía estable, feliz y plena, donde se busca que la educación impulse el mejoramiento personal y el bienestar social, en el cual fija los estándares para alcanzar una mejor calidad de vida, buscando generar empleos con gente preparada y culta, que defienda sus derechos, que sepa sus obligaciones y que contribuya con el crecimiento del país. Por lo anterior, la importancia de garantizar congruencia entre políticas nacionales y estatales.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo del Instituto Hidalguense de Educación para Adultos 2023-2028.pdf'),
       "booksIndex": "275"
     },
@@ -3034,7 +3034,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "Con la estructuración del Plan lnstitucional de Desarrollo del Instituto Hidalguense de Financiamiento a la Educación Superior 2023-2028, se establecen las condiciones para trazar un rumbo certero para el Financiamiento Educativo, en donde la definición de una adecuada estructura programática, bajo el marco de la planeación basada en resultados eficaces, permita garantizar el éxito de la articulación entre la planeación estratégica y la prospectiva con la programación presupuestal en la asignación de los recursos, constituyendo así una herramienta de trabajo para seguir un camino que asegure un verdadero apoyo para los estudiantes hidalguenses de nivel superior, con solidez metodológica.",
+      "descriptionBook": "Con la estructuración del Plan Institucional de Desarrollo del Instituto Hidalguense de Financiamiento a la Educación Superior 2023-2028, se establecen las condiciones para trazar un rumbo certero para el financiamiento educativo, en donde la definición de una adecuada estructura programática, bajo el marco de la planeación basada en resultados eficaces, permita garantizar el éxito de la articulación entre la planeación estratégica y la prospectiva con la programación presupuestal en la asignación de los recursos, constituyendo así una herramienta de trabajo para seguir un camino que asegure un verdadero apoyo para los estudiantes hidalguenses de nivel superior, con solidez metodológica.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo del Instituto Hidalguense de Financiamiento a la Educación Superior 2023-2028.pdf'),
       "booksIndex": "276"
     },
@@ -3045,7 +3045,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El propósito general del Programa lnstitucional de Desarrollo del lnstituto Hidalguense de la Juventud 2022-2028 es lograr que más jovenes tengan acceso a los programas sociales a través de una instancia de gobierno que camina de la mano con ellos y lucha por defender sus intereses, dicho programa fue elaborado mediante la Guía Metodológica para la Elaboración de los Programas lnstitucionales de Desarrollo 2023-2028, emitidos por la Unidad de Planeación y Prospectiva de Hidalgo.",
+      "descriptionBook": "El propósito general del Programa Institucional de Desarrollo del Instituto Hidalguense de la Juventud 2022-2028 es lograr que más jóvenes tengan acceso a los programas sociales a través de una instancia de gobierno que camina de la mano con ellos y lucha por defender sus intereses; dicho programa fue elaborado mediante la Guía Metodológica para la Elaboración de los Programas Institucionales de Desarrollo 2023-2028, emitidos por la Unidad de Planeación y Prospectiva de Hidalgo.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo del Instituto Hidalguense de la Juventud 2023-2028.pdf'),
       "booksIndex": "277"
     },
@@ -3056,7 +3056,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Programa lnstitucional de Desarrollo del lnstituto Hidalguense de las Mujeres, en consonancia con los objetivos de la política del Gobernador Julio Menchaca Salazar, expresados en los acuerdos del Plan Estatal de Desarrollo 2022-2028, abre un horizonte de posibilidades, pone en el centro y por delante las prioridades de las mujeres y niñas históricamente mas relegadas del Estado.",
+      "descriptionBook": "El Programa Institucional de Desarrollo del Instituto Hidalguense de las Mujeres, en consonancia con los objetivos de la política del Gobernador Julio Menchaca Salazar, expresados en los acuerdos del Plan Estatal de Desarrollo 2022-2028, abre un horizonte de posibilidades, pone en el centro y por delante las prioridades de las mujeres y niñas históricamente más relegadas del Estado.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo del Instituto Hidalguense de las Mujeres 2023-2028.pdf'),
       "booksIndex": "278"
     },
@@ -3067,7 +3067,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El presente Programa Institucional de Desarrollo cuenta con un diagnóstico específico del sector, así mismo con los mecanismos de participación ciudadana, contando en su estructura programática con cuatro objetivos, ventidos líneas de acción enfocadas a reducir comportamientos sedentarios iniciando este proceso desde la niñez debido a que la sociedad actualmente no realiza actividad física suficiente por diversas causas como el desarrollo de la tecnología, ya que gracias al surgimiento de aparatos electrónicos como teléfonos inteligentes, tabletas, consolas de videojuegos, las personas tanto adultas como niños ahora invierten mas su tiempo en la utilización de dichos aparatos, aunado a la falta de tiempo, cansancio por el trabajo yproblemas de salud.",
+      "descriptionBook": "El presente Programa Institucional de Desarrollo cuenta con un diagnóstico específico del sector, así mismo con los mecanismos de participación ciudadana, contando en su estructura programática con cuatro objetivos y veintidós líneas de acción enfocadas a reducir comportamientos sedentarios, iniciando este proceso desde la niñez debido a que la sociedad actualmente no realiza actividad física suficiente por diversas causas como el desarrollo de la tecnología, ya que gracias al surgimiento de aparatos electrónicos como teléfonos inteligentes, tabletas y consolas de videojuegos, las personas tanto adultas como niños ahora invierten más su tiempo en la utilización de dichos aparatos, aunado a la falta de tiempo, cansancio por el trabajo y problemas de salud.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo del Instituto Hidalguense del Deporte 2023-2028.pdf'),
       "booksIndex": "279"
     },
@@ -3133,7 +3133,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "institucional",
       "año": "2023",
-      "descriptionBook": "El Presente Programa se aboca a establecer las acciones que regiran nuestras actividades en el corto, media no y largo plazo; cada una de ellas se ha construido bajo un enfoque donde exista concordancia entre los derechos y obligaciones de todos los sujetos de la movilidad, asi como a la promoción respetuosa con el entorno ambiental y promoviendo la seguridad vial, a partir del proceso de participacin ciudadana a través de Foros lnstitucionales de Grupos Focales, conformados por académicos, expertos y tomadores de decisiones de los diferentes sectores involucrados en la dinámica socio económica del estado.",
+      "descriptionBook": "El presente Programa se aboca a establecer las acciones que regirán nuestras actividades en el corto, mediano y largo plazo; cada una de ellas se ha construido bajo un enfoque donde exista concordancia entre los derechos y obligaciones de todos los sujetos de la movilidad, así como a la promoción respetuosa con el entorno ambiental y promoviendo la seguridad vial, a partir del proceso de participación ciudadana a través de Foros Institucionales de Grupos Focales, conformados por académicos, expertos y tomadores de decisiones de los diferentes sectores involucrados en la dinámica socioeconómica del estado.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Programas Institucionales/Programa Institucional de Desarrollo del Sistema Integrado de Transporte Masivo de Hidalgo 2023-2028.pdf'),
       "booksIndex": "285"
     },
@@ -3749,7 +3749,7 @@ export const datosBibliotecaDigital = {
       ],
       "subcategory": "estatal",
       "año": "2025",
-      "descriptionBook": "Este documento tiene como objetivo fortalecer las estrategias de desarrollo regional en el estado, buscando la convergencia en el desarrollo, la reducción de desigualdades y la potencialización de las vocaciones y capacidades productivas de cada una de las 12 regiones del estado.\nEl documento se divide en tres capítulos. El primero presenta un panorama general de las actividades económicas. El segundo capítulo presenta los resultados del análisis diagnostico en cada una de las 12 regiones del estado. El tercer capítulo nos muestra algunas estrategias puntuales que se recomiendan para impulsar el desarrollo económico en el estado con base en un análisis conjunto de las regiones, contemplando experiencias y elementos mínimos para considerar en la elaboración de políticas económicas que aseguren el desarrollo de potencializades regionales y logren la incidencia efectiva en un desarrollo sostenible e inclusivo.",
+      "descriptionBook": "Este documento tiene como objetivo fortalecer las estrategias de desarrollo regional en el estado, buscando la convergencia en el desarrollo, la reducción de desigualdades y la potencialización de las vocaciones y capacidades productivas de cada una de las 12 regiones del estado.\nEl documento se divide en tres capítulos. El primero presenta un panorama general de las actividades económicas. El segundo capítulo presenta los resultados del análisis diagnóstico en cada una de las 12 regiones del estado. El tercer capítulo nos muestra algunas estrategias puntuales que se recomiendan para impulsar el desarrollo económico en el estado con base en un análisis conjunto de las regiones, contemplando experiencias y elementos mínimos para considerar en la elaboración de políticas económicas que aseguren el desarrollo de potencialidades regionales y logren la incidencia efectiva en un desarrollo sostenible e inclusivo.",
       "pdfSrc": externalAssetUrl('/Biblioteca Digital de Planeación/Estatal/Sectores Estratégicos para Impulsar el Desarrollo Económico en las Regiones del Estado de Hidalgo 2025.pdf'),
       "booksIndex": "341"
     },

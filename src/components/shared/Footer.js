@@ -1,7 +1,6 @@
 import styles from "./Footer.module.css";
-import { externalAssetUrl } from "@/config/api";
 
-const footerImage = (name) => externalAssetUrl(`/img_banco/footer/${name}`);
+const footerImage = (name) => (`/img/footer/${name}`);
 
 const Footer = () => {
   return (
@@ -46,7 +45,7 @@ const Footer = () => {
       <div className={styles.footerContacto}>
         <div className={styles.footerContactoTxt}>
           <div className={styles.footerContactoIco}>
-            <img src={footerImage('telefono.webp')} alt="icono de un telefono" />
+            <img src={footerImage('telefono.webp')} alt="Icono de un teléfono" />
             <div>
               <p>
                 <span>CONTACTO:</span>

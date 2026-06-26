@@ -47,7 +47,7 @@ const ChatbotMain = () => {
           </div>
           <div className={styles.content}>
             <h4>Quiero hacer una propuesta metropolitana</h4>
-            <p>Desarrolla una idea pensando en el futuro Metropolitano.</p>
+            <p>Desarrolla una idea pensando en el futuro metropolitano.</p>
           </div>
         </li> */}
         {/* <li onClick={() => handleMenuClick("zoneInfo")}>
@@ -113,8 +113,8 @@ const ChatbotMain = () => {
             <img src="/img/chatBot/cartography.png" alt="Icono" />
           </div>
           <div className={styles.content}>
-            <h4>Quiero Explorar la Cartografía de las Zonas Metropolitanas</h4>
-            <p>Visualiza el mapa en PDF con las delimitaciones de cada Zona Metropolitana, sus límites territoriales y los municipios que las integran.</p>
+            <h4>Quiero explorar la cartografía de las zonas metropolitanas</h4>
+            <p>Visualiza el mapa en PDF con las delimitaciones de cada zona metropolitana, sus límites territoriales y los municipios que las integran.</p>
           </div>
         </li>
       </ul>
@@ -129,7 +129,7 @@ const ChatbotMain = () => {
 
   const renderZoneInfo = () => (
     <div className={styles.chatbotStep}>
-      <p>Claro que sí, ¿Qué Zona Metropolitana te interesa conocer?</p>
+      <p>Claro que sí, ¿qué zona metropolitana te interesa conocer?</p>
       <ul>
         <li onClick={() => handleMenuClick("zoneDetails", setSelectedZone("ZMVM"))}>
           Zona Metropolitana del Valle de México
@@ -156,7 +156,7 @@ const ChatbotMain = () => {
         rel="noopener noreferrer"
         className={styles.linkInline}
       >
-        Ver Ficha
+        Ver ficha
       </a>
       <button className={styles.iconButtonXl} onClick={resetToMainMenu}><HomeIcon className={styles.iconHeader} />Regresar al menú principal</button>
     </div>
@@ -172,7 +172,7 @@ const ChatbotMain = () => {
 
   const renderCartography = () => (
     <div className={styles.chatbotStep}>
-      <p>Escoge una de las Zonas Metropolitanas para visualizar la cartografía:</p>
+      <p>Escoge una de las zonas metropolitanas para visualizar la cartografía:</p>
       <ul>
         <a
           href="chat/cartografía metropolitana/zmvm-cartografia.pdf"
@@ -219,7 +219,7 @@ const ChatbotMain = () => {
         rel="noopener noreferrer"
         className={styles.linkInline}
       >
-        Ver Cartografía
+        Ver cartografía
       </a>
       <button className={styles.iconButtonXl} onClick={resetToMainMenu}><HomeIcon className={styles.iconHeader} />Regresar al menú principal</button>
 
@@ -237,7 +237,7 @@ const ChatbotMain = () => {
           <div className={styles.step}>
             <div>
               <p>¡Gracias por compartir tu propuesta! La tomaremos en cuenta para seguir construyendo juntos un mejor futuro metropolitano. </p>
-              <p>Tu participación es clave para construir un futuro más sostenible e innovador para Hidalgo. ¡Sigue contribuyendo</p>
+              <p>Tu participación es clave para construir un futuro más sostenible e innovador para Hidalgo. ¡Sigue contribuyendo!</p>
               <p>¡Tu voz es el motor del cambio!</p>
             </div>
             <button className={styles.iconButtonXl} onClick={resetToMainMenu}><HomeIcon className={styles.iconHeader} />Regresar al menú principal</button>

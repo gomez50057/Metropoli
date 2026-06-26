@@ -8,7 +8,7 @@ const UltimasNoticias = ({ posts }) => {
   return (
     <section className={styles.ultimasNoticias} aria-labelledby="ultimas-title">
       <h2 id="ultimas-title" className={styles.sectionTitle}>
-        <span className="span-doarado">Últimas </span> Noticias
+        <span className="span-doarado">Últimas </span> noticias
       </h2>
 
       <div className={styles.newsGrid}>

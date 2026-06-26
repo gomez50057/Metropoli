@@ -79,7 +79,7 @@ const About = () => {
 
         <motion.p variants={item}>
           Las zonas metropolitanas son áreas donde varios municipios convergen conformando un continuo urbano,
-          compartiendo actividades económicas, sociales y de infraestructura. Las Zonas Metropolitanas formalizan esta
+          compartiendo actividades económicas, sociales y de infraestructura. Las zonas metropolitanas formalizan esta
           integración para mejorar la coordinación en temas clave como el desarrollo urbano, la movilidad y la gestión
           de servicios públicos. Esto permite la colaboración entre municipios para asegurar un crecimiento ordenado,
           sostenible y que mejore la calidad de vida de sus habitantes.
