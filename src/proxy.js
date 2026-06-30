@@ -1,20 +1,42 @@
 import { NextResponse } from 'next/server';
 
-export function proxy(request) {
-    // Verifica si la ruta es el dashboard
-    if (request.nextUrl.pathname.startsWith('/dashboard')) {
-        const token = request.cookies.get('authToken');
+const trimSlash = (value) => (value || '').replace(/\/+$/, '');
 
-        // Si no hay token de autenticación, redirige a la página de login
-        if (!token) {
-            return NextResponse.redirect(new URL('/login', request.url));
-        }
+function apiUrl(request, path) {
+    const base = trimSlash(process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_URL);
+    if (!base) return new URL(path, request.url).toString();
+    return base.endsWith('/api') ? `${base}${path.replace(/^\/api/, '')}` : `${base}${path}`;
+}
+
+export async function proxy(request) {
+    const token = request.cookies.get('authToken')?.value;
+
+    if (!token) {
+        return NextResponse.redirect(new URL('/login', request.url));
     }
 
-    // Continuar con la solicitud si está autenticado
-    return NextResponse.next();
+    try {
+        const response = await fetch(apiUrl(request, '/api/dashboard/stats/'), {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                Cookie: `authToken=${token}`,
+            },
+            cache: 'no-store',
+        });
+
+        if (response.ok) {
+            return NextResponse.next();
+        }
+    } catch (error) {
+        // Fall through to login.
+    }
+
+    const loginUrl = new URL('/login', request.url);
+    const response = NextResponse.redirect(loginUrl);
+    response.cookies.delete('authToken');
+    return response;
 }
 
 export const config = {
-    matcher: ['/dashboard/:path*'], // Protege todas las rutas bajo /dashboard
+    matcher: ['/dashboard/:path*'],
 };
