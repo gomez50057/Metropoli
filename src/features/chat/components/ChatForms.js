@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { apiOriginUrl } from "@/config/api";
 import { municipiosDeHidalgo } from "@/data/utils";
-import formularioStyles from "@/features/legacy-dashboard/forms/Formulario.module.css";
+import formularioStyles from "@/features/chat/components/Formulario.module.css";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
