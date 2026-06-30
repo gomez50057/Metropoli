@@ -74,6 +74,9 @@
 
 .panel {
   padding: 18px;
+  max-height: 360px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .panel h2 {
@@ -96,6 +99,11 @@
   gap: 16px;
   padding-bottom: 8px;
   border-bottom: 1px solid #eee8df;
+}
+
+.panel li span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .alert {

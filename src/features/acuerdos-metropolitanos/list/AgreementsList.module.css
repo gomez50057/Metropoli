@@ -170,8 +170,7 @@
   color: var(--grisOsc);
 }
 
-.alert,
-.empty {
+.alert {
   color: var(--estadoRojo);
   font-weight: 800;
 }
@@ -185,8 +184,19 @@
   backdrop-filter: blur(12px);
 }
 
-.empty {
+.loadingState,
+.emptyState {
   text-align: center;
+  color: #5f574f;
+  font-weight: 800;
+}
+
+.loadingState {
+  background: rgba(250, 248, 244, 0.65);
+}
+
+.emptyState {
+  background: rgba(255, 250, 240, 0.78);
 }
 
 .pagination {
