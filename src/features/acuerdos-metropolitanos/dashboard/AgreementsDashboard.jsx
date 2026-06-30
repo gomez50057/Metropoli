@@ -9,8 +9,6 @@ import InstanceRanking from './InstanceRanking';
 import StatusSummary from './StatusSummary';
 import styles from './AgreementsDashboard.module.css';
 
-const ADMIN_ROLES = new Set(['CONTROL_TOTAL', 'ADMINISTRADOR']);
-
 function asArray(value) {
   if (Array.isArray(value)) return value;
   return value?.results || [];
@@ -58,11 +56,11 @@ export default function AgreementsDashboard() {
         <p>Indicadores de seguimiento metropolitano.</p>
       </div>
       {error && <div className={styles.alert}>{error}</div>}
-      <DashboardCards summary={summary} showPendingValidation={ADMIN_ROLES.has(user?.role)} />
+      <DashboardCards summary={summary} />
       <div className={styles.columns}>
         <InstanceRanking items={summary?.top_instances || byInstance} />
-        {!ADMIN_ROLES.has(user?.role) && <StatusSummary summary={summary} />}
-        {user?.role !== 'INSTANCIA' && (
+        {!['CONTROL_TOTAL', 'ADMINISTRADOR'].includes(user?.role) && <StatusSummary summary={summary} />}
+        {user?.role !== 'SEGUIMIENTO' && (
           <section className={styles.panel}>
             <h2>Por zona</h2>
             <ul>

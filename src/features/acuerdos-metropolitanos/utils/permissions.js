@@ -9,7 +9,7 @@ export function canExportAgreements(role) {
 }
 
 export function canCreateUpdates(role) {
-  return [ROLES.ADMINISTRADOR, ROLES.CONTROL_TOTAL, ROLES.INSTANCIA].includes(role);
+  return [ROLES.ADMINISTRADOR, ROLES.CONTROL_TOTAL, ROLES.SEGUIMIENTO].includes(role);
 }
 
 export function isAdministrator(role) {

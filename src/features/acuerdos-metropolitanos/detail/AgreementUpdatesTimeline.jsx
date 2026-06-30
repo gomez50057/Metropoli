@@ -13,6 +13,7 @@ export default function AgreementUpdatesTimeline({
   updates = [],
   canReview,
   canManageFiles,
+  hideUserControls = false,
   onReview,
   onEdit,
   onDeleteEvidence,
@@ -24,9 +25,9 @@ export default function AgreementUpdatesTimeline({
   const [expanded, setExpanded] = useState(false);
   const [userFilter, setUserFilter] = useState('');
   const users = useMemo(() => (
-    [...new Set(updates.map((update) => update.created_by_username).filter(Boolean))].sort()
-  ), [updates]);
-  const filteredUpdates = userFilter
+    hideUserControls ? [] : [...new Set(updates.map((update) => update.created_by_username).filter(Boolean))].sort()
+  ), [hideUserControls, updates]);
+  const filteredUpdates = !hideUserControls && userFilter
     ? updates.filter((update) => update.created_by_username === userFilter)
     : updates;
   const visibleUpdates = expanded ? filteredUpdates : filteredUpdates.slice(0, 4);
@@ -35,20 +36,22 @@ export default function AgreementUpdatesTimeline({
     <section className={styles.panel}>
       <div className={styles.panelHeader}>
         <h2>Historial de actualizaciones</h2>
-        <select
-          className={styles.inlineFilter}
-          value={userFilter}
-          onChange={(event) => {
-            setUserFilter(event.target.value);
-            setExpanded(false);
-          }}
-          aria-label="Filtrar historial por usuario"
-        >
-          <option value="">Todos los usuarios</option>
-          {users.map((username) => (
-            <option key={username} value={username}>{username}</option>
-          ))}
-        </select>
+        {!hideUserControls && (
+          <select
+            className={styles.inlineFilter}
+            value={userFilter}
+            onChange={(event) => {
+              setUserFilter(event.target.value);
+              setExpanded(false);
+            }}
+            aria-label="Filtrar historial por usuario"
+          >
+            <option value="">Todos los usuarios</option>
+            {users.map((username) => (
+              <option key={username} value={username}>{username}</option>
+            ))}
+          </select>
+        )}
       </div>
       <ol className={styles.timeline}>
         {visibleUpdates.map((update) => (
@@ -56,7 +59,7 @@ export default function AgreementUpdatesTimeline({
             <dl className={styles.updateDetails}>
               <div><dt>Fecha:</dt><dd>{formatDate(update.created_at || update.date)}</dd></div>
               <div><dt>Instancia:</dt><dd>{update.instance_name || 'Sin instancia'}</dd></div>
-              <div><dt>Usuario que lo aportó:</dt><dd>{update.created_by_username || '-'}</dd></div>
+              {!hideUserControls && <div><dt>Usuario que lo aportó:</dt><dd>{update.created_by_username || '-'}</dd></div>}
               <div><dt>Validación de información:</dt><dd>{update.validation_status || update.status || 'Sin estatus'}</dd></div>
               <div><dt>Descripción:</dt><dd>{update.description}</dd></div>
               {(update.review_observations || update.observations) && (

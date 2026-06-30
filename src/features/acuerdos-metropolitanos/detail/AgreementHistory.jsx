@@ -65,7 +65,7 @@ export default function AgreementHistory({
             </button>
           )}
         </div>
-        <p className={styles.panelHint}>Notas de trabajo no visibles para las instancias.</p>
+        <p className={styles.panelHint}>Notas de trabajo no visibles para seguimiento.</p>
         {composing && <form className={styles.commentForm} onSubmit={submit}>
           <label htmlFor="internal-comment">Nuevo comentario</label>
           <textarea

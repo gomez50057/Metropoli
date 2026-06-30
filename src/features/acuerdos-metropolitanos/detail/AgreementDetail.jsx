@@ -28,6 +28,7 @@ import {
   updateResponsibleStatus,
   validateUpdate,
 } from '../services/agreementsApi';
+import { ROLES } from '../constants/roles';
 import { canCreateUpdates, canManageAgreements, isAdministrator } from '../utils/permissions';
 import { UPLOAD_RULE_TEXT, isUploadAllowed } from '../utils/fileHelpers';
 import AgreementUpdateForm from '../forms/AgreementUpdateForm';
@@ -104,6 +105,7 @@ export default function AgreementDetail({ id }) {
   const canAddUpdate = canCreateUpdates(user?.role);
   const canReview = canManageAgreements(user?.role);
   const canManageFiles = isAdministrator(user?.role);
+  const hideUpdateUsers = [ROLES.SEGUIMIENTO, ROLES.CONSULTA].includes(user?.role);
 
   useEffect(() => {
     let active = true;
@@ -135,7 +137,7 @@ export default function AgreementDetail({ id }) {
       const created = await createAgreementUpdate(id, formData);
       setUpdates((current) => [
         created,
-        ...current.map((item) => (user?.role === 'INSTANCIA' ? { ...item, can_edit: false } : item)),
+        ...current.map((item) => (user?.role === 'SEGUIMIENTO' ? { ...item, can_edit: false } : item)),
       ]);
       setMessage('Actualización registrada.');
     } catch {
@@ -500,6 +502,7 @@ export default function AgreementDetail({ id }) {
         updates={updates}
         canReview={canReview}
         canManageFiles={canManageFiles}
+        hideUserControls={hideUpdateUsers}
         onReview={requestReview}
         onEdit={requestEdit}
         onDeleteEvidence={(file) => requestFileDelete(file, 'update')}

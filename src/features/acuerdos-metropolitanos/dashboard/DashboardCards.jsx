@@ -9,14 +9,10 @@ const cards = [
   ['cancelled', 'Cancelados'],
 ];
 
-export default function DashboardCards({ summary, showPendingValidation }) {
-  const visibleCards = showPendingValidation
-    ? [...cards, ['pending_validation', 'Actualizaciones pendientes']]
-    : cards;
-
+export default function DashboardCards({ summary }) {
   return (
     <div className={styles.metrics}>
-      {visibleCards.map(([key, label]) => (
+      {cards.map(([key, label]) => (
         <article key={key} className={styles.metric}>
           <span>{label}</span>
           <strong>{summary?.[key] ?? 0}</strong>
