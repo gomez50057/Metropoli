@@ -499,11 +499,6 @@ export default function LoginForm() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.75, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className={styles.metricRailHeader}>
-              <span />
-              Zonas metropolitanas
-            </div>
-
             {floatingMetrics.map((item, index) => (
               <motion.button
                 type="button"
@@ -535,7 +530,6 @@ export default function LoginForm() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span>Conexión activa</span>
             <strong>{activeItem?.name || activeItem?.label}</strong>
             <p>{activeItem?.description}</p>
           </motion.div>
@@ -547,11 +541,6 @@ export default function LoginForm() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className={styles.footerBadge}>
-              <span />
-              Sistema metropolitano activo
-            </div>
-
             <p>
               CONECTAMOS REGIONES
               <br />

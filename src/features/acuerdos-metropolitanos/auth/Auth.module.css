@@ -4,7 +4,7 @@
   position: relative;
   isolation: isolate;
   min-height: 100dvh;
-  overflow: hidden;
+  overflow: auto;
   color: #fff;
   background: #030304;
 }
@@ -154,7 +154,7 @@
 
 .mapLayer {
   position: absolute;
-  top: 18px;
+  top: 90px;
   left: -8px;
   z-index: 2;
   width: min(620px, 78%);
@@ -346,8 +346,8 @@
   right: 26px;
   z-index: 7;
   display: grid;
-  gap: 12px;
-  width: min(270px, 38%);
+  gap: clamp(8px, 0.8vw, 12px);
+  width: clamp(190px, 22vw, 250px);
   pointer-events: auto;
 }
 
@@ -383,7 +383,7 @@
   width: 100%;
   border: 1px solid rgba(236, 48, 112, 0.42);
   border-radius: 3px 18px 3px 18px;
-  padding: 13px 15px 14px;
+  padding: clamp(9px, 0.9vw, 13px) clamp(10px, 1vw, 15px);
   background:
     linear-gradient(135deg, rgba(105, 27, 50, 0.68), rgba(4, 5, 7, 0.82)),
     rgba(10, 8, 10, 0.76);
@@ -435,7 +435,7 @@
   z-index: 1;
   display: block;
   color: #f0c982;
-  font-size: 22px;
+  font-size: clamp(16px, 1.35vw, 22px);
   font-weight: 900;
   letter-spacing: 0.12em;
   line-height: 1;
@@ -445,9 +445,9 @@
   position: relative;
   z-index: 1;
   display: block;
-  margin-top: 8px;
+  margin-top: clamp(5px, 0.6vw, 8px);
   color: rgba(255, 255, 255, 0.84);
-  font-size: 11px;
+  font-size: clamp(9px, 0.7vw, 11px);
   font-weight: 850;
   line-height: 1.35;
   letter-spacing: 0.07em;
@@ -458,9 +458,9 @@
   position: relative;
   z-index: 1;
   display: block;
-  margin-top: 7px;
+  margin-top: clamp(4px, 0.55vw, 7px);
   color: rgba(222, 201, 163, 0.8);
-  font-size: 10px;
+  font-size: clamp(8px, 0.65vw, 10px);
   font-weight: 750;
   letter-spacing: 0.08em;
 }
@@ -478,11 +478,13 @@
 
 .routePanel {
   position: absolute;
-  left: 7%;
-  top: 61%;
+  left: auto;
+  right: 26px;
+  top: auto;
+  bottom: 210px;
   z-index: 4;
-  width: min(390px, 68%);
-  padding: 18px 20px;
+  width: clamp(230px, 30vw, 340px);
+  padding: clamp(12px, 1.2vw, 18px) clamp(14px, 1.3vw, 20px);
   border: 1px solid rgba(188, 149, 91, 0.34);
   border-radius: 4px 22px 4px 22px;
   background:
@@ -527,7 +529,7 @@
 .routePanel strong {
   display: block;
   color: #ffd18b;
-  font-size: clamp(18px, 1.5vw, 26px);
+  font-size: clamp(15px, 1.35vw, 22px);
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -536,7 +538,7 @@
 .routePanel p {
   margin: 9px 0 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
+  font-size: clamp(11px, 0.85vw, 13px);
   line-height: 1.5;
 }
 
@@ -658,7 +660,7 @@
   display: grid;
   place-items: center;
   min-width: 0;
-  padding: 48px 64px;
+  padding: 32px 64px;
 }
 
 .loginContent::before {
@@ -1072,22 +1074,18 @@
   }
 
   .metricRail {
-    top: 32px;
-    right: 28px;
-    width: min(290px, 36%);
+    display: none;
   }
 
   .mapLayer {
-    top: 0;
+    top: 90px;
     left: 2%;
     width: min(620px, 66%);
   }
 
-  .routePanel {
-    top: 51%;
-    right: 28px;
-    left: auto;
-    width: min(350px, 44%);
+  .routePanel,
+  .visualFooter {
+    display: none;
   }
 
   .hudRing {
@@ -1131,7 +1129,7 @@
   }
 
   .mapLayer {
-    top: -4px;
+    top: 90px;
     left: -4%;
     width: min(560px, 96%);
   }
@@ -1146,7 +1144,7 @@
     left: 24px;
     right: auto;
     top: auto;
-    bottom: 118px;
+    bottom: 142px;
     width: calc(100% - 48px);
     padding: 13px 15px;
   }
@@ -1231,7 +1229,7 @@
   .mapLayer {
     width: 110%;
     left: -22%;
-    top: -10px;
+    top: 90px;
   }
 
   .hudRing {
@@ -1239,7 +1237,7 @@
   }
 
   .routePanel {
-    bottom: 102px;
+    bottom: 130px;
   }
 
   .routePanel strong {
