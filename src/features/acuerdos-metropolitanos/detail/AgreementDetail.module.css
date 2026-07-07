@@ -21,8 +21,7 @@
 
 .panel,
 .updateForm,
-.alert,
-.success {
+.alert {
   border: 1px solid rgba(226, 221, 213, 0.72);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.76);
@@ -444,18 +443,13 @@
   cursor: pointer;
 }
 
-.alert,
-.success {
+.alert {
   padding: 12px 14px;
   font-weight: 800;
 }
 
 .alert {
   color: var(--estadoRojo);
-}
-
-.success {
-  color: var(--estadoVerde);
 }
 
 @media (max-width: 880px) {

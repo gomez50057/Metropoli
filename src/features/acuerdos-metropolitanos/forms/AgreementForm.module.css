@@ -176,19 +176,34 @@
 
 .reactSelect :global(.react-select__value-container) {
   min-width: 0;
-  flex-wrap: nowrap;
-  overflow: hidden;
+}
+
+.reactSelect :global(.react-select__value-container--is-multi) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 92px;
+  overflow-x: auto;
+  overflow-y: auto;
+  align-items: start;
+  direction: ltr;
 }
 
 .reactSelect :global(.react-select__multi-value) {
-  min-width: 0;
-  max-width: 100%;
+  flex: 0 0 auto;
+  max-width: none;
+  margin: 0;
 }
 
 .reactSelect :global(.react-select__multi-value__label) {
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
   white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+.reactSelect :global(.react-select__input-container) {
+  flex: 1 0 120px;
 }
 
 .reactSelect :global(.react-select__indicators) {
@@ -212,6 +227,8 @@
 }
 
 .reactSelect :global(.react-select__option) {
+  white-space: normal;
+  overflow-wrap: anywhere;
   transition: background 0.14s ease, color 0.14s ease;
 }
 
@@ -257,18 +274,13 @@
   }
 }
 
-.error,
-.success {
+.error {
   font-size: 13px;
   font-weight: 800;
 }
 
 .error {
   color: var(--estadoRojo);
-}
-
-.success {
-  color: var(--estadoVerde);
 }
 
 .form button {

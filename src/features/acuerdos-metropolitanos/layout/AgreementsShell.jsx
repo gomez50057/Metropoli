@@ -21,7 +21,7 @@ export default function AgreementsShell({ children }) {
     { href: `${base}/dashboard`, label: 'Dashboard' },
     ...(canManage ? [{ href: `${base}/registro`, label: 'Registro' }] : []),
     { href: `${base}/acuerdos`, label: 'Acuerdos' },
-    ...(canManage ? [{ href: `${base}/minutas`, label: 'Minutas y actas' }] : []),
+    { href: `${base}/minutas`, label: 'Minutas y actas' },
     { href: `${base}/antecedentes`, label: 'Antecedentes' },
   ];
 

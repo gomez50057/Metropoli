@@ -7,8 +7,8 @@ export default function BackgroundLinkForm({ form, onChange, onSubmit, responsib
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <input name="title" value={form.title} onChange={onChange} placeholder="Título" required />
-      <input name="description" value={form.description} onChange={onChange} placeholder="Descripción" />
-      <input name="file" onChange={onChange} type="file" accept=".pdf,application/pdf" required={!editing} />
+      <input name="description" value={form.description} onChange={onChange} placeholder="Descripción" required />
+      <input name="file" onChange={onChange} type="file" accept=".pdf,application/pdf" required />
       <ResponsibleMultiSelect
         responsibles={responsibles}
         value={form.responsibles}
