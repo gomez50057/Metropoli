@@ -6,6 +6,7 @@ import TransverseAxles from "@/features/actualizacion-pozmvm/components/Transver
 import GuidingPrinciples from "@/features/actualizacion-pozmvm/components/GuidingPrinciples";
 import TalleresCenterSlider from "@/features/actualizacion-pozmvm/components/TalleresCenterSlider";
 import ChipStatus from "@/features/actualizacion-pozmvm/components/ChipStatus";
+import FeaturedNews from "@/features/actualizacion-pozmvm/components/FeaturedNews";
 
 export default function PagePOZMVM() {
   return (
@@ -17,7 +18,8 @@ export default function PagePOZMVM() {
       <TransverseAxles />
       <GuidingPrinciples />
       <TalleresCenterSlider />
-      <ChipStatus currentPhase={4} />
+      <FeaturedNews />
+      <ChipStatus currentPhase={3} />
     </>
   );
 }
