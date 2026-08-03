@@ -307,7 +307,7 @@ export const tecnicoTeamMembersZMVM = [
 
   {
     "name": "Enrique Soto Alva",
-    "position": "Director General de Ordenamiento Metropolitano Regional",
+    "position": "Director General de Ordenamiento Metropolitano y Regional",
     "gobierno": "Gobierno Federal",
     "image": "/img/ZMVM/Secretariado Técnico Conjunto/Enrique Soto Alva.png"
   },
