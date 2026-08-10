@@ -1,4 +1,6 @@
 "use client";
+
+import { Suspense } from "react";
 import BlogHeader from "./BlogHeader";
 import BlogNoticias from "./BlogNoticias";
 import UltimasNoticias from "./UltimasNoticias";
@@ -11,7 +13,9 @@ const BlogMain = () => {
     <div>
       <BlogHeader />
       <UltimasNoticias posts={blogPosts.slice(0, 4)} />
-      <BlogNoticias posts={blogPosts} featuredPosts={featured} />
+      <Suspense fallback={null}>
+        <BlogNoticias posts={blogPosts} featuredPosts={featured} />
+      </Suspense>
     </div>
   );
 };

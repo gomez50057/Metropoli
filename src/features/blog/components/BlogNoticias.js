@@ -1,8 +1,16 @@
-import React, { useState, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./BlogNoticias.module.css";
 import FeaturedPosts from "./FeaturedPosts";
 import Link from "next/link";
-import { normalizeName, renderDescription } from "@/data/blogData";
+import ClearAllIcon from "@mui/icons-material/ClearAll";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  getPostTopic,
+  getPostYear,
+  getPostZone,
+  normalizeName,
+  renderDescription,
+} from "@/data/blogData";
 
 const MAX_LENGTH = 50;
 
@@ -27,21 +35,11 @@ const toSlug = (s = "") =>
     .replace(/[\s_]+/g, "-")
     .toLowerCase();
 
-const CATEGORY_LABEL_OVERRIDES = {
-  imagenurbana: "Imagen Urbana",
-  zmvm: "ZMVM",
-};
-const toLabel = (raw = "") => {
-  const slug = toSlug(raw);
-  if (CATEGORY_LABEL_OVERRIDES[slug]) return CATEGORY_LABEL_OVERRIDES[slug];
-  const spaced = String(raw)
-    .replace(/([a-z])([A-Z])/g, "$1 $2")
-    .replace(/[-_]+/g, " ");
-  // Title Case simple
-  return spaced.replace(/\w\S*/g, (t) => t[0].toUpperCase() + t.slice(1).toLowerCase());
-};
-
 const BlogNoticias = ({ posts = [], featuredPosts = [] }) => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   // Construir opciones de categoría a partir de los posts
   const categoryOptions = useMemo(() => {
     const map = new Map();
@@ -49,27 +47,118 @@ const BlogNoticias = ({ posts = [], featuredPosts = [] }) => {
       if (!p?.category) continue;
       const value = toSlug(p.category);
       if (!value) continue;
-      if (!map.has(value)) map.set(value, toLabel(p.category));
+      if (!map.has(value)) map.set(value, p.category);
     }
     return [{ value: "todas", label: "Todas" }, ...[...map].map(([value, label]) => ({ value, label }))];
   }, [posts]);
 
-  const [selectedCategory, setSelectedCategory] = useState("todas");
+  const zoneOptions = useMemo(
+    () => ["todas", ...new Set(posts.map(getPostZone))],
+    [posts]
+  );
+  const topicOptions = useMemo(
+    () => ["todas", ...new Set(posts.map(getPostTopic))],
+    [posts]
+  );
+  const yearOptions = useMemo(
+    () => ["todas", ...new Set(posts.map(getPostYear))].sort((a, b) => b.localeCompare(a)),
+    [posts]
+  );
+  const [filters, setFilters] = useState({
+    category: searchParams.get("categoria") || "todas",
+    zone: searchParams.get("zona") || "todas",
+    topic: searchParams.get("tema") || "todas",
+    year: searchParams.get("anio") || "todas",
+  });
   const [fadeEffect, setFadeEffect] = useState(false);
 
-  const handleCategoryChange = (e) => {
-    const next = e.target.value;
+  useEffect(() => {
+    setFilters({
+      category: searchParams.get("categoria") || "todas",
+      zone: searchParams.get("zona") || "todas",
+      topic: searchParams.get("tema") || "todas",
+      year: searchParams.get("anio") || "todas",
+    });
+  }, [searchParams]);
+
+  const handleFilterChange = (key, value) => {
+    const nextFilters = { ...filters, [key]: value };
     setFadeEffect(true);
     setTimeout(() => {
-      setSelectedCategory(next);
+      setFilters(nextFilters);
+      const params = new URLSearchParams(searchParams.toString());
+      const queryKeys = {
+        category: "categoria",
+        zone: "zona",
+        topic: "tema",
+        year: "anio",
+      };
+
+      Object.entries(queryKeys).forEach(([filterKey, queryKey]) => {
+        if (nextFilters[filterKey] === "todas") params.delete(queryKey);
+        else params.set(queryKey, nextFilters[filterKey]);
+      });
+
+      router.replace(params.size ? `${pathname}?${params}` : pathname, { scroll: false });
       setFadeEffect(false);
     }, 300);
   };
 
-  const filteredPosts = useMemo(() => {
-    if (selectedCategory === "todas") return posts;
-    return posts.filter((p) => toSlug(p.category) === selectedCategory);
-  }, [posts, selectedCategory]);
+  const clearFilters = () => {
+    const nextFilters = { category: "todas", zone: "todas", topic: "todas", year: "todas" };
+    setFadeEffect(true);
+    setTimeout(() => {
+      setFilters(nextFilters);
+      router.replace(pathname, { scroll: false });
+      setFadeEffect(false);
+    }, 300);
+  };
+
+  const matchesFilters = (post, activeFilters) => (
+    (activeFilters.category === "todas" || toSlug(post.category) === activeFilters.category) &&
+    (activeFilters.zone === "todas" || getPostZone(post) === activeFilters.zone) &&
+    (activeFilters.topic === "todas" || getPostTopic(post) === activeFilters.topic) &&
+    (activeFilters.year === "todas" || getPostYear(post) === activeFilters.year)
+  );
+
+  const filteredPosts = useMemo(
+    () => posts.filter((post) => matchesFilters(post, filters)),
+    [filters, posts]
+  );
+
+  const getAvailableOptions = (filterKey, options, getValue) => options.filter((option) => {
+    const value = getValue(option);
+    if (value === "todas" || value === filters[filterKey]) return true;
+
+    const nextFilters = { ...filters, [filterKey]: value };
+    return posts.some((post) => matchesFilters(post, nextFilters));
+  });
+
+  const hasActiveFilters = Object.values(filters).some((value) => value !== "todas");
+
+  const renderFilterButtons = (label, filterKey, options, getValue, getLabel) => (
+    <div className={styles.filterGroup}>
+      <p className={styles.filterLabel}>{label}</p>
+      <div className={styles.filterButtons}>
+        {getAvailableOptions(filterKey, options, getValue).map((option) => {
+          const value = getValue(option);
+          const isActive = filters[filterKey] === value;
+
+          return (
+            <button
+              key={value}
+              type="button"
+              className={`${styles.filterButton} ${isActive ? styles.filterButtonActive : ""}`}
+              aria-pressed={isActive}
+              onClick={() => handleFilterChange(filterKey, value)}
+            >
+              {getLabel(option)}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 
   return (
     <section className={styles.blogNoticias}>
@@ -80,18 +169,24 @@ const BlogNoticias = ({ posts = [], featuredPosts = [] }) => {
             <span className="span-doarado">Metropolitanas</span>
           </h2>
 
-          <select
-            className={styles.orderSelect}
-            onChange={handleCategoryChange}
-            value={selectedCategory}
-            aria-label="Filtrar por categoría"
-          >
-            {categoryOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
+          <div className={styles.filters} aria-label="Filtros de noticias">
+            <div className={styles.filterHeading}>
+              <span>Filtrar noticias</span>
+              <button
+                type="button"
+                className={styles.clearFiltersButton}
+                onClick={clearFilters}
+                disabled={!hasActiveFilters}
+              >
+                <ClearAllIcon className={styles.clearFiltersIcon} aria-hidden="true" />
+                Limpiar filtros
+              </button>
+            </div>
+            {renderFilterButtons("Categorías", "category", categoryOptions, (option) => option.value, (option) => option.label)}
+            {renderFilterButtons("Zona metropolitana", "zone", zoneOptions, (option) => option, (option) => option === "todas" ? "Todas" : option)}
+            {renderFilterButtons("Tema", "topic", topicOptions, (option) => option, (option) => option === "todas" ? "Todos" : option)}
+            {renderFilterButtons("Año", "year", yearOptions, (option) => option, (option) => option === "todas" ? "Todos" : option)}
+          </div>
         </div>
 
         <div className={`${styles.newsGrid} ${fadeEffect ? styles.fadeOut : styles.fadeIn}`}>
@@ -116,7 +211,7 @@ const BlogNoticias = ({ posts = [], featuredPosts = [] }) => {
                   />
                   <div className={styles.newsContent}>
                     <p className={styles.newsMeta}>
-                      {toLabel(post.category)} · {post.date}
+                      {post.category} · {post.date}
                     </p>
                     <h3 className={styles.newsTitle}>{post.name}</h3>
                     <div className={styles.newsDescription}>
@@ -132,7 +227,7 @@ const BlogNoticias = ({ posts = [], featuredPosts = [] }) => {
               );
             })
           ) : (
-            <p>No se encontraron publicaciones para esta categoría.</p>
+            <p>No se encontraron publicaciones con los filtros seleccionados.</p>
           )}
         </div>
       </div>

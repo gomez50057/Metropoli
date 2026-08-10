@@ -2,7 +2,7 @@ import Navbar from "@/components/shared/Navbar";
 import FeaturedPosts from "./FeaturedPosts";
 import SafeImage from "./shared/SafeImage";
 import styles from "./FullPost.module.css";
-import { renderDescription } from "@/data/blogData";
+import { getPostImageAlt, getPostPublishedAt, renderDescription } from "@/data/blogData";
 
 export default function FullPost({ post, featuredPosts = [] }) {
   if (!post) {
@@ -32,7 +32,7 @@ export default function FullPost({ post, featuredPosts = [] }) {
             <figure className={styles.hero}>
               <SafeImage
                 src={post.image}
-                alt={post.name || "Imagen de la publicación"}
+                alt={getPostImageAlt(post)}
                 className={styles.postImage}
                 loading="lazy"
                 decoding="async"
@@ -45,7 +45,7 @@ export default function FullPost({ post, featuredPosts = [] }) {
             <p className={styles.meta}>
               <span className={styles.author}>{author}</span>
               <span className={styles.metaDot}>·</span>
-              <time className={styles.date}>{post.date}</time>
+              <time className={styles.date} dateTime={getPostPublishedAt(post) || undefined}>{post.date}</time>
             </p>
 
             <h1 className={styles.title}>{post.name}</h1>

@@ -4,18 +4,112 @@
   padding-left: 50px;
 }
 
-
-
 .newsHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  gap: 18px;
   margin-bottom: 20px;
 }
 
-.orderSelect {
-  padding: 5px;
+.filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.filterHeading {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--vinoOsc, #691B32);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.clearFiltersButton {
+  border: 0;
+  padding: 4px 0;
+  background: transparent;
+  color: var(--vinoOsc, #691B32);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.clearFiltersIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.clearFiltersButton:hover:not(:disabled) {
+  color: var(--vinoClr, #A02142);
+}
+
+.clearFiltersButton:disabled {
+  color: var(--grisOsc, #707271);
+  cursor: default;
+  text-decoration: none;
+}
+
+.clearFiltersButton:focus-visible {
+  outline: 3px solid var(--doradoOsc, #bc955b);
+  outline-offset: 2px;
+}
+
+.filterGroup {
+  min-width: 0;
+}
+
+.filterLabel {
+  margin: 0 0 8px;
+  color: var(--vinoOsc, #691B32);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.filterButton {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid var(--doradoOsc, #bc955b);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--vinoOsc, #691B32);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  line-height: 1.1;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filterButton:hover {
+  border-color: var(--vinoClr, #A02142);
+  background: var(--doradoClr, #DEC9A3);
+}
+
+.filterButtonActive {
+  border-color: var(--vinoOsc, #691B32);
+  background: linear-gradient(135deg, var(--vinoOsc, #691B32), var(--vinoClr, #A02142));
+  color: #fff;
+}
+
+.filterButton:focus-visible {
+  outline: 3px solid var(--doradoOsc, #bc955b);
+  outline-offset: 2px;
 }
 
 .newsGrid {
@@ -120,10 +214,16 @@
     gap: 10px;
   }
 
-  .orderSelect {
+  .filters {
+    grid-template-columns: 1fr;
     width: 100%;
-    font-size: 1rem;
-    padding: 10px 12px;
+    padding: 14px;
+  }
+
+  .filterHeading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .newsGrid {

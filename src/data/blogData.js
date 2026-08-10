@@ -4,6 +4,13 @@
 // Saltos de línea: \n
 // Negrita y Cursiva: **_Este texto estará en negrita y Cursiva_**
 
+
+// ----- Tema se definió automáticamente a partir del título, descripción y categoría de cada nota
+// Contiene pimus, movilidad o transporte: Movilidad y transporte.
+// Contiene imagen urbana, ciudad esponja o infraestructura urbana: Imagen urbana.
+// Contiene consulta, taller, foro o participa: Participación ciudadana.
+// Cualquier otra nota: Planeación metropolitana.
+
 import styles from "../features/blog/components/FullPost.module.css";
 
 export const blogPosts = [
@@ -544,6 +551,63 @@ export const normalizeName = (str) => {
     .replace(/\s+/g, "-") // Reemplaza espacios con guiones
     .toLowerCase(); // Convierte a minúsculas
 };
+
+const MONTHS = {
+  enero: "01",
+  febrero: "02",
+  marzo: "03",
+  abril: "04",
+  mayo: "05",
+  junio: "06",
+  julio: "07",
+  agosto: "08",
+  septiembre: "09",
+  octubre: "10",
+  noviembre: "11",
+  diciembre: "12",
+};
+
+export const getPostPublishedAt = (post) => {
+  const match = String(post?.date || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .match(/(\d{1,2})\s*(?:de\s+)?([a-z]+),?\s*(\d{4})/);
+
+  if (!match || !MONTHS[match[2]]) return null;
+
+  return `${match[3]}-${MONTHS[match[2]]}-${match[1].padStart(2, "0")}T00:00:00.000Z`;
+};
+
+export const getPostYear = (post) => getPostPublishedAt(post)?.slice(0, 4) || "Sin fecha";
+
+export const getPostZone = (post) => {
+  const source = `${post?.category || ""} ${post?.image || ""}`.toLowerCase();
+  if (source.includes("zmvm")) return "ZMVM";
+  if (source.includes("zmp")) return "ZMP";
+  return "Hidalgo";
+};
+
+export const getPostTopic = (post) => {
+  const source = `${post?.name || ""} ${post?.description || ""} ${post?.category || ""}`.toLowerCase();
+  if (/pimus|movilidad|transporte/.test(source)) return "Movilidad y transporte";
+  if (/imagen urbana|ciudad esponja|infraestructura urbana/.test(source)) return "Imagen urbana";
+  if (/consulta|taller|foro|participa/.test(source)) return "Participación ciudadana";
+  return "Planeación metropolitana";
+};
+
+export const getPostExcerpt = (post, maxLength = 160) => {
+  const plainText = String(post?.description || "")
+    .replace(/[*_]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return plainText.length > maxLength ? `${plainText.slice(0, maxLength - 1).trimEnd()}…` : plainText;
+};
+
+export const getPostAuthor = (post) => post?.authorEmail?.trim() || "Coordinación General de Planeación y Proyectos";
+
+export const getPostImageAlt = (post) => post?.imageAlt || post?.name || "Imagen de la publicación";
 
 // Función para procesar texto con negritas, cursivas y combinaciones
 export const renderTextWithStyles = (text) => {
