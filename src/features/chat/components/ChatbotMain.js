@@ -140,9 +140,6 @@ const ChatbotMain = () => {
         <li onClick={() => handleMenuClick("zoneDetails", setSelectedZone("ZMTulancingo"))}>
           Zona Metropolitana de Tulancingo
         </li>
-        <li onClick={() => handleMenuClick("zoneDetails", setSelectedZone("ZMTula"))}>
-          Zona Metropolitana de Tula
-        </li>
       </ul>
     </div>
   );
@@ -197,14 +194,6 @@ const ChatbotMain = () => {
           className={styles.linkItem}
         >
           <li>Zona Metropolitana de Tulancingo</li>
-        </a>
-        <a
-          href="chat/cartografía metropolitana/zmtula-cartografia.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.linkItem}
-        >
-          <li>Zona Metropolitana de Tula</li>
         </a>
       </ul>
     </div>

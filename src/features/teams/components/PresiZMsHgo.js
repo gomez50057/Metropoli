@@ -1,13 +1,11 @@
 import React from 'react';
 import Team from '@/features/teams/components/Team';
-import { PresidentesZMTulanciongo, PresidentesZMTula, PresidentesZMPachuca } from '@/data/teamsZmHgo';
+import { PresidentesZMTulanciongo, PresidentesZMPachuca } from '@/data/teamsZmHgo';
 
 const getPresidentesByZona = (zonaSeleccionada) => {
   switch (zonaSeleccionada) {
     case 'ZMP':
       return PresidentesZMPachuca;
-    case 'ZMTula':
-      return PresidentesZMTula;
     case 'ZMTulancingo':
       return PresidentesZMTulanciongo;
     default:

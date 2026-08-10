@@ -7,6 +7,7 @@ import styles from "./Header.module.css";
 const HeaderAnimation = dynamic(() => import("@/components/shared/HeaderAnimation"), { ssr: false });
 
 const DEFAULT_ZONA = "ZMVM";
+const AVAILABLE_ZONES = ["ZMVM", "ZMP", "ZMTulancingo"];
 
 const Header = () => {
   const imgBasePath = "/img/";
@@ -24,12 +25,12 @@ const Header = () => {
 
     // Zona por defecto / persistencia
     const stored = localStorage.getItem("selectedZonaMetropolitana");
-    const zonaInicial = stored || DEFAULT_ZONA;
+    const zonaInicial = AVAILABLE_ZONES.includes(stored) ? stored : DEFAULT_ZONA;
 
     setZonaActiva(zonaInicial);
 
     // Si no había nada guardado, lo guardamos
-    if (!stored) {
+    if (stored !== zonaInicial) {
       localStorage.setItem("selectedZonaMetropolitana", zonaInicial);
     }
 
@@ -69,17 +70,6 @@ const Header = () => {
             >
               <img src={`${imgZmSelect}ZMP.jpg`} alt="ZM Pachuca" />
               <span className={styles.tooltip}>ZM de Pachuca</span>
-            </button>
-
-            <button
-              className={circleClass("ZMTula")}
-              onClick={() => setZonaAndScroll("ZMTula")}
-              aria-label="Zona Metropolitana de Tula"
-              aria-pressed={zonaActiva === "ZMTula"}
-              type="button"
-            >
-              <img src={`${imgZmSelect}ZMTula.webp`} alt="ZM Tula" />
-              <span className={styles.tooltip}>ZM de Tula</span>
             </button>
 
             <button

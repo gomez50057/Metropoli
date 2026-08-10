@@ -8,7 +8,8 @@ import styles from './ZonasMetropolitanas.module.css';
 // Función para obtener la zona seleccionada desde el localStorage o usar un valor predeterminado
 const getZonaFromLocalStorage = () => {
   if (typeof window !== 'undefined') {
-    return localStorage.getItem('selectedZonaMetropolitana') || 'ZMVM';
+    const zone = localStorage.getItem('selectedZonaMetropolitana');
+    return ['ZMVM', 'ZMP', 'ZMTulancingo'].includes(zone) ? zone : 'ZMVM';
   }
   return 'ZMVM';
 };
@@ -49,12 +50,6 @@ const ZonasMetropolitanas = () => {
           onClick={() => handleZonaChange('ZMP')}
         >
           ZMPachuca
-        </button>
-        <button
-          className={`${zonaSeleccionada === 'ZMTula' ? styles.active : ''}`}
-          onClick={() => handleZonaChange('ZMTula')}
-        >
-          ZMTula
         </button>
         <button
           className={`${zonaSeleccionada === 'ZMTulancingo' ? styles.active : ''}`}
