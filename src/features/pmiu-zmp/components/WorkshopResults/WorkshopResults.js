@@ -19,12 +19,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-const defaultFooterItems = [
-  { id: 1, title: "Opiniones ciudadanas", icon: "💬" },
-  { id: 2, title: "Ideas para el espacio", icon: "💡" },
-  { id: 3, title: "Participación comunitaria", icon: "👥" },
-];
-
 const easeExpo = [0.22, 1, 0.36, 1];
 
 const fadeUpAnimation = (isActive, delay = 0) => ({
@@ -57,17 +51,6 @@ const percentageAnimation = (isActive, index) => ({
   transition: {
     duration: 0.72,
     delay: isActive ? 0.34 + index * 0.1 : 0,
-    ease: easeExpo,
-  },
-});
-
-const footerAnimation = (isActive, index) => ({
-  opacity: isActive ? 1 : 0,
-  y: isActive ? 0 : 18,
-  scale: isActive ? 1 : 0.96,
-  transition: {
-    duration: 0.62,
-    delay: isActive ? 0.56 + index * 0.08 : 0,
     ease: easeExpo,
   },
 });
@@ -182,7 +165,6 @@ export default function WorkshopResults({
   title = "Resultados del Taller Participativo",
   subtitle = "Mejoramiento urbano del espacio público",
   backgroundImage = "/img/PMIU_ZMP/talleres/default/fondo.webp",
-  footerItems = defaultFooterItems,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -285,25 +267,6 @@ export default function WorkshopResults({
                         />
                       );
                     })}
-                  </div>
-
-                  <div className={styles.footer}>
-                    <div className={styles.footerIntro}>
-                      <p className={styles.footerTitle}>Creado con:</p>
-                    </div>
-
-                    <div className={styles.footerStats}>
-                      {footerItems.map((item, index) => (
-                        <motion.div
-                          key={item.id}
-                          className={styles.footerItem}
-                          animate={footerAnimation(isActive, index)}
-                        >
-                          <span className={styles.footerIcon}>{item.icon}</span>
-                          <span className={styles.footerLabel}>{item.title}</span>
-                        </motion.div>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>
