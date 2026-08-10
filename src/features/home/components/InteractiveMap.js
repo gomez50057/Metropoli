@@ -14,6 +14,8 @@ const InteractiveMap = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [L, setL] = useState(null); // Estado para Leaflet
   const [zonaSeleccionada, setZonaSeleccionada] = useState('ZMVM'); // Zona Metropolitana seleccionada (por defecto ZMVM)
+  const [showWheelHint, setShowWheelHint] = useState(false);
+  const wheelHintTimeoutRef = useRef(null);
 
   useEffect(() => {
     // Importar Leaflet solo en el cliente
@@ -57,6 +59,9 @@ const InteractiveMap = () => {
 
   useEffect(() => {
     if (!L || !zonaSeleccionada) return; // Si Leaflet o la zona no está cargada, no hagas nada
+
+    let wheelHandler;
+    let mapContainer;
 
     const commonStyle = (fillColor, color, weight = 2) => ({
       fillColor,
@@ -199,6 +204,34 @@ const InteractiveMap = () => {
 
       mapRef.current.attributionControl.setPrefix('');
 
+      if (window.matchMedia('(min-width: 1024px)').matches) {
+        mapRef.current.scrollWheelZoom.disable();
+        mapContainer = mapRef.current.getContainer();
+        let lastWheelZoom = 0;
+
+        wheelHandler = (event) => {
+          if (!event.ctrlKey) {
+            setShowWheelHint(true);
+            clearTimeout(wheelHintTimeoutRef.current);
+            wheelHintTimeoutRef.current = setTimeout(() => setShowWheelHint(false), 2400);
+            return;
+          }
+
+          event.preventDefault();
+          setShowWheelHint(false);
+          clearTimeout(wheelHintTimeoutRef.current);
+          const now = Date.now();
+          if (now - lastWheelZoom < 120) return;
+
+          lastWheelZoom = now;
+          mapRef.current.setZoom(
+            Math.max(8, Math.min(18, mapRef.current.getZoom() + (event.deltaY < 0 ? 1 : -1)))
+          );
+        };
+
+        mapContainer.addEventListener('wheel', wheelHandler, { passive: false });
+      }
+
       // Condicional para agregar la capa correcta según la zona metropolitana seleccionada
       if (zonaSeleccionada === 'ZMP') {
         geoJSONMetropolitanas(ZMP_Info, '#DEC9A3', '#DEC9A3');
@@ -215,6 +248,10 @@ const InteractiveMap = () => {
 
     // Limpiar el mapa al desmontar el componente
     return () => {
+      clearTimeout(wheelHintTimeoutRef.current);
+      if (mapContainer && wheelHandler) {
+        mapContainer.removeEventListener('wheel', wheelHandler);
+      }
       if (mapRef.current) {
         mapRef.current.remove();
       }
@@ -255,6 +292,11 @@ const InteractiveMap = () => {
   return (
     <section className={styles.mapaConte}>
       <div id="map" className={styles.map}>
+        {showWheelHint && (
+          <div className={styles.zoomHint} role="status">
+            Mantén presionada la tecla Ctrl y usa la rueda del mouse para acercar o alejar el mapa.
+          </div>
+        )}
         <div className={styles.fullscreenButton} onClick={toggleFullScreen}>
           {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
         </div>
