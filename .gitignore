@@ -1,5 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Generated browser/test artifacts
+/.playwright-cli/
+/output/
+/playwright-report/
+/test-results/
+/.lighthouseci/
+*.har
+
 # dependencies
 /node_modules
 /.pnp

@@ -1,6 +1,7 @@
 import Navbar from '@/components/shared/Navbar';
 import Hero from "@/features/actualizacion-pozmvm/components/Hero";
 import SplitSection from "@/features/actualizacion-pozmvm/components/SplitSection";
+import ParticipacionSection from "@/features/actualizacion-pozmvm/components/ParticipacionSection";
 import AntecedentesSection from "@/features/actualizacion-pozmvm/components/AntecedentesSection";
 import TransverseAxles from "@/features/actualizacion-pozmvm/components/TransverseAxles";
 import GuidingPrinciples from "@/features/actualizacion-pozmvm/components/GuidingPrinciples";
@@ -14,6 +15,7 @@ export default function PagePOZMVM() {
       <Navbar />
       <Hero />
       <SplitSection />
+      <ParticipacionSection />
       <AntecedentesSection />
       <TransverseAxles />
       <GuidingPrinciples />
