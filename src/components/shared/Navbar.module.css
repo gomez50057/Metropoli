@@ -25,18 +25,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90vw;
-  padding: 4px 20px;
-  margin: 10px 0;
+  width: min(1440px, 94%);
+  padding: 4px 16px;
+  margin: 6px 0;
+  gap: 1rem;
   background-color: hsla(240, 33%, 96%, 0.81);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(3px);
   border-radius: 100vw;
 }
 
+.NavbarImg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
 .NavbarImg img {
+  display: block;
   height: 30px;
-  margin: 0 5px;
+  width: auto;
+  max-width: 36vw;
+  object-fit: contain;
+}
+
+.NavbarInicio {
+  flex: 0 0 auto;
 }
 
 /* BOTÓN CÍRCULO (MOBILE) */
@@ -55,6 +70,8 @@
     transform 0.3s ease,
     box-shadow 0.3s ease;
   cursor: pointer;
+  border: 0;
+  padding: 0;
 }
 
 .NavbarCirculo img {
@@ -77,16 +94,21 @@
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .navbarOpcDesktop li {
   position: relative;
 }
 
-.navbarOpcDesktop li a {
-  display: block;
+.navbarOpcDesktop > li > a,
+.navbarOpcDesktop .dropdownToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
   text-align: center;
+  white-space: nowrap;
   padding-block: clamp(0.5rem, 0.4rem + 0.25vw, 0.8rem);
   padding-inline: clamp(0.7rem, 0.6rem + 0.15vw, 1.2rem);
   text-decoration: none;
@@ -96,47 +118,90 @@
   transition: color 0.3s, text-decoration 0.3s;
 }
 
-.navbarOpcDesktop li a:hover {
+.navbarOpcDesktop a:hover,
+.navbarOpcDesktop .dropdownToggle:hover {
   color: var(--vinoClr);
   text-decoration: underline;
 }
 
-/* para el texto que hace de toggle en desktop */
-.navbarOpcDesktop .dropdownToggle {
-  font-size: var(--size_Fonts_M);
+.dropdownRow {
+  display: flex;
+  align-items: center;
+}
+
+.dropdownRow > a {
+  flex: 1;
+  min-width: 0;
 }
 
 /* DROPDOWN BASE */
 .dropdownToggle {
+  border: 0;
+  background: transparent;
+  font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
   color: var(--vinoOsc);
   cursor: pointer;
   padding: 10px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
   width: 100%;
   text-align: center;
+}
+
+.dropdownToggle svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dropdownOpen > .dropdownRow > .dropdownToggle svg {
+  transform: rotate(180deg);
+}
+
+.dropdownRow > .submenuToggle {
+  flex: 0 0 44px;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  justify-content: center;
+}
+
+.Navbar a:focus-visible,
+.Navbar button:focus-visible,
+.NavbarMenuContainer a:focus-visible,
+.NavbarMenuContainer button:focus-visible {
+  outline: 2px solid var(--doradoOsc);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
 .dropdownMenu {
   display: none;
   flex-direction: column;
   list-style: none;
-  padding: 0;
+  min-width: 220px;
+  padding: 0.4rem;
   margin: 0;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease-in-out;
+  background-color: hsla(240, 33%, 96%, 0.97);
+  border-radius: 0.5rem;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
 }
 
 /* Estilo base de los links dentro del dropdown (aplica tanto para mobile como desktop hover)*/
 .dropdownMenu li a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   padding: 10px 16px;
   font-size: 1rem;
   color: var(--vinoOsc);
   text-decoration: none;
   transition: background-color 0.3s;
+  text-align: left;
 }
 
 .dropdownMenu li a:hover {
@@ -144,28 +209,24 @@
   border-radius: 10px;
 }
 
-/* DROPDOWN DESKTOP (HOVER) */
-@media (min-width: 1024px) {
-  .dropdown:hover .dropdownMenu {
+/* DROPDOWN DESKTOP (HOVER, FOCUS OR CLICK) */
+@media (min-width: 1101px) {
+  .navbarOpcDesktop .dropdown:hover > .dropdownMenu,
+  .navbarOpcDesktop .dropdownOpen > .dropdownMenu {
     display: flex;
-    max-height: 500px;
-    background-color: hsla(240, 33%, 96%, 0.95);
     position: absolute;
     top: 100%;
     left: 0;
-    border-radius: 0.5rem;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
-    z-index: 2000;
   }
-}
 
-/* DROPDOWN MOBILE (CLICK) */
-.dropdownOpen .dropdownMenu {
-  display: flex;
-  max-height: 500px;
-  background-color: hsla(240, 33%, 96%, 0.95);
-  border-radius: 0.5rem;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+  .navbarOpcDesktop .dropdownMenu > .dropdown > .dropdownMenu {
+    top: -0.4rem;
+    left: calc(100% - 0.2rem);
+  }
+
+  .NavbarMenuContainer {
+    display: none;
+  }
 }
 
 /* MENÚ DESPLEGABLE (MOBILE) */
@@ -175,7 +236,7 @@
   left: 0;
   width: 100%;
   background-color: hsla(240, 33%, 96%, 0.95);
-  overflow: hidden;
+  overflow-y: auto;
   max-height: 0;
   transition: max-height 0.5s ease-in-out;
   z-index: 999;
@@ -184,7 +245,7 @@
 }
 
 .menuOpen {
-  max-height: 500px;
+  max-height: calc(100dvh - 60px);
 }
 
 .navbarOpcMobile {
@@ -205,16 +266,37 @@
 .navbarOpcMobile li a {
   display: block;
   padding: 10px;
+  min-height: 44px;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
   color: var(--vinoOsc);
   transition: background-color 0.3s;
+  text-align: left;
 }
 
 .navbarOpcMobile li a:hover {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+}
+
+.navbarOpcMobile .dropdownMenu {
+  position: static;
+  display: none;
+  width: 100%;
+  min-width: 0;
+  padding: 0 0 0 1rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.navbarOpcMobile .dropdownOpen > .dropdownMenu {
+  display: flex;
+}
+
+.navbarOpcMobile .dropdownToggle {
+  padding: 10px;
+  text-align: left;
 }
 
 @media (min-width: 1025px) and (max-width: 1340px) {
@@ -223,7 +305,7 @@
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
   .NavbarCirculo {
     display: flex;
   }
