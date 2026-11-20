@@ -27,10 +27,10 @@ export const COMZMsHgo = [
     "image": "/img/ZMVM/Secretariado Técnico Conjunto/Guillermo Olivares Reyna.png"
   },
   {
-    "name": "Miguel Ángel Tello Vargas",
+    "name": "Enrique López Rivera",
     "position": "Titular de la Unidad de Planeación y Prospectiva",
     "gobierno": "Gobierno del Estado de Hidalgo",
-    "image": "/img/ZMVM/Secretariado Técnico Conjunto/Miguel Ángel Tello Vargas.png",
+    "image": "/img/ZMVM/Secretariado Técnico Conjunto/Enrique López Rivera.png",
   },
   {
     "name": "Alejandro Sánchez García",

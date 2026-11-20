@@ -5,7 +5,7 @@ import Tecnico from '@/features/teams/components/Tecnico';
 import CDMXTeam from '@/features/teams/components/CDMXTeam';
 import EDOMEXTeam from '@/features/teams/components/EDOMEXTeam';
 import HGOTeam from '@/features/teams/components/HGOTeam';
-// import MorelosTeam from '@/features/teams/components/MorelosTeam';
+import MorelosTeam from '@/features/teams/components/MorelosTeam';
 
 const ZMVMComponent = () => {
   return (
@@ -16,7 +16,7 @@ const ZMVMComponent = () => {
       <HGOTeam />
       <CDMXTeam />
       <EDOMEXTeam />
-      {/* <MorelosTeam /> */}
+      <MorelosTeam />
     </div>
   );
 };
