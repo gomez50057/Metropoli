@@ -132,7 +132,7 @@ export default function TalleresCenterSlider({
         </div>
 
         <h3 className={styles.title}>
-          <span className="span-vino">Así</span> se<span className="span-vino">vivieron </span> los{" "}
+          <span className="span-vino">Así</span> se <span className="span-vino">vivieron </span> los{" "}
           <span className="span-doarado">Talleres</span> en{" "}
           <span className="span-doarado">Hidalgo</span>
         </h3>
@@ -183,19 +183,17 @@ export default function TalleresCenterSlider({
             const shortTitle = item.name?.split(" - ").pop() || item.name;
 
             return (
-              <article
+              <Link
                 key={item.link ?? `${item.name}-${idx}`}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                prefetch={false}
                 className={styles.card}
                 data-active={isActive ? "true" : undefined}
-                role="button"
-                tabIndex={0}
-                aria-label={`Abrir ${shortTitle}`}
-                onClick={() => activate(idx, true)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    activate(idx, true);
-                  }
+                aria-label={`Ver noticia de ${shortTitle}`}
+                onFocus={(event) => {
+                  if (event.currentTarget.matches(":focus-visible")) activate(idx, true);
                 }}
                 onMouseEnter={() => {
                   if (
@@ -206,10 +204,10 @@ export default function TalleresCenterSlider({
                   }
                 }}
               >
-                <img className={styles.bg} src={item.image} alt="" aria-hidden="true" />
+                <img className={styles.bg} src={encodeURI(item.image)} alt="" aria-hidden="true" />
 
                 <div className={styles.content}>
-                  <img className={styles.thumb} src={item.image} alt={item.name} loading="lazy" />
+                  <img className={styles.thumb} src={encodeURI(item.image)} alt={item.name} loading="lazy" />
 
                   <div className={styles.text}>
                     <h3 className={styles.cardTitle}>{shortTitle}</h3>
@@ -217,12 +215,12 @@ export default function TalleresCenterSlider({
                     <p className={styles.desc}>{item.name}</p>
                     <p className={styles.desc}>{item.date}</p>
 
-                    <Link className={styles.btn} href={item.link} target="_blank" rel="noopener noreferrer" prefetch={false}>
+                    <span className={styles.btn}>
                       Ver detalles
-                    </Link>
+                    </span>
                   </div>
                 </div>
-              </article>
+              </Link>
             );
           })}
         </div>

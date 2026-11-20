@@ -113,8 +113,15 @@
   border-radius: 1rem;
   overflow: hidden;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
   scroll-snap-align: center;
   transition: flex-basis var(--speed), transform var(--speed), box-shadow var(--speed);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--doradoOsc);
+  outline-offset: -3px;
 }
 
 .card[data-active] {
