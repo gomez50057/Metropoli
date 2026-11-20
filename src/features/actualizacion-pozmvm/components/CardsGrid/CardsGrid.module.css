@@ -83,6 +83,11 @@
   line-height: 1.6;
 }
 
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: none;

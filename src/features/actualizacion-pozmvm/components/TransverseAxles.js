@@ -1,4 +1,5 @@
 import CardsGrid from "@/features/actualizacion-pozmvm/components/CardsGrid/CardsGrid";
+import TopicIcon from "./TopicIcon";
 import styles from "@/features/actualizacion-pozmvm/components/CardsGrid/CardsGrid.module.css";
 
 export default function TransverseAxles() {
@@ -12,11 +13,11 @@ export default function TransverseAxles() {
         </>
       }
       items={[
-        { icon: "DH", text: "Derechos Humanos." },
-        { icon: "PC", text: "Participación Social y Ciudadana." },
-        { icon: "GÉN", text: "Perspectiva de Género e Inclusión." },
-        { icon: "CU", text: "Enfoque de Cuenca y Manejo de Acuíferos." },
-        { icon: "CC", text: "Gestión Integral de Riesgo y Adaptación al Cambio Climático." },
+        { icon: <TopicIcon name="rights" />, text: "Derechos Humanos." },
+        { icon: <TopicIcon name="participation" />, text: "Participación Social y Ciudadana." },
+        { icon: <TopicIcon name="inclusion" />, text: "Perspectiva de Género e Inclusión." },
+        { icon: <TopicIcon name="water" />, text: "Enfoque de Cuenca y Manejo de Acuíferos." },
+        { icon: <TopicIcon name="risk" />, text: "Gestión Integral de Riesgo y Adaptación al Cambio Climático." },
       ]}
     />
   );
