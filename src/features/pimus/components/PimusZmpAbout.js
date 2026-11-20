@@ -31,14 +31,14 @@ export default function PimusZmpAbout({
         </div>
 
         <div className={styles.engagementBadge}>
-          <h3 className={styles.tituloBtn}>
+          {/* <h3 className={styles.tituloBtn}>
             <span className="span-doarado">Próximamente</span> disponible el{" "}
             <span className="span-doarado">PIMUS</span>
           </h3>
 
           <p className={styles.descriptionBtn}>
             Muy pronto podrás consultar y descargar el PIMUS desde este espacio.
-          </p>
+          </p> */}
 
           {/* <OpinionButton
             mode="link"
