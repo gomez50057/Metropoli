@@ -1,72 +1,60 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useRef, useState } from "react";
+import styles from "./IntroVideoSection.module.css";
 
-const IntroVideoModal = () => {
-  const [isVisible, setIsVisible] = useState(true);
+export default function IntroVideoSection() {
+  const videoRef = useRef(null);
+  const [hasStarted, setHasStarted] = useState(false);
+  const [playbackError, setPlaybackError] = useState("");
 
-  const handleSkip = () => {
-    setIsVisible(false);
+  const startVideo = async () => {
+    setPlaybackError("");
+    try {
+      await videoRef.current.play();
+      videoRef.current.focus();
+    } catch {
+      setPlaybackError("No se pudo reproducir el video. Vuelve a intentarlo.");
+    }
   };
 
-  useEffect(() => {
-    // Mostrar el video solo cuando la página cargue
-    setIsVisible(true);
-  }, []);
-
-  if (!isVisible) return null;
-
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
-        <video style={styles.video} controls autoPlay>
+    <section className={styles.section} aria-label="Video sobre las zonas metropolitanas">
+      <div className={styles.player}>
+        <video
+          ref={videoRef}
+          className={styles.video}
+          controls={hasStarted}
+          playsInline
+          preload="none"
+          poster="/img/intro-video-poster.webp"
+          tabIndex={0}
+          aria-label="Video sobre las zonas metropolitanas"
+          onPlay={() => setHasStarted(true)}
+          onEnded={() => setHasStarted(false)}
+        >
           <source src="/video/tutorial.mp4" type="video/mp4" />
           Tu navegador no soporta la reproducción de videos.
         </video>
-        <button style={styles.skipButton} onClick={handleSkip}>
-          Omitir
-        </button>
+        {!hasStarted && (
+          <button
+            type="button"
+            className={styles.cover}
+            onClick={startVideo}
+            aria-label="Reproducir video sobre las zonas metropolitanas"
+          >
+            <span className={styles.playButton}>
+              <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <circle className={styles.ring} cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" />
+                <circle cx="50" cy="50" r="35" fill="currentColor" />
+                <path d="M43 34 66 50 43 66Z" fill="var(--vinoOsc)" />
+              </svg>
+            </span>
+            <span className={styles.label}>Dale play y conoce nuestras que hay en Metrópoli Hidalgo</span>
+          </button>
+        )}
       </div>
-    </div>
+      {playbackError && <p className={styles.error} role="alert">{playbackError}</p>}
+    </section>
   );
-};
-
-const styles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 9999,
-  },
-  modal: {
-    position: 'relative',
-    background: '#fff',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-  },
-  video: {
-    width: '75vw',
-    height: 'auto',
-    borderRadius: '8px',
-  },
-  skipButton: {
-    position: 'absolute',
-    top: '10px',
-    right: '10px',
-    padding: '8px 12px',
-    backgroundColor: '#ff4d4d',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
-};
-
-export default IntroVideoModal;
+}
