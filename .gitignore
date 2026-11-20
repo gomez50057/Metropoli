@@ -1,64 +1,92 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Código, datos fuente, configuración y recursos multimedia se versionan.
+# Estas reglas no retiran archivos que Git ya tiene versionados.
 
-# Generated browser/test artifacts
-/.playwright-cli/
-/output/
-/playwright-report/
-/test-results/
-/.lighthouseci/
-*.har
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Dependencias y cachés
+node_modules/
+.pnp/
+.pnp.*
+.yarn/cache/
+.yarn/unplugged/
 .yarn/install-state.gz
+.cache/
+.turbo/
+.swc/
+.eslintcache
+.stylelintcache
 
+# Compilación y despliegue local
+.next/
+out/
 dist/
 build/
-.next/
-.turbo/
-.cache/
-*.log
-*.zip
-*.mp4
-*.psd
-*.exe
-.env
-lectura-forms.json
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-public/img/talleres-pmiu-zmp/**
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env*.local
-.env
-.env.development
-.env.production
-.0 img-talleres-pmiu-zmp
-# vercel
-.vercel
-
-# typescript
+coverage/
+.vercel/
 *.tsbuildinfo
 next-env.d.ts
 
-.dockerignore
-Dockerfile
+# Navegadores, pruebas y herramientas locales
+.playwright*/
+playwright-report/
+test-results/
+blob-report/
+.lighthouseci/
+/output/
+/artifacts/
+/screenshots/
+*.har
+/AGENTS.md
+/CLAUDE.md
+
+# Archivos comprimidos, ejecutables y respaldos
+*.[zZ][iI][pP]
+*.[rR][aA][rR]
+*.7[zZ]
+*.[tT][aA][rR]
+*.[gG][zZ]
+*.[eE][xX][eE]
+*.[dD][lL][lL]
+*.[mM][sS][iI]
+*.[bB][aA][kK]
+*.[bB][aA][cC][kK][uU][pP]
+*.[dD][uU][mM][pP]
+*.[dD][bB]
+*.[sS][qQ][lL][iI][tT][eE]
+*.[sS][qQ][lL][iI][tT][eE]3
+/backups/
+/dumps/
+/respaldo*.sql
+/backup*.sql
+
+# Secretos; conservar únicamente plantillas de ejemplo
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.*.sample
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Temporales y registros
+*.log
+*.log.*
+*.pid
+*.pid.lock
+*.tmp
+*.temp
+*.swp
+*.swo
+*.orig
+*.rej
+*~
+/tmp/
+/temp/
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.history/
+lectura-forms.json
+.0 img-talleres-pmiu-zmp
