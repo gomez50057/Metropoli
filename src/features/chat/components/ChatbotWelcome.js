@@ -4,7 +4,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import styles from './ChatbotWelcome.module.css';
 
 const ChatbotWelcome = ({ onStartChat }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   const handleToggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -18,8 +18,8 @@ const ChatbotWelcome = ({ onStartChat }) => {
             <button className={styles.iconButtonXs} onClick={handleToggleCollapse}><CloseIcon className={styles.iconHeader} /></button>
           </div>
           <div className={styles.content}>
-            <img src="img/headertxt.png" alt="Metrópoli Hidalgo" className={styles.logotxt} />
-            <img src="img/sidebarRecurso.png" alt="Chatbot Logo" className={styles.logo} />
+            <img src="/img/headertxt.webp" alt="Metrópoli Hidalgo" className={styles.logotxt} />
+            <img src="/img/sidebarRecurso.webp" alt="Chatbot Logo" className={styles.logo} />
             <h1 className={styles.title}>¡Hola! Bienvenido al</h1>
             <h2 className={styles.subtitle}>Chatbot de <span>Metrópoli Hidalgo</span></h2>
             <p className={styles.description}>Un asistente metropolitano</p>
@@ -33,7 +33,7 @@ const ChatbotWelcome = ({ onStartChat }) => {
         </div>
       ) : (
         <img
-          src="img/sidebarRecurso.png"
+          src="/img/sidebarRecurso.webp"
           alt="Chatbot Logo"
           className={styles.logoCollapsed}
           onClick={handleToggleCollapse}
