@@ -1,15 +1,49 @@
 .mapaConte {
   display: flex;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: auto;
+  scroll-margin-top: 80px;
 }
 
 .mapaTxt {
   background: none;
   justify-content: center;
-  width: 40vw;
-  padding: 30px;
+  flex: 1 1 40%;
+  min-width: 0;
+  padding: clamp(16px, 2.5vw, 30px);
+}
+
+.zoneButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.25rem 0;
+}
+
+.zoneButton {
+  flex: 1 1 150px;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--vinoOsc);
+  border-radius: 12px;
+  color: var(--vinoOsc);
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.zoneButton:hover,
+.zoneButton[aria-pressed="true"] {
+  background: var(--vinoOsc);
+  color: white;
+}
+
+.zoneButton:focus-visible {
+  outline: 3px solid var(--doradoOsc);
+  outline-offset: 3px;
 }
 
 .mapaTxt p {
@@ -24,16 +58,75 @@
 }
 
 .mapaTxt h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
   color: var(--vinoOsc);
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
+.descriptionPreview {
+  --preview-height: 210px;
+  position: relative;
+}
+
+.descriptionContent {
+  display: flow-root;
+}
+
+.descriptionCollapsed {
+  max-height: var(--preview-height);
+  overflow: hidden;
+}
+
+.descriptionCollapsed::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 90px;
+  background: linear-gradient(to bottom, rgb(255 255 255 / 0), #f5f3f5b2 85%);
+  pointer-events: none;
+}
+
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 8px;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: var(--vinoOsc);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.readMore:hover {
+  color: var(--vinoClr);
+}
+
+.readMore:focus-visible {
+  outline: 2px solid var(--vinoOsc);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .descriptionPreview {
+    --preview-height: 180px;
+  }
+}
+
 .map {
   position: relative;
-  width: 65vw;
+  flex: 0 0 60%;
+  min-width: 0;
+  width: 60%;
   height: 90vh;
+  border-radius: 0 16px 16px 0;
+  overflow: hidden;
 }
 
 .zoomHint {
@@ -206,11 +299,13 @@
   }
 
   .map {
+    flex: auto;
     width: 90vw;
     height: 90vh;
   }
 
   .mapaTxt {
+    flex: auto;
     width: 90vw;
     padding: 30px;
   }

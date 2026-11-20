@@ -11,7 +11,7 @@ const AVAILABLE_ZONES = ["ZMVM", "ZMP", "ZMTulancingo"];
 
 const Header = () => {
   const imgBasePath = "/img/";
-  const imgZmSelect = "/img/ZM elige/";
+  const imgZmSelect = "/img/ZM%20elige/";
 
   const [zonaActiva, setZonaActiva] = useState(DEFAULT_ZONA);
 
@@ -27,7 +27,13 @@ const Header = () => {
     const stored = localStorage.getItem("selectedZonaMetropolitana");
     const zonaInicial = AVAILABLE_ZONES.includes(stored) ? stored : DEFAULT_ZONA;
 
-    setZonaActiva(zonaInicial);
+    const syncZona = () => {
+      const selected = localStorage.getItem("selectedZonaMetropolitana");
+      setZonaActiva(AVAILABLE_ZONES.includes(selected) ? selected : DEFAULT_ZONA);
+    };
+
+    syncZona();
+    window.addEventListener("zonaChanged", syncZona);
 
     // Si no había nada guardado, lo guardamos
     if (stored !== zonaInicial) {
@@ -36,13 +42,14 @@ const Header = () => {
 
     // Notificar al resto de componentes
     window.dispatchEvent(new Event("zonaChanged"));
+    return () => window.removeEventListener("zonaChanged", syncZona);
   }, []);
 
   const setZonaAndScroll = (zona) => {
     setZonaActiva(zona);
     localStorage.setItem("selectedZonaMetropolitana", zona);
     window.dispatchEvent(new Event("zonaChanged"));
-    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+    document.getElementById("mapa-interactivo")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const circleClass = (zona) =>
@@ -68,7 +75,15 @@ const Header = () => {
               aria-pressed={zonaActiva === "ZMP"}
               type="button"
             >
-              <img src={`${imgZmSelect}ZMP.jpg`} alt="ZM Pachuca" />
+              <img
+                src={`${imgZmSelect}ZMP.webp`}
+                srcSet={`${imgZmSelect}ZMP-256.webp 256w, ${imgZmSelect}ZMP.webp 512w`}
+                sizes="(max-width: 1257px) 88px, (max-width: 1828px) 7vw, 128px"
+                width={512}
+                height={512}
+                decoding="async"
+                alt="ZM Pachuca"
+              />
               <span className={styles.tooltip}>ZM de Pachuca</span>
             </button>
 
@@ -79,7 +94,13 @@ const Header = () => {
               aria-pressed={zonaActiva === "ZMTulancingo"}
               type="button"
             >
-              <img src={`${imgZmSelect}ZMTulancingo.jpg`} alt="ZM Tulancingo" />
+              <img
+                src={`${imgZmSelect}ZMTulancingo-256.webp`}
+                srcSet={`${imgZmSelect}ZMTulancingo-256.webp 256w, ${imgZmSelect}ZMTulancingo.jpg 1200w`}
+                sizes="(max-width: 1257px) 88px, (max-width: 1828px) 7vw, 128px"
+                decoding="async"
+                alt="ZM Tulancingo"
+              />
               <span className={styles.tooltip}>ZM de Tulancingo</span>
             </button>
 
@@ -90,7 +111,13 @@ const Header = () => {
               aria-pressed={zonaActiva === "ZMVM"}
               type="button"
             >
-              <img src={`${imgZmSelect}ZMVM.jpg`} alt="ZM del Valle de México" />
+              <img
+                src={`${imgZmSelect}ZMVM-256.webp`}
+                srcSet={`${imgZmSelect}ZMVM-256.webp 256w, ${imgZmSelect}ZMVM.jpg 1200w`}
+                sizes="(max-width: 1257px) 88px, (max-width: 1828px) 7vw, 128px"
+                decoding="async"
+                alt="ZM del Valle de México"
+              />
               <span className={styles.tooltip}>ZM del Valle de México</span>
             </button>
           </div>
@@ -98,7 +125,14 @@ const Header = () => {
 
         <div className={styles.headerImg} ref={imgRef}>
           <img
-            src={`${imgBasePath}headerimg.png`}
+            src={`${imgBasePath}headerimg.webp`}
+            srcSet={`${imgBasePath}headerimg-640.webp 640w, ${imgBasePath}headerimg.webp 1385w`}
+            sizes="(max-width: 577px) 90vw, (max-width: 768px) 520px, (max-width: 1024px) 40vw, 48vw"
+            width={1385}
+            height={1145}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             alt="Imagen representativa"
             className={styles.floatingImg}
           />

@@ -8,6 +8,12 @@ import { ZMP_Info, ZMT_Info, ZMTUL_Info, zmvm_InfoGeneral } from './ZM';
 import { getTituloZona, getPreposicion, getMunAlc, getMapNom } from '@/data/home';
 import { renderParagraphsWithStyles } from "@/data/blogData";
 
+const ZONES = [
+  { value: 'ZMP', label: 'ZM de Pachuca' },
+  { value: 'ZMTulancingo', label: 'ZM de Tulancingo' },
+  { value: 'ZMVM', label: 'ZM del Valle de México' },
+];
+
 const InteractiveMap = () => {
   const mapRef = useRef(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -16,6 +22,27 @@ const InteractiveMap = () => {
   const [zonaSeleccionada, setZonaSeleccionada] = useState('ZMVM'); // Zona Metropolitana seleccionada (por defecto ZMVM)
   const [showWheelHint, setShowWheelHint] = useState(false);
   const wheelHintTimeoutRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const [descriptionExpanded, setDescriptionExpanded] = useState(false);
+  const [descriptionOverflows, setDescriptionOverflows] = useState(false);
+
+  useEffect(() => {
+    setDescriptionExpanded(false);
+    const content = descriptionRef.current;
+    if (!content) return;
+
+    const measureDescription = () => {
+      const previewHeight = parseFloat(
+        getComputedStyle(content.parentElement).getPropertyValue('--preview-height')
+      );
+      setDescriptionOverflows(content.getBoundingClientRect().height > previewHeight + 1);
+    };
+
+    measureDescription();
+    const observer = new ResizeObserver(measureDescription);
+    observer.observe(content);
+    return () => observer.disconnect();
+  }, [zonaSeleccionada]);
 
   useEffect(() => {
     // Importar Leaflet solo en el cliente
@@ -31,9 +58,10 @@ const InteractiveMap = () => {
   useEffect(() => {
     const handleZonaChange = () => {
       const newZona = localStorage.getItem('selectedZonaMetropolitana') || 'ZMVM'; // Obtener la nueva zona seleccionada
-      setZonaSeleccionada(newZona); // Actualizar el estado
+      setZonaSeleccionada(ZONES.some((zone) => zone.value === newZona) ? newZona : 'ZMVM');
     };
 
+    handleZonaChange();
     // Agregar el evento listener
     window.addEventListener('zonaChanged', handleZonaChange);
 
@@ -42,6 +70,11 @@ const InteractiveMap = () => {
       window.removeEventListener('zonaChanged', handleZonaChange);
     };
   }, []);
+
+  const selectZone = (zone) => {
+    localStorage.setItem('selectedZonaMetropolitana', zone);
+    window.dispatchEvent(new Event('zonaChanged'));
+  };
 
   // Helper: fuerza coma como separador de miles (5,555,555)
   const fmtCommaInt = (v) => {
@@ -233,17 +266,20 @@ const InteractiveMap = () => {
       }
 
       // Condicional para agregar la capa correcta según la zona metropolitana seleccionada
+      let zoneLayer;
       if (zonaSeleccionada === 'ZMP') {
-        geoJSONMetropolitanas(ZMP_Info, '#DEC9A3', '#DEC9A3');
+        zoneLayer = geoJSONMetropolitanas(ZMP_Info, '#DEC9A3', '#DEC9A3');
       } else if (zonaSeleccionada === 'ZMTula') {
-        geoJSONMetropolitanas(ZMT_Info, '#98989a', '#98989a');
+        zoneLayer = geoJSONMetropolitanas(ZMT_Info, '#98989a', '#98989a');
       } else if (zonaSeleccionada === 'ZMTulancingo') {
-        geoJSONMetropolitanas(ZMTUL_Info, '#A02142', '#A02142');
+        zoneLayer = geoJSONMetropolitanas(ZMTUL_Info, '#A02142', '#A02142');
       } else if (zonaSeleccionada === 'ZMVM') {
-        geoJSONZMVM(zmvm_InfoGeneral);
+        zoneLayer = geoJSONZMVM(zmvm_InfoGeneral);
       }
 
-      setTimeout(() => mapRef.current.invalidateSize(), 300);
+      if (zoneLayer) {
+        mapRef.current.fitBounds(zoneLayer.getBounds(), { padding: [20, 20], animate: false });
+      }
     }
 
     // Limpiar el mapa al desmontar el componente
@@ -254,6 +290,7 @@ const InteractiveMap = () => {
       }
       if (mapRef.current) {
         mapRef.current.remove();
+        mapRef.current = null;
       }
     };
   }, [L, zonaSeleccionada]); // El efecto depende de Leaflet y la zona seleccionada
@@ -290,7 +327,7 @@ const InteractiveMap = () => {
   }, []);
 
   return (
-    <section className={styles.mapaConte}>
+    <section id="mapa-interactivo" className={styles.mapaConte}>
       <div id="map" className={styles.map}>
         {showWheelHint && (
           <div className={styles.zoomHint} role="status">
@@ -321,6 +358,20 @@ const InteractiveMap = () => {
           <span>Mapa</span> Interactivo
         </h2>
 
+        <div className={styles.zoneButtons} role="group" aria-label="Seleccionar Zona Metropolitana">
+          {ZONES.map((zone) => (
+            <button
+              key={zone.value}
+              type="button"
+              className={styles.zoneButton}
+              aria-pressed={zonaSeleccionada === zone.value}
+              onClick={() => selectZone(zone.value)}
+            >
+              {zone.label}
+            </button>
+          ))}
+        </div>
+
         <p>
           Descubre la Zona Metropolitana {getPreposicion(zonaSeleccionada)}{" "}
           {getTituloZona(zonaSeleccionada)}. Haz clic en cada zona para consultar
@@ -328,7 +379,25 @@ const InteractiveMap = () => {
           características. <span>¡Explora ahora!</span>
         </p>
 
-        {renderParagraphsWithStyles(getMapNom(zonaSeleccionada))}
+        <div
+          id="map-zone-description"
+          className={`${styles.descriptionPreview} ${descriptionOverflows && !descriptionExpanded ? styles.descriptionCollapsed : ''}`}
+        >
+          <div ref={descriptionRef} className={styles.descriptionContent}>
+            {renderParagraphsWithStyles(getMapNom(zonaSeleccionada))}
+          </div>
+        </div>
+        {descriptionOverflows && (
+          <button
+            type="button"
+            className={styles.readMore}
+            aria-expanded={descriptionExpanded}
+            aria-controls="map-zone-description"
+            onClick={() => setDescriptionExpanded((expanded) => !expanded)}
+          >
+            {descriptionExpanded ? 'Ocultar texto' : 'Ver más…'}
+          </button>
+        )}
 
       </div>
     </section>
