@@ -1,37 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
-import { renderTextWithStyles } from "@/data/blogData";
-import { getTituloZona, getTextoObjetivo, getImages, getPreposicion } from "@/data/home";
-
 import styles from "./About.module.css";
-import OrbitGallery from "@/features/home/components/OrbitGallery/OrbitGallery";
 
 const About = () => {
-  const [zonaSeleccionada, setZonaSeleccionada] = useState("");
   const reduceMotion = useReducedMotion();
-
-  useEffect(() => {
-    const getZonaFromLocalStorage = () => {
-      const zonaMetropolitana = localStorage.getItem("selectedZonaMetropolitana");
-      setZonaSeleccionada(zonaMetropolitana || "");
-    };
-
-    getZonaFromLocalStorage();
-    window.addEventListener("zonaChanged", getZonaFromLocalStorage);
-    return () => window.removeEventListener("zonaChanged", getZonaFromLocalStorage);
-  }, []);
-
-  const images = useMemo(() => getImages(zonaSeleccionada) || [], [zonaSeleccionada]);
-
-  const zoneTitle = useMemo(
-    () => `Zona Metropolitana ${getPreposicion(zonaSeleccionada)} ${getTituloZona(zonaSeleccionada)}`,
-    [zonaSeleccionada]
-  );
-
-  const objetivo = useMemo(() => getTextoObjetivo(zonaSeleccionada) || "", [zonaSeleccionada]);
 
   // Variants (stagger suave)
   const container = {
@@ -63,7 +37,17 @@ const About = () => {
   return (
     <section id="about" className={styles.aboutContainer}>
       <div className={styles.aboutGiro}>
-        <OrbitGallery images={images} orbitCount={5} intervalMs={3500} />
+        <img
+          className={styles.floatingImage}
+          src="/img/ciudad%20sostenible%20conectada.webp"
+          srcSet="/img/ciudad%20sostenible%20conectada-640.webp 640w, /img/ciudad%20sostenible%20conectada.webp 1254w"
+          sizes="(max-width: 652px) 92vw, (max-width: 1024px) 600px, (max-width: 1666px) 36vw, 600px"
+          width={1254}
+          height={1254}
+          alt="Ciudad sostenible conectada: desarrollo urbano, movilidad y servicios públicos"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
       <motion.div
@@ -74,40 +58,25 @@ const About = () => {
         viewport={{ once: true, amount: 0.35 }}
       >
         <motion.h2 variants={item}>
-          ¿Qué son las <span className="span-doarado">Zonas Metropolitanas?</span>
+          <span className={styles.titleLine}>¿Qué son las</span>{" "}
+          <span className={styles.titleHighlight}>Zonas Metropolitanas?</span>
         </motion.h2>
 
         <motion.p variants={item}>
-          Las zonas metropolitanas son áreas donde varios municipios convergen conformando un continuo urbano,
-          compartiendo actividades económicas, sociales y de infraestructura. Las zonas metropolitanas formalizan esta
-          integración para mejorar la coordinación en temas clave como el desarrollo urbano, la movilidad y la gestión
-          de servicios públicos. Esto permite la colaboración entre municipios para asegurar un crecimiento ordenado,
-          sostenible y que mejore la calidad de vida de sus habitantes.
+          Las zonas metropolitanas son áreas donde varios municipios convergen conformando un{" "}
+          <strong>continuo urbano,</strong> compartiendo actividades económicas, sociales y de infraestructura.
         </motion.p>
 
-        <motion.h2 variants={item}>
-          Zona Metropolitana {getPreposicion(zonaSeleccionada)}{" "}
-          <span className="span-doarado">{getTituloZona(zonaSeleccionada)}</span>
-        </motion.h2>
-
-        <motion.p
-          key={zonaSeleccionada || "default"}
-          className={styles.whiteSpacePreLine}
-          initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }}
-          animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-          transition={
-            reduceMotion
-              ? { duration: 0 }
-              : {
-                type: "spring",     
-                stiffness: 90,
-                damping: 18,
-                mass: 0.9,
-              }
-          }
-        >
-          {renderTextWithStyles(objetivo)}
+        <motion.p variants={item}>
+          Las zonas metropolitanas formalizan esta integración para mejorar la coordinación en temas clave como el{" "}
+          <strong>desarrollo urbano, la movilidad y la gestión de servicios públicos.</strong>
         </motion.p>
+
+        <motion.p variants={item}>
+          Esto permite la colaboración entre municipios para asegurar un crecimiento ordenado, sostenible y que mejore la{" "}
+          <strong>calidad de vida</strong> de sus habitantes.
+        </motion.p>
+
       </motion.div>
     </section>
   );
