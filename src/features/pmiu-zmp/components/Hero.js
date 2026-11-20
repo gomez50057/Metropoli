@@ -21,14 +21,14 @@ export default function Hero() {
         </figure>
 
         <div className={styles.leftBottomCard}>
-          <h3 className={styles.tituloBtn}>
+          {/* <h3 className={styles.tituloBtn}>
             <span className="span-doarado">Próximamente</span> disponible el{" "}
             <span className="span-doarado">PMIU ZMP</span>
           </h3>
 
           <p className={styles.descriptionBtn}>
             Muy pronto podrás consultar y descargar el PMIU ZMP desde este espacio.
-          </p>
+          </p> */}
 
           {/* <OpinionButton
             mode="link"
