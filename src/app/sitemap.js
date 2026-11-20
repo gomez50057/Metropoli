@@ -8,6 +8,11 @@ export default function sitemap() {
 
   return [
     { url: siteUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
+    ...["zm-pachuca", "zm-tulanciongo", "zmvm"].map((path) => ({
+      url: `${siteUrl}/${path}`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    })),
     { url: `${siteUrl}/noticias`, lastModified: latestPostDate, changeFrequency: "daily", priority: 0.9 },
     ...blogPosts.map((post) => ({
       url: `${siteUrl}/noticias/${normalizeName(post.name)}`,
