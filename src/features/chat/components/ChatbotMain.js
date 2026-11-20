@@ -32,9 +32,9 @@ const ChatbotMain = () => {
   const renderMenu = () => (
     <div className={styles.menu}>
       <div className={styles.header}>
-        <img src="img/sidebarRecurso.png" alt="Chatbot Logo" className={styles.logo} />
+        <img src="/img/sidebarRecurso.webp" alt="Chatbot Logo" className={styles.logo} />
         <div>
-          <img src="img/headertxt.png" alt="Metrópoli Hidalgo" className={styles.logotxt} />
+          <img src="/img/headertxt.webp" alt="Metrópoli Hidalgo" className={styles.logotxt} />
           <div className={styles.welcomeText}>
             <p>¡HOLA!<span>¿Cómo puedo ayudarte?</span></p>
           </div>
@@ -67,7 +67,7 @@ const ChatbotMain = () => {
         >
           <li>
             <div className={styles.icon}>
-              <img src="/img/chatBot/authorities.png" alt="Icono" />
+              <img src="/img/chatBot/authorities.webp" alt="Icono" />
             </div>
             <div className={styles.content}>
               <h4>Quiero conocer el trabajo de las autoridades en materia metropolitana</h4>
@@ -100,7 +100,7 @@ const ChatbotMain = () => {
         >
           <li>
             <div className={styles.icon}>
-              <img src="/img/chatBot/planning.png" alt="Icono" />
+              <img src="/img/chatBot/planning.webp" alt="Icono" />
             </div>
             <div className={styles.content}>
               <h4>Quiero conocer los instrumentos de planeación</h4>
@@ -110,7 +110,7 @@ const ChatbotMain = () => {
         </a>
         <li onClick={() => handleMenuClick("cartography")}>
           <div className={styles.icon}>
-            <img src="/img/chatBot/cartography.png" alt="Icono" />
+              <img src="/img/chatBot/cartography.webp" alt="Icono" />
           </div>
           <div className={styles.content}>
             <h4>Quiero explorar la cartografía de las zonas metropolitanas</h4>

@@ -12,7 +12,7 @@ export default function HeaderAnimation() {
       renderer: "svg",
       loop: false,   // No repetimos la animación al inicio
       autoplay: false,
-      path: "/animations/data.json",
+      path: "/animations/data-webp.json",
     });
 
     // Definimos el frame de inicio para la segunda reproducción.
