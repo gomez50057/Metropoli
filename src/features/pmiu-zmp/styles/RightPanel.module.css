@@ -188,6 +188,7 @@
 }
 
 .trophy {
+  color: var(--vinoOsc);
   position: relative;
   display: inline-flex;
   align-items: center;

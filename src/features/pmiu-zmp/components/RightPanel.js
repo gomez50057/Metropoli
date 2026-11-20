@@ -143,7 +143,21 @@ export default function RightPanel({ participa = {} }) {
               viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.45, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
-              🏆
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M7 3h10v6a5 5 0 0 1-10 0V3Z" />
+                <path d="M7 5H3v3a4 4 0 0 0 4 4m10-7h4v3a4 4 0 0 1-4 4M12 14v5m-4 2h8m-7-2h6v2H9v-2Z" />
+              </svg>
             </motion.div>
 
             <motion.p
