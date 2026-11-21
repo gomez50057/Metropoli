@@ -54,7 +54,7 @@ export const zoneProfiles = {
     ],
     projects: [
       { tag: "Ordenación del territorio", title: "Actualización del POZMVM", description: "Consulta los ejes, principios y avances del Programa de Ordenación de la Zona Metropolitana del Valle de México.", href: "/actualizacion-pozmvm" },
-      { tag: "Gobernanza y participación", title: "Coordinación metropolitana", description: "Conoce a quienes participan en los espacios de coordinación de las zonas metropolitanas.", href: "/integrantes" },
+      { tag: "Gobernanza y participación", title: "Coordinación metropolitana", description: "Conoce a quienes participan en los espacios de coordinación de las zonas metropolitanas.", href: "/integrantes?zona=ZMVM" },
     ],
   },
 };

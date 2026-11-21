@@ -3,11 +3,13 @@ import ZonasMetropolitanas from '@/features/teams/components/ZonasMetropolitanas
 import Navbar from '@/components/shared/Navbar';
 
 
-const IntegrantesPage = () => {
+const IntegrantesPage = async ({ searchParams }) => {
+  const { zona } = await searchParams;
+  const initialZone = ['ZMVM', 'ZMP', 'ZMTulancingo'].includes(zona) ? zona : undefined;
   return (
     <div>
       <Navbar />
-      <ZonasMetropolitanas />
+      <ZonasMetropolitanas initialZone={initialZone} />
     </div>
   );
 };

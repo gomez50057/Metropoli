@@ -14,15 +14,19 @@ const getZonaFromLocalStorage = () => {
   return 'ZMVM';
 };
 
-const ZonasMetropolitanas = () => {
-  const [zonaSeleccionada, setZonaSeleccionada] = useState('ZMVM'); // Estado para la zona seleccionada
+const ZonasMetropolitanas = ({ initialZone }) => {
+  const [zonaSeleccionada, setZonaSeleccionada] = useState(initialZone || 'ZMVM'); // Estado para la zona seleccionada
   const [fade, setFade] = useState('fade-in'); // Estado para el efecto de fade
 
   // Cargar la zona seleccionada al montar el componente
   useEffect(() => {
-    const selectedZonaMetropolitana = getZonaFromLocalStorage();
+    const selectedZonaMetropolitana = initialZone || getZonaFromLocalStorage();
     setZonaSeleccionada(selectedZonaMetropolitana); // Establece el valor inicial a partir de selectedZonaMetropolitana
-  }, []);
+    if (initialZone) {
+      localStorage.setItem('selectedZonaMetropolitana', initialZone);
+      window.dispatchEvent(new Event('zonaChanged'));
+    }
+  }, [initialZone]);
 
   // Función para cambiar de zona
   const handleZonaChange = (zona) => {
@@ -31,6 +35,7 @@ const ZonasMetropolitanas = () => {
       setZonaSeleccionada(zona);
       setFade('fade-in');
       localStorage.setItem('selectedZonaMetropolitana', zona); // Guardar la zona seleccionada en localStorage
+      window.dispatchEvent(new Event('zonaChanged'));
     }, 300); // Retraso para la animación
   };
 
@@ -42,18 +47,21 @@ const ZonasMetropolitanas = () => {
         <button
           className={`${zonaSeleccionada === 'ZMVM' ? styles.active : ''}`}
           onClick={() => handleZonaChange('ZMVM')}
+          aria-pressed={zonaSeleccionada === 'ZMVM'}
         >
           ZMVM
         </button>
         <button
           className={`${zonaSeleccionada === 'ZMP' ? styles.active : ''}`}
           onClick={() => handleZonaChange('ZMP')}
+          aria-pressed={zonaSeleccionada === 'ZMP'}
         >
           ZMPachuca
         </button>
         <button
           className={`${zonaSeleccionada === 'ZMTulancingo' ? styles.active : ''}`}
           onClick={() => handleZonaChange('ZMTulancingo')}
+          aria-pressed={zonaSeleccionada === 'ZMTulancingo'}
         >
           ZMTulancingo
         </button>
