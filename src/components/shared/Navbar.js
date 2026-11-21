@@ -27,12 +27,13 @@ const NAV_ITEMS = [
       {
         label: "Tulancingo",
         href: "/zm-tulanciongo",
-        children: [
+        // Submenú oculto temporalmente.
+        /* children: [
           {
             label: "Se está creando la historia",
             href: "/buenas-practicas-metropolitanas",
           },
-        ],
+        ], */
       },
       {
         label: "Valle de México",
