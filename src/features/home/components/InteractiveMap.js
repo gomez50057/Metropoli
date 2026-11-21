@@ -7,6 +7,7 @@ import styles from "./InteractiveMap.module.css";
 import { ZMP_Info, ZMT_Info, ZMTUL_Info, zmvm_InfoGeneral } from './ZM';
 import { getTituloZona, getPreposicion, getMunAlc, getMapNom } from '@/data/home';
 import { renderParagraphsWithStyles } from "@/data/blogData";
+import ZoneMembersSection from '@/components/shared/ZoneMembersSection';
 
 const ZONES = [
   { value: 'ZMP', label: 'ZM de Pachuca' },
@@ -327,6 +328,7 @@ const InteractiveMap = () => {
   }, []);
 
   return (
+    <>
     <section id="mapa-interactivo" className={styles.mapaConte}>
       <div id="map" className={styles.map}>
         {showWheelHint && (
@@ -401,6 +403,8 @@ const InteractiveMap = () => {
 
       </div>
     </section>
+    <ZoneMembersSection zone={zonaSeleccionada} />
+    </>
   );
 };
 

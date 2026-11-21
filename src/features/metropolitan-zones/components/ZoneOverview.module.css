@@ -8,6 +8,10 @@
   color: var(--ink);
 }
 
+.page .membersSection {
+  width: 100%;
+}
+
 .page svg {
   width: 20px;
   height: 20px;

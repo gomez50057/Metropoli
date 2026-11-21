@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ZoneMembersSection from "@/components/shared/ZoneMembersSection";
 import { getPreposicion, getTextoObjetivo } from "@/data/home";
 import { renderParagraphsWithStyles } from "@/data/blogData";
 import { zoneProfiles } from "../data/zoneProfiles";
@@ -93,6 +94,8 @@ export default function ZoneOverview({ zone, children }) {
       </section>
 
       {children && <section className={styles.commissions} aria-labelledby="commissions-title"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>03 / Trabajo conjunto</p><h2 id="commissions-title">Comisiones <em>metropolitanas.</em></h2></div><p>Espacios de coordinación para atender los temas que conectan a la metrópoli.</p></div>{children}</section>}
+
+      <ZoneMembersSection zone={zone} className={styles.membersSection} />
 
       <aside className={styles.bottomBanner}><div><p className={styles.eyebrow}>Sigue explorando</p><h2>La metrópoli también <em>se vive contigo.</em></h2></div><Link href="/#mapa-interactivo">Explorar el mapa interactivo <ArrowIcon /></Link></aside>
     </div>
