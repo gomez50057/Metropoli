@@ -50,7 +50,7 @@ export default function IntroVideoSection() {
                 <path d="M43 34 66 50 43 66Z" fill="var(--vinoOsc)" />
               </svg>
             </span>
-            <span className={styles.label}>Dale play y conoce nuestras que hay en Metrópoli Hidalgo</span>
+            <span className={styles.label}>Dale play y conoce más de Metrópoli Hidalgo</span>
           </button>
         )}
       </div>
