@@ -41,7 +41,6 @@ const NAV_ITEMS = [
       },
     ],
   },
-  { label: "Integrantes", href: "/integrantes" },
   { label: "Noticias", href: "/noticias" },
   { label: "Acceder", href: "/acuerdos-metropolitanos" },
 ];
